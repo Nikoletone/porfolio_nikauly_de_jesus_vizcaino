@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R3st0.fr - Portfolio Nikauly</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+    :root {
+      --red-primary: #DC143C;
+      --red-dark: #8B0000;
+      --red-accent: #FF4500;
+      --black: #000000;
+      --gray-900: #141414;
+      --gray-800: #1a1a1a;
+      --gray-700: #2a2a2a;
+      --gray-500: #666666;
+      --gray-400: #999999;
+      --gray-100: #f5f5f5;
+      --white: #ffffff;
+      --border-radius--xlarge: 2rem;
+      --border-radius--medium: 1.25rem;
+    }
+    * {margin:0;padding:0;box-sizing:border-box;}
+    html {scroll-behavior:smooth;}
+    body {width:100%; min-height:100vh; font-family:"Poppins",sans-serif; background-color:var(--black); color:var(--white);}
+
+    /* Navigation */
+    .navbar{position:fixed;top:0;left:0;width:100%; background-color:rgba(20,20,20,0.95);backdrop-filter:blur(10px);padding:1.5rem 3.3%;z-index:1000;border-bottom:1px solid var(--gray-700);}
+    .nav-content{max-width:120rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+    .nav-logo{font-size:1.5rem;font-weight:600;color:var(--white);text-decoration:none;}
+    .nav-back{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background-color:transparent;border:2px solid var(--red-primary);color:var(--white);border-radius:0.5rem;font-size:0.875rem;font-weight:500;text-transform:uppercase;letter-spacing:0.03em;cursor:pointer;transition:all 0.3s ease;text-decoration:none;position:relative;overflow:hidden;}
+    .nav-back::before {content:'';position:absolute;top:0;left:0;width:0;height:100%;background-color:var(--red-primary);transition:width 0.3s ease;z-index:-1;}
+    .nav-back:hover::before {width:100%;}
+    .nav-back:hover {border-color:var(--red-accent);transform:translateY(-2px);box-shadow:0 5px 15px rgba(220,20,60,0.3);}
+
+    /* Hero Section */
+    .hero-section{margin-top:80px;padding:4rem 3.3%;background:linear-gradient(135deg,var(--gray-900) 0%,var(--black) 100%);position:relative;overflow:hidden;}
+    .hero-section::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at top right,rgba(220,20,60,0.1),transparent 50%);pointer-events:none;}
+    .hero-content{max-width:120rem;margin:0 auto;position:relative;z-index:1;}
+    .project-category{display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem;}
+    .category-tag{background-color:rgba(220,20,60,0.9);color:var(--white);padding:0.5rem 1rem;border-radius:0.5rem;font-size:0.875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;}
+    .hero-title{font-size:3.5rem;font-weight:600;line-height:1.1;margin-bottom:1.5rem;color:var(--white);}
+    .title-highlight{color:var(--red-primary);position:relative;display:inline-block;}
+    .title-highlight::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--red-dark),var(--red-accent));border-radius:10px;}
+    .hero-subtitle{font-size:1.25rem;color:var(--gray-400);line-height:1.6;max-width:800px;margin-bottom:2rem;}
+    .project-tech{display:flex;flex-wrap:wrap;gap:0.75rem;}
+    .tech-badge{background-color:var(--gray-800);color:var(--gray-100);padding:0.6rem 1rem;border-radius:0.5rem;font-size:0.9rem;font-weight:500;border:1px solid var(--gray-700);transition:all 0.3s ease;}
+    .tech-badge:hover{border-color:var(--red-primary);background-color:var(--gray-700);transform:translateY(-2px);}
+
+    /* Context / Competences */
+    .context-section,.competences-section{padding:5rem 3.3%;background-color:var(--gray-900);}
+    .context-container,.competences-container{max-width:120rem;margin:0 auto;}
+    .section-header{text-align:center;margin-bottom:4rem;}
+    .section-title{font-size:2.5rem;font-weight:600;color:var(--white);margin-bottom:1rem;}
+    .text-red{color:var(--red-primary);}
+    .section-subtitle{font-size:1.125rem;color:var(--gray-400);}
+    .context-content{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:3rem;border:1px solid var(--gray-700);line-height:1.8;}
+    .context-content h3{font-size:1.5rem;color:var(--white);margin-bottom:1rem;margin-top:2rem;}
+    .context-content h3:first-child{margin-top:0;}
+    .context-content p{font-size:1.05rem;color:var(--gray-400);margin-bottom:1.5rem;}
+    .context-content ul {list-style:none;padding-left:0;margin-bottom:1.5rem;}
+    .context-content li {position:relative;padding-left:2rem;margin-bottom:0.75rem;color:var(--gray-400);font-size:1.05rem;}
+    .context-content li::before {content:'→';position:absolute;left:0;color:var(--red-primary);font-weight:bold;font-size:1.2rem;}
+
+    .competences-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;}
+    .competence-card{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:2rem;border:1px solid var(--gray-700);transition:all 0.3s ease;}
+    .competence-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(220,20,60,0.2);border-color:var(--red-primary);}
+    .competence-code{display:inline-block;background-color:rgba(220,20,60,0.2);color:var(--red-primary);padding:0.4rem 0.8rem;border-radius:0.4rem;font-size:0.85rem;font-weight:600;margin-bottom:1rem;}
+    .competence-title{font-size:1.125rem;font-weight:600;color:var(--white);margin-bottom:0.75rem;}
+    .competence-description{font-size:0.95rem;color:var(--gray-400);line-height:1.6;}
+
+    /* Reports Section */
+    .reports-section{padding:5rem 3.3%;background-color:var(--black);}
+    .reports-container{max-width:120rem;margin:0 auto;}
+    .reports-content{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:3rem;border:1px solid var(--gray-700);}
+    .reports-list{list-style:none;padding:0;margin:0;}
+    .report-item{display:flex;align-items:center;justify-content:space-between;padding:1.5rem;border-bottom:1px solid var(--gray-700);transition:all 0.3s ease;}
+    .report-item:last-child{border-bottom:none;}
+    .report-item:hover{background-color:var(--gray-700);padding-left:2rem;}
+    .report-info{display:flex;align-items:center;gap:1.5rem;flex:1;}
+    .report-icon{font-size:2rem;flex-shrink:0;}
+    .report-details{flex:1;}
+    .report-name{font-size:1.125rem;font-weight:600;color:var(--white);margin-bottom:0.25rem;}
+    .report-description{font-size:0.9rem;color:var(--gray-400);line-height:1.4;}
+    .report-link{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background-color:transparent;border:2px solid var(--red-primary);color:var(--red-primary);border-radius:0.5rem;font-size:0.875rem;font-weight:600;text-decoration:none;transition:all 0.3s ease;flex-shrink:0;}
+    .report-link:hover{background-color:var(--red-primary);color:var(--white);transform:translateX(5px);box-shadow:0 5px 15px rgba(220,20,60,0.3);}
+
+    .footer{padding:3rem 3.3%;background-color:var(--gray-900);border-top:1px solid var(--gray-700);text-align:center;}
+    .footer p{color:var(--gray-400);font-size:0.95rem;}
+    @media (max-width: 768px) {
+      .hero-title {font-size:2.5rem;}
+      .section-title {font-size:2rem;}
+      .context-content,.reports-content{padding:2rem;}
+      .report-item{flex-direction:column;align-items:flex-start;gap:1rem;}
+      .report-info{flex-direction:column;align-items:flex-start;gap:1rem;}
+      .report-link{width:100%;justify-content:center;}
+      .competences-grid{grid-template-columns:1fr;}
+      .nav-logo{font-size:1.2rem;}
+      .navbar{padding:1rem 5%;}
+      .hero-section,.context-section,.competences-section,.reports-section{padding:3rem 5%;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-content">
+      <a href="index.html" class="nav-logo">Portfolio Nikauly</a>
+      <a href="index.html" class="nav-back"><span>←</span><span>Retour</span></a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="project-category">
+        <span class="category-tag">Web</span>
+        <span class="category-tag">Agile</span>
+        <span class="category-tag">Scrum</span>
+      </div>
+      <h1 class="hero-title"><span class="title-highlight">R3st0.fr</span></h1>
+      <p class="hero-subtitle">
+        Site web de critique et notation de restaurants développé en équipe selon la méthode Scrum avec itérations, tickets de maintenance, déploiement continu et gestion GitLab.
+      </p>
+      <div class="project-tech">
+        <span class="tech-badge">PHP</span>
+        <span class="tech-badge">Symfony</span>
+        <span class="tech-badge">MariaDB</span>
+        <span class="tech-badge">GitLab</span>
+        <span class="tech-badge">Kanban</span>
+        <span class="tech-badge">Scrum</span>
+        <span class="tech-badge">NetBeans</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Context Section -->
+  <section class="context-section">
+    <div class="context-container">
+      <div class="section-header">
+        <h2 class="section-title">Description & <span class="text-red">Contexte</span></h2>
+        <p class="section-subtitle">Mise en situation et objectifs du projet</p>
+      </div>
+      <div class="context-content">
+        <h3>📋 Contexte du projet</h3>
+        <p>
+          R3st0.fr est un site de critique de restaurants inspiré de TripAdvisor et La Fourchette. 
+          L'objectif est de permettre aux utilisateurs de rechercher des restaurants, consulter leurs caractéristiques, 
+          lire les avis et noter les établissements. Développé en 2ème année BTS SIO selon la méthode agile Scrum.
+        </p>
+
+        <h3>🎯 Objectifs pédagogiques</h3>
+        <ul>
+          <li>Travailler en équipe avec méthodologie Scrum (rôles : Product Owner, Scrum Master, équipe dev)</li>
+          <li>Gérer un projet par itérations courtes (sprints de 1 à 2 séances)</li>
+          <li>Utiliser GitLab pour la gestion de version, les branches, les tickets (Issues) et le Kanban</li>
+          <li>Traiter des tickets de maintenance et ajouter de nouvelles fonctionnalités</li>
+          <li>Déployer l'application en continu sur un serveur de production</li>
+        </ul>
+
+        <h3>⚙️ Fonctionnalités développées</h3>
+        <ul>
+          <li><strong>Visiteur non authentifié</strong> : Recherche multi-critères de restaurants, consultation des fiches détaillées et des avis</li>
+          <li><strong>Utilisateur authentifié</strong> : Personnalisation du profil, ajout de restaurants favoris, publication d'avis et notation (1 à 5 étoiles)</li>
+          <li><strong>Administrateur</strong> : Gestion des contenus du site (restaurants, avis, utilisateurs)</li>
+          <li><strong>Affichage des types de cuisine</strong> : Ajout d'une nouvelle fonctionnalité pour filtrer par type de cuisine</li>
+        </ul>
+
+        <h3>🏗️ Méthode de gestion de projet Scrum</h3>
+        <p>
+          Le projet suit une méthode agile inspirée de Scrum avec :
+        </p>
+        <ul>
+          <li><strong>Product Owner</strong> : Enseignants définissant les besoins et validant les livrables</li>
+          <li><strong>Scrum Master</strong> : Membre de l'équipe animant les daily scrums et garantissant le respect de la méthodologie</li>
+          <li><strong>Sprints/Itérations</strong> : Durée de 1 à 2 séances, chaque sprint livre une version fonctionnelle</li>
+          <li><strong>Daily Scrum</strong> : Réunion quotidienne de 15 minutes pour partager l'avancement et identifier les obstacles</li>
+          <li><strong>Backlog</strong> : Liste priorisée des tâches (fonctionnalités, bugs, améliorations techniques)</li>
+        </ul>
+
+        <h3>🛠️ Outils techniques</h3>
+        <ul>
+          <li><strong>IDE</strong> : NetBeans v.21+</li>
+          <li><strong>Gestion de version</strong> : GitLab (branches, merge, issues)</li>
+          <li><strong>Tableau Kanban</strong> : GitLab Issues Board (colonnes : À faire, En cours, Terminé)</li>
+          <li><strong>Labels</strong> : Complexité (peu complexe, moyenne, complexe) et Priorité (peu prioritaire, normale, prioritaire)</li>
+          <li><strong>Déploiement</strong> : Serveur web BTS SIO avec compte FTP et base MariaDB</li>
+        </ul>
+
+        <h3>📊 Itérations réalisées</h3>
+        <ul>
+          <li><strong>Itération 1</strong> : Installation et étude de l'existant (ré-ingénierie BDD, analyse du code)</li>
+          <li><strong>Itération 2</strong> : Résolution de tickets de maintenance (corrections de bugs, petites évolutions)</li>
+          <li><strong>Itération 3</strong> : Ajout de la fonctionnalité "types de cuisine" (User Story + déploiement)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competences Section -->
+  <section class="competences-section">
+    <div class="competences-container">
+      <div class="section-header">
+        <h2 class="section-title">Compétences <span class="text-red">BTS SIO mobilisées</span></h2>
+        <p class="section-subtitle">Référentiel des compétences mises en œuvre</p>
+      </div>
+      <div class="competences-grid">
+        
+        <div class="competence-card">
+          <span class="competence-code">B1.2.3</span>
+          <h3 class="competence-title">Traiter des demandes concernant les applications</h3>
+          <p class="competence-description">
+            Résolution de tickets de maintenance, traitement des demandes d'évolution fonctionnelle du Product Owner.
+          </p>
+        </div>
+
+        <div class="competence-card">
+          <span class="competence-code">B1.4.1</span>
+          <h3 class="competence-title">Analyser les objectifs et modalités d'organisation d'un projet</h3>
+          <p class="competence-description">
+            Compréhension de la méthode Scrum, définition des rôles (Product Owner, Scrum Master), analyse des User Stories.
+          </p>
+        </div>
+
+        <div class="competence-card">
+          <span class="competence-code">B1.4.2</span>
+          <h3 class="competence-title">Planifier les activités</h3>
+          <p class="competence-description">
+            Organisation des sprints, daily scrums quotidiens, utilisation du Kanban GitLab, affectation et priorisation des tickets.
+          </p>
+        </div>
+
+        <div class="competence-card">
+          <span class="competence-code">B1.4.3</span>
+          <h3 class="competence-title">Évaluer les indicateurs de suivi d'un projet</h3>
+          <p class="competence-description">
+            Suivi de l'avancement des tickets sur le tableau Kanban, analyse des écarts entre planifié et réalisé lors des daily scrums.
+          </p>
+        </div>
+
+        <div class="competence-card">
+          <span class="competence-code">B2.1.5_SLAM</span>
+          <h3 class="competence-title">Identifier, développer ou adapter des composants logiciels</h3>
+          <p class="competence-description">
+            Développement et adaptation de composants Symfony, modification de la base de données, création de nouvelles fonctionnalités.
+          </p>
+        </div>
+
+        <div class="competence-card">
+          <span class="competence-code">B2.1.7_SLAM</span>
+          <h3 class="competence-title">Utiliser des composants d'accès aux données</h3>
+          <p class="competence-description">
+            Utilisation de Doctrine ORM pour l'accès à la base MariaDB, requêtes SQL, gestion des relations entre entités.
+          </p>
+        </div>
+
+        <div class="competence-card">
+          <span class="competence-code">B2.1.9_SLAM</span>
+          <h3 class="competence-title">Réaliser les tests nécessaires à la validation</h3>
+          <p class="competence-description">
+            Tests en local de chaque ticket avant merge, documentation des tests dans les rapports d'itération.
+          </p>
+        </div>
+
+        <div class="competence-card">
+          <span class="competence-code">B2.1.10_SLAM</span>
+          <h3 class="competence-title">Rédiger des documentations technique et d'utilisation</h3>
+          <p class="competence-description">
+            Rédaction de rapports d'itération, documentation des tickets (diagnostic, localisation, modifications, tests), commentaires du code.
+          </p>
+        </div>
+
+        <div class="competence-card">
+          <span class="competence-code">B2.1.11_SLAM</span>
+          <h3 class="competence-title">Exploiter les fonctionnalités d'un environnement de développement</h3>
+          <p class="competence-description">
+            Maîtrise de NetBeans, gestion des branches Git, utilisation de GitLab (merge, issues, labels, jalons).
+          </p>
+        </div>
+
+        <div class="competence-card">
+          <span class="competence-code">B3.1</span>
+          <h3 class="competence-title">Déployer un service</h3>
+          <p class="competence-description">
+            Déploiement continu sur serveur de production (FTP, configuration MariaDB), livraison continue à chaque itération.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Reports Section -->
+  <section class="reports-section">
+    <div class="reports-container">
+      <div class="section-header">
+        <h2 class="section-title">Livrables & <span class="text-red">Documentation</span></h2>
+        <p class="section-subtitle">Rapports d'itération et ressources du projet</p>
+      </div>
+      <div class="reports-content">
+        <ul class="reports-list">
+          
+          <li class="report-item">
+            <div class="report-info">
+              <span class="report-icon">📄</span>
+              <div class="report-details">
+                <div class="report-name">Rapport Itération 1 - Installation et étude</div>
+                <div class="report-description">Ré-ingénierie de la base de données, analyse de l'architecture du code, daily scrums</div>
+              </div>
+            </div>
+            <a href="#" class="report-link"><span>Télécharger</span><span>→</span></a>
+          </li>
+
+          <li class="report-item">
+            <div class="report-info">
+              <span class="report-icon">🔧</span>
+              <div class="report-details">
+                <div class="report-name">Rapport Itération 2 - Résolution de tickets</div>
+                <div class="report-description">Documentation des tickets résolus (diagnostic, localisation, modifications, tests)</div>
+              </div>
+            </div>
+            <a href="#" class="report-link"><span>Télécharger</span><span>→</span></a>
+          </li>
+
+          <li class="report-item">
+            <div class="report-info">
+              <span class="report-icon">✨</span>
+              <div class="report-details">
+                <div class="report-name">Rapport Itération 3 - Types de cuisine</div>
+                <div class="report-description">User Story, modification BDD, développement de la fonctionnalité, déploiement</div>
+              </div>
+            </div>
+            <a href="#" class="report-link"><span>Télécharger</span><span>→</span></a>
+          </li>
+
+          <li class="report-item">
+            <div class="report-info">
+              <span class="report-icon">📋</span>
+              <div class="report-details">
+                <div class="report-name">Tableau Kanban GitLab</div>
+                <div class="report-description">Issues Board avec tickets, labels (complexité, priorité), jalons et affectations</div>
+              </div>
+            </div>
+            <a href="#" class="report-link"><span>Voir GitLab</span><span>→</span></a>
+          </li>
+
+          <li class="report-item">
+            <div class="report-info">
+              <span class="report-icon">🔗</span>
+              <div class="report-details">
+                <div class="report-name">Repository GitLab</div>
+                <div class="report-description">Code source complet avec branches par ticket, historique des commits et merges</div>
+              </div>
+            </div>
+            <a href="#" class="report-link"><span>Voir GitLab</span><span>→</span></a>
+          </li>
+
+          <li class="report-item">
+            <div class="report-info">
+              <span class="report-icon">🌐</span>
+              <div class="report-details">
+                <div class="report-name">Site déployé en production</div>
+                <div class="report-description">Application web fonctionnelle sur serveur BTS SIO (FTP + MariaDB)</div>
+              </div>
+            </div>
+            <a href="#" class="report-link"><span>Voir le site</span><span>→</span></a>
+          </li>
+
+          <li class="report-item">
+            <div class="report-info">
+              <span class="report-icon">📝</span>
+              <div class="report-details">
+                <div class="report-name">Daily Scrums et compte-rendus</div>
+                <div class="report-description">Traces des réunions quotidiennes (bilan séance précédente, planification séance suivante)</div>
+              </div>
+            </div>
+            <a href="#" class="report-link"><span>Télécharger</span><span>→</span></a>
+          </li>
+
+          <li class="report-item">
+            <div class="report-info">
+              <span class="report-icon">📊</span>
+              <div class="report-details">
+                <div class="report-name">Documentation technique globale</div>
+                <div class="report-description">Architecture du projet, guide de déploiement, conventions de codage</div>
+              </div>
+            </div>
+            <a href="#" class="report-link"><span>Télécharger</span><span>→</span></a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><p>&copy; 2025 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.report-item').forEach((item, index) => {
+      gsap.from(item, {x: -30, opacity: 0, duration: 0.6, delay: index * 0.1, ease: "power2.out",
+        scrollTrigger: {trigger: item, start: "top 90%", once: true}
+      });
+    });
+    gsap.utils.toArray('.competence-card').forEach(card => {
+      gsap.from(card, {y: 40, opacity: 0, duration: 0.8, ease: "power2.out",
+        scrollTrigger: {trigger: card, start: "top 85%", once: true}
+      });
+    });
+    gsap.from('.context-content', {y: 40, opacity: 0, duration: 1, ease: "power2.out",
+      scrollTrigger: {trigger: '.context-content', start: "top 80%", once: true}
+    });
+  </script>
+</body>
+</html>
