@@ -24,18 +24,15 @@
       --border-radius--medium: 1.25rem;
     }
 
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-
     html {
       scroll-behavior: smooth;
     }
-
 
     body {
       width: 100%;
@@ -44,7 +41,6 @@
       background-color: var(--black);
       color: var(--white);
     }
-
 
     /* Navigation */
     .navbar {
@@ -59,7 +55,6 @@
       border-bottom: 1px solid var(--gray-700);
     }
 
-
     .nav-content {
       max-width: 120rem;
       margin: 0 auto;
@@ -68,14 +63,12 @@
       align-items: center;
     }
 
-
     .nav-logo {
       font-size: 1.5rem;
       font-weight: 600;
       color: var(--white);
       text-decoration: none;
     }
-
 
     .nav-back {
       display: inline-flex;
@@ -97,7 +90,6 @@
       overflow: hidden;
     }
 
-
     .nav-back::before {
       content: '';
       position: absolute;
@@ -110,11 +102,9 @@
       z-index: -1;
     }
 
-
     .nav-back:hover::before {
       width: 100%;
     }
-
 
     .nav-back:hover {
       border-color: var(--red-accent);
@@ -122,65 +112,58 @@
       box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
     }
 
-
     /* Hero Section */
-    /* Hero Section */
-.hero-section {
-  margin-top: 80px;
-  padding: 4rem 3.3%;
-  position: relative;
-  overflow: hidden;
-  min-height: 600px;
-  background-color: var(--gray-900);
-}
+    .hero-section {
+      margin-top: 80px;
+      padding: 4rem 3.3%;
+      position: relative;
+      overflow: hidden;
+      min-height: 600px;
+      background-color: var(--gray-900);
+    }
 
-/* Image de fond du hero - OPACITÉ AUGMENTÉE */
-.hero-bg-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  opacity: 0.6; /* Changé de 0.25 à 0.6 pour plus de visibilité */
-  z-index: 0;
-}
+    .hero-bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.6;
+      z-index: 0;
+    }
 
-/* Overlay gradient par-dessus l'image - RÉDUIT */
-.hero-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(20, 20, 20, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%); /* Opacité réduite */
-  z-index: 1;
-  pointer-events: none;
-}
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(20, 20, 20, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
 
-/* Effet radial rouge - SUPPRIMÉ ou très réduit */
-.hero-section::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at top right, rgba(220, 20, 60, 0.05), transparent 50%); /* Réduit de 0.15 à 0.05 */
-  z-index: 2;
-  pointer-events: none;
-}
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top right, rgba(220, 20, 60, 0.05), transparent 50%);
+      z-index: 2;
+      pointer-events: none;
+    }
 
-.hero-content {
-  max-width: 120rem;
-  margin: 0 auto;
-  position: relative;
-  z-index: 3;
-}
-
-
+    .hero-content {
+      max-width: 120rem;
+      margin: 0 auto;
+      position: relative;
+      z-index: 3;
+    }
 
     .project-category {
       display: inline-flex;
@@ -188,7 +171,6 @@
       gap: 0.5rem;
       margin-bottom: 1.5rem;
     }
-
 
     .category-tag {
       background-color: rgba(220, 20, 60, 0.9);
@@ -201,7 +183,6 @@
       letter-spacing: 0.05em;
     }
 
-
     .hero-title {
       font-size: 3.5rem;
       font-weight: 600;
@@ -210,13 +191,11 @@
       color: var(--white);
     }
 
-
     .title-highlight {
       color: var(--red-primary);
       position: relative;
       display: inline-block;
     }
-
 
     .title-highlight::after {
       content: '';
@@ -229,7 +208,6 @@
       border-radius: 10px;
     }
 
-
     .hero-subtitle {
       font-size: 1.25rem;
       color: var(--gray-400);
@@ -238,13 +216,11 @@
       margin-bottom: 2rem;
     }
 
-
     .project-tech {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
     }
-
 
     .tech-badge {
       background-color: var(--gray-800);
@@ -257,13 +233,11 @@
       transition: all 0.3s ease;
     }
 
-
     .tech-badge:hover {
       border-color: var(--red-primary);
       background-color: var(--gray-700);
       transform: translateY(-2px);
     }
-
 
     /* Context Section */
     .context-section {
@@ -271,18 +245,15 @@
       background-color: var(--gray-900);
     }
 
-
     .context-container {
       max-width: 120rem;
       margin: 0 auto;
     }
 
-
     .section-header {
       text-align: center;
       margin-bottom: 4rem;
     }
-
 
     .section-title {
       font-size: 2.5rem;
@@ -291,17 +262,14 @@
       margin-bottom: 1rem;
     }
 
-
     .text-red {
       color: var(--red-primary);
     }
-
 
     .section-subtitle {
       font-size: 1.125rem;
       color: var(--gray-400);
     }
-
 
     .context-content {
       background-color: var(--gray-800);
@@ -311,7 +279,6 @@
       line-height: 1.8;
     }
 
-
     .context-content h3 {
       font-size: 1.5rem;
       color: var(--white);
@@ -319,11 +286,9 @@
       margin-top: 2rem;
     }
 
-
     .context-content h3:first-child {
       margin-top: 0;
     }
-
 
     .context-content p {
       font-size: 1.05rem;
@@ -331,13 +296,11 @@
       margin-bottom: 1.5rem;
     }
 
-
     .context-content ul {
       list-style: none;
       padding-left: 0;
       margin-bottom: 1.5rem;
     }
-
 
     .context-content li {
       position: relative;
@@ -346,7 +309,6 @@
       color: var(--gray-400);
       font-size: 1.05rem;
     }
-
 
     .context-content li::before {
       content: '→';
@@ -357,26 +319,22 @@
       font-size: 1.2rem;
     }
 
-
     /* Competences Section */
     .competences-section {
       padding: 5rem 3.3%;
       background-color: var(--black);
     }
 
-
     .competences-container {
       max-width: 120rem;
       margin: 0 auto;
     }
-
 
     .competences-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
-
 
     .competence-card {
       background-color: var(--gray-800);
@@ -386,13 +344,11 @@
       transition: all 0.3s ease;
     }
 
-
     .competence-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 30px rgba(220, 20, 60, 0.2);
       border-color: var(--red-primary);
     }
-
 
     .competence-code {
       display: inline-block;
@@ -405,7 +361,6 @@
       margin-bottom: 1rem;
     }
 
-
     .competence-title {
       font-size: 1.125rem;
       font-weight: 600;
@@ -413,13 +368,11 @@
       margin-bottom: 0.75rem;
     }
 
-
     .competence-description {
       font-size: 0.95rem;
       color: var(--gray-400);
       line-height: 1.6;
     }
-
 
     /* Reports Section */
     .reports-section {
@@ -427,12 +380,10 @@
       background-color: var(--gray-900);
     }
 
-
     .reports-container {
       max-width: 120rem;
       margin: 0 auto;
     }
-
 
     .reports-content {
       background-color: var(--gray-800);
@@ -441,13 +392,11 @@
       border: 1px solid var(--gray-700);
     }
 
-
     .reports-list {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-
 
     .report-item {
       display: flex;
@@ -458,17 +407,14 @@
       transition: all 0.3s ease;
     }
 
-
     .report-item:last-child {
       border-bottom: none;
     }
-
 
     .report-item:hover {
       background-color: var(--gray-700);
       padding-left: 2rem;
     }
-
 
     .report-info {
       display: flex;
@@ -477,17 +423,14 @@
       flex: 1;
     }
 
-
     .report-icon {
       font-size: 2rem;
       flex-shrink: 0;
     }
 
-
     .report-details {
       flex: 1;
     }
-
 
     .report-name {
       font-size: 1.125rem;
@@ -496,13 +439,11 @@
       margin-bottom: 0.25rem;
     }
 
-
     .report-description {
       font-size: 0.9rem;
       color: var(--gray-400);
       line-height: 1.4;
     }
-
 
     .report-link {
       display: inline-flex;
@@ -520,14 +461,12 @@
       flex-shrink: 0;
     }
 
-
     .report-link:hover {
       background-color: var(--red-primary);
       color: var(--white);
       transform: translateX(5px);
       box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
     }
-
 
     /* Footer */
     .footer {
@@ -537,12 +476,10 @@
       text-align: center;
     }
 
-
     .footer p {
       color: var(--gray-400);
       font-size: 0.95rem;
     }
-
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -554,17 +491,14 @@
         min-height: 500px;
       }
 
-
       .section-title {
         font-size: 2rem;
       }
-
 
       .context-content,
       .reports-content {
         padding: 2rem;
       }
-
 
       .report-item {
         flex-direction: column;
@@ -572,34 +506,28 @@
         gap: 1rem;
       }
 
-
       .report-info {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
       }
 
-
       .report-link {
         width: 100%;
         justify-content: center;
       }
 
-
       .competences-grid {
         grid-template-columns: 1fr;
       }
-
 
       .nav-logo {
         font-size: 1.2rem;
       }
 
-
       .navbar {
         padding: 1rem 5%;
       }
-
 
       .hero-section,
       .context-section,
@@ -612,7 +540,6 @@
 </head>
 <body>
 
-
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-content">
@@ -624,10 +551,8 @@
     </div>
   </nav>
 
-
   <!-- Hero Section -->
   <section class="hero-section">
-    <!-- Image de fond -->
     <img src="photo_projet_thali_mini.png" alt="THALI-MINI Application" class="hero-bg-image">
     
     <div class="hero-content">
@@ -644,7 +569,6 @@
         Application Java desktop pour la gestion des mini-excursions d'un centre de thalassothérapie avec architecture DAO et base de données MariaDB.
       </p>
 
-
       <div class="project-tech">
         <span class="tech-badge">Java</span>
         <span class="tech-badge">NetBeans</span>
@@ -656,7 +580,6 @@
     </div>
   </section>
 
-  <!-- Le reste du code reste identique -->
   <!-- Context Section -->
   <section class="context-section">
     <div class="context-container">
@@ -667,14 +590,12 @@
         <p class="section-subtitle">Mise en situation et objectifs du projet</p>
       </div>
 
-
       <div class="context-content">
         <h3>Contexte du projet</h3>
         <p>
           THALI est un centre de thalassothérapie souhaitant proposer un catalogue de mini-excursions organisées l'après-midi pour ses curistes. 
           En tant que stagiaire chez STESIO (ESN mandatée), j'ai développé le module THALI-MINI pour gérer ces excursions et leurs étapes.
         </p>
-
 
         <h3>Objectifs du projet</h3>
         <ul>
@@ -684,7 +605,6 @@
           <li>Créer une interface graphique utilisateur avec Swing (JFrame, JDialog)</li>
           <li>Gérer les relations entre entités (une excursion contient plusieurs étapes ordonnées)</li>
         </ul>
-
 
         <h3>Fonctionnalités implémentées</h3>
         <ul>
@@ -696,7 +616,6 @@
           <li>Validation des données saisies avant enregistrement en base</li>
         </ul>
 
-
         <h3>Architecture technique</h3>
         <p>
           L'application suit une architecture en couches avec séparation des responsabilités :
@@ -707,7 +626,6 @@
           <li><strong>Couche DAO (paquetage "modele.dao")</strong> : classes d'accès aux données avec requêtes SQL</li>
         </ul>
 
-
         <h3>Technologies et outils</h3>
         <ul>
           <li>Langage : Java avec EDI NetBeans</li>
@@ -715,14 +633,12 @@
           <li>Pattern architectural : DAO (Data Access Object)</li>
           <li>Framework GUI : Swing (javax.swing)</li>
           <li>Connecteur JDBC : MySQL Connector/J</li>
-          
         </ul>
       </div>
     </div>
   </section>
 
-
-  <!-- Competences Section -->
+  <!-- Competences Section - MODIFIÉ AVEC LES 6 COMPÉTENCES OFFICIELLES -->
   <section class="competences-section">
     <div class="competences-container">
       <div class="section-header">
@@ -732,93 +648,53 @@
         <p class="section-subtitle">Référentiel des compétences mises en œuvre</p>
       </div>
 
-
       <div class="competences-grid">
         
-        <!-- B1.2.3 -->
+        <!-- Compétence 2 : Répondre aux incidents -->
         <div class="competence-card">
-          <span class="competence-code">B1.2.3</span>
-          <h3 class="competence-title">Traiter des demandes concernant les applications</h3>
+          <span class="competence-code">Compétence 2</span>
+          <h3 class="competence-title">Répondre aux incidents et aux demandes d'assistance et d'évolution</h3>
           <p class="competence-description">
-            Collecte et traitement des demandes de fonctionnalités du client THALI. Implémentation des différentes étapes du CRUD selon les besoins exprimés.
+            <strong>Traiter des demandes concernant les applications :</strong> Collecte et traitement des demandes de fonctionnalités du client THALI. Implémentation des différentes étapes du CRUD selon les besoins exprimés. Compte-rendu des actions réalisées pour chaque étape.
           </p>
         </div>
 
-
-        <!-- B1.4.1 -->
+        <!-- Compétence 4 : Travailler en mode projet -->
         <div class="competence-card">
-          <span class="competence-code">B1.4.1</span>
-          <h3 class="competence-title">Analyser les objectifs et modalités d'organisation d'un projet</h3>
+          <span class="competence-code">Compétence 4</span>
+          <h3 class="competence-title">Travailler en mode projet</h3>
           <p class="competence-description">
-            Analyse du cahier des charges fourni, identification des parties prenantes (THALI, STESIO), compréhension du contexte métier de la thalassothérapie.
+            <strong>Analyser les objectifs et modalités d'organisation :</strong> Analyse du cahier des charges fourni, identification des parties prenantes (THALI, STESIO), compréhension du contexte métier de la thalassothérapie.
+            <br><br>
+            <strong>Planifier les activités :</strong> Organisation du travail en binôme, planification des 11 étapes du projet avec remise de livrables à chaque étape, gestion du temps et des priorités. Le projet est documenté et les livrables sont conformes.
           </p>
         </div>
 
-
-        <!-- B1.4.2 -->
+        <!-- Compétence 5 : Mettre à disposition -->
         <div class="competence-card">
-          <span class="competence-code">B1.4.2</span>
-          <h3 class="competence-title">Planifier les activités</h3>
+          <span class="competence-code">Compétence 5</span>
+          <h3 class="competence-title">Mettre à disposition des utilisateurs un service informatique</h3>
           <p class="competence-description">
-            Organisation du travail en binôme, planification des 11 étapes du projet avec remise de livrables à chaque étape, gestion du temps et des priorités.
+            <strong>Réaliser les tests d'intégration et d'acceptation :</strong> Conception et exécution de tests unitaires (JUnit), tests fonctionnels de l'interface utilisateur, validation des données saisies, vérification en base de données. Les tests sont rédigés et leur exécution est documentée.
+            <br><br>
+            <strong>Déployer un service :</strong> Livraison d'une application opérationnelle et conforme aux attentes du client THALI.
           </p>
         </div>
 
-
-        <!-- B2.1.5_SLAM -->
+        <!-- Compétence 6 : Organiser son développement professionnel -->
         <div class="competence-card">
-          <span class="competence-code">B2.1.5_SLAM</span>
-          <h3 class="competence-title">Identifier, développer, utiliser ou adapter des composants logiciels</h3>
+          <span class="competence-code">Compétence 6</span>
+          <h3 class="competence-title">Organiser son développement professionnel</h3>
           <p class="competence-description">
-            Utilisation de composants Swing (JFrame, JDialog, JComboBox, JTable), adaptation des classes DAO existantes, création de nouveaux composants métier.
+            <strong>Mettre en place son environnement d'apprentissage :</strong> Apprentissage du pattern DAO, maîtrise de NetBeans, découverte de Swing et JDBC. Rédaction de comptes-rendus pour chaque étape, documentation du code avec commentaires, rapports de tests, bilans des difficultés rencontrées.
+            <br><br>
+            <strong>Développer son projet professionnel :</strong> Utilisation de composants Swing (JFrame, JDialog, JComboBox, JTable), adaptation des classes DAO existantes, création de nouveaux composants métier. Maîtrise de NetBeans pour le développement Java (débogueur, refactoring), gestion de la base de données depuis l'IDE.
           </p>
         </div>
-
-
-        <!-- B2.1.7_SLAM -->
-        <div class="competence-card">
-          <span class="competence-code">B2.1.7_SLAM</span>
-          <h3 class="competence-title">Utiliser des composants d'accès aux données</h3>
-          <p class="competence-description">
-            Implémentation du pattern DAO pour l'accès à MariaDB. Développement de méthodes CRUD avec JDBC (connexion, PreparedStatement, ResultSet, transactions).
-          </p>
-        </div>
-
-
-        <!-- B2.1.9_SLAM -->
-        <div class="competence-card">
-          <span class="competence-code">B2.1.9_SLAM</span>
-          <h3 class="competence-title">Réaliser les tests nécessaires à la validation</h3>
-          <p class="competence-description">
-            Conception et exécution de tests unitaires (JUnit), tests fonctionnels de l'interface utilisateur, validation des données saisies, vérification en base de données.
-          </p>
-        </div>
-
-
-        <!-- B2.1.10_SLAM -->
-        <div class="competence-card">
-          <span class="competence-code">B2.1.10_SLAM</span>
-          <h3 class="competence-title">Rédiger des documentations technique et d'utilisation</h3>
-          <p class="competence-description">
-            Rédaction de comptes-rendus pour chaque étape, documentation du code avec commentaires, rapports de tests, bilans des difficultés rencontrées.
-          </p>
-        </div>
-
-
-        <!-- B2.1.11_SLAM -->
-        <div class="competence-card">
-          <span class="competence-code">B2.1.11_SLAM</span>
-          <h3 class="competence-title">Exploiter les fonctionnalités d'un environnement de développement</h3>
-          <p class="competence-description">
-            Maîtrise de NetBeans pour le développement Java (débogueur, refactoring), gestion de la base de données depuis l'IDE, utilisation du connecteur JDBC.
-          </p>
-        </div>
-
 
       </div>
     </div>
   </section>
-
 
   <!-- Reports Section -->
   <section class="reports-section">
@@ -829,7 +705,6 @@
         </h2>
         <p class="section-subtitle">7 étapes réalisées avec documentation complète</p>
       </div>
-
 
       <div class="reports-content">
         <ul class="reports-list">
@@ -843,11 +718,10 @@
               </div>
             </div>
             <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_01.pdf" class="report-link">
-              <span>Télécharger compte rendu</span>
+              <span>Télécharger PDF</span>
               <span>→</span>
             </a>
           </li>
-
 
           <li class="report-item">
             <div class="report-info">
@@ -858,11 +732,10 @@
               </div>
             </div>
             <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_02.pdf" class="report-link">
-              <span>Télécharger compte rendu</span>
+              <span>Télécharger PDF</span>
               <span>→</span>
             </a>
           </li>
-
 
           <li class="report-item">
             <div class="report-info">
@@ -873,11 +746,10 @@
               </div>
             </div>
             <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_03.pdf" class="report-link">
-              <span>Télécharger compte rendu</span>
+              <span>Télécharger PDF</span>
               <span>→</span>
             </a>
           </li>
-
 
           <li class="report-item">
             <div class="report-info">
@@ -888,11 +760,10 @@
               </div>
             </div>
             <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_04.pdf" class="report-link">
-              <span>Télécharger compte rendu</span>
+              <span>Télécharger PDF</span>
               <span>→</span>
             </a>
           </li>
-
 
           <li class="report-item">
             <div class="report-info">
@@ -903,11 +774,10 @@
               </div>
             </div>
             <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_05.pdf" class="report-link">
-              <span>Télécharger compte rendu</span>
+              <span>Télécharger PDF</span>
               <span>→</span>
             </a>
           </li>
-
 
           <li class="report-item">
             <div class="report-info">
@@ -918,11 +788,10 @@
               </div>
             </div>
             <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_06.pdf" class="report-link">
-              <span>Télécharger compte rendu</span>
+              <span>Télécharger PDF</span>
               <span>→</span>
             </a>
           </li>
-
 
           <li class="report-item">
             <div class="report-info">
@@ -933,11 +802,10 @@
               </div>
             </div>
             <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_07.pdf" class="report-link">
-              <span>Télécharger compte rendu</span>
+              <span>Télécharger PDF</span>
               <span>→</span>
             </a>
           </li>
-
 
           <li class="report-item">
             <div class="report-info">
@@ -957,27 +825,22 @@
             </a>
           </li>
 
-
         </ul>
       </div>
     </div>
   </section>
-
 
   <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2025 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p>
   </footer>
 
-
   <!-- GSAP Animation -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
 
-
   <script>
     gsap.registerPlugin(ScrollTrigger);
-
 
     // Animation des items au scroll
     gsap.utils.toArray('.report-item').forEach((item, index) => {
@@ -995,7 +858,6 @@
       });
     });
 
-
     // Animation des cartes compétences
     gsap.utils.toArray('.competence-card').forEach(card => {
       gsap.from(card, {
@@ -1011,7 +873,6 @@
       });
     });
 
-
     // Animation du contenu contexte
     gsap.from('.context-content', {
       y: 40,
@@ -1025,7 +886,6 @@
       }
     });
   </script>
-
 
 </body>
 </html>

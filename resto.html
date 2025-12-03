@@ -25,7 +25,6 @@
     html {scroll-behavior:smooth;}
     body {width:100%; min-height:100vh; font-family:"Poppins",sans-serif; background-color:var(--black); color:var(--white);}
 
-
     /* Navigation */
     .navbar{position:fixed;top:0;left:0;width:100%; background-color:rgba(20,20,20,0.95);backdrop-filter:blur(10px);padding:1.5rem 3.3%;z-index:1000;border-bottom:1px solid var(--gray-700);}
     .nav-content{max-width:120rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
@@ -35,8 +34,7 @@
     .nav-back:hover::before {width:100%;}
     .nav-back:hover {border-color:var(--red-accent);transform:translateY(-2px);box-shadow:0 5px 15px rgba(220,20,60,0.3);}
 
-
-    /* Hero Section - MODIFIÉ POUR IMAGE */
+    /* Hero Section */
     .hero-section{
       margin-top:80px;
       padding:4rem 3.3%;
@@ -46,7 +44,6 @@
       background-color:var(--gray-900);
     }
 
-    /* Image de fond du hero */
     .hero-bg-image {
       position: absolute;
       top: 0;
@@ -59,7 +56,6 @@
       z-index: 0;
     }
 
-    /* Overlay gradient par-dessus l'image */
     .hero-section::before{
       content:'';
       position:absolute;
@@ -72,7 +68,6 @@
       pointer-events:none;
     }
 
-    /* Effet radial rouge */
     .hero-section::after{
       content:'';
       position:absolute;
@@ -96,7 +91,6 @@
     .tech-badge{background-color:var(--gray-800);color:var(--gray-100);padding:0.6rem 1rem;border-radius:0.5rem;font-size:0.9rem;font-weight:500;border:1px solid var(--gray-700);transition:all 0.3s ease;}
     .tech-badge:hover{border-color:var(--red-primary);background-color:var(--gray-700);transform:translateY(-2px);}
 
-
     /* Context / Competences */
     .context-section,.competences-section{padding:5rem 3.3%;background-color:var(--gray-900);}
     .context-container,.competences-container{max-width:120rem;margin:0 auto;}
@@ -112,14 +106,12 @@
     .context-content li {position:relative;padding-left:2rem;margin-bottom:0.75rem;color:var(--gray-400);font-size:1.05rem;}
     .context-content li::before {content:'→';position:absolute;left:0;color:var(--red-primary);font-weight:bold;font-size:1.2rem;}
 
-
     .competences-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;}
     .competence-card{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:2rem;border:1px solid var(--gray-700);transition:all 0.3s ease;}
     .competence-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(220,20,60,0.2);border-color:var(--red-primary);}
     .competence-code{display:inline-block;background-color:rgba(220,20,60,0.2);color:var(--red-primary);padding:0.4rem 0.8rem;border-radius:0.4rem;font-size:0.85rem;font-weight:600;margin-bottom:1rem;}
     .competence-title{font-size:1.125rem;font-weight:600;color:var(--white);margin-bottom:0.75rem;}
     .competence-description{font-size:0.95rem;color:var(--gray-400);line-height:1.6;}
-
 
     /* Reports Section */
     .reports-section{padding:5rem 3.3%;background-color:var(--black);}
@@ -136,7 +128,6 @@
     .report-description{font-size:0.9rem;color:var(--gray-400);line-height:1.4;}
     .report-link{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background-color:transparent;border:2px solid var(--red-primary);color:var(--red-primary);border-radius:0.5rem;font-size:0.875rem;font-weight:600;text-decoration:none;transition:all 0.3s ease;flex-shrink:0;}
     .report-link:hover{background-color:var(--red-primary);color:var(--white);transform:translateX(5px);box-shadow:0 5px 15px rgba(220,20,60,0.3);}
-
 
     .footer{padding:3rem 3.3%;background-color:var(--gray-900);border-top:1px solid var(--gray-700);text-align:center;}
     .footer p{color:var(--gray-400);font-size:0.95rem;}
@@ -164,10 +155,8 @@
     </div>
   </nav>
 
-
   <!-- Hero Section -->
   <section class="hero-section">
-    <!-- Image de fond - AJOUTÉE -->
     <img src="site_resto.png" alt="R3st0.fr Application" class="hero-bg-image">
     
     <div class="hero-content">
@@ -192,7 +181,6 @@
     </div>
   </section>
 
-
   <!-- Context Section -->
   <section class="context-section">
     <div class="context-container">
@@ -208,7 +196,6 @@
           lire les avis et noter les établissements. Développé en 2ème année BTS SIO selon la méthode agile Scrum.
         </p>
 
-
         <h3>Objectifs pédagogiques</h3>
         <ul>
           <li>Travailler en équipe avec méthodologie Scrum (rôles : Product Owner, Scrum Master, équipe dev)</li>
@@ -218,7 +205,6 @@
           <li>Déployer l'application en continu sur un serveur de production</li>
         </ul>
 
-
         <h3>Fonctionnalités développées</h3>
         <ul>
           <li><strong>Visiteur non authentifié</strong> : Recherche multi-critères de restaurants, consultation des fiches détaillées et des avis</li>
@@ -226,7 +212,6 @@
           <li><strong>Administrateur</strong> : Gestion des contenus du site (restaurants, avis, utilisateurs)</li>
           <li><strong>Affichage des types de cuisine</strong> : Ajout d'une nouvelle fonctionnalité pour filtrer par type de cuisine</li>
         </ul>
-
 
         <h3>Méthode de gestion de projet Scrum</h3>
         <p>
@@ -240,7 +225,6 @@
           <li><strong>Backlog</strong> : Liste priorisée des tâches (fonctionnalités, bugs, améliorations techniques)</li>
         </ul>
 
-
         <h3>Outils techniques</h3>
         <ul>
           <li><strong>IDE</strong> : NetBeans v.21+</li>
@@ -249,7 +233,6 @@
           <li><strong>Labels</strong> : Complexité (peu complexe, moyenne, complexe) et Priorité (peu prioritaire, normale, prioritaire)</li>
           <li><strong>Déploiement</strong> : Serveur web BTS SIO avec compte FTP et base MariaDB</li>
         </ul>
-
 
         <h3>Itérations réalisées</h3>
         <ul>
@@ -261,8 +244,7 @@
     </div>
   </section>
 
-
-  <!-- Competences Section -->
+  <!-- Competences Section - MODIFIÉ AVEC LES 6 COMPÉTENCES OFFICIELLES -->
   <section class="competences-section">
     <div class="competences-container">
       <div class="section-header">
@@ -271,100 +253,53 @@
       </div>
       <div class="competences-grid">
         
+        <!-- Compétence 2 : Répondre aux incidents -->
         <div class="competence-card">
-          <span class="competence-code">B1.2.3</span>
-          <h3 class="competence-title">Traiter des demandes concernant les applications</h3>
+          <span class="competence-code">Compétence 2</span>
+          <h3 class="competence-title">Répondre aux incidents et aux demandes d'assistance et d'évolution</h3>
           <p class="competence-description">
-            Résolution de tickets de maintenance, traitement des demandes d'évolution fonctionnelle du Product Owner.
+            <strong>Traiter des demandes concernant les applications :</strong> Résolution de tickets de maintenance, traitement des demandes d'évolution fonctionnelle du Product Owner. Utilisation d'un outil de gestion de tickets (GitLab Issues). Application d'une méthode de diagnostic/résolution. Respect des procédures de gestion de tickets. Communication écrite et orale adaptée. Compte-rendu des actions réalisées.
           </p>
         </div>
 
-
+        <!-- Compétence 4 : Travailler en mode projet -->
         <div class="competence-card">
-          <span class="competence-code">B1.4.1</span>
-          <h3 class="competence-title">Analyser les objectifs et modalités d'organisation d'un projet</h3>
+          <span class="competence-code">Compétence 4</span>
+          <h3 class="competence-title">Travailler en mode projet</h3>
           <p class="competence-description">
-            Compréhension de la méthode Scrum, définition des rôles (Product Owner, Scrum Master), analyse des User Stories.
+            <strong>Analyser les objectifs et modalités d'organisation :</strong> Compréhension de la méthode Scrum, définition des rôles (Product Owner, Scrum Master), analyse des User Stories. L'organisation projet est explicitée. Les objectifs du projet sont explicités. L'analyse du besoin et de l'existant est pertinente.
+            <br><br>
+            <strong>Planifier les activités :</strong> Organisation des sprints, daily scrums quotidiens, utilisation du Kanban GitLab, affectation et priorisation des tickets. Les activités personnelles sont planifiées de façon formelle, l'avancée est documentée. Le projet est documenté et les livrables sont conformes.
+            <br><br>
+            <strong>Évaluer les indicateurs de suivi :</strong> Suivi de l'avancement des tickets sur le tableau Kanban, analyse des écarts entre planifié et réalisé lors des daily scrums.
           </p>
         </div>
 
-
+        <!-- Compétence 5 : Mettre à disposition -->
         <div class="competence-card">
-          <span class="competence-code">B1.4.2</span>
-          <h3 class="competence-title">Planifier les activités</h3>
+          <span class="competence-code">Compétence 5</span>
+          <h3 class="competence-title">Mettre à disposition des utilisateurs un service informatique</h3>
           <p class="competence-description">
-            Organisation des sprints, daily scrums quotidiens, utilisation du Kanban GitLab, affectation et priorisation des tickets.
+            <strong>Réaliser les tests d'intégration et d'acceptation :</strong> Tests en local de chaque ticket avant merge, documentation des tests dans les rapports d'itération. Les tests d'intégration et d'acceptation sont rédigés. Leur exécution est documentée.
+            <br><br>
+            <strong>Déployer un service :</strong> Déploiement continu sur serveur de production (FTP, configuration MariaDB), livraison continue à chaque itération. Le service déployé est opérationnel et conforme aux attentes.
           </p>
         </div>
 
-
+        <!-- Compétence 6 : Organiser son développement professionnel -->
         <div class="competence-card">
-          <span class="competence-code">B1.4.3</span>
-          <h3 class="competence-title">Évaluer les indicateurs de suivi d'un projet</h3>
+          <span class="competence-code">Compétence 6</span>
+          <h3 class="competence-title">Organiser son développement professionnel</h3>
           <p class="competence-description">
-            Suivi de l'avancement des tickets sur le tableau Kanban, analyse des écarts entre planifié et réalisé lors des daily scrums.
+            <strong>Mettre en place son environnement d'apprentissage :</strong> Rédaction de rapports d'itération, documentation des tickets (diagnostic, localisation, modifications, tests), commentaires du code. Maîtrise de NetBeans, gestion des branches Git, utilisation de GitLab (merge, issues, labels, jalons). L'environnement d'apprentissage personnel est délimité et expliqué.
+            <br><br>
+            <strong>Développer son projet professionnel :</strong> Développement et adaptation de composants Symfony, modification de la base de données, création de nouvelles fonctionnalités. Utilisation de Doctrine ORM pour l'accès à la base MariaDB, requêtes SQL, gestion des relations entre entités. Les besoins de formation sont identifiés pour mettre à disposition le service.
           </p>
         </div>
-
-
-        <div class="competence-card">
-          <span class="competence-code">B2.1.5_SLAM</span>
-          <h3 class="competence-title">Identifier, développer ou adapter des composants logiciels</h3>
-          <p class="competence-description">
-            Développement et adaptation de composants Symfony, modification de la base de données, création de nouvelles fonctionnalités.
-          </p>
-        </div>
-
-
-        <div class="competence-card">
-          <span class="competence-code">B2.1.7_SLAM</span>
-          <h3 class="competence-title">Utiliser des composants d'accès aux données</h3>
-          <p class="competence-description">
-            Utilisation de Doctrine ORM pour l'accès à la base MariaDB, requêtes SQL, gestion des relations entre entités.
-          </p>
-        </div>
-
-
-        <div class="competence-card">
-          <span class="competence-code">B2.1.9_SLAM</span>
-          <h3 class="competence-title">Réaliser les tests nécessaires à la validation</h3>
-          <p class="competence-description">
-            Tests en local de chaque ticket avant merge, documentation des tests dans les rapports d'itération.
-          </p>
-        </div>
-
-
-        <div class="competence-card">
-          <span class="competence-code">B2.1.10_SLAM</span>
-          <h3 class="competence-title">Rédiger des documentations technique et d'utilisation</h3>
-          <p class="competence-description">
-            Rédaction de rapports d'itération, documentation des tickets (diagnostic, localisation, modifications, tests), commentaires du code.
-          </p>
-        </div>
-
-
-        <div class="competence-card">
-          <span class="competence-code">B2.1.11_SLAM</span>
-          <h3 class="competence-title">Exploiter les fonctionnalités d'un environnement de développement</h3>
-          <p class="competence-description">
-            Maîtrise de NetBeans, gestion des branches Git, utilisation de GitLab (merge, issues, labels, jalons).
-          </p>
-        </div>
-
-
-        <div class="competence-card">
-          <span class="competence-code">B3.1</span>
-          <h3 class="competence-title">Déployer un service</h3>
-          <p class="competence-description">
-            Déploiement continu sur serveur de production (FTP, configuration MariaDB), livraison continue à chaque itération.
-          </p>
-        </div>
-
 
       </div>
     </div>
   </section>
-
 
   <!-- Reports Section -->
   <section class="reports-section">
@@ -384,9 +319,8 @@
                 <div class="report-description">Ré-ingénierie de la base de données, analyse de l'architecture du code, daily scrums</div>
               </div>
             </div>
-            <a href="comptes-rendus-site_resto/P1_G5_SiteResto2025_Iteration1_Ticket2.pdf" class="report-link"><span>Télécharger compte rendu</span><span>→</span></a>
+            <a href="comptes-rendus-site_resto/P1_G5_SiteResto2025_Iteration1_Ticket2.pdf" class="report-link"><span>Télécharger PDF</span><span>→</span></a>
           </li>
-
 
           <li class="report-item">
             <div class="report-info">
@@ -396,9 +330,8 @@
                 <div class="report-description">Documentation des tickets résolus (diagnostic, localisation, modifications, tests)</div>
               </div>
             </div>
-            <a href="comptes-rendus-site_resto/Groupe5_2SLAM_AP_Projet_Resto_Itération2.pdf" class="report-link"><span>Télécharger compte rendu</span><span>→</span></a>
+            <a href="comptes-rendus-site_resto/Groupe5_2SLAM_AP_Projet_Resto_Itération2.pdf" class="report-link"><span>Télécharger PDF</span><span>→</span></a>
           </li>
-
 
           <li class="report-item">
             <div class="report-info">
@@ -408,7 +341,7 @@
                 <div class="report-description">User Story, modification BDD, développement de la fonctionnalité, déploiement</div>
               </div>
             </div>
-            <a href="comptes-rendus-site_resto/Huou_Valentin_2SLAM_AP_Projet_Resto_Itération3.pdf" class="report-link"><span>Télécharger compte rendu</span><span>→</span></a>
+            <a href="comptes-rendus-site_resto/Huou_Valentin_2SLAM_AP_Projet_Resto_Itération3.pdf" class="report-link"><span>Télécharger PDF</span><span>→</span></a>
           </li>
 
           <li class="report-item">
@@ -419,9 +352,8 @@
                 <div class="report-description">Code source complet avec branches par ticket, historique des commits et merges</div>
               </div>
             </div>
-            <a href="#" class="report-link"><span>Voir GitLab</span><span>→</span></a>
+            <a href="https://gitlab.com/Titts/p1_g5_siteresto2025" class="report-link"><span>Voir GitLab</span><span>→</span></a>
           </li>
-
 
           <li class="report-item">
             <div class="report-info">
@@ -431,7 +363,7 @@
                 <div class="report-description">Application web fonctionnelle sur serveur BTS SIO (FTP + MariaDB)</div>
               </div>
             </div>
-            <a href="https://jolsio.fr:4456/2slamprj1eq5/public/p1_g5_siteresto2025/" class="report-link"><span>Voir le site</span><span>→</span></a>
+            <a href="https://jolsio.fr:4456/2slamprj1eq5/public/p1_g5_siteresto2025/" class="report-link" target="_blank"><span>Voir le site</span><span>→</span></a>
           </li>
     
         </ul>
@@ -439,9 +371,7 @@
     </div>
   </section>
 
-
-  <footer class="footer"><p> 2025 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p></footer>
-
+  <footer class="footer"><p>&copy; 2025 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p></footer>
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>

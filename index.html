@@ -797,9 +797,37 @@
           display: flex;
         }
 
+        /* MODIFICATION STRUCTURE TABS SUR MOBILE */
         .tabs_component {
           grid-template-columns: 1fr;
-          gap: 1rem;
+          gap: 0;
+          height: auto;
+        }
+
+        /* Photo en premier */
+        .tabs_right {
+          order: 1;
+          min-height: 400px;
+        }
+
+        /* Contenu texte après */
+        .tabs_left {
+          order: 2;
+          padding: 2rem 1.5rem;
+        }
+
+        /* Bouton CV responsive */
+        .button {
+          padding: 0.75rem 1.5rem;
+          font-size: 0.8rem;
+          width: 100%;
+          max-width: 280px;
+          text-align: center;
+          margin-top: 1.5rem;
+        }
+
+        .button span {
+          display: inline;
         }
 
         .heading-style-h3 {
@@ -811,7 +839,12 @@
         }
 
         .tabs_height {
-          height: 300vh;
+          height: auto;
+        }
+
+        .tabs_sticky-wrapper {
+          position: relative;
+          height: auto;
         }
 
         .skills-grid {
@@ -853,6 +886,31 @@
 
         .section_veille {
           padding: 4rem 5%;
+        }
+      }
+
+      /* Pour très petits écrans */
+      @media (max-width: 480px) {
+        .button {
+          padding: 0.6rem 1rem;
+          font-size: 0.75rem;
+          max-width: 240px;
+        }
+
+        .heading-style-h3 {
+          font-size: 1.75rem;
+        }
+
+        .text-align-center {
+          padding: 15px;
+        }
+
+        .tabs_right {
+          min-height: 350px;
+        }
+
+        .tabs_left {
+          padding: 1.5rem 1rem;
         }
       }
     </style>
@@ -1370,46 +1428,6 @@
         end: "bottom top",
         pin: ".text-align-center",
         pinSpacing: false,
-      });
-
-      // Sélectionne les éléments
-      const sections = document.querySelectorAll(".tabs_let-content");
-      const videos = document.querySelectorAll(".tabs_video");
-      const tabsSection = document.querySelector(".section_tabs");
-
-      // Fonction pour activer un onglet
-      function activateTab(index) {
-        sections.forEach((section, i) => {
-          section.classList.toggle("is-1", i === index);
-        });
-
-        videos.forEach((video, i) => {
-          video.classList.toggle("is-1", i === index);
-        });
-      }
-
-      // Crée un ScrollTrigger pour chaque section
-      sections.forEach((section, index) => {
-        const isLast = index === sections.length - 1;
-
-        ScrollTrigger.create({
-          trigger: tabsSection,
-          start: () => `top+=${index * window.innerHeight * 0.8} top`,
-          end: () =>
-            isLast
-              ? "bottom bottom"
-              : `top+=${(index + 1) * window.innerHeight * 0.8} top`,
-          onEnter: () => activateTab(index),
-          onEnterBack: () => activateTab(index),
-        });
-      });
-
-      // Active le premier onglet
-      activateTab(0);
-
-      // Refresh après chargement
-      window.addEventListener("load", () => {
-        ScrollTrigger.refresh();
       });
 
       // Animation des barres de compétences au scroll

@@ -106,17 +106,8 @@
     .context-content li {position:relative;padding-left:2rem;margin-bottom:0.75rem;color:var(--gray-400);font-size:1.05rem;}
     .context-content li::before {content:'→';position:absolute;left:0;color:var(--red-primary);font-weight:bold;font-size:1.2rem;}
     .context-content code {background-color:var(--gray-700);color:var(--red-accent);padding:0.2rem 0.6rem;border-radius:0.3rem;font-size:0.95rem;font-family:monospace;}
-
-    /* Comparison Table */
-    .comparison-section{padding:5rem 3.3%;background-color:var(--black);}
-    .comparison-container{max-width:120rem;margin:0 auto;}
-    .comparison-table{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:2rem;border:1px solid var(--gray-700);overflow-x:auto;}
-    table{width:100%;border-collapse:collapse;}
-    thead{background-color:var(--gray-700);}
-    th{padding:1rem;text-align:left;color:var(--white);font-weight:600;border-bottom:2px solid var(--red-primary);}
-    td{padding:1rem;border-bottom:1px solid var(--gray-700);color:var(--gray-400);}
-    tbody tr:hover{background-color:var(--gray-700);}
-    tbody tr:last-child td{border-bottom:none;}
+    .context-content pre {background-color:var(--gray-700);padding:1.5rem;border-radius:0.5rem;overflow-x:auto;margin:1.5rem 0;border-left:4px solid var(--red-primary);}
+    .context-content pre code {padding:0;background:none;color:#00ff00;font-size:0.9rem;line-height:1.6;}
 
     /* Features Grid */
     .features-section{padding:5rem 3.3%;background-color:var(--gray-900);}
@@ -137,8 +128,21 @@
     .stat-number{font-size:3rem;font-weight:700;color:var(--red-primary);margin-bottom:0.5rem;}
     .stat-label{font-size:1rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.05em;}
 
+    /* Code Example Section */
+    .code-section{padding:5rem 3.3%;background-color:var(--black);}
+    .code-container{max-width:140rem;margin:0 auto;}
+    .code-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:stretch;}
+    .code-block{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:2rem;border:1px solid var(--red-primary);overflow:hidden;}
+    .code-block-title{font-size:1.2rem;font-weight:600;color:var(--red-primary);margin-bottom:1rem;text-transform:uppercase;letter-spacing:0.05em;}
+    .code-label{font-size:0.9rem;color:var(--gray-400);margin-bottom:0.5rem;font-style:italic;}
+
+    /* Footer */
     .footer{padding:3rem 3.3%;background-color:var(--gray-900);border-top:1px solid var(--gray-700);text-align:center;}
     .footer p{color:var(--gray-400);font-size:0.95rem;}
+    
+    @media (max-width: 1024px) {
+      .code-grid{grid-template-columns:1fr;}
+    }
     
     @media (max-width: 768px) {
       .hero-title {font-size:2.5rem;}
@@ -149,7 +153,8 @@
       .stats-grid{grid-template-columns:1fr;}
       .nav-logo{font-size:1.2rem;}
       .navbar{padding:1rem 5%;}
-      .hero-section,.context-section,.comparison-section,.features-section,.stats-section{padding:3rem 5%;}
+      .hero-section,.context-section,.features-section,.stats-section,.code-section{padding:3rem 5%;}
+      .code-block{padding:1.5rem;}
     }
   </style>
 </head>
@@ -196,14 +201,14 @@
         <p class="section-subtitle">Un framework Python moderne pour le développement web full-stack</p>
       </div>
       <div class="context-content">
-        <h3>🚀 Vision et philosophie</h3>
+        <h3>Vision et philosophie</h3>
         <p>
           Reflex est un framework open-source qui révolutionne le développement web en permettant aux développeurs Python de créer 
           des applications web complètes sans jamais écrire une ligne de JavaScript. Lancé en 2022 et adopté par plus d'1 million d'applications, 
           Reflex compile automatiquement le code Python en une application React (frontend) et FastAPI (backend) hautement performante.
         </p>
 
-        <h3>💡 Problème résolu</h3>
+        <h3>Problème résolu</h3>
         <p>
           Traditionnellement, créer une application web full-stack nécessite de maîtriser plusieurs technologies :
         </p>
@@ -218,7 +223,7 @@
           et le temps de développement tout en conservant performances et scalabilité.
         </p>
 
-        <h3>⚙️ Architecture technique</h3>
+        <h3>Architecture technique</h3>
         <ul>
           <li><strong>Frontend compilé</strong> : Le code Python UI est automatiquement converti en application Next.js (React)</li>
           <li><strong>Backend Python</strong> : Serveur FastAPI asynchrone (ASGI) pour hautes performances</li>
@@ -227,51 +232,164 @@
           <li><strong>ORM intégré</strong> : SQLAlchemy + SQLModel pour PostgreSQL, MySQL, SQLite</li>
         </ul>
 
-        <h3>🎯 Cas d'usage principaux</h3>
-        <ul>
-          <li><strong>Dashboards analytiques</strong> : Visualisation de données en temps réel (finance, e-commerce, DevOps)</li>
-          <li><strong>Outils internes</strong> : Applications métier, CRM, ERP, backoffice</li>
-          <li><strong>Prototypes IA</strong> : Interfaces pour modèles ML, chatbots, assistants intelligents</li>
-          <li><strong>Applications CRUD</strong> : Gestion de bases de données avec formulaires interactifs</li>
-          <li><strong>Sites web dynamiques</strong> : Portails utilisateurs, plateformes SaaS</li>
-        </ul>
-
-        <h3>🔥 Fonctionnalités clés</h3>
+        <h3>Fonctionnalités clés</h3>
         <ul>
           <li><strong>Génération IA</strong> : Créez une app complète depuis un prompt texte ou une maquette Figma</li>
           <li><strong>60+ composants UI</strong> : Bibliothèque préfabriquée (boutons, formulaires, graphiques, tableaux)</li>
           <li><strong>Styling Tailwind</strong> : Props CSS-in-Python, thèmes personnalisables, mode sombre</li>
           <li><strong>Authentification</strong> : Local Auth, Google OAuth, Magic Link, Clerk, Descope</li>
           <li><strong>100+ intégrations</strong> : APIs REST/GraphQL, bibliothèques Python, bases de données</li>
-          <li><strong>Déploiement 1-commande</strong> : de>reflex deploy</code> sur Reflex Cloud ou self-hosting</li>
+          <li><strong>Déploiement 1-commande</strong> : <code>reflex deploy</code> sur Reflex Cloud ou self-hosting</li>
         </ul>
 
-        <h3>🛠️ Installation et démarrage rapide</h3>
-        <p>Créer une application Reflex est extrêmement simple :</p>
-        <ul>
-          <li>de>pip install reflex</code> : Installation du framework</li>
-          <li>de>reflex init</code> : Initialisation d'un nouveau projet avec structure de base</li>
-          <li>de>reflex run</code> : Lancement du serveur de développement avec hot-reload</li>
-        </ul>
-        <p>
-          L'application est alors accessible sur de>localhost:3000</code> avec rechargement automatique à chaque modification du code.
-        </p>
-
-        <h3>📈 Adoption et communauté</h3>
+        <h3>Adoption et communauté</h3>
         <ul>
           <li><strong>27 000+ étoiles GitHub</strong> : L'un des frameworks Python les plus populaires</li>
           <li><strong>200+ contributeurs</strong> : Développement actif et open-source</li>
           <li><strong>7 500+ membres Discord</strong> : Communauté active pour support et partage</li>
           <li><strong>1M+ apps créées</strong> : Utilisé par des entreprises (Autodesk, SellerX) et développeurs individuels</li>
         </ul>
+      </div>
+    </div>
+  </section>
 
-        <h3>🔐 Sécurité et conformité</h3>
+  <!-- Installation Section -->
+  <section class="features-section">
+    <div class="features-container">
+      <div class="section-header">
+        <h2 class="section-title">Installation et <span class="text-red">Démarrage Rapide</span></h2>
+        <p class="section-subtitle">Guide étape par étape pour créer votre première application</p>
+      </div>
+      <div class="context-content">
+        <h3>Étape 1 : Prérequis système</h3>
         <ul>
-          <li><strong>Certification SOC 2</strong> : Conformité aux standards de sécurité entreprise</li>
-          <li><strong>Déploiement flexible</strong> : Cloud public, self-hosting, on-premise</li>
-          <li><strong>Authentification sécurisée</strong> : OAuth2, JWT, session management</li>
-          <li><strong>Chiffrement HTTPS</strong> : Communication sécurisée par défaut</li>
+          <li><strong>Python 3.10+</strong> : Vérifiez avec <code>python --version</code></li>
+          <li><strong>pip</strong> : Gestionnaire de paquets Python (généralement inclus)</li>
+          <li><strong>Node.js 16+</strong> : Installé automatiquement si absent</li>
         </ul>
+
+        <h3>Étape 2 : Installation de Reflex</h3>
+        <p>Ouvrez votre terminal et exécutez :</p>
+        <pre><code>pip install reflex</code></pre>
+
+        <h3>Étape 3 : Créer un nouveau projet</h3>
+        <p>Initialisez un projet Reflex avec :</p>
+        <pre><code>reflex init my_app
+cd my_app</code></pre>
+        <p>Cela crée une structure de projet complète avec un exemple fonctionnel.</p>
+
+        <h3>Étape 4 : Lancer l'application</h3>
+        <p>Démarrez le serveur de développement :</p>
+        <pre><code>reflex run</code></pre>
+        <p>L'application est maintenant accessible sur <code>http://localhost:3000</code> avec hot-reload automatique.</p>
+
+        <h3>Étape 5 : Déployer en production</h3>
+        <p>Une fois prête, déployez en une commande :</p>
+        <pre><code>reflex deploy</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code Examples Section -->
+  <section class="code-section">
+    <div class="code-container">
+      <div class="section-header">
+        <h2 class="section-title">Exemple de <span class="text-red">Code</span></h2>
+        <p class="section-subtitle">Créer une application simple en Reflex</p>
+      </div>
+
+      <div class="code-grid">
+        <!-- Application Code -->
+        <div class="code-block">
+          <div class="code-block-title">Application Reflex</div>
+          <div class="code-label">Fichier: app.py</div>
+          <pre><code>import reflex as rx
+
+class State(rx.State):
+    count: int = 0
+    name: str = ""
+
+    def increment(self):
+        self.count += 1
+
+    def decrement(self):
+        self.count -= 1
+
+    def set_name(self, value: str):
+        self.name = value
+
+
+def index() -> rx.Component:
+    return rx.center(
+        rx.vstack(
+            rx.heading(
+                "Compteur Interactif",
+                size="xl",
+            ),
+            rx.input(
+                placeholder="Entrez votre nom",
+                on_change=State.set_name,
+                width="100%",
+            ),
+            rx.text(
+                f"Bonjour {State.name}!",
+                font_size="18px",
+            ),
+            rx.hstack(
+                rx.button(
+                    "➖ Diminuer",
+                    on_click=State.decrement,
+                    color_scheme="red",
+                ),
+                rx.text(
+                    State.count,
+                    font_size="24px",
+                    font_weight="bold",
+                ),
+                rx.button(
+                    "➕ Augmenter",
+                    on_click=State.increment,
+                    color_scheme="green",
+                ),
+            ),
+            spacing="20px",
+            align_items="center",
+        ),
+        height="100vh",
+    )
+
+
+app = rx.App()
+app.add_page(index)</code></pre>
+        </div>
+
+        <!-- Explanation -->
+        <div class="code-block">
+          <div class="code-block-title">Explication</div>
+          <div class="context-content" style="background:transparent;border:none;padding:0;">
+            <p><strong>Classe State :</strong> Gère l'état de l'application (count, name). Chaque modification met à jour le frontend en temps réel.</p>
+            
+            <p><strong>Méthodes :</strong> increment() et decrement() modifient le compteur. set_name() capture la saisie utilisateur.</p>
+            
+            <p><strong>Fonction index() :</strong> Définit l'interface utilisateur (UI). Utilise des composants Reflex :</p>
+            <ul style="margin-left:1rem;">
+              <li><code>rx.center</code> : Centre le contenu</li>
+              <li><code>rx.vstack</code> : Disposition verticale</li>
+              <li><code>rx.heading</code> : Titre</li>
+              <li><code>rx.input</code> : Champ de saisie</li>
+              <li><code>rx.button</code> : Bouton d'action</li>
+              <li><code>rx.hstack</code> : Disposition horizontale</li>
+            </ul>
+
+            <p><strong>Liaisons événements :</strong></p>
+            <ul style="margin-left:1rem;">
+              <li><code>on_change</code> : Déclenche une fonction à chaque changement</li>
+              <li><code>on_click</code> : Déclenche une fonction au clic</li>
+            </ul>
+
+            <p><strong>Résultat :</strong> Une app web full-stack complète en Python pur, sans HTML/CSS/JavaScript !</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -312,160 +430,6 @@
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section class="features-section">
-    <div class="features-container">
-      <div class="section-header">
-        <h2 class="section-title">Fonctionnalités <span class="text-red">Principales</span></h2>
-        <p class="section-subtitle">Ce qui rend Reflex unique</p>
-      </div>
-      <div class="features-grid">
-        
-        <div class="feature-card">
-          <div class="feature-icon">🤖</div>
-          <h3 class="feature-title">Génération IA intégrée</h3>
-          <p class="feature-description">
-            Créez des applications complètes à partir de prompts texte, captures d'écran ou maquettes Figma. 
-            L'IA Reflex génère le code frontend et backend en Python, prêt à être personnalisé.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🐍</div>
-          <h3 class="feature-title">100% Python, 0% JavaScript</h3>
-          <p class="feature-description">
-            Développez l'intégralité de votre application (UI, logique, API, BDD) en Python pur. 
-            Pas besoin d'apprendre React, Vue ou Angular pour créer des interfaces modernes.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3 class="feature-title">WebSocket temps réel</h3>
-          <p class="feature-description">
-            Communication bidirectionnelle instantanée entre frontend et backend. 
-            Idéal pour dashboards live, notifications, chat, collaboration multi-utilisateurs.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🎨</div>
-          <h3 class="feature-title">Composants personnalisables</h3>
-          <p class="feature-description">
-            Plus de 60 composants UI avec styling Tailwind intégré. Possibilité de wrapper 
-            n'importe quel composant React existant (Framer Motion, Google Auth, AG Grid).
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🔐</div>
-          <h3 class="feature-title">Authentification multi-sources</h3>
-          <p class="feature-description">
-            Authentification locale, Google OAuth, Magic Link, Captcha, Clerk, Descope. 
-            Gestion des sessions, permissions et RBAC intégrée pour sécuriser vos apps.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🗄️</div>
-          <h3 class="feature-title">ORM et migrations</h3>
-          <p class="feature-description">
-            SQLAlchemy + SQLModel intégrés avec support PostgreSQL, MySQL, SQLite. 
-            Migrations automatiques, relations, transactions et requêtes complexes.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🚀</div>
-          <h3 class="feature-title">Déploiement en 1 commande</h3>
-          <p class="feature-description">
-            de>reflex deploy</code> pour publier instantanément sur Reflex Cloud. 
-            Support aussi de Docker, Kubernetes, AWS, GCP, Azure, Vercel pour self-hosting.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">📊</div>
-          <h3 class="feature-title">Monitoring et alertes</h3>
-          <p class="feature-description">
-            Métriques en temps réel, logs centralisés, alertes configurables. 
-            Surveillance de la performance, erreurs, uptime et usage des ressources.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🔄</div>
-          <h3 class="feature-title">Hot-reload instantané</h3>
-          <p class="feature-description">
-            Modifications du code répercutées immédiatement dans le navigateur sans 
-            rechargement manuel. Développement itératif ultra-rapide et productif.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Comparison Section -->
-  <section class="comparison-section">
-    <div class="comparison-container">
-      <div class="section-header">
-        <h2 class="section-title">Reflex vs <span class="text-red">Alternatives</span></h2>
-        <p class="section-subtitle">Comparaison avec d'autres frameworks Python</p>
-      </div>
-      <div class="comparison-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Framework</th>
-              <th>Langage Frontend</th>
-              <th>Backend</th>
-              <th>State Management</th>
-              <th>Cas d'usage optimal</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Reflex</strong></td>
-              <td>Python (compilé React)</td>
-              <td>FastAPI</td>
-              <td>Server-side + WebSocket</td>
-              <td>Apps full-stack, dashboards, SaaS</td>
-            </tr>
-            <tr>
-              <td><strong>Streamlit</strong></td>
-              <td>Python (script linéaire)</td>
-              <td>Intégré (single-process)</td>
-              <td>Reruns complets</td>
-              <td>Prototypes ML, démos rapides</td>
-            </tr>
-            <tr>
-              <td><strong>Dash (Plotly)</strong></td>
-              <td>Python (callbacks)</td>
-              <td>Flask</td>
-              <td>Callbacks côté serveur</td>
-              <td>Dashboards analytiques, viz</td>
-            </tr>
-            <tr>
-              <td><strong>Django</strong></td>
-              <td>Templates HTML + JS</td>
-              <td>Django ORM</td>
-              <td>Sessions + formulaires</td>
-              <td>Sites web CMS, admin panels</td>
-            </tr>
-            <tr>
-              <td><strong>Flask + React</strong></td>
-              <td>JavaScript React</td>
-              <td>Flask</td>
-              <td>Redux/Context API</td>
-              <td>Apps custom, SPAs complexes</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
   <!-- Avantages / Limites Section -->
   <section class="context-section">
     <div class="context-container">
@@ -474,44 +438,31 @@
         <p class="section-subtitle">Analyse critique du framework</p>
       </div>
       <div class="context-content">
-        <h3>✅ Points forts de Reflex</h3>
+        <h3>Points forts</h3>
         <ul>
-          <li><strong>Productivité maximale</strong> : Pas besoin d'apprendre JavaScript, React ou gérer 2 codebases séparés</li>
+          <li><strong>Productivité maximale</strong> : Pas de JavaScript, pas de gestion de 2 codebases séparés</li>
           <li><strong>Architecture solide</strong> : FastAPI backend + Next.js frontend compilé = performances optimales</li>
           <li><strong>Communauté active</strong> : 27K stars GitHub, 200+ contributeurs, support Discord réactif</li>
-          <li><strong>Déploiement simplifié</strong> : Une commande pour publier, infra gérée par Reflex Cloud</li>
-          <li><strong>Temps réel natif</strong> : WebSocket intégré pour mises à jour live sans config</li>
+          <li><strong>Déploiement simplifié</strong> : Une commande pour publier, infra gérée automatiquement</li>
+          <li><strong>Temps réel natif</strong> : WebSocket intégré pour mises à jour live</li>
           <li><strong>Extensible</strong> : Possibilité de wrapper n'importe quel composant React existant</li>
-          <li><strong>ORM intégré</strong> : SQLAlchemy pour BDD sans boilerplate</li>
-          <li><strong>Gains mesurables</strong> : Autodesk (25% temps économisé), SellerX (10x plus rapide que React+FastAPI)</li>
         </ul>
 
-        <h3>⚠️ Limites et défis</h3>
+        <h3>Points d'attention</h3>
         <ul>
-          <li><strong>Courbe d'apprentissage</strong> : Concepts (state classes, event handlers, async) plus complexes que Streamlit</li>
+          <li><strong>Courbe d'apprentissage</strong> : Concepts (state classes, event handlers) plus complexes que Streamlit</li>
           <li><strong>Écosystème jeune</strong> : Moins de bibliothèques tierces que React/Flask établis depuis des années</li>
-          <li><strong>Scaling WebSocket</strong> : Peut nécessiter sticky sessions ou Redis pour très grande échelle</li>
-          <li><strong>Mémoire serveur</strong> : État stocké côté serveur par session (vs stateless REST)</li>
-          <li><strong>DevOps à gérer</strong> : Si self-hosting, CI/CD et monitoring sont votre responsabilité</li>
-          <li><strong>Debugging</strong> : Code Python compilé en JS peut rendre le debug plus complexe</li>
-          <li><strong>Breaking changes possibles</strong> : Framework récent, API peut évoluer entre versions</li>
+          <li><strong>État serveur</strong> : Mémoire utilisée côté serveur (vs stateless REST traditionnel)</li>
+          <li><strong>Framework récent</strong> : API peut évoluer entre versions</li>
         </ul>
 
-        <h3>🎯 Quand utiliser Reflex ?</h3>
+        <h3>Quand utiliser Reflex ?</h3>
         <ul>
           <li>Vous êtes développeur Python et voulez créer des apps web sans JavaScript</li>
           <li>Besoin de dashboards interactifs avec mises à jour temps réel</li>
           <li>Prototype IA / ML avec interface utilisateur moderne</li>
           <li>Outils internes / backoffice pour votre entreprise</li>
-          <li>Startup SaaS cherchant rapidité de développement</li>
-        </ul>
-
-        <h3>🚫 Quand privilégier une alternative ?</h3>
-        <ul>
-          <li><strong>Streamlit</strong> : Simple script de démo ML sans backend complexe</li>
-          <li><strong>Django</strong> : Site web traditionnel avec CMS et pages statiques</li>
-          <li><strong>React+FastAPI</strong> : App ultra-custom nécessitant contrôle total du frontend</li>
-          <li><strong>Next.js pur</strong> : Site orienté SEO avec SSR/SSG avancé</li>
+          <li>Projet BTS ou stage cherchant rapidité de développement</li>
         </ul>
       </div>
     </div>
@@ -525,48 +476,47 @@
         <p class="section-subtitle">Perspectives et recommandations</p>
       </div>
       <div class="context-content">
-        <h3>🔮 Avenir de Reflex</h3>
+        <h3>Avenir de Reflex</h3>
         <p>
           Reflex représente une évolution majeure dans l'écosystème Python pour le développement web. 
           Sa croissance fulgurante (27K+ stars en 2 ans, 1M+ apps) et son adoption par des entreprises comme Autodesk 
-          témoignent de la demande pour un framework unifié. Les récentes fonctionnalités IA (génération de code depuis prompts) 
+          témoignent de la demande pour un framework unifié. Les récentes fonctionnalités IA 
           positionnent Reflex comme un pionnier du développement assisté par intelligence artificielle.
         </p>
 
-        <h3>💼 Pertinence pour le BTS SIO SLAM</h3>
+        <h3>Pertinence pour le BTS SIO SLAM</h3>
         <p>
           Pour un développeur formé en Python (comme en BTS SIO option SLAM), Reflex offre plusieurs avantages :
         </p>
         <ul>
-          <li><strong>Polyvalence</strong> : Créer des apps web professionnelles sans maîtriser JavaScript</li>
-          <li><strong>Employabilité</strong> : Compétence rare et recherchée (frameworks Python modernes)</li>
+          <li><strong>Polyvalence</strong> : Créer des apps web professionnelles sans JavaScript</li>
+          <li><strong>Employabilité</strong> : Compétence rare et recherchée</li>
           <li><strong>Prototypage rapide</strong> : Idéal pour stages, projets étudiants, démonstrations</li>
-          <li><strong>Architecture MVC</strong> : Concepts similaires à Symfony/Spring (séparation frontend/backend)</li>
+          <li><strong>Architecture MVC</strong> : Concepts similaires à Django/Flask</li>
         </ul>
 
-        <h3>🎓 Recommandations d'apprentissage</h3>
+        <h3>Recommandations d'apprentissage</h3>
         <ul>
-          <li><strong>Débutants Python</strong> : Commencer par Streamlit, puis passer à Reflex pour apps plus complexes</li>
+          <li><strong>Débutants Python</strong> : Commencer par Streamlit, puis passer à Reflex pour apps complexes</li>
           <li><strong>Développeurs confirmés</strong> : Reflex pour projets full-stack avec besoin de customisation</li>
           <li><strong>Projets BTS</strong> : Parfait pour applications de gestion avec interface moderne (CRUD, dashboards)</li>
           <li><strong>Stage/alternance</strong> : Proposer Reflex pour outils internes, POCs IA, prototypes clients</li>
         </ul>
 
-        <h3>📚 Ressources pour aller plus loin</h3>
+        <h3>Ressources pour aller plus loin</h3>
         <ul>
           <li><strong>Documentation officielle</strong> : <a href="https://reflex.dev/docs/" style="color:var(--red-primary);" target="_blank">reflex.dev/docs</a></li>
           <li><strong>GitHub</strong> : <a href="https://github.com/reflex-dev/reflex" style="color:var(--red-primary);" target="_blank">github.com/reflex-dev/reflex</a></li>
           <li><strong>Discord</strong> : Communauté de 7500+ développeurs pour support</li>
-          <li><strong>Tutoriels</strong> : Gallery d'exemples sur reflex.dev/docs/gallery</li>
-          <li><strong>Reflex Build (IA)</strong> : Générateur d'apps avec prompts texte</li>
+          <li><strong>Tutoriels vidéo</strong> : Disponibles sur YouTube et la galerie Reflex</li>
         </ul>
 
-        <h3>✨ Verdict final</h3>
+        <h3>Verdict final</h3>
         <p>
-          Reflex est un framework <strong>mature et production-ready</strong> qui transforme radicalement l'expérience de développement web en Python. 
-          Son approche "tout-en-un" (UI, backend, BDD, déploiement) en fait un choix stratégique pour développeurs Python cherchant à créer 
-          rapidement des applications web modernes sans compromis sur les performances ou la scalabilité. 
-          L'avenir du développement web Python passe très probablement par des outils comme Reflex qui démocratisent 
+          Reflex est un framework <strong>mature et production-ready</strong> qui transforme l'expérience de développement web en Python. 
+          Son approche "tout-en-un" en fait un choix stratégique pour développeurs Python créant rapidement 
+          des applications web modernes sans compromis sur les performances. 
+          L'avenir du développement web Python passe par des outils comme Reflex qui démocratisent 
           la création d'applications full-stack accessibles à tous les développeurs Python.
         </p>
       </div>
@@ -596,8 +546,8 @@
       scrollTrigger: {trigger: '.context-content', start: "top 80%", once: true}
     });
 
-    gsap.from('.comparison-table', {y: 40, opacity: 0, duration: 1, ease: "power2.out",
-      scrollTrigger: {trigger: '.comparison-table', start: "top 80%", once: true}
+    gsap.from('.code-block', {y: 40, opacity: 0, duration: 0.8, ease: "power2.out",
+      scrollTrigger: {trigger: '.code-block', start: "top 80%", once: true}
     });
   </script>
 </body>
