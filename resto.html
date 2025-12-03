@@ -25,6 +25,7 @@
     html {scroll-behavior:smooth;}
     body {width:100%; min-height:100vh; font-family:"Poppins",sans-serif; background-color:var(--black); color:var(--white);}
 
+
     /* Navigation */
     .navbar{position:fixed;top:0;left:0;width:100%; background-color:rgba(20,20,20,0.95);backdrop-filter:blur(10px);padding:1.5rem 3.3%;z-index:1000;border-bottom:1px solid var(--gray-700);}
     .nav-content{max-width:120rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
@@ -34,10 +35,57 @@
     .nav-back:hover::before {width:100%;}
     .nav-back:hover {border-color:var(--red-accent);transform:translateY(-2px);box-shadow:0 5px 15px rgba(220,20,60,0.3);}
 
-    /* Hero Section */
-    .hero-section{margin-top:80px;padding:4rem 3.3%;background:linear-gradient(135deg,var(--gray-900) 0%,var(--black) 100%);position:relative;overflow:hidden;}
-    .hero-section::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at top right,rgba(220,20,60,0.1),transparent 50%);pointer-events:none;}
-    .hero-content{max-width:120rem;margin:0 auto;position:relative;z-index:1;}
+
+    /* Hero Section - MODIFIÉ POUR IMAGE */
+    .hero-section{
+      margin-top:80px;
+      padding:4rem 3.3%;
+      position:relative;
+      overflow:hidden;
+      min-height:600px;
+      background-color:var(--gray-900);
+    }
+
+    /* Image de fond du hero */
+    .hero-bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.6;
+      z-index: 0;
+    }
+
+    /* Overlay gradient par-dessus l'image */
+    .hero-section::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:linear-gradient(135deg, rgba(20, 20, 20, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
+      z-index:1;
+      pointer-events:none;
+    }
+
+    /* Effet radial rouge */
+    .hero-section::after{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:radial-gradient(circle at top right, rgba(220, 20, 60, 0.05), transparent 50%);
+      z-index:2;
+      pointer-events:none;
+    }
+
+    .hero-content{max-width:120rem;margin:0 auto;position:relative;z-index:3;}
     .project-category{display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem;}
     .category-tag{background-color:rgba(220,20,60,0.9);color:var(--white);padding:0.5rem 1rem;border-radius:0.5rem;font-size:0.875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;}
     .hero-title{font-size:3.5rem;font-weight:600;line-height:1.1;margin-bottom:1.5rem;color:var(--white);}
@@ -47,6 +95,7 @@
     .project-tech{display:flex;flex-wrap:wrap;gap:0.75rem;}
     .tech-badge{background-color:var(--gray-800);color:var(--gray-100);padding:0.6rem 1rem;border-radius:0.5rem;font-size:0.9rem;font-weight:500;border:1px solid var(--gray-700);transition:all 0.3s ease;}
     .tech-badge:hover{border-color:var(--red-primary);background-color:var(--gray-700);transform:translateY(-2px);}
+
 
     /* Context / Competences */
     .context-section,.competences-section{padding:5rem 3.3%;background-color:var(--gray-900);}
@@ -63,12 +112,14 @@
     .context-content li {position:relative;padding-left:2rem;margin-bottom:0.75rem;color:var(--gray-400);font-size:1.05rem;}
     .context-content li::before {content:'→';position:absolute;left:0;color:var(--red-primary);font-weight:bold;font-size:1.2rem;}
 
+
     .competences-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;}
     .competence-card{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:2rem;border:1px solid var(--gray-700);transition:all 0.3s ease;}
     .competence-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(220,20,60,0.2);border-color:var(--red-primary);}
     .competence-code{display:inline-block;background-color:rgba(220,20,60,0.2);color:var(--red-primary);padding:0.4rem 0.8rem;border-radius:0.4rem;font-size:0.85rem;font-weight:600;margin-bottom:1rem;}
     .competence-title{font-size:1.125rem;font-weight:600;color:var(--white);margin-bottom:0.75rem;}
     .competence-description{font-size:0.95rem;color:var(--gray-400);line-height:1.6;}
+
 
     /* Reports Section */
     .reports-section{padding:5rem 3.3%;background-color:var(--black);}
@@ -86,10 +137,12 @@
     .report-link{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background-color:transparent;border:2px solid var(--red-primary);color:var(--red-primary);border-radius:0.5rem;font-size:0.875rem;font-weight:600;text-decoration:none;transition:all 0.3s ease;flex-shrink:0;}
     .report-link:hover{background-color:var(--red-primary);color:var(--white);transform:translateX(5px);box-shadow:0 5px 15px rgba(220,20,60,0.3);}
 
+
     .footer{padding:3rem 3.3%;background-color:var(--gray-900);border-top:1px solid var(--gray-700);text-align:center;}
     .footer p{color:var(--gray-400);font-size:0.95rem;}
     @media (max-width: 768px) {
       .hero-title {font-size:2.5rem;}
+      .hero-section {min-height:500px;}
       .section-title {font-size:2rem;}
       .context-content,.reports-content{padding:2rem;}
       .report-item{flex-direction:column;align-items:flex-start;gap:1rem;}
@@ -111,8 +164,12 @@
     </div>
   </nav>
 
+
   <!-- Hero Section -->
   <section class="hero-section">
+    <!-- Image de fond - AJOUTÉE -->
+    <img src="site_resto.png" alt="R3st0.fr Application" class="hero-bg-image">
+    
     <div class="hero-content">
       <div class="project-category">
         <span class="category-tag">Web</span>
@@ -135,6 +192,7 @@
     </div>
   </section>
 
+
   <!-- Context Section -->
   <section class="context-section">
     <div class="context-container">
@@ -143,14 +201,15 @@
         <p class="section-subtitle">Mise en situation et objectifs du projet</p>
       </div>
       <div class="context-content">
-        <h3>📋 Contexte du projet</h3>
+        <h3>Contexte du projet</h3>
         <p>
           R3st0.fr est un site de critique de restaurants inspiré de TripAdvisor et La Fourchette. 
           L'objectif est de permettre aux utilisateurs de rechercher des restaurants, consulter leurs caractéristiques, 
           lire les avis et noter les établissements. Développé en 2ème année BTS SIO selon la méthode agile Scrum.
         </p>
 
-        <h3>🎯 Objectifs pédagogiques</h3>
+
+        <h3>Objectifs pédagogiques</h3>
         <ul>
           <li>Travailler en équipe avec méthodologie Scrum (rôles : Product Owner, Scrum Master, équipe dev)</li>
           <li>Gérer un projet par itérations courtes (sprints de 1 à 2 séances)</li>
@@ -159,7 +218,8 @@
           <li>Déployer l'application en continu sur un serveur de production</li>
         </ul>
 
-        <h3>⚙️ Fonctionnalités développées</h3>
+
+        <h3>Fonctionnalités développées</h3>
         <ul>
           <li><strong>Visiteur non authentifié</strong> : Recherche multi-critères de restaurants, consultation des fiches détaillées et des avis</li>
           <li><strong>Utilisateur authentifié</strong> : Personnalisation du profil, ajout de restaurants favoris, publication d'avis et notation (1 à 5 étoiles)</li>
@@ -167,7 +227,8 @@
           <li><strong>Affichage des types de cuisine</strong> : Ajout d'une nouvelle fonctionnalité pour filtrer par type de cuisine</li>
         </ul>
 
-        <h3>🏗️ Méthode de gestion de projet Scrum</h3>
+
+        <h3>Méthode de gestion de projet Scrum</h3>
         <p>
           Le projet suit une méthode agile inspirée de Scrum avec :
         </p>
@@ -179,7 +240,8 @@
           <li><strong>Backlog</strong> : Liste priorisée des tâches (fonctionnalités, bugs, améliorations techniques)</li>
         </ul>
 
-        <h3>🛠️ Outils techniques</h3>
+
+        <h3>Outils techniques</h3>
         <ul>
           <li><strong>IDE</strong> : NetBeans v.21+</li>
           <li><strong>Gestion de version</strong> : GitLab (branches, merge, issues)</li>
@@ -188,7 +250,8 @@
           <li><strong>Déploiement</strong> : Serveur web BTS SIO avec compte FTP et base MariaDB</li>
         </ul>
 
-        <h3>📊 Itérations réalisées</h3>
+
+        <h3>Itérations réalisées</h3>
         <ul>
           <li><strong>Itération 1</strong> : Installation et étude de l'existant (ré-ingénierie BDD, analyse du code)</li>
           <li><strong>Itération 2</strong> : Résolution de tickets de maintenance (corrections de bugs, petites évolutions)</li>
@@ -197,6 +260,7 @@
       </div>
     </div>
   </section>
+
 
   <!-- Competences Section -->
   <section class="competences-section">
@@ -215,6 +279,7 @@
           </p>
         </div>
 
+
         <div class="competence-card">
           <span class="competence-code">B1.4.1</span>
           <h3 class="competence-title">Analyser les objectifs et modalités d'organisation d'un projet</h3>
@@ -222,6 +287,7 @@
             Compréhension de la méthode Scrum, définition des rôles (Product Owner, Scrum Master), analyse des User Stories.
           </p>
         </div>
+
 
         <div class="competence-card">
           <span class="competence-code">B1.4.2</span>
@@ -231,6 +297,7 @@
           </p>
         </div>
 
+
         <div class="competence-card">
           <span class="competence-code">B1.4.3</span>
           <h3 class="competence-title">Évaluer les indicateurs de suivi d'un projet</h3>
@@ -238,6 +305,7 @@
             Suivi de l'avancement des tickets sur le tableau Kanban, analyse des écarts entre planifié et réalisé lors des daily scrums.
           </p>
         </div>
+
 
         <div class="competence-card">
           <span class="competence-code">B2.1.5_SLAM</span>
@@ -247,6 +315,7 @@
           </p>
         </div>
 
+
         <div class="competence-card">
           <span class="competence-code">B2.1.7_SLAM</span>
           <h3 class="competence-title">Utiliser des composants d'accès aux données</h3>
@@ -254,6 +323,7 @@
             Utilisation de Doctrine ORM pour l'accès à la base MariaDB, requêtes SQL, gestion des relations entre entités.
           </p>
         </div>
+
 
         <div class="competence-card">
           <span class="competence-code">B2.1.9_SLAM</span>
@@ -263,6 +333,7 @@
           </p>
         </div>
 
+
         <div class="competence-card">
           <span class="competence-code">B2.1.10_SLAM</span>
           <h3 class="competence-title">Rédiger des documentations technique et d'utilisation</h3>
@@ -270,6 +341,7 @@
             Rédaction de rapports d'itération, documentation des tickets (diagnostic, localisation, modifications, tests), commentaires du code.
           </p>
         </div>
+
 
         <div class="competence-card">
           <span class="competence-code">B2.1.11_SLAM</span>
@@ -279,6 +351,7 @@
           </p>
         </div>
 
+
         <div class="competence-card">
           <span class="competence-code">B3.1</span>
           <h3 class="competence-title">Déployer un service</h3>
@@ -287,9 +360,11 @@
           </p>
         </div>
 
+
       </div>
     </div>
   </section>
+
 
   <!-- Reports Section -->
   <section class="reports-section">
@@ -303,51 +378,42 @@
           
           <li class="report-item">
             <div class="report-info">
-              <span class="report-icon">📄</span>
+              <span class="report-icon"></span>
               <div class="report-details">
                 <div class="report-name">Rapport Itération 1 - Installation et étude</div>
                 <div class="report-description">Ré-ingénierie de la base de données, analyse de l'architecture du code, daily scrums</div>
               </div>
             </div>
-            <a href="#" class="report-link"><span>Télécharger</span><span>→</span></a>
+            <a href="comptes-rendus-site_resto/P1_G5_SiteResto2025_Iteration1_Ticket2.pdf" class="report-link"><span>Télécharger compte rendu</span><span>→</span></a>
           </li>
+
 
           <li class="report-item">
             <div class="report-info">
-              <span class="report-icon">🔧</span>
+              <span class="report-icon"></span>
               <div class="report-details">
                 <div class="report-name">Rapport Itération 2 - Résolution de tickets</div>
                 <div class="report-description">Documentation des tickets résolus (diagnostic, localisation, modifications, tests)</div>
               </div>
             </div>
-            <a href="#" class="report-link"><span>Télécharger</span><span>→</span></a>
+            <a href="comptes-rendus-site_resto/Groupe5_2SLAM_AP_Projet_Resto_Itération2.pdf" class="report-link"><span>Télécharger compte rendu</span><span>→</span></a>
           </li>
+
 
           <li class="report-item">
             <div class="report-info">
-              <span class="report-icon">✨</span>
+              <span class="report-icon"></span>
               <div class="report-details">
                 <div class="report-name">Rapport Itération 3 - Types de cuisine</div>
                 <div class="report-description">User Story, modification BDD, développement de la fonctionnalité, déploiement</div>
               </div>
             </div>
-            <a href="#" class="report-link"><span>Télécharger</span><span>→</span></a>
+            <a href="comptes-rendus-site_resto/Huou_Valentin_2SLAM_AP_Projet_Resto_Itération3.pdf" class="report-link"><span>Télécharger compte rendu</span><span>→</span></a>
           </li>
 
           <li class="report-item">
             <div class="report-info">
-              <span class="report-icon">📋</span>
-              <div class="report-details">
-                <div class="report-name">Tableau Kanban GitLab</div>
-                <div class="report-description">Issues Board avec tickets, labels (complexité, priorité), jalons et affectations</div>
-              </div>
-            </div>
-            <a href="#" class="report-link"><span>Voir GitLab</span><span>→</span></a>
-          </li>
-
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon">🔗</span>
+              <span class="report-icon"></span>
               <div class="report-details">
                 <div class="report-name">Repository GitLab</div>
                 <div class="report-description">Code source complet avec branches par ticket, historique des commits et merges</div>
@@ -356,45 +422,26 @@
             <a href="#" class="report-link"><span>Voir GitLab</span><span>→</span></a>
           </li>
 
+
           <li class="report-item">
             <div class="report-info">
-              <span class="report-icon">🌐</span>
+              <span class="report-icon"></span>
               <div class="report-details">
                 <div class="report-name">Site déployé en production</div>
                 <div class="report-description">Application web fonctionnelle sur serveur BTS SIO (FTP + MariaDB)</div>
               </div>
             </div>
-            <a href="#" class="report-link"><span>Voir le site</span><span>→</span></a>
+            <a href="https://jolsio.fr:4456/2slamprj1eq5/public/p1_g5_siteresto2025/" class="report-link"><span>Voir le site</span><span>→</span></a>
           </li>
-
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon">📝</span>
-              <div class="report-details">
-                <div class="report-name">Daily Scrums et compte-rendus</div>
-                <div class="report-description">Traces des réunions quotidiennes (bilan séance précédente, planification séance suivante)</div>
-              </div>
-            </div>
-            <a href="#" class="report-link"><span>Télécharger</span><span>→</span></a>
-          </li>
-
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon">📊</span>
-              <div class="report-details">
-                <div class="report-name">Documentation technique globale</div>
-                <div class="report-description">Architecture du projet, guide de déploiement, conventions de codage</div>
-              </div>
-            </div>
-            <a href="#" class="report-link"><span>Télécharger</span><span>→</span></a>
-          </li>
-
+    
         </ul>
       </div>
     </div>
   </section>
 
-  <footer class="footer"><p>&copy; 2025 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p></footer>
+
+  <footer class="footer"><p> 2025 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p></footer>
+
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>

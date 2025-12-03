@@ -28,6 +28,7 @@
       background-color:var(--black); color:var(--white);
     }
 
+
     /* Navigation */
     .navbar{position:fixed;top:0;left:0;width:100%; background-color:rgba(20,20,20,0.95);backdrop-filter:blur(10px);padding:1.5rem 3.3%;z-index:1000;border-bottom:1px solid var(--gray-700);}
     .nav-content{max-width:120rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
@@ -37,10 +38,57 @@
     .nav-back:hover::before {width:100%;}
     .nav-back:hover {border-color:var(--red-accent);transform:translateY(-2px);box-shadow:0 5px 15px rgba(220,20,60,0.3);}
 
-    /* Hero Section */
-    .hero-section{margin-top:80px;padding:4rem 3.3%;background:linear-gradient(135deg,var(--gray-900) 0%,var(--black) 100%);position:relative;overflow:hidden;}
-    .hero-section::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at top right,rgba(220,20,60,0.1),transparent 50%);pointer-events:none;}
-    .hero-content{max-width:120rem;margin:0 auto;position:relative;z-index:1;}
+
+    /* Hero Section - MODIFIÉ POUR IMAGE */
+    .hero-section{
+      margin-top:80px;
+      padding:4rem 3.3%;
+      position:relative;
+      overflow:hidden;
+      min-height:600px;
+      background-color:var(--gray-900);
+    }
+
+    /* Image de fond du hero */
+    .hero-bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.6;
+      z-index: 0;
+    }
+
+    /* Overlay gradient par-dessus l'image */
+    .hero-section::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:linear-gradient(135deg, rgba(20, 20, 20, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
+      z-index:1;
+      pointer-events:none;
+    }
+
+    /* Effet radial rouge */
+    .hero-section::after{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:radial-gradient(circle at top right, rgba(220, 20, 60, 0.05), transparent 50%);
+      z-index:2;
+      pointer-events:none;
+    }
+
+    .hero-content{max-width:120rem;margin:0 auto;position:relative;z-index:3;}
     .project-category{display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem;}
     .category-tag{background-color:rgba(220,20,60,0.9);color:var(--white);padding:0.5rem 1rem;border-radius:0.5rem;font-size:0.875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;}
     .hero-title{font-size:3.5rem;font-weight:600;line-height:1.1;margin-bottom:1.5rem;color:var(--white);}
@@ -50,6 +98,7 @@
     .project-tech{display:flex;flex-wrap:wrap;gap:0.75rem;}
     .tech-badge{background-color:var(--gray-800);color:var(--gray-100);padding:0.6rem 1rem;border-radius:0.5rem;font-size:0.9rem;font-weight:500;border:1px solid var(--gray-700);transition:all 0.3s ease;}
     .tech-badge:hover{border-color:var(--red-primary);background-color:var(--gray-700);transform:translateY(-2px);}
+
 
     /* Context Section / Competences Sections */
     .context-section,.competences-section{padding:5rem 3.3%;background-color:var(--gray-900);}
@@ -66,12 +115,14 @@
     .context-content li {position:relative;padding-left:2rem;margin-bottom:0.75rem;color:var(--gray-400);font-size:1.05rem;}
     .context-content li::before {content:'→';position:absolute;left:0;color:var(--red-primary);font-weight:bold;font-size:1.2rem;}
 
+
     .competences-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;}
     .competence-card{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:2rem;border:1px solid var(--gray-700);transition:all 0.3s ease;}
     .competence-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(220,20,60,0.2);border-color:var(--red-primary);}
     .competence-code{display:inline-block;background-color:rgba(220,20,60,0.2);color:var(--red-primary);padding:0.4rem 0.8rem;border-radius:0.4rem;font-size:0.85rem;font-weight:600;margin-bottom:1rem;}
     .competence-title{font-size:1.125rem;font-weight:600;color:var(--white);margin-bottom:0.75rem;}
     .competence-description{font-size:0.95rem;color:var(--gray-400);line-height:1.6;}
+
 
     /* Reports Section */
     .reports-section{padding:5rem 3.3%;background-color:var(--black);}
@@ -89,10 +140,12 @@
     .report-link{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background-color:transparent;border:2px solid var(--red-primary);color:var(--red-primary);border-radius:0.5rem;font-size:0.875rem;font-weight:600;text-decoration:none;transition:all 0.3s ease;flex-shrink:0;}
     .report-link:hover{background-color:var(--red-primary);color:var(--white);transform:translateX(5px);box-shadow:0 5px 15px rgba(220,20,60,0.3);}
 
+
     .footer{padding:3rem 3.3%;background-color:var(--gray-900);border-top:1px solid var(--gray-700);text-align:center;}
     .footer p{color:var(--gray-400);font-size:0.95rem;}
     @media (max-width: 768px) {
       .hero-title {font-size:2.5rem;}
+      .hero-section {min-height:500px;}
       .section-title {font-size:2rem;}
       .context-content,.reports-content{padding:2rem;}
       .report-item{flex-direction:column;align-items:flex-start;gap:1rem;}
@@ -113,8 +166,12 @@
       <a href="index.html" class="nav-back"><span>←</span><span>Retour</span></a>
     </div>
   </nav>
+  
   <!-- Hero Section -->
   <section class="hero-section">
+    <!-- Image de fond - AJOUTÉE -->
+    <img src="photo_site_stage_1.png" alt="Produits Artisanaux Palestiniens" class="hero-bg-image">
+    
     <div class="hero-content">
       <div class="project-category">
         <span class="category-tag">Web</span>
@@ -134,6 +191,7 @@
     </div>
   </section>
 
+
   <!-- Context Section -->
   <section class="context-section">
     <div class="context-container">
@@ -145,7 +203,7 @@
         <h3>📋 Contexte</h3>
         <p>
           Ce site a été conçu pour un groupe associatif de soutien aux artisans palestiniens, sur la demande du CCFD et SGAP38.<br/>
-          Objectif : Mettre en avant le savoir-faire local, améliorer la visibilité des artisans et faciliter la découverte des produits.
+          Objectif : Mettre en avant le savoir-faire local, améliorer la visibilité des artisans et faciliter la découverte des produits.
         </p>
         <h3>🎯 Objectifs et missions</h3>
         <ul>
@@ -156,11 +214,12 @@
         </ul>
         <h3>🤝 Collaboration client</h3>
         <p>
-          Travail en autonomie et avec échanges réguliers avec les commanditaires. L’ensemble des livrables, sources, images, guides utilisateurs sont mis à disposition sur GitHub.
+          Travail en autonomie et avec échanges réguliers avec les commanditaires. L'ensemble des livrables, sources, images, guides utilisateurs sont mis à disposition sur GitHub.
         </p>
       </div>
     </div>
   </section>
+
 
   <!-- Competences Section -->
   <section class="competences-section">
@@ -177,7 +236,7 @@
         </div>
         <div class="competence-card">
           <span class="competence-code">B1.4.1</span>
-          <h3 class="competence-title">Analyser les objectifs d’un projet</h3>
+          <h3 class="competence-title">Analyser les objectifs d'un projet</h3>
           <p class="competence-description">Recueil et formalisation des besoins client, élaboration et validation des maquettes (DA).</p>
         </div>
         <div class="competence-card">
@@ -193,21 +252,22 @@
         <div class="competence-card">
           <span class="competence-code">B2.1.9_SLAM</span>
           <h3 class="competence-title">Réaliser les tests nécessaires à la validation</h3>
-          <p class="competence-description">Vérification du responsive, tests multi-appareils et corrections d’anomalies.</p>
+          <p class="competence-description">Vérification du responsive, tests multi-appareils et corrections d'anomalies.</p>
         </div>
         <div class="competence-card">
           <span class="competence-code">B2.1.10_SLAM</span>
           <h3 class="competence-title">Rédiger la documentation</h3>
-          <p class="competence-description">Réalisation d’une documentation utilisateur et développeur (lien/README sur GitHub).</p>
+          <p class="competence-description">Réalisation d'une documentation utilisateur et développeur (lien/README sur GitHub).</p>
         </div>
         <div class="competence-card">
           <span class="competence-code">B2.1.11_SLAM</span>
           <h3 class="competence-title">Exploiter un environnement de développement</h3>
-          <p class="competence-description">Utilisation de GitHub et d’outils graphiques (Figma) pour la mise en production, gestion de version.</p>
+          <p class="competence-description">Utilisation de GitHub et d'outils graphiques (Figma) pour la mise en production, gestion de version.</p>
         </div>
       </div>
     </div>
   </section>
+
 
   <!-- Reports Section -->
   <section class="reports-section">
@@ -243,7 +303,7 @@
               <span class="report-icon">💻</span>
               <div class="report-details">
                 <div class="report-name">Code source GitHub</div>
-                <div class="report-description">Accès public au code et à l’ensemble des ressources : <a style="color:#DC143C;" href="https://github.com/Nikoletone/v_finale_2" target="_blank">Voir le repo</a></div>
+                <div class="report-description">Accès public au code et à l'ensemble des ressources : <a style="color:#DC143C;" href="https://github.com/Nikoletone/v_finale_2" target="_blank">Voir le repo</a></div>
               </div>
             </div>
             <a href="https://github.com/Nikoletone/v_finale_2" class="report-link" target="_blank"><span>Voir GitHub</span><span>→</span></a>
@@ -263,7 +323,7 @@
               <span class="report-icon">📄</span>
               <div class="report-details">
                 <div class="report-name">Documentations & README</div>
-                <div class="report-description">Notice utilisateur, consignes d’installation, organisation des dossiers, explications pour la maintenance du site.</div>
+                <div class="report-description">Notice utilisateur, consignes d'installation, organisation des dossiers, explications pour la maintenance du site.</div>
               </div>
             </div>
             <a href="#" class="report-link"><span>Télécharger</span><span>→</span></a>
