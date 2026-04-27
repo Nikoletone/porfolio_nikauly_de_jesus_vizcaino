@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PapyRus - Stage 2ème Année | Portfolio Nikauly</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+    
+    :root {
+      /* Mode Clair (Par défaut) */
+      --bg-main: #fcfcfc;
+      --bg-card: #ffffff;
+      --border-color: #eaeaea;
+      --text-main: #1a1a1a;
+      --text-muted: #555555;
+      --accent-color: #DC143C;
+      --accent-light: rgba(220, 20, 60, 0.08);
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+      --shadow-hover: 0 12px 35px rgba(0, 0, 0, 0.08);
+      --tech-bg: #f0f0f0;
+      --nav-bg: rgba(255, 255, 255, 0.9);
+      --radius: 16px;
+    }
+
+    [data-theme="dark"] {
+      /* Mode Sombre */
+      --bg-main: #080808;
+      --bg-card: #121212;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #ffffff;
+      --text-muted: #a0a0a0;
+      --accent-light: rgba(220, 20, 60, 0.15);
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.2);
+      --shadow-hover: 0 12px 35px rgba(220, 20, 60, 0.15);
+      --tech-bg: #1a1a1a;
+      --nav-bg: rgba(8, 8, 8, 0.9);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.7;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* --- Navigation --- */
+    .navbar {
+      position: fixed; top: 0; width: 100%;
+      background: var(--nav-bg); backdrop-filter: blur(12px);
+      padding: 1rem 5%; z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+      display: flex; justify-content: space-between; align-items: center;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .nav-logo { font-size: 1.2rem; font-weight: 500; color: var(--text-main); text-decoration: none; letter-spacing: 1px; }
+    .nav-logo span { color: var(--accent-color); font-weight: 600; }
+    
+    .nav-actions { display: flex; align-items: center; gap: 20px; }
+    .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.3s; display: flex; align-items: center; gap: 8px; }
+    .nav-back:hover { color: var(--accent-color); }
+    
+    .theme-toggle {
+      background: transparent; border: 1px solid var(--border-color);
+      color: var(--text-main); border-radius: 50%; width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 1.2rem; transition: all 0.3s;
+    }
+    .theme-toggle:hover { border-color: var(--accent-color); transform: scale(1.05); }
+
+    /* --- Sections communes --- */
+    .hero { min-height: 80vh; padding: 120px 5% 50px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .hero-tag { display: inline-block; padding: 6px 16px; background: var(--accent-light); border-radius: 30px; font-size: 0.85rem; font-weight: 500; color: var(--accent-color); text-transform: uppercase; margin-bottom: 2rem; }
+    .hero-title { font-size: 3.5rem; font-weight: 600; line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: -1px; color: var(--text-main); }
+    .hero-subtitle { font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 3rem; }
+
+    .tech-stack { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .tech-item { padding: 8px 18px; background: var(--tech-bg); border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--text-muted); transition: all 0.3s; }
+    .tech-item:hover { background: var(--accent-color); color: white; }
+
+    .content-section { max-width: 1200px; margin: 0 auto; padding: 4rem 5%; }
+    .section-title { font-size: 2.2rem; font-weight: 600; margin-bottom: 3rem; text-align: center; color: var(--text-main); }
+    .section-title span { color: var(--accent-color); }
+
+    .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; }
+    .card:hover { border-color: var(--accent-color); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+    .card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-main); }
+    .card p { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; }
+    
+    .card ul { list-style: none; padding-left: 0; margin-top: 1rem; }
+    .card li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; color: var(--text-muted); font-size: 0.95rem; }
+    .card li::before { content: '→'; position: absolute; left: 0; color: var(--accent-color); font-weight: bold; }
+    .card strong { color: var(--text-main); font-weight: 500; }
+    .competence-badge { display: inline-block; padding: 4px 12px; background: var(--accent-light); color: var(--accent-color); border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+
+    .livrables-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .livrable-item { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--shadow-soft); transition: all 0.3s; }
+    .livrable-item:hover { border-color: var(--accent-color); box-shadow: var(--shadow-hover); }
+    .livrable-info h4 { font-size: 1.15rem; font-weight: 600; color: var(--text-main); }
+    .livrable-info p { font-size: 0.95rem; color: var(--text-muted); margin-top: 5px; }
+    
+    .btn-download { padding: 10px 24px; background: var(--accent-color); color: white; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.3s; text-align: center; }
+    .btn-download:hover { background: #b01030; transform: translateY(-2px); }
+
+    footer { text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid var(--border-color); margin-top: 4rem; background-color: var(--bg-card); }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+      .livrable-item { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .btn-download { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">Nikauly <span>.</span></a>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème">🌙</button>
+      <a href="index.html" class="nav-back">← Retour</a>
+    </div>
+  </nav>
+
+  <!-- Contenu Principal -->
+  <main>
+    <section class="hero">
+      <div class="hero-tag">Stage 2ème Année</div>
+      <h1 class="hero-title">PapyRus</h1>
+      <p class="hero-subtitle">
+        Plateforme sécurisée de transcription audio et de synthèse automatisée de réunions, propulsée par l'Intelligence Artificielle. Conçue pour la DSI de Pornic Agglo.
+      </p>
+      <div class="tech-stack">
+        <span class="tech-item">Symfony</span>
+        <span class="tech-item">Python 3.11</span>
+        <span class="tech-item">WhisperX</span>
+        <span class="tech-item">Mistral Nemo</span>
+        <span class="tech-item">FFmpeg</span>
+        <span class="tech-item">Debian 12</span>
+      </div>
+    </section>
+
+    <!-- Détails du projet -->
+    <section class="content-section scroll-reveal" style="padding-top: 0;">
+      <h2 class="section-title">Le <span>Projet</span></h2>
+      <div class="grid-container">
+        <div class="card">
+          <h3>Contexte</h3>
+          <p>La collectivité Pornic Agglo génère de nombreuses réunions nécessitant des comptes-rendus. La rédaction manuelle prenait jusqu'à cinq heures pour une heure d'audio.</p>
+        </div>
+        <div class="card">
+          <h3>Objectifs techniques</h3>
+          <ul>
+            <li>Développer une interface Full Stack sécurisée sous Symfony.</li>
+            <li>Intégrer une authentification LDAP liée à l'Active Directory.</li>
+            <li>Gérer et fusionner des fichiers audio multiples via FFmpeg.</li>
+            <li>Garantir le respect du RGPD avec une solution 100% locale (sans API Cloud).</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Moteur IA & Deep Learning</h3>
+          <ul>
+            <li>Intégration de <strong>WhisperX</strong> pour la transcription et la diarisation (séparation des locuteurs).</li>
+            <li>Utilisation de <strong>Mistral Nemo</strong> pour générer des synthèses et comptes-rendus structurés.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Architecture & Déploiement</h3>
+          <ul>
+            <li>Déploiement sur serveur Debian 12 avec socle LAMP (Linux, Apache, MariaDB, PHP).</li>
+            <li>Création d'un système de file d'attente asynchrone (QueueService) pour éviter la saturation du serveur GPU.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compétences (Conformes au Tableau de Synthèse) -->
+    <section class="content-section scroll-reveal">
+      <h2 class="section-title">Compétences <span>BTS SIO</span></h2>
+      <div class="grid-container">
+        
+        <div class="card">
+          <span class="competence-badge">Compétence 1</span>
+          <h3>Gérer le patrimoine informatique</h3>
+          <p><strong>Exploiter des référentiels, normes et standards :</strong> Configuration de l'infrastructure cible sous Debian 12, paramétrage strict du serveur web Apache et implémentation du protocole HTTPS (certificats SSL/TLS) pour la sécurité des données.</p>
+          <p><strong>Mettre en place et vérifier les niveaux d’habilitation :</strong> Sécurisation de la base de données (MariaDB) et restriction des accès IP sur phpMyAdmin via le pare-feu UFW.</p>
+        </div>
+
+        <div class="card">
+          <span class="competence-badge">Compétence 2</span>
+          <h3>Répondre aux incidents et demandes</h3>
+          <p><strong>Traiter des demandes concernant les services réseau et applicatifs :</strong> Diagnostic et correction des erreurs de "Timeout" et des limites d'upload de fichiers volumineux via la modification des configurations PHP (fpm/cli).</p>
+          <p><strong>Traiter des demandes concernant les applications :</strong> Création d'une file d'attente asynchrone (QueueService) pour lisser la charge des traitements d'IA sur la carte graphique (GPU) et éviter les plantages applicatifs.</p>
+        </div>
+
+        <div class="card">
+          <span class="competence-badge">Compétence 3 & 4</span>
+          <h3>Présence en ligne et Mode projet</h3>
+          <p><strong>Participer à l’évolution d’un site Web :</strong> Développement du Dashboard Symfony et du module d'enregistrement audio interactif.</p>
+          <p><strong>Analyser les objectifs et les modalités d’organisation :</strong> Prise en compte du besoin strict de la collectivité d'avoir un traitement local pour des raisons de confidentialité, conception de la base de données (MCD) adaptée aux transcriptions.</p>
+        </div>
+
+        <div class="card">
+          <span class="competence-badge">Compétence 5 & 6</span>
+          <h3>Service et Développement Pro</h3>
+          <p><strong>Déployer un service & Accompagner les utilisateurs :</strong> Mise en production de la solution sur les serveurs de la DSI. Rédaction d'une documentation technique d'installation et d'un guide visuel d'utilisation pour les agents.</p>
+          <p><strong>Développer son projet professionnel :</strong> Apprentissage en totale autonomie des technologies d'Intelligence Artificielle en Python (PyTorch, WhisperX, LLM Mistral) et de l'orchestration de scripts entre PHP et Python.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Livrables -->
+    <section class="content-section scroll-reveal">
+      <h2 class="section-title">Documentation & <span>Livrables</span></h2>
+      <div class="livrables-list">
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Rapport de Stage</h4>
+            <p>Analyse complète du besoin, choix d'architecture et bilan du projet PapyRus.</p>
+          </div>
+          <a href="DEJESUSVIZCAINO_Nikauly_2slam_rapport_de_stage (1).pdf" target="_blank" class="btn-download">Télécharger PDF</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Documentation Technique</h4>
+            <p>Guide d'installation sur serveur Debian 12 (Apache, MariaDB, Python, Cuda).</p>
+          </div>
+          <a href="Documentation Technique - Installation et Mise en Service.pdf" target="_blank" class="btn-download">Télécharger PDF</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Guide d'Utilisation</h4>
+            <p>Tutoriel pas-à-pas illustré, destiné aux agents administratifs de la collectivité.</p>
+          </div>
+          <a href="Guide_d'utilisation_papyrus.pdf" target="_blank" class="btn-download">Télécharger PDF</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
+  <script>
+    // Gestion du thème
+    const toggleBtn = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlEl.setAttribute('data-theme', savedTheme);
+    toggleBtn.innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlEl.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlEl.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      toggleBtn.innerHTML = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+
+    // Animations
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.hero-title, .hero-subtitle, .hero-tag', { y: 40, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power3.out" });
+    gsap.from('.tech-item', { scale: 0.8, opacity: 0, duration: 0.6, stagger: 0.1, ease: "back.out(1.7)", delay: 0.5 });
+    gsap.utils.toArray('.scroll-reveal').forEach(section => {
+      gsap.from(section, { y: 60, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 80%", once: true } });
+    });
+  </script>
+</body>
+</html>

@@ -1,406 +1,229 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Application Android R3st0 - Portfolio Nikauly</title>
+  <title>R3st0 Android | Portfolio Nikauly</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
     :root {
-      --red-primary: #DC143C;
-      --red-dark: #8B0000;
-      --red-accent: #FF4500;
-      --black: #000000;
-      --gray-900: #141414;
-      --gray-800: #1a1a1a;
-      --gray-700: #2a2a2a;
-      --gray-500: #666666;
-      --gray-400: #999999;
-      --gray-100: #f5f5f5;
-      --white: #ffffff;
-      --border-radius--xlarge: 2rem;
-      --border-radius--medium: 1.25rem;
+      --bg-main: #fcfcfc; --bg-card: #ffffff; --border-color: #eaeaea;
+      --text-main: #1a1a1a; --text-muted: #555555; --accent-color: #DC143C;
+      --accent-light: rgba(220, 20, 60, 0.08); --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+      --shadow-hover: 0 12px 35px rgba(0, 0, 0, 0.08); --tech-bg: #f0f0f0;
+      --nav-bg: rgba(255, 255, 255, 0.9); --radius: 16px;
     }
-    * {margin:0;padding:0;box-sizing:border-box;}
-    html {scroll-behavior:smooth;}
-    body {width:100%; min-height:100vh; font-family:"Poppins",sans-serif; background-color:var(--black); color:var(--white);}
-
-    /* Navigation */
-    .navbar{position:fixed;top:0;left:0;width:100%; background-color:rgba(20,20,20,0.95);backdrop-filter:blur(10px);padding:1.5rem 3.3%;z-index:1000;border-bottom:1px solid var(--gray-700);}
-    .nav-content{max-width:120rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
-    .nav-logo{font-size:1.5rem;font-weight:600;color:var(--white);text-decoration:none;}
-    .nav-back{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background-color:transparent;border:2px solid var(--red-primary);color:var(--white);border-radius:0.5rem;font-size:0.875rem;font-weight:500;text-transform:uppercase;letter-spacing:0.03em;cursor:pointer;transition:all 0.3s ease;text-decoration:none;position:relative;overflow:hidden;}
-    .nav-back::before {content:'';position:absolute;top:0;left:0;width:0;height:100%;background-color:var(--red-primary);transition:width 0.3s ease;z-index:-1;}
-    .nav-back:hover::before {width:100%;}
-    .nav-back:hover {border-color:var(--red-accent);transform:translateY(-2px);box-shadow:0 5px 15px rgba(220,20,60,0.3);}
-
-    /* Hero Section */
-    .hero-section{
-      margin-top:80px;
-      padding:4rem 3.3%;
-      position:relative;
-      overflow:hidden;
-      min-height:600px;
-      background-color:var(--gray-900);
+    [data-theme="dark"] {
+      --bg-main: #080808; --bg-card: #121212; --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #ffffff; --text-muted: #a0a0a0; --accent-light: rgba(220, 20, 60, 0.15);
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.2); --shadow-hover: 0 12px 35px rgba(220, 20, 60, 0.15);
+      --tech-bg: #1a1a1a; --nav-bg: rgba(8, 8, 8, 0.9);
     }
-
-    .hero-bg-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      opacity: 0.6;
-      z-index: 0;
-    }
-
-    .hero-section::before{
-      content:'';
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:linear-gradient(135deg, rgba(20, 20, 20, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
-      z-index:1;
-      pointer-events:none;
-    }
-
-    .hero-section::after{
-      content:'';
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:radial-gradient(circle at top right, rgba(220, 20, 60, 0.05), transparent 50%);
-      z-index:2;
-      pointer-events:none;
-    }
-
-    .hero-content{max-width:120rem;margin:0 auto;position:relative;z-index:3;}
-    .project-category{display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem;}
-    .category-tag{background-color:rgba(220,20,60,0.9);color:var(--white);padding:0.5rem 1rem;border-radius:0.5rem;font-size:0.875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;}
-    .hero-title{font-size:3.5rem;font-weight:600;line-height:1.1;margin-bottom:1.5rem;color:var(--white);}
-    .title-highlight{color:var(--red-primary);position:relative;display:inline-block;}
-    .title-highlight::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--red-dark),var(--red-accent));border-radius:10px;}
-    .hero-subtitle{font-size:1.25rem;color:var(--gray-400);line-height:1.6;max-width:800px;margin-bottom:2rem;}
-    .project-tech{display:flex;flex-wrap:wrap;gap:0.75rem;}
-    .tech-badge{background-color:var(--gray-800);color:var(--gray-100);padding:0.6rem 1rem;border-radius:0.5rem;font-size:0.9rem;font-weight:500;border:1px solid var(--gray-700);transition:all 0.3s ease;}
-    .tech-badge:hover{border-color:var(--red-primary);background-color:var(--gray-700);transform:translateY(-2px);}
-
-    /* Context / Competences */
-    .context-section,.competences-section{padding:5rem 3.3%;background-color:var(--gray-900);}
-    .context-container,.competences-container{max-width:120rem;margin:0 auto;}
-    .section-header{text-align:center;margin-bottom:4rem;}
-    .section-title{font-size:2.5rem;font-weight:600;color:var(--white);margin-bottom:1rem;}
-    .text-red{color:var(--red-primary);}
-    .section-subtitle{font-size:1.125rem;color:var(--gray-400);}
-    .context-content{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:3rem;border:1px solid var(--gray-700);line-height:1.8;}
-    .context-content h3{font-size:1.5rem;color:var(--white);margin-bottom:1rem;margin-top:2rem;}
-    .context-content h3:first-child{margin-top:0;}
-    .context-content p{font-size:1.05rem;color:var(--gray-400);margin-bottom:1.5rem;}
-    .context-content ul {list-style:none;padding-left:0;margin-bottom:1.5rem;}
-    .context-content li {position:relative;padding-left:2rem;margin-bottom:0.75rem;color:var(--gray-400);font-size:1.05rem;}
-    .context-content li::before {content:'→';position:absolute;left:0;color:var(--red-primary);font-weight:bold;font-size:1.2rem;}
-
-    .competences-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;}
-    .competence-card{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:2rem;border:1px solid var(--gray-700);transition:all 0.3s ease;}
-    .competence-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(220,20,60,0.2);border-color:var(--red-primary);}
-    .competence-code{display:inline-block;background-color:rgba(220,20,60,0.2);color:var(--red-primary);padding:0.4rem 0.8rem;border-radius:0.4rem;font-size:0.85rem;font-weight:600;margin-bottom:1rem;}
-    .competence-title{font-size:1.125rem;font-weight:600;color:var(--white);margin-bottom:0.75rem;}
-    .competence-description{font-size:0.95rem;color:var(--gray-400);line-height:1.6;}
-
-    /* Reports Section */
-    .reports-section{padding:5rem 3.3%;background-color:var(--black);}
-    .reports-container{max-width:120rem;margin:0 auto;}
-    .reports-content{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:3rem;border:1px solid var(--gray-700);}
-    .reports-list{list-style:none;padding:0;margin:0;}
-    .report-item{display:flex;align-items:center;justify-content:space-between;padding:1.5rem;border-bottom:1px solid var(--gray-700);transition:all 0.3s ease;}
-    .report-item:last-child{border-bottom:none;}
-    .report-item:hover{background-color:var(--gray-700);padding-left:2rem;}
-    .report-info{display:flex;align-items:center;gap:1.5rem;flex:1;}
-    .report-icon{font-size:2rem;flex-shrink:0;}
-    .report-details{flex:1;}
-    .report-name{font-size:1.125rem;font-weight:600;color:var(--white);margin-bottom:0.25rem;}
-    .report-description{font-size:0.9rem;color:var(--gray-400);line-height:1.4;}
-    .report-link{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background-color:transparent;border:2px solid var(--red-primary);color:var(--red-primary);border-radius:0.5rem;font-size:0.875rem;font-weight:600;text-decoration:none;transition:all 0.3s ease;flex-shrink:0;}
-    .report-link:hover{background-color:var(--red-primary);color:var(--white);transform:translateX(5px);box-shadow:0 5px 15px rgba(220,20,60,0.3);}
-
-    .footer{padding:3rem 3.3%;background-color:var(--gray-900);border-top:1px solid var(--gray-700);text-align:center;}
-    .footer p{color:var(--gray-400);font-size:0.95rem;}
-    @media (max-width: 768px) {
-      .hero-title {font-size:2.5rem;}
-      .hero-section {min-height:500px;}
-      .section-title {font-size:2rem;}
-      .context-content,.reports-content{padding:2rem;}
-      .report-item{flex-direction:column;align-items:flex-start;gap:1rem;}
-      .report-info{flex-direction:column;align-items:flex-start;gap:1rem;}
-      .report-link{width:100%;justify-content:center;}
-      .competences-grid{grid-template-columns:1fr;}
-      .nav-logo{font-size:1.2rem;}
-      .navbar{padding:1rem 5%;}
-      .hero-section,.context-section,.competences-section,.reports-section{padding:3rem 5%;}
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg-main); color: var(--text-main); font-family: 'Poppins', sans-serif; line-height: 1.7; font-weight: 300; overflow-x: hidden; transition: background-color 0.3s, color 0.3s; }
+    .navbar { position: fixed; top: 0; width: 100%; background: var(--nav-bg); backdrop-filter: blur(12px); padding: 1rem 5%; z-index: 100; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; transition: background 0.3s, border-color 0.3s; }
+    .nav-logo { font-size: 1.2rem; font-weight: 500; color: var(--text-main); text-decoration: none; letter-spacing: 1px; }
+    .nav-logo span { color: var(--accent-color); font-weight: 600; }
+    .nav-actions { display: flex; align-items: center; gap: 20px; }
+    .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.3s; display: flex; align-items: center; gap: 8px; }
+    .nav-back:hover { color: var(--accent-color); }
+    .theme-toggle { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.2rem; transition: all 0.3s; }
+    .theme-toggle:hover { border-color: var(--accent-color); transform: scale(1.05); }
+    
+    .hero { min-height: 80vh; padding: 120px 5% 50px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .hero-tag { display: inline-block; padding: 6px 16px; background: var(--accent-light); border-radius: 30px; font-size: 0.85rem; font-weight: 500; color: var(--accent-color); text-transform: uppercase; margin-bottom: 2rem; }
+    .hero-title { font-size: 3.5rem; font-weight: 600; line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: -1px; color: var(--text-main); }
+    .hero-subtitle { font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 3rem; }
+    
+    .tech-stack { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .tech-item { padding: 8px 18px; background: var(--tech-bg); border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--text-muted); transition: all 0.3s; }
+    .tech-item:hover { background: var(--accent-color); color: white; }
+    
+    .content-section { max-width: 1200px; margin: 0 auto; padding: 4rem 5%; }
+    .section-title { font-size: 2.2rem; font-weight: 600; margin-bottom: 3rem; text-align: center; color: var(--text-main); }
+    .section-title span { color: var(--accent-color); }
+    
+    .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; }
+    .card:hover { border-color: var(--accent-color); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+    .card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-main); }
+    .card p { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; }
+    
+    .card ul { list-style: none; padding-left: 0; margin-top: 1rem; }
+    .card li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; color: var(--text-muted); font-size: 0.95rem; }
+    .card li::before { content: '→'; position: absolute; left: 0; color: var(--accent-color); font-weight: bold; }
+    .card strong { color: var(--text-main); font-weight: 500; }
+    .competence-badge { display: inline-block; padding: 4px 12px; background: var(--accent-light); color: var(--accent-color); border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+    
+    .livrables-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .livrable-item { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--shadow-soft); transition: all 0.3s; }
+    .livrable-item:hover { border-color: var(--accent-color); box-shadow: var(--shadow-hover); }
+    .livrable-info h4 { font-size: 1.15rem; font-weight: 600; color: var(--text-main); }
+    .livrable-info p { font-size: 0.95rem; color: var(--text-muted); margin-top: 5px; }
+    
+    .btn-download { padding: 10px 24px; background: var(--accent-color); color: white; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.3s; text-align: center; }
+    .btn-download:hover { background: #b01030; transform: translateY(-2px); }
+    
+    footer { text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid var(--border-color); margin-top: 4rem; background: var(--bg-main); }
+    @media (max-width: 768px) { .hero-title { font-size: 2.5rem; } .livrable-item { flex-direction: column; align-items: flex-start; gap: 1.5rem; } .btn-download { width: 100%; } }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
+
   <nav class="navbar">
-    <div class="nav-content">
-      <a href="index.html" class="nav-logo">Portfolio Nikauly</a>
-      <a href="index.html" class="nav-back"><span>←</span><span>Retour</span></a>
+    <a href="index.html" class="nav-logo">Nikauly <span>.</span></a>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème">🌙</button>
+      <a href="index.html" class="nav-back">← Retour</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <img src="photo_application_android.png" alt="Application Android R3st0" class="hero-bg-image">
-    
-    <div class="hero-content">
-      <div class="project-category">
-        <span class="category-tag">Android</span>
-        <span class="category-tag">Mobile</span>
-        <span class="category-tag">API REST</span>
-      </div>
-      <h1 class="hero-title"><span class="title-highlight">Application Android R3st0</span></h1>
+  <main>
+    <section class="hero">
+      <div class="hero-tag">Application Mobile Android</div>
+      <h1 class="hero-title">R3st0 Android</h1>
       <p class="hero-subtitle">
-        Application mobile Android de réservation et consultation de restaurants développée en équipe avec architecture MVC, API REST PHP et gestion GitLab en méthode agile.
+        Application mobile de réservation et consultation de restaurants développée en équipe avec architecture MVC, API REST PHP et gestion GitLab en méthode agile.
       </p>
-      <div class="project-tech">
-        <span class="tech-badge">Java Android</span>
-        <span class="tech-badge">Android Studio</span>
-        <span class="tech-badge">API REST PHP</span>
-        <span class="tech-badge">JSON</span>
-        <span class="tech-badge">MariaDB</span>
-        <span class="tech-badge">GitLab</span>
-        <span class="tech-badge">Canva</span>
+      <div class="tech-stack">
+        <span class="tech-item">Java Android</span>
+        <span class="tech-item">Android Studio</span>
+        <span class="tech-item">API REST PHP</span>
+        <span class="tech-item">JSON</span>
+        <span class="tech-item">MariaDB</span>
+        <span class="tech-item">GitLab</span>
+        <span class="tech-item">Canva</span>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Context Section -->
-  <section class="context-section">
-    <div class="context-container">
-      <div class="section-header">
-        <h2 class="section-title">Description & <span class="text-red">Contexte</span></h2>
-        <p class="section-subtitle">Mise en situation et objectifs du projet</p>
-      </div>
-      <div class="context-content">
-        <h3>Contexte du projet</h3>
-        <p>
-          Cette application Android mobile est le prolongement du site web R3st0.fr.
-          Elle permet aux utilisateurs de consulter la liste des restaurants, visualiser leurs fiches détaillées (photos, avis, notes, horaires, adresse) 
-          et préparer de futures réservations directement depuis leur smartphone.
-        </p>
-        <h3>Objectifs du projet</h3>
-        <ul>
-          <li>Développer une application Android native en Java avec architecture MVC</li>
-          <li>Créer une API REST en PHP pour exposer les données du site web aux applications mobiles</li>
-          <li>Concevoir des maquettes graphiques cohérentes avec l'identité visuelle de R3st0.fr</li>
-          <li>Implémenter la consommation d'API avec requêtes HTTP asynchrones (AsyncTask)</li>
-          <li>Travailler en équipe avec méthodologie agile (sprints, daily scrums, tickets GitLab)</li>
-        </ul>
-
-        <h3>Fonctionnalités développées</h3>
-        <ul>
-          <li><strong>Liste des restaurants</strong> : Affichage scrollable de tous les restaurants avec photo, nom et ville</li>
-          <li><strong>Fiche détaillée</strong> : Vue complète d'un restaurant (description, adresse, horaires, types de cuisine, galerie photos)</li>
-          <li><strong>Avis et notes</strong> : Affichage des critiques utilisateurs avec système d'étoiles et calcul de note moyenne</li>
-          <li><strong>Navigation intuitive</strong> : Retour arrière, transitions entre écrans, gestion des erreurs réseau</li>
-        </ul>
-
-        <h3>Architecture technique</h3>
-        <p>
-          L'application suit une architecture MVC (Modèle-Vue-Contrôleur) :
-        </p>
-        <ul>
-          <li><strong>Modèle</strong> : Classes métier (Restaurant, Critique) et DAO pour la récupération des données depuis l'API</li>
-          <li><strong>Vue</strong> : Layouts XML (activity_main.xml, activity_detail.xml) avec ScrollView, LinearLayout, ImageView</li>
-          <li><strong>Contrôleur</strong> : Activités Java (MainActivity, RestoDetailActivity) gérant la logique applicative</li>
-        </ul>
-
-        <h3>API REST PHP</h3>
-        <p>
-          Une API REST a été développée en PHP pour exposer les données de la base MariaDB :
-        </p>
-        <ul>
-          <li><strong>getAllRestos.php</strong> : Retourne la liste complète des restaurants en JSON</li>
-          <li><strong>getOneById.php</strong> : Retourne les détails d'un restaurant (infos, photos, types de cuisine, critiques)</li>
-          <li><strong>getNoteMoyenne.php</strong> : Calcule et retourne la note moyenne d'un restaurant</li>
-          <li>Gestion des erreurs HTTP (400, 404, 500) avec messages JSON explicites</li>
-        </ul>
-
-        <h3>Design et maquettage</h3>
-        <ul>
-          <li>Maquettes réalisées sur Canva en respectant la charte graphique de R3st0.fr (rouge/noir)</li>
-          <li>Interface épurée et moderne avec hiérarchie visuelle claire</li>
-          <li>Adaptation du design pour écrans mobiles (responsive, touch-friendly)</li>
-        </ul>
-
-        <h3>Technologies et outils</h3>
-        <ul>
-          <li><strong>IDE</strong> : Android Studio pour le développement mobile</li>
-          <li><strong>Langage</strong> : Java Android avec API niveau 21+ (Lollipop)</li>
-          <li><strong>Backend</strong> : PHP 7+ pour l'API REST, MariaDB pour la base de données</li>
-          <li><strong>Communication</strong> : HttpURLConnection, JSONObject, BufferedReader</li>
-          <li><strong>Gestion de version</strong> : GitLab avec branches par itération</li>
-          <li><strong>Maquettage</strong> : Canva pour les prototypes graphiques</li>
-        </ul>
-
-        <h3>Itérations réalisées</h3>
-        <ul>
-          <li><strong>Itération 1</strong> : Création du diagramme UML (architecture MVC), développement de l'API REST, maquettes Canva</li>
-          <li><strong>Itération 2</strong> : Affichage de la fiche détaillée d'un restaurant, connexion avec l'API, gestion des critiques et notes</li>
-        </ul>
-
-        <h3>Organisation en équipe</h3>
-        <p>
-          Travail en trinôme (Nikauly, Garance, Heymad) avec daily scrums hebdomadaires :
-        </p>
-        <ul>
-          <li>Répartition des tâches via tickets GitLab (Issues Board)</li>
-          <li>Nikauly : API REST PHP, connexion Android-API, formatage des données</li>
-          <li>Garance : Endpoints API (getOneById, getNoteMoyenne), requêtes SQL</li>
-          <li>Heymad : Layouts XML, design des vues, maquettes Canva</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Competences Section - MODIFIÉ AVEC LES 6 COMPÉTENCES OFFICIELLES -->
-  <section class="competences-section">
-    <div class="competences-container">
-      <div class="section-header">
-        <h2 class="section-title">Compétences <span class="text-red">BTS SIO mobilisées</span></h2>
-        <p class="section-subtitle">Référentiel des compétences mises en œuvre</p>
-      </div>
-      <div class="competences-grid">
-        
-        <!-- Compétence 2 : Répondre aux incidents -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 2</span>
-          <h3 class="competence-title">Répondre aux incidents et aux demandes d'assistance et d'évolution</h3>
-          <p class="competence-description">
-            <strong>Traiter des demandes concernant les applications :</strong> Traitement des tickets de développement, ajout de fonctionnalités selon les besoins exprimés (fiche détail, affichage critiques). Utilisation d'un outil de gestion de tickets (GitLab Issues). Communication écrite et orale adaptée. Compte-rendu des actions réalisées dans les rapports d'itération.
-          </p>
+    <section class="content-section scroll-reveal" style="padding-top: 0;">
+      <h2 class="section-title">Le <span>Projet</span></h2>
+      <div class="grid-container">
+        <div class="card">
+          <h3>Contexte</h3>
+          <p>Cette application Android mobile est le prolongement du site web R3st0.fr. Elle permet aux utilisateurs de consulter la liste des restaurants, visualiser leurs fiches détaillées (photos, avis, notes, horaires, adresse) et préparer de futures réservations directement depuis leur smartphone.</p>
         </div>
-
-        <!-- Compétence 4 : Travailler en mode projet -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 4</span>
-          <h3 class="competence-title">Travailler en mode projet</h3>
-          <p class="competence-description">
-            <strong>Analyser les objectifs et modalités d'organisation :</strong> Analyse du cahier des charges, définition de l'architecture MVC, conception du diagramme UML, planification des itérations. L'organisation projet est explicitée. Les objectifs du projet sont explicités. L'analyse du besoin et de l'existant est pertinente.
-            <br><br>
-            <strong>Planifier les activités :</strong> Organisation en sprints, daily scrums, répartition des tâches en tickets GitLab, gestion du backlog et des priorités. Les activités personnelles sont planifiées de façon formelle, l'avancée est documentée. Le projet est documenté et les livrables sont conformes.
-          </p>
+        <div class="card">
+          <h3>Objectifs du projet</h3>
+          <ul>
+            <li>Développer une application Android native en Java avec architecture MVC.</li>
+            <li>Créer une API REST en PHP pour exposer les données du site web aux applications mobiles.</li>
+            <li>Concevoir des maquettes graphiques cohérentes avec l'identité visuelle de R3st0.fr.</li>
+            <li>Implémenter la consommation d'API avec requêtes HTTP asynchrones (AsyncTask).</li>
+            <li>Travailler en équipe avec méthodologie agile (sprints, daily scrums, tickets GitLab).</li>
+          </ul>
         </div>
-
-        <!-- Compétence 5 : Mettre à disposition -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 5</span>
-          <h3 class="competence-title">Mettre à disposition des utilisateurs un service informatique</h3>
-          <p class="competence-description">
-            <strong>Réaliser les tests d'intégration et d'acceptation :</strong> Tests unitaires de l'API (Postman), tests fonctionnels de l'application mobile, gestion des cas d'erreur réseau. Les tests d'intégration et d'acceptation sont rédigés. Leur exécution est documentée.
-            <br><br>
-          </p>
+        <div class="card">
+          <h3>Fonctionnalités développées</h3>
+          <ul>
+            <li><strong>Liste des restaurants :</strong> Affichage scrollable de tous les restaurants avec photo, nom et ville.</li>
+            <li><strong>Fiche détaillée :</strong> Vue complète d'un restaurant (description, adresse, horaires, types de cuisine, galerie photos).</li>
+            <li><strong>Avis et notes :</strong> Affichage des critiques utilisateurs avec système d'étoiles et calcul de note moyenne.</li>
+            <li><strong>Navigation intuitive :</strong> Retour arrière, transitions entre écrans, gestion des erreurs réseau.</li>
+          </ul>
         </div>
-
-        <!-- Compétence 6 : Organiser son développement professionnel -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 6</span>
-          <h3 class="competence-title">Organiser son développement professionnel</h3>
-          <p class="competence-description">
-            <strong>Mettre en place son environnement d'apprentissage :</strong> Comptes-rendus d'itération, documentation des endpoints API, commentaires du code Java et PHP, daily scrums. Maîtrise d'Android Studio (débogueur, émulateur), utilisation de GitLab (branches, merge, issues), Canva pour le design. L'environnement d'apprentissage personnel est délimité et expliqué.
-            <br><br>
-            <strong>Développer son projet professionnel :</strong> Développement de composants Android (Activities, Layouts XML), création de l'API REST, classes DAO et métier. Consommation d'API REST avec HttpURLConnection, parsing JSON, gestion asynchrone (AsyncTask), navigation entre activités. Création des endpoints PHP avec requêtes SQL préparées (PDO), jointures, calculs d'agrégats (note moyenne). Les besoins de formation sont identifiés pour mettre à disposition le service.
-          </p>
+        <div class="card">
+          <h3>Architecture technique & API</h3>
+          <ul>
+            <li><strong>Modèle :</strong> Classes métier (Restaurant, Critique) et DAO pour la récupération des données.</li>
+            <li><strong>Vue :</strong> Layouts XML (activity_main.xml, activity_detail.xml) avec ScrollView, LinearLayout.</li>
+            <li><strong>Contrôleur :</strong> Activités Java (MainActivity, RestoDetailActivity).</li>
+            <li><strong>API REST (PHP) :</strong> Endpoints getAllRestos.php, getOneById.php, getNoteMoyenne.php retournant du JSON avec gestion des codes HTTP.</li>
+          </ul>
         </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Reports Section -->
-  <section class="reports-section">
-    <div class="reports-container">
-      <div class="section-header">
-        <h2 class="section-title">Livrables & <span class="text-red">Documentation</span></h2>
-        <p class="section-subtitle">Rapports d'itération et ressources du projet</p>
+    <!-- Compétences -->
+    <section class="content-section scroll-reveal">
+      <h2 class="section-title">Compétences <span>BTS SIO</span></h2>
+      <div class="grid-container">
+        <div class="card">
+          <span class="competence-badge">Compétence 2</span>
+          <h3>Répondre aux incidents et évolutions</h3>
+          <p><strong>Traiter des demandes concernant les applications :</strong> Traitement des tickets de développement, ajout de fonctionnalités selon les besoins exprimés (fiche détail, affichage critiques). Utilisation d'un outil de gestion de tickets (GitLab Issues). Communication écrite et orale adaptée.</p>
+        </div>
+        <div class="card">
+          <span class="competence-badge">Compétence 4</span>
+          <h3>Travailler en mode projet</h3>
+          <p><strong>Analyser les objectifs et modalités :</strong> Analyse du cahier des charges, définition de l'architecture MVC, conception du diagramme UML, planification des itérations.<br><strong>Planifier les activités :</strong> Organisation en sprints, daily scrums, répartition des tâches en tickets GitLab, gestion du backlog.</p>
+        </div>
+        <div class="card">
+          <span class="competence-badge">Compétence 5</span>
+          <h3>Mettre à disposition un service</h3>
+          <p><strong>Réaliser les tests d'intégration et d'acceptation :</strong> Tests unitaires de l'API (Postman), tests fonctionnels de l'application mobile, gestion des cas d'erreur réseau. Les tests d'intégration et d'acceptation sont rédigés et documentés.</p>
+        </div>
+        <div class="card">
+          <span class="competence-badge">Compétence 6</span>
+          <h3>Organiser son développement</h3>
+          <p><strong>Mettre en place son environnement :</strong> Comptes-rendus d'itération, documentation des endpoints API. Maîtrise d'Android Studio, utilisation de GitLab (branches, merge, issues), Canva.<br><strong>Développer son projet :</strong> Développement de composants Android (Activities, XML), création de l'API REST. Consommation d'API avec HttpURLConnection, parsing JSON, gestion asynchrone (AsyncTask).</p>
+        </div>
       </div>
-      <div class="reports-content">
-        <ul class="reports-list">
-          
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Rapport Itération 1 - Architecture et API</div>
-                <div class="report-description">Diagramme UML MVC, création de l'API REST PHP, maquettes Canva de l'application</div>
-              </div>
-            </div>
-            <a href="Projet-dapplication-Android-de-reservation-pour-R3st0.pdf" class="report-link"><span>Télécharger PDF</span><span>→</span></a>
-          </li>
+    </section>
 
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Rapport Itération 2 - Affichage détail restaurant</div>
-                <div class="report-description">Développement de la vue détaillée, connexion API, affichage des critiques et notes moyennes</div>
-              </div>
-            </div>
-            <a href="Iteration2_Nikauly_Garance_Heymad_G5.pdf" class="report-link"><span>Télécharger PDF</span><span>→</span></a>
-          </li>
-
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Repository GitLab - Application Android</div>
-                <div class="report-description">Code source complet, branches par itération, commits détaillés : <a style="color:#DC143C;" href="https://gitlab.com/Hahaddou/p2_g5_appandroid" target="_blank">gitlab.com/Hahaddou/p2_g5_appandroid</a></div>
-              </div>
-            </div>
-            <a href="https://gitlab.com/Hahaddou/p2_g5_appandroid" class="report-link" target="_blank"><span>Voir GitLab</span><span>→</span></a>
-          </li>
-
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Repository GitLab - API REST</div>
-                <div class="report-description">Code source de l'API PHP, endpoints REST, configuration BDD : <a style="color:#DC143C;" href="https://gitlab.com/Hahaddou/lienapi" target="_blank">gitlab.com/Hahaddou/lienapi</a></div>
-              </div>
-            </div>
-            <a href="https://gitlab.com/Hahaddou/lienapi" class="report-link" target="_blank"><span>Voir GitLab</span><span>→</span></a>
-          </li>
-
-        </ul>
+    <!-- Livrables -->
+    <section class="content-section scroll-reveal">
+      <h2 class="section-title">Comptes-Rendus & <span>Livrables</span></h2>
+      <div class="livrables-list">
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Rapport Itération 1 - Architecture et API</h4>
+            <p>Diagramme UML MVC, création de l'API REST PHP, maquettes Canva de l'application.</p>
+          </div>
+          <a href="Projet-dapplication-Android-de-reservation-pour-R3st0.pdf" target="_blank" class="btn-download">PDF</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Rapport Itération 2 - Affichage détail restaurant</h4>
+            <p>Développement de la vue détaillée, connexion API, affichage des critiques et notes moyennes.</p>
+          </div>
+          <a href="Iteration2_Nikauly_Garance_Heymad_G5.pdf" target="_blank" class="btn-download">PDF</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Repository GitLab - App Android</h4>
+            <p>Code source complet, branches par itération, commits détaillés.</p>
+          </div>
+          <a href="https://gitlab.com/Hahaddou/p2_g5_appandroid" target="_blank" class="btn-download">GitLab</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Repository GitLab - API REST</h4>
+            <p>Code source de l'API PHP, endpoints REST, configuration BDD.</p>
+          </div>
+          <a href="https://gitlab.com/Hahaddou/lienapi" target="_blank" class="btn-download">GitLab</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <footer class="footer"><p>&copy; 2025 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p></footer>
+  <footer>
+    <p>&copy; 2026 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
   <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlEl.setAttribute('data-theme', savedTheme);
+    toggleBtn.innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlEl.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlEl.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      toggleBtn.innerHTML = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+
     gsap.registerPlugin(ScrollTrigger);
-    gsap.utils.toArray('.report-item').forEach((item, index) => {
-      gsap.from(item, {x: -30, opacity: 0, duration: 0.6, delay: index * 0.1, ease: "power2.out",
-        scrollTrigger: {trigger: item, start: "top 90%", once: true}
-      });
-    });
-    gsap.utils.toArray('.competence-card').forEach(card => {
-      gsap.from(card, {y: 40, opacity: 0, duration: 0.8, ease: "power2.out",
-        scrollTrigger: {trigger: card, start: "top 85%", once: true}
-      });
-    });
-    gsap.from('.context-content', {y: 40, opacity: 0, duration: 1, ease: "power2.out",
-      scrollTrigger: {trigger: '.context-content', start: "top 80%", once: true}
+    gsap.from('.hero-title, .hero-subtitle, .hero-tag', { y: 40, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power3.out" });
+    gsap.from('.tech-item', { scale: 0.8, opacity: 0, duration: 0.6, stagger: 0.1, ease: "back.out(1.7)", delay: 0.5 });
+    gsap.utils.toArray('.scroll-reveal').forEach(section => {
+      gsap.from(section, { y: 60, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 80%", once: true } });
     });
   </script>
 </body>

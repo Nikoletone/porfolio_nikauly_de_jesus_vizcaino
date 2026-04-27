@@ -1,891 +1,260 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>THALI-MINI - Portfolio Nikauly</title>
+  <title>THALI-MINI | Portfolio Nikauly</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
-    
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
     :root {
-      /* Palette Rouge & Noir */
-      --red-primary: #DC143C;
-      --red-dark: #8B0000;
-      --red-accent: #FF4500;
-      --black: #000000;
-      --gray-900: #141414;
-      --gray-800: #1a1a1a;
-      --gray-700: #2a2a2a;
-      --gray-500: #666666;
-      --gray-400: #999999;
-      --gray-100: #f5f5f5;
-      --white: #ffffff;
-      --border-radius--xlarge: 2rem;
-      --border-radius--medium: 1.25rem;
+      --bg-main: #fcfcfc; --bg-card: #ffffff; --border-color: #eaeaea;
+      --text-main: #1a1a1a; --text-muted: #555555; --accent-color: #DC143C;
+      --accent-light: rgba(220, 20, 60, 0.08); --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+      --shadow-hover: 0 12px 35px rgba(0, 0, 0, 0.08); --tech-bg: #f0f0f0;
+      --nav-bg: rgba(255, 255, 255, 0.9); --radius: 16px;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    [data-theme="dark"] {
+      --bg-main: #080808; --bg-card: #121212; --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #ffffff; --text-muted: #a0a0a0; --accent-light: rgba(220, 20, 60, 0.15);
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.2); --shadow-hover: 0 12px 35px rgba(220, 20, 60, 0.15);
+      --tech-bg: #1a1a1a; --nav-bg: rgba(8, 8, 8, 0.9);
     }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      width: 100%;
-      min-height: 100vh;
-      font-family: "Poppins", sans-serif;
-      background-color: var(--black);
-      color: var(--white);
-    }
-
-    /* Navigation */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: rgba(20, 20, 20, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 1.5rem 3.3%;
-      z-index: 1000;
-      border-bottom: 1px solid var(--gray-700);
-    }
-
-    .nav-content {
-      max-width: 120rem;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-logo {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--white);
-      text-decoration: none;
-    }
-
-    .nav-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.6rem 1.2rem;
-      background-color: transparent;
-      border: 2px solid var(--red-primary);
-      color: var(--white);
-      border-radius: 0.5rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .nav-back::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 100%;
-      background-color: var(--red-primary);
-      transition: width 0.3s ease;
-      z-index: -1;
-    }
-
-    .nav-back:hover::before {
-      width: 100%;
-    }
-
-    .nav-back:hover {
-      border-color: var(--red-accent);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
-    }
-
-    /* Hero Section */
-    .hero-section {
-      margin-top: 80px;
-      padding: 4rem 3.3%;
-      position: relative;
-      overflow: hidden;
-      min-height: 600px;
-      background-color: var(--gray-900);
-    }
-
-    .hero-bg-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      opacity: 0.6;
-      z-index: 0;
-    }
-
-    .hero-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(20, 20, 20, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .hero-section::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at top right, rgba(220, 20, 60, 0.05), transparent 50%);
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .hero-content {
-      max-width: 120rem;
-      margin: 0 auto;
-      position: relative;
-      z-index: 3;
-    }
-
-    .project-category {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .category-tag {
-      background-color: rgba(220, 20, 60, 0.9);
-      color: var(--white);
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .hero-title {
-      font-size: 3.5rem;
-      font-weight: 600;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-      color: var(--white);
-    }
-
-    .title-highlight {
-      color: var(--red-primary);
-      position: relative;
-      display: inline-block;
-    }
-
-    .title-highlight::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--red-dark), var(--red-accent));
-      border-radius: 10px;
-    }
-
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: var(--gray-400);
-      line-height: 1.6;
-      max-width: 800px;
-      margin-bottom: 2rem;
-    }
-
-    .project-tech {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .tech-badge {
-      background-color: var(--gray-800);
-      color: var(--gray-100);
-      padding: 0.6rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      border: 1px solid var(--gray-700);
-      transition: all 0.3s ease;
-    }
-
-    .tech-badge:hover {
-      border-color: var(--red-primary);
-      background-color: var(--gray-700);
-      transform: translateY(-2px);
-    }
-
-    /* Context Section */
-    .context-section {
-      padding: 5rem 3.3%;
-      background-color: var(--gray-900);
-    }
-
-    .context-container {
-      max-width: 120rem;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 1rem;
-    }
-
-    .text-red {
-      color: var(--red-primary);
-    }
-
-    .section-subtitle {
-      font-size: 1.125rem;
-      color: var(--gray-400);
-    }
-
-    .context-content {
-      background-color: var(--gray-800);
-      border-radius: var(--border-radius--medium);
-      padding: 3rem;
-      border: 1px solid var(--gray-700);
-      line-height: 1.8;
-    }
-
-    .context-content h3 {
-      font-size: 1.5rem;
-      color: var(--white);
-      margin-bottom: 1rem;
-      margin-top: 2rem;
-    }
-
-    .context-content h3:first-child {
-      margin-top: 0;
-    }
-
-    .context-content p {
-      font-size: 1.05rem;
-      color: var(--gray-400);
-      margin-bottom: 1.5rem;
-    }
-
-    .context-content ul {
-      list-style: none;
-      padding-left: 0;
-      margin-bottom: 1.5rem;
-    }
-
-    .context-content li {
-      position: relative;
-      padding-left: 2rem;
-      margin-bottom: 0.75rem;
-      color: var(--gray-400);
-      font-size: 1.05rem;
-    }
-
-    .context-content li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--red-primary);
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-
-    /* Competences Section */
-    .competences-section {
-      padding: 5rem 3.3%;
-      background-color: var(--black);
-    }
-
-    .competences-container {
-      max-width: 120rem;
-      margin: 0 auto;
-    }
-
-    .competences-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .competence-card {
-      background-color: var(--gray-800);
-      border-radius: var(--border-radius--medium);
-      padding: 2rem;
-      border: 1px solid var(--gray-700);
-      transition: all 0.3s ease;
-    }
-
-    .competence-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(220, 20, 60, 0.2);
-      border-color: var(--red-primary);
-    }
-
-    .competence-code {
-      display: inline-block;
-      background-color: rgba(220, 20, 60, 0.2);
-      color: var(--red-primary);
-      padding: 0.4rem 0.8rem;
-      border-radius: 0.4rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .competence-title {
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 0.75rem;
-    }
-
-    .competence-description {
-      font-size: 0.95rem;
-      color: var(--gray-400);
-      line-height: 1.6;
-    }
-
-    /* Reports Section */
-    .reports-section {
-      padding: 5rem 3.3%;
-      background-color: var(--gray-900);
-    }
-
-    .reports-container {
-      max-width: 120rem;
-      margin: 0 auto;
-    }
-
-    .reports-content {
-      background-color: var(--gray-800);
-      border-radius: var(--border-radius--medium);
-      padding: 3rem;
-      border: 1px solid var(--gray-700);
-    }
-
-    .reports-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .report-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem;
-      border-bottom: 1px solid var(--gray-700);
-      transition: all 0.3s ease;
-    }
-
-    .report-item:last-child {
-      border-bottom: none;
-    }
-
-    .report-item:hover {
-      background-color: var(--gray-700);
-      padding-left: 2rem;
-    }
-
-    .report-info {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      flex: 1;
-    }
-
-    .report-icon {
-      font-size: 2rem;
-      flex-shrink: 0;
-    }
-
-    .report-details {
-      flex: 1;
-    }
-
-    .report-name {
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 0.25rem;
-    }
-
-    .report-description {
-      font-size: 0.9rem;
-      color: var(--gray-400);
-      line-height: 1.4;
-    }
-
-    .report-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.6rem 1.2rem;
-      background-color: transparent;
-      border: 2px solid var(--red-primary);
-      color: var(--red-primary);
-      border-radius: 0.5rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-    }
-
-    .report-link:hover {
-      background-color: var(--red-primary);
-      color: var(--white);
-      transform: translateX(5px);
-      box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
-    }
-
-    /* Footer */
-    .footer {
-      padding: 3rem 3.3%;
-      background-color: var(--black);
-      border-top: 1px solid var(--gray-700);
-      text-align: center;
-    }
-
-    .footer p {
-      color: var(--gray-400);
-      font-size: 0.95rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2.5rem;
-      }
-
-      .hero-section {
-        min-height: 500px;
-      }
-
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .context-content,
-      .reports-content {
-        padding: 2rem;
-      }
-
-      .report-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-      }
-
-      .report-info {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-      }
-
-      .report-link {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .competences-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-logo {
-        font-size: 1.2rem;
-      }
-
-      .navbar {
-        padding: 1rem 5%;
-      }
-
-      .hero-section,
-      .context-section,
-      .competences-section,
-      .reports-section {
-        padding: 3rem 5%;
-      }
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg-main); color: var(--text-main); font-family: 'Poppins', sans-serif; line-height: 1.7; font-weight: 300; overflow-x: hidden; transition: background-color 0.3s, color 0.3s; }
+    .navbar { position: fixed; top: 0; width: 100%; background: var(--nav-bg); backdrop-filter: blur(12px); padding: 1rem 5%; z-index: 100; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; transition: background 0.3s, border-color 0.3s; }
+    .nav-logo { font-size: 1.2rem; font-weight: 500; color: var(--text-main); text-decoration: none; letter-spacing: 1px; }
+    .nav-logo span { color: var(--accent-color); font-weight: 600; }
+    .nav-actions { display: flex; align-items: center; gap: 20px; }
+    .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.3s; display: flex; align-items: center; gap: 8px; }
+    .nav-back:hover { color: var(--accent-color); }
+    .theme-toggle { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.2rem; transition: all 0.3s; }
+    .theme-toggle:hover { border-color: var(--accent-color); transform: scale(1.05); }
+    
+    .hero { min-height: 80vh; padding: 120px 5% 50px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .hero-tag { display: inline-block; padding: 6px 16px; background: var(--accent-light); border-radius: 30px; font-size: 0.85rem; font-weight: 500; color: var(--accent-color); text-transform: uppercase; margin-bottom: 2rem; }
+    .hero-title { font-size: 3.5rem; font-weight: 600; line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: -1px; color: var(--text-main); }
+    .hero-subtitle { font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 3rem; }
+    
+    .tech-stack { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .tech-item { padding: 8px 18px; background: var(--tech-bg); border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--text-muted); transition: all 0.3s; }
+    .tech-item:hover { background: var(--accent-color); color: white; }
+    
+    .content-section { max-width: 1200px; margin: 0 auto; padding: 4rem 5%; }
+    .section-title { font-size: 2.2rem; font-weight: 600; margin-bottom: 3rem; text-align: center; color: var(--text-main); }
+    .section-title span { color: var(--accent-color); }
+    
+    .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; }
+    .card:hover { border-color: var(--accent-color); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+    .card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-main); }
+    .card p { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; }
+    
+    /* Styles pour les listes dans les cartes */
+    .card ul { list-style: none; padding-left: 0; margin-top: 1rem; }
+    .card li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; color: var(--text-muted); font-size: 0.95rem; }
+    .card li::before { content: '→'; position: absolute; left: 0; color: var(--accent-color); font-weight: bold; }
+    .card strong { color: var(--text-main); font-weight: 500; }
+    .competence-badge { display: inline-block; padding: 4px 12px; background: var(--accent-light); color: var(--accent-color); border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+    
+    .livrables-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .livrable-item { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--shadow-soft); transition: all 0.3s; }
+    .livrable-item:hover { border-color: var(--accent-color); box-shadow: var(--shadow-hover); }
+    .livrable-info h4 { font-size: 1.15rem; font-weight: 600; color: var(--text-main); }
+    .livrable-info p { font-size: 0.95rem; color: var(--text-muted); margin-top: 5px; }
+    
+    .btn-download { padding: 10px 24px; background: var(--accent-color); color: white; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.3s; text-align: center; }
+    .btn-download:hover { background: #b01030; transform: translateY(-2px); }
+    
+    footer { text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid var(--border-color); margin-top: 4rem; background: var(--bg-main); }
+    @media (max-width: 768px) { .hero-title { font-size: 2.5rem; } .livrable-item { flex-direction: column; align-items: flex-start; gap: 1.5rem; } .btn-download { width: 100%; } }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
   <nav class="navbar">
-    <div class="nav-content">
-      <a href="index.html" class="nav-logo">Portfolio Nikauly</a>
-      <a href="index.html" class="nav-back">
-        <span>←</span>
-        <span>Retour</span>
-      </a>
+    <a href="index.html" class="nav-logo">Nikauly <span>.</span></a>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème">🌙</button>
+      <a href="index.html" class="nav-back">← Retour</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <img src="photo_projet_thali_mini.png" alt="THALI-MINI Application" class="hero-bg-image">
-    
-    <div class="hero-content">
-      <div class="project-category">
-        <span class="category-tag">Java</span>
-        <span class="category-tag">Desktop</span>
-      </div>
-      
-      <h1 class="hero-title">
-        <span class="title-highlight">THALI-MINI</span>
-      </h1>
-      
+  <main>
+    <section class="hero">
+      <div class="hero-tag">Application Desktop Java</div>
+      <h1 class="hero-title">THALI-MINI</h1>
       <p class="hero-subtitle">
-        Application Java desktop pour la gestion des mini-excursions d'un centre de thalassothérapie avec architecture DAO et base de données MariaDB.
+        Application Java de bureau pour la gestion des mini-excursions d'un centre de thalassothérapie avec architecture DAO et base de données MariaDB.
       </p>
-
-      <div class="project-tech">
-        <span class="tech-badge">Java</span>
-        <span class="tech-badge">NetBeans</span>
-        <span class="tech-badge">MariaDB/MySQL</span>
-        <span class="tech-badge">Pattern DAO</span>
-        <span class="tech-badge">Swing/JFrame</span>
-        <span class="tech-badge">CRUD</span>
+      <div class="tech-stack">
+        <span class="tech-item">Java</span>
+        <span class="tech-item">NetBeans</span>
+        <span class="tech-item">MariaDB / MySQL</span>
+        <span class="tech-item">Pattern DAO</span>
+        <span class="tech-item">Swing / JFrame</span>
+        <span class="tech-item">CRUD</span>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Context Section -->
-  <section class="context-section">
-    <div class="context-container">
-      <div class="section-header">
-        <h2 class="section-title">
-          Description & <span class="text-red">Contexte</span>
-        </h2>
-        <p class="section-subtitle">Mise en situation et objectifs du projet</p>
-      </div>
-
-      <div class="context-content">
-        <h3>Contexte du projet</h3>
-        <p>
-          THALI est un centre de thalassothérapie souhaitant proposer un catalogue de mini-excursions organisées l'après-midi pour ses curistes. 
-          En tant que stagiaire chez STESIO (ESN mandatée), j'ai développé le module THALI-MINI pour gérer ces excursions et leurs étapes.
-        </p>
-
-        <h3>Objectifs du projet</h3>
-        <ul>
-          <li>Développer une application Java orientée objet avec architecture en couches</li>
-          <li>Implémenter un CRUD complet (Create, Read, Update, Delete) sur les excursions et leurs étapes</li>
-          <li>Utiliser le pattern DAO pour l'accès à la base de données MariaDB</li>
-          <li>Créer une interface graphique utilisateur avec Swing (JFrame, JDialog)</li>
-          <li>Gérer les relations entre entités (une excursion contient plusieurs étapes ordonnées)</li>
-        </ul>
-
-        <h3>Fonctionnalités implémentées</h3>
-        <ul>
-          <li>Consultation de la liste des excursions avec leurs informations détaillées</li>
-          <li>Ajout, modification et suppression d'excursions</li>
-          <li>Gestion complète des étapes d'une excursion (CRUD)</li>
-          <li>Réorganisation de l'ordre des étapes (déplacement haut/bas)</li>
-          <li>Calcul automatique de la durée totale d'une excursion</li>
-          <li>Validation des données saisies avant enregistrement en base</li>
-        </ul>
-
-        <h3>Architecture technique</h3>
-        <p>
-          L'application suit une architecture en couches avec séparation des responsabilités :
-        </p>
-        <ul>
-          <li><strong>Couche GUI (paquetage "gui")</strong> : interfaces graphiques JFrame et JDialog pour l'interaction utilisateur</li>
-          <li><strong>Couche Métier (paquetage "modele.metier")</strong> : classes MiniExcursion et Etape représentant les données</li>
-          <li><strong>Couche DAO (paquetage "modele.dao")</strong> : classes d'accès aux données avec requêtes SQL</li>
-        </ul>
-
-        <h3>Technologies et outils</h3>
-        <ul>
-          <li>Langage : Java avec EDI NetBeans</li>
-          <li>Base de données : MariaDB/MySQL avec utilisateur dédié</li>
-          <li>Pattern architectural : DAO (Data Access Object)</li>
-          <li>Framework GUI : Swing (javax.swing)</li>
-          <li>Connecteur JDBC : MySQL Connector/J</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Competences Section - MODIFIÉ AVEC LES 6 COMPÉTENCES OFFICIELLES -->
-  <section class="competences-section">
-    <div class="competences-container">
-      <div class="section-header">
-        <h2 class="section-title">
-          Compétences <span class="text-red">BTS SIO mobilisées</span>
-        </h2>
-        <p class="section-subtitle">Référentiel des compétences mises en œuvre</p>
-      </div>
-
-      <div class="competences-grid">
-        
-        <!-- Compétence 2 : Répondre aux incidents -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 2</span>
-          <h3 class="competence-title">Répondre aux incidents et aux demandes d'assistance et d'évolution</h3>
-          <p class="competence-description">
-            <strong>Traiter des demandes concernant les applications :</strong> Collecte et traitement des demandes de fonctionnalités du client THALI. Implémentation des différentes étapes du CRUD selon les besoins exprimés. Compte-rendu des actions réalisées pour chaque étape.
-          </p>
+    <!-- Détails du projet -->
+    <section class="content-section scroll-reveal" style="padding-top: 0;">
+      <h2 class="section-title">Le <span>Projet</span></h2>
+      <div class="grid-container">
+        <div class="card">
+          <h3>Contexte</h3>
+          <p>THALI est un centre de thalassothérapie souhaitant proposer un catalogue de mini-excursions organisées l'après-midi pour ses curistes. En tant que stagiaire chez STESIO (ESN mandatée), j'ai développé le module THALI-MINI pour gérer ces excursions et leurs étapes.</p>
         </div>
-
-        <!-- Compétence 4 : Travailler en mode projet -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 4</span>
-          <h3 class="competence-title">Travailler en mode projet</h3>
-          <p class="competence-description">
-            <strong>Analyser les objectifs et modalités d'organisation :</strong> Analyse du cahier des charges fourni, identification des parties prenantes (THALI, STESIO), compréhension du contexte métier de la thalassothérapie.
-            <br><br>
-            <strong>Planifier les activités :</strong> Organisation du travail en binôme, planification des 11 étapes du projet avec remise de livrables à chaque étape, gestion du temps et des priorités. Le projet est documenté et les livrables sont conformes.
-          </p>
+        <div class="card">
+          <h3>Objectifs du projet</h3>
+          <ul>
+            <li>Développer une application Java orientée objet avec architecture en couches.</li>
+            <li>Implémenter un CRUD complet sur les excursions et leurs étapes.</li>
+            <li>Utiliser le pattern DAO pour l'accès à la base de données MariaDB.</li>
+            <li>Créer une interface graphique utilisateur avec Swing (JFrame, JDialog).</li>
+            <li>Gérer les relations entre entités (une excursion contient plusieurs étapes ordonnées).</li>
+          </ul>
         </div>
-
-        <!-- Compétence 5 : Mettre à disposition -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 5</span>
-          <h3 class="competence-title">Mettre à disposition des utilisateurs un service informatique</h3>
-          <p class="competence-description">
-            <strong>Réaliser les tests d'intégration et d'acceptation :</strong> Conception et exécution de tests unitaires (JUnit), tests fonctionnels de l'interface utilisateur, validation des données saisies, vérification en base de données. Les tests sont rédigés et leur exécution est documentée.
-            <br><br>
-            <strong>Déployer un service :</strong> Livraison d'une application opérationnelle et conforme aux attentes du client THALI.
-          </p>
+        <div class="card">
+          <h3>Fonctionnalités implémentées</h3>
+          <ul>
+            <li>Consultation de la liste des excursions avec leurs informations détaillées.</li>
+            <li>Ajout, modification et suppression d'excursions.</li>
+            <li>Gestion complète des étapes d'une excursion (CRUD).</li>
+            <li>Réorganisation de l'ordre des étapes (déplacement haut/bas).</li>
+            <li>Calcul automatique de la durée totale d'une excursion.</li>
+            <li>Validation des données saisies avant enregistrement en base.</li>
+          </ul>
         </div>
-
-        <!-- Compétence 6 : Organiser son développement professionnel -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 6</span>
-          <h3 class="competence-title">Organiser son développement professionnel</h3>
-          <p class="competence-description">
-            <strong>Mettre en place son environnement d'apprentissage :</strong> Apprentissage du pattern DAO, maîtrise de NetBeans, découverte de Swing et JDBC. Rédaction de comptes-rendus pour chaque étape, documentation du code avec commentaires, rapports de tests, bilans des difficultés rencontrées.
-            <br><br>
-            <strong>Développer son projet professionnel :</strong> Utilisation de composants Swing (JFrame, JDialog, JComboBox, JTable), adaptation des classes DAO existantes, création de nouveaux composants métier. Maîtrise de NetBeans pour le développement Java (débogueur, refactoring), gestion de la base de données depuis l'IDE.
-          </p>
+        <div class="card">
+          <h3>Architecture technique</h3>
+          <ul>
+            <li><strong>Couche GUI (paquetage "gui") :</strong> interfaces graphiques JFrame et JDialog pour l'interaction utilisateur.</li>
+            <li><strong>Couche Métier (paquetage "modele.metier") :</strong> classes MiniExcursion et Etape représentant les données.</li>
+            <li><strong>Couche DAO (paquetage "modele.dao") :</strong> classes d'accès aux données avec requêtes SQL.</li>
+          </ul>
         </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Reports Section -->
-  <section class="reports-section">
-    <div class="reports-container">
-      <div class="section-header">
-        <h2 class="section-title">
-          Comptes rendus & <span class="text-red">Documentation</span>
-        </h2>
-        <p class="section-subtitle">7 étapes réalisées avec documentation complète</p>
+    <!-- Compétences -->
+    <section class="content-section scroll-reveal">
+      <h2 class="section-title">Compétences <span>BTS SIO</span></h2>
+      <div class="grid-container">
+        <div class="card">
+          <span class="competence-badge">Compétence 2</span>
+          <h3>Répondre aux incidents et évolutions</h3>
+          <p><strong>Traiter des demandes concernant les applications :</strong> Collecte et traitement des demandes de fonctionnalités du client THALI. Implémentation des différentes étapes du CRUD selon les besoins exprimés. Compte-rendu des actions réalisées pour chaque étape.</p>
+        </div>
+        <div class="card">
+          <span class="competence-badge">Compétence 4</span>
+          <h3>Travailler en mode projet</h3>
+          <p><strong>Analyser les objectifs et modalités :</strong> Analyse du cahier des charges fourni, identification des parties prenantes, compréhension du contexte métier.<br><strong>Planifier les activités :</strong> Organisation du travail en binôme, planification des 11 étapes du projet avec remise de livrables à chaque étape.</p>
+        </div>
+        <div class="card">
+          <span class="competence-badge">Compétence 5</span>
+          <h3>Mettre à disposition un service</h3>
+          <p><strong>Réaliser les tests d'intégration et d'acceptation :</strong> Conception et exécution de tests unitaires (JUnit), tests fonctionnels de l'interface utilisateur, validation des données saisies, vérification en base de données.<br><strong>Déployer un service :</strong> Livraison d'une application opérationnelle et conforme aux attentes.</p>
+        </div>
+        <div class="card">
+          <span class="competence-badge">Compétence 6</span>
+          <h3>Organiser son développement</h3>
+          <p><strong>Mettre en place son environnement :</strong> Apprentissage du pattern DAO, maîtrise de NetBeans, découverte de Swing et JDBC. Rédaction de comptes-rendus, rapports de tests.<br><strong>Développer son projet :</strong> Utilisation de composants Swing, adaptation des classes DAO existantes, création de nouveaux composants métier.</p>
+        </div>
       </div>
+    </section>
 
-      <div class="reports-content">
-        <ul class="reports-list">
-          
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Étape 1 - Prise en main de l'existant</div>
-                <div class="report-description">Installation de la base de données, configuration du projet NetBeans, premier test fonctionnel</div>
-              </div>
-            </div>
-            <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_01.pdf" class="report-link">
-              <span>Télécharger PDF</span>
-              <span>→</span>
-            </a>
-          </li>
-
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Étape 2 - Découverte des classes DAO</div>
-                <div class="report-description">Étude de l'architecture en couches, développement de getOneById(), tests unitaires</div>
-              </div>
-            </div>
-            <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_02.pdf" class="report-link">
-              <span>Télécharger PDF</span>
-              <span>→</span>
-            </a>
-          </li>
-
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Étape 3 - Modification de l'interface graphique</div>
-                <div class="report-description">Ajout de l'affichage de la durée totale, création des boutons CRUD, nouvelle fenêtre JDialog</div>
-              </div>
-            </div>
-            <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_03.pdf" class="report-link">
-              <span>Télécharger PDF</span>
-              <span>→</span>
-            </a>
-          </li>
-
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Étape 4 - Visualisation des données d'une excursion</div>
-                <div class="report-description">Transmission de données entre fenêtres, affichage en mode lecture seule des excursions</div>
-              </div>
-            </div>
-            <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_04.pdf" class="report-link">
-              <span>Télécharger PDF</span>
-              <span>→</span>
-            </a>
-          </li>
-
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Étape 5 - Ajout (création) d'une excursion</div>
-                <div class="report-description">Implémentation du CREATE, validation des données, gestion des erreurs, tests fonctionnels</div>
-              </div>
-            </div>
-            <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_05.pdf" class="report-link">
-              <span>Télécharger PDF</span>
-              <span>→</span>
-            </a>
-          </li>
-
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Étape 6 - Découverte de la gestion des étapes</div>
-                <div class="report-description">Analyse de l'exécutable fourni, tests fonctionnels du CRUD étapes, analyse de la clé primaire</div>
-              </div>
-            </div>
-            <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_06.pdf" class="report-link">
-              <span>Télécharger PDF</span>
-              <span>→</span>
-            </a>
-          </li>
-
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Étape 7 - Création d'une nouvelle étape</div>
-                <div class="report-description">Développement du formulaire de saisie, implémentation de l'ajout en fin de liste, validation</div>
-              </div>
-            </div>
-            <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_07.pdf" class="report-link">
-              <span>Télécharger PDF</span>
-              <span>→</span>
-            </a>
-          </li>
-
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Code source & Repository</div>
-                <div class="report-description">Archive complète du projet NetBeans avec code commenté et documentation technique</div>
-              </div>
-            </div>
-            <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO.zip" class="report-link" style="margin-left: 5%;">
-              <span>Télécharger ZIP</span>
-              <span>→</span>
-            </a>
-            <a href="https://github.com/username/repository" class="report-link">
-              <span>Lien Repository</span>
-              <span>→</span>
-            </a>
-          </li>
-
-        </ul>
+    <!-- Livrables -->
+    <section class="content-section scroll-reveal">
+      <h2 class="section-title">Comptes-Rendus & <span>Livrables</span></h2>
+      <div class="livrables-list">
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Étape 1 - Prise en main de l'existant</h4>
+            <p>Installation de la base de données, configuration du projet NetBeans, premier test fonctionnel.</p>
+          </div>
+          <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_01.pdf" target="_blank" class="btn-download">PDF</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Étape 2 - Découverte des classes DAO</h4>
+            <p>Étude de l'architecture en couches, développement de getOneById(), tests unitaires.</p>
+          </div>
+          <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_02.pdf" target="_blank" class="btn-download">PDF</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Étape 3 - Modification de l'interface graphique</h4>
+            <p>Ajout de l'affichage de la durée totale, création des boutons CRUD, nouvelle fenêtre JDialog.</p>
+          </div>
+          <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_03.pdf" target="_blank" class="btn-download">PDF</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Étape 4 - Visualisation des données d'une excursion</h4>
+            <p>Transmission de données entre fenêtres, affichage en mode lecture seule des excursions.</p>
+          </div>
+          <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_04.pdf" target="_blank" class="btn-download">PDF</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Étape 5 - Ajout (création) d'une excursion</h4>
+            <p>Implémentation du CREATE, validation des données, gestion des erreurs, tests fonctionnels.</p>
+          </div>
+          <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_05.pdf" target="_blank" class="btn-download">PDF</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Étape 6 - Découverte de la gestion des étapes</h4>
+            <p>Analyse de l'exécutable fourni, tests fonctionnels du CRUD étapes, analyse de la clé primaire.</p>
+          </div>
+          <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_06.pdf" target="_blank" class="btn-download">PDF</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Étape 7 - Création d'une nouvelle étape</h4>
+            <p>Développement du formulaire de saisie, implémentation de l'ajout en fin de liste, validation.</p>
+          </div>
+          <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_07.pdf" target="_blank" class="btn-download">PDF</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Code source & Repository</h4>
+            <p>Archive complète du projet NetBeans avec code commenté et documentation technique.</p>
+          </div>
+          <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO.zip" class="btn-download">ZIP</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2025 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p>
+  <footer>
+    <p>&copy; 2026 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p>
   </footer>
 
-  <!-- GSAP Animation -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
-
   <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlEl.setAttribute('data-theme', savedTheme);
+    toggleBtn.innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlEl.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlEl.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      toggleBtn.innerHTML = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+
     gsap.registerPlugin(ScrollTrigger);
-
-    // Animation des items au scroll
-    gsap.utils.toArray('.report-item').forEach((item, index) => {
-      gsap.from(item, {
-        x: -30,
-        opacity: 0,
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: item,
-          start: "top 90%",
-          once: true
-        }
-      });
-    });
-
-    // Animation des cartes compétences
-    gsap.utils.toArray('.competence-card').forEach(card => {
-      gsap.from(card, {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: card,
-          start: "top 85%",
-          once: true
-        }
-      });
-    });
-
-    // Animation du contenu contexte
-    gsap.from('.context-content', {
-      y: 40,
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: '.context-content',
-        start: "top 80%",
-        once: true
-      }
+    gsap.from('.hero-title, .hero-subtitle, .hero-tag', { y: 40, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power3.out" });
+    gsap.from('.tech-item', { scale: 0.8, opacity: 0, duration: 0.6, stagger: 0.1, ease: "back.out(1.7)", delay: 0.5 });
+    gsap.utils.toArray('.scroll-reveal').forEach(section => {
+      gsap.from(section, { y: 60, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 80%", once: true } });
     });
   </script>
-
 </body>
 </html>

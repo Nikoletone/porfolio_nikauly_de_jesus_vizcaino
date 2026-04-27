@@ -1,416 +1,214 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produits Artisanaux Palestiniens - Portfolio Nikauly</title>
+  <title>Artisans Palestiniens | Portfolio Nikauly</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
     :root {
-      --red-primary: #DC143C;
-      --red-dark: #8B0000;
-      --red-accent: #FF4500;
-      --black: #000000;
-      --gray-900: #141414;
-      --gray-800: #1a1a1a;
-      --gray-700: #2a2a2a;
-      --gray-500: #666666;
-      --gray-400: #999999;
-      --gray-100: #f5f5f5;
-      --white: #ffffff;
-      --border-radius--xlarge: 2rem;
-      --border-radius--medium: 1.25rem;
+      --bg-main: #fcfcfc; --bg-card: #ffffff; --border-color: #eaeaea;
+      --text-main: #1a1a1a; --text-muted: #555555; --accent-color: #DC143C;
+      --accent-light: rgba(220, 20, 60, 0.08); --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+      --shadow-hover: 0 12px 35px rgba(0, 0, 0, 0.08); --tech-bg: #f0f0f0;
+      --nav-bg: rgba(255, 255, 255, 0.9); --radius: 16px;
     }
-    * {margin:0;padding:0;box-sizing:border-box;}
-    html {scroll-behavior:smooth;}
-    body {
-      width:100%; min-height:100vh; font-family:"Poppins",sans-serif;
-      background-color:var(--black); color:var(--white);
+    [data-theme="dark"] {
+      --bg-main: #080808; --bg-card: #121212; --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #ffffff; --text-muted: #a0a0a0; --accent-light: rgba(220, 20, 60, 0.15);
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.2); --shadow-hover: 0 12px 35px rgba(220, 20, 60, 0.15);
+      --tech-bg: #1a1a1a; --nav-bg: rgba(8, 8, 8, 0.9);
     }
-
-    /* Navigation */
-    .navbar{position:fixed;top:0;left:0;width:100%; background-color:rgba(20,20,20,0.95);backdrop-filter:blur(10px);padding:1.5rem 3.3%;z-index:1000;border-bottom:1px solid var(--gray-700);}
-    .nav-content{max-width:120rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
-    .nav-logo{font-size:1.5rem;font-weight:600;color:var(--white);text-decoration:none;}
-    .nav-back{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background-color:transparent;border:2px solid var(--red-primary);color:var(--white);border-radius:0.5rem;font-size:0.875rem;font-weight:500;text-transform:uppercase;letter-spacing:0.03em;cursor:pointer;transition:all 0.3s ease;text-decoration:none;position:relative;overflow:hidden;}
-    .nav-back::before {content:'';position:absolute;top:0;left:0;width:0;height:100%;background-color:var(--red-primary);transition:width 0.3s ease;z-index:-1;}
-    .nav-back:hover::before {width:100%;}
-    .nav-back:hover {border-color:var(--red-accent);transform:translateY(-2px);box-shadow:0 5px 15px rgba(220,20,60,0.3);}
-
-    /* Hero Section */
-    .hero-section{
-      margin-top:80px;
-      padding:4rem 3.3%;
-      position:relative;
-      overflow:hidden;
-      min-height:600px;
-      background-color:var(--gray-900);
-    }
-
-    .hero-bg-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      opacity: 0.6;
-      z-index: 0;
-    }
-
-    .hero-section::before{
-      content:'';
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:linear-gradient(135deg, rgba(20, 20, 20, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
-      z-index:1;
-      pointer-events:none;
-    }
-
-    .hero-section::after{
-      content:'';
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:radial-gradient(circle at top right, rgba(220, 20, 60, 0.05), transparent 50%);
-      z-index:2;
-      pointer-events:none;
-    }
-
-    .hero-content{max-width:120rem;margin:0 auto;position:relative;z-index:3;}
-    .project-category{display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem;}
-    .category-tag{background-color:rgba(220,20,60,0.9);color:var(--white);padding:0.5rem 1rem;border-radius:0.5rem;font-size:0.875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;}
-    .hero-title{font-size:3.5rem;font-weight:600;line-height:1.1;margin-bottom:1.5rem;color:var(--white);}
-    .title-highlight{color:var(--red-primary);position:relative;display:inline-block;}
-    .title-highlight::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--red-dark),var(--red-accent));border-radius:10px;}
-    .hero-subtitle{font-size:1.25rem;color:var(--gray-400);line-height:1.6;max-width:800px;margin-bottom:2rem;}
-    .project-tech{display:flex;flex-wrap:wrap;gap:0.75rem;}
-    .tech-badge{background-color:var(--gray-800);color:var(--gray-100);padding:0.6rem 1rem;border-radius:0.5rem;font-size:0.9rem;font-weight:500;border:1px solid var(--gray-700);transition:all 0.3s ease;}
-    .tech-badge:hover{border-color:var(--red-primary);background-color:var(--gray-700);transform:translateY(-2px);}
-
-    /* Context Section / Competences Sections */
-    .context-section,.competences-section{padding:5rem 3.3%;background-color:var(--gray-900);}
-    .context-container,.competences-container{max-width:120rem;margin:0 auto;}
-    .section-header{text-align:center;margin-bottom:4rem;}
-    .section-title{font-size:2.5rem;font-weight:600;color:var(--white);margin-bottom:1rem;}
-    .text-red{color:var(--red-primary);}
-    .section-subtitle{font-size:1.125rem;color:var(--gray-400);}
-    .context-content{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:3rem;border:1px solid var(--gray-700);line-height:1.8;}
-    .context-content h3{font-size:1.5rem;color:var(--white);margin-bottom:1rem;margin-top:2rem;}
-    .context-content h3:first-child{margin-top:0;}
-    .context-content p{font-size:1.05rem;color:var(--gray-400);margin-bottom:1.5rem;}
-    .context-content ul {list-style:none;padding-left:0;margin-bottom:1.5rem;}
-    .context-content li {position:relative;padding-left:2rem;margin-bottom:0.75rem;color:var(--gray-400);font-size:1.05rem;}
-    .context-content li::before {content:'→';position:absolute;left:0;color:var(--red-primary);font-weight:bold;font-size:1.2rem;}
-
-    .competences-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;}
-    .competence-card{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:2rem;border:1px solid var(--gray-700);transition:all 0.3s ease;}
-    .competence-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(220,20,60,0.2);border-color:var(--red-primary);}
-    .competence-code{display:inline-block;background-color:rgba(220,20,60,0.2);color:var(--red-primary);padding:0.4rem 0.8rem;border-radius:0.4rem;font-size:0.85rem;font-weight:600;margin-bottom:1rem;}
-    .competence-title{font-size:1.125rem;font-weight:600;color:var(--white);margin-bottom:0.75rem;}
-    .competence-description{font-size:0.95rem;color:var(--gray-400);line-height:1.6;}
-
-    /* Reports Section */
-    .reports-section{padding:5rem 3.3%;background-color:var(--black);}
-    .reports-container{max-width:120rem;margin:0 auto;}
-    .reports-content{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:3rem;border:1px solid var(--gray-700);}
-    .reports-list{list-style:none;padding:0;margin:0;}
-    .report-item{display:flex;align-items:center;justify-content:space-between;padding:1.5rem;border-bottom:1px solid var(--gray-700);transition:all 0.3s ease;}
-    .report-item:last-child{border-bottom:none;}
-    .report-item:hover{background-color:var(--gray-700);padding-left:2rem;}
-    .report-info{display:flex;align-items:center;gap:1.5rem;flex:1;}
-    .report-icon{font-size:2rem;flex-shrink:0;}
-    .report-details{flex:1;}
-    .report-name{font-size:1.125rem;font-weight:600;color:var(--white);margin-bottom:0.25rem;}
-    .report-description{font-size:0.9rem;color:var(--gray-400);line-height:1.4;}
-    .report-link{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background-color:transparent;border:2px solid var(--red-primary);color:var(--red-primary);border-radius:0.5rem;font-size:0.875rem;font-weight:600;text-decoration:none;transition:all 0.3s ease;flex-shrink:0;}
-    .report-link:hover{background-color:var(--red-primary);color:var(--white);transform:translateX(5px);box-shadow:0 5px 15px rgba(220,20,60,0.3);}
-
-    .footer{padding:3rem 3.3%;background-color:var(--gray-900);border-top:1px solid var(--gray-700);text-align:center;}
-    .footer p{color:var(--gray-400);font-size:0.95rem;}
-    @media (max-width: 768px) {
-      .hero-title {font-size:2.5rem;}
-      .hero-section {min-height:500px;}
-      .section-title {font-size:2rem;}
-      .context-content,.reports-content{padding:2rem;}
-      .report-item{flex-direction:column;align-items:flex-start;gap:1rem;}
-      .report-info{flex-direction:column;align-items:flex-start;gap:1rem;}
-      .report-link{width:100%;justify-content:center;}
-      .competences-grid{grid-template-columns:1fr;}
-      .nav-logo{font-size:1.2rem;}
-      .navbar{padding:1rem 5%;}
-      .hero-section,.context-section,.competences-section,.reports-section{padding:3rem 5%;}
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg-main); color: var(--text-main); font-family: 'Poppins', sans-serif; line-height: 1.7; font-weight: 300; overflow-x: hidden; transition: background-color 0.3s, color 0.3s; }
+    .navbar { position: fixed; top: 0; width: 100%; background: var(--nav-bg); backdrop-filter: blur(12px); padding: 1rem 5%; z-index: 100; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; transition: background 0.3s, border-color 0.3s; }
+    .nav-logo { font-size: 1.2rem; font-weight: 500; color: var(--text-main); text-decoration: none; letter-spacing: 1px; }
+    .nav-logo span { color: var(--accent-color); font-weight: 600; }
+    .nav-actions { display: flex; align-items: center; gap: 20px; }
+    .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.3s; display: flex; align-items: center; gap: 8px; }
+    .nav-back:hover { color: var(--accent-color); }
+    .theme-toggle { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.2rem; transition: all 0.3s; }
+    .theme-toggle:hover { border-color: var(--accent-color); transform: scale(1.05); }
+    
+    .hero { min-height: 80vh; padding: 120px 5% 50px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .hero-tag { display: inline-block; padding: 6px 16px; background: var(--accent-light); border-radius: 30px; font-size: 0.85rem; font-weight: 500; color: var(--accent-color); text-transform: uppercase; margin-bottom: 2rem; }
+    .hero-title { font-size: 3.5rem; font-weight: 600; line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: -1px; color: var(--text-main); }
+    .hero-subtitle { font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 3rem; }
+    
+    .tech-stack { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .tech-item { padding: 8px 18px; background: var(--tech-bg); border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--text-muted); transition: all 0.3s; }
+    .tech-item:hover { background: var(--accent-color); color: white; }
+    
+    .content-section { max-width: 1200px; margin: 0 auto; padding: 4rem 5%; }
+    .section-title { font-size: 2.2rem; font-weight: 600; margin-bottom: 3rem; text-align: center; color: var(--text-main); }
+    .section-title span { color: var(--accent-color); }
+    
+    .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; }
+    .card:hover { border-color: var(--accent-color); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+    .card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-main); }
+    .card p { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; }
+    
+    .card ul { list-style: none; padding-left: 0; margin-top: 1rem; }
+    .card li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; color: var(--text-muted); font-size: 0.95rem; }
+    .card li::before { content: '→'; position: absolute; left: 0; color: var(--accent-color); font-weight: bold; }
+    .card strong { color: var(--text-main); font-weight: 500; }
+    .competence-badge { display: inline-block; padding: 4px 12px; background: var(--accent-light); color: var(--accent-color); border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+    
+    .livrables-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .livrable-item { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--shadow-soft); transition: all 0.3s; }
+    .livrable-item:hover { border-color: var(--accent-color); box-shadow: var(--shadow-hover); }
+    .livrable-info h4 { font-size: 1.15rem; font-weight: 600; color: var(--text-main); }
+    .livrable-info p { font-size: 0.95rem; color: var(--text-muted); margin-top: 5px; }
+    
+    .btn-download { padding: 10px 24px; background: var(--accent-color); color: white; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.3s; text-align: center; }
+    .btn-download:hover { background: #b01030; transform: translateY(-2px); }
+    
+    footer { text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid var(--border-color); margin-top: 4rem; background: var(--bg-main); }
+    @media (max-width: 768px) { .hero-title { font-size: 2.5rem; } .livrable-item { flex-direction: column; align-items: flex-start; gap: 1.5rem; } .btn-download { width: 100%; } }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
+
   <nav class="navbar">
-    <div class="nav-content">
-      <a href="index.html" class="nav-logo">Portfolio Nikauly</a>
-      <a href="index.html" class="nav-back"><span>←</span><span>Retour</span></a>
+    <a href="index.html" class="nav-logo">Nikauly <span>.</span></a>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème">🌙</button>
+      <a href="index.html" class="nav-back">← Retour</a>
     </div>
   </nav>
-  
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <img src="photo_site_stage_1.png" alt="Produits Artisanaux Palestiniens" class="hero-bg-image">
-    
-    <div class="hero-content">
-      <div class="project-category">
-        <span class="category-tag">Web</span>
-        <span class="category-tag">Stage</span>
-      </div>
-      <h1 class="hero-title"><span class="title-highlight">Produits Artisanaux Palestiniens</span></h1>
+
+  <main>
+    <section class="hero">
+      <div class="hero-tag">Stage 1ère Année</div>
+      <h1 class="hero-title">Artisans Palestiniens</h1>
       <p class="hero-subtitle">
-        Site web de valorisation de produits artisanaux réalisé pour une association durant mon stage, de la DA à la mise en ligne, en passant par la collecte et la gestion des contenus réels.
+        Site web de valorisation de produits artisanaux réalisé pour une association durant mon stage, de la conception graphique (DA) à la mise en ligne, en passant par la collecte et la gestion des contenus réels.
       </p>
-      <div class="project-tech">
-        <span class="tech-badge">HTML</span>
-        <span class="tech-badge">CSS</span>
-        <span class="tech-badge">JavaScript</span>
-        <span class="tech-badge">GitHub</span>
+      <div class="tech-stack">
+        <span class="tech-item">HTML5</span>
+        <span class="tech-item">CSS3</span>
+        <span class="tech-item">JavaScript</span>
+        <span class="tech-item">GitHub Pages</span>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Context Section -->
-  <section class="context-section">
-    <div class="context-container">
-      <div class="section-header">
-        <h2 class="section-title">Description & <span class="text-red">Contexte</span></h2>
-        <p class="section-subtitle">Mise en situation et objectifs du projet</p>
-      </div>
-      <div class="context-content">
-        <h3>Contexte</h3>
-        <p>
-          Ce site a été conçu pour un groupe associatif de soutien aux artisans palestiniens, sur la demande du CCFD et SGAP38.<br/>
-          Objectif : Mettre en avant le savoir-faire local, améliorer la visibilité des artisans et faciliter la découverte des produits.
-        </p>
-        <h3>Objectifs et missions</h3>
-        <ul>
-          <li>Conception graphique (charte, DA), maquettage de toutes les vues (a la main)</li>
-          <li>Développement complet HTML/CSS/JavaScript, optimisation responsive/mobile</li>
-          <li>Collecte des informations/photos produits pendant le stage</li>
-          <li>Déploiement et publication (GitHub Pages, documentation utilisateur)</li>
-        </ul>
-        <h3>Collaboration client</h3>
-        <p>
-          Travail en autonomie et avec échanges réguliers avec les commanditaires. L'ensemble des livrables, sources, images, guides utilisateurs sont mis à disposition sur GitHub.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Competences Section - MODIFIÉ AVEC LES 6 COMPÉTENCES OFFICIELLES -->
-  <section class="competences-section">
-    <div class="competences-container">
-      <div class="section-header">
-        <h2 class="section-title">Compétences <span class="text-red">BTS SIO mobilisées</span></h2>
-        <p class="section-subtitle">Référentiel des compétences mises en œuvre</p>
-      </div>
-      <div class="competences-grid">
-        
-        <!-- Compétence 2 : Répondre aux incidents -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 2</span>
-          <h3 class="competence-title">Répondre aux incidents et aux demandes d'assistance et d'évolution</h3>
-          <p class="competence-description">
-            <strong>Traiter des demandes concernant les applications :</strong> Analyse et prise en compte des demandes client (ajouts de fonctionnalités, évolution du site). Communication écrite et orale adaptée avec les commanditaires. Compte-rendu des actions réalisées.
-          </p>
+    <!-- Détails du projet -->
+    <section class="content-section scroll-reveal" style="padding-top: 0;">
+      <h2 class="section-title">Le <span>Projet</span></h2>
+      <div class="grid-container">
+        <div class="card">
+          <h3>Contexte</h3>
+          <p>Ce site a été conçu pour un groupe associatif de soutien aux artisans palestiniens, sur la demande du CCFD et SGAP38. Objectif : Mettre en avant le savoir-faire local, améliorer la visibilité des artisans et faciliter la découverte des produits.</p>
         </div>
-
-        <!-- Compétence 3 : Développer la présence en ligne -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 3</span>
-          <h3 class="competence-title">Développer la présence en ligne de l'organisation</h3>
-          <p class="competence-description">
-            <strong>Participer à la valorisation de l'image de l'organisation :</strong> Conception graphique (charte, DA) pour valoriser l'image des artisans palestiniens. Les médias numériques de l'organisation sont visibles et conformes aux attentes. Les enjeux économiques de la valorisation de l'image sont identifiés.
-            <br><br>
-            <strong>Participer à l'évolution d'un site Web :</strong> Développement complet HTML/CSS/JavaScript, optimisation responsive/mobile exploitant les données de l'organisation (produits, artisans).
-          </p>
+        <div class="card">
+          <h3>Objectifs et missions</h3>
+          <ul>
+            <li>Conception graphique (charte, DA), maquettage de toutes les vues (à la main).</li>
+            <li>Développement complet HTML/CSS/JavaScript, optimisation responsive/mobile.</li>
+            <li>Collecte des informations/photos produits pendant le stage.</li>
+            <li>Déploiement et publication (GitHub Pages, documentation utilisateur).</li>
+          </ul>
         </div>
-
-        <!-- Compétence 4 : Travailler en mode projet -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 4</span>
-          <h3 class="competence-title">Travailler en mode projet</h3>
-          <p class="competence-description">
-            <strong>Analyser les objectifs et modalités d'organisation :</strong> Recueil et formalisation des besoins client, élaboration et validation des maquettes (DA). L'organisation projet est explicitée. L'analyse du besoin et de l'existant est pertinente.
-            <br><br>
-            <strong>Planifier les activités :</strong> Organisation de toutes les tâches, reporting hebdomadaire. Les activités personnelles sont planifiées de façon formelle, l'avancée est documentée. Le projet est documenté et les livrables sont conformes.
-          </p>
+        <div class="card">
+          <h3>Collaboration client</h3>
+          <p>Travail en autonomie et avec échanges réguliers avec les commanditaires. L'ensemble des livrables, sources, images, guides utilisateurs sont mis à disposition sur GitHub.</p>
         </div>
-
-        <!-- Compétence 5 : Mettre à disposition -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 5</span>
-          <h3 class="competence-title">Mettre à disposition des utilisateurs un service informatique</h3>
-          <p class="competence-description">
-            <strong>Réaliser les tests d'intégration et d'acceptation :</strong> Vérification du responsive, tests multi-appareils et corrections d'anomalies. Les tests sont rédigés et leur exécution est documentée.
-            <br><br>
-            <strong>Déployer un service :</strong> Déploiement et publication (GitHub Pages). Le service déployé est opérationnel et conforme aux attentes.
-            <br><br>
-            <strong>Accompagner les utilisateurs :</strong> Réalisation d'une documentation utilisateur pour la mise en place du service.
-          </p>
-        </div>
-
-        <!-- Compétence 6 : Organiser son développement professionnel -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 6</span>
-          <h3 class="competence-title">Organiser son développement professionnel</h3>
-          <p class="competence-description">
-            <strong>Mettre en place son environnement d'apprentissage :</strong> Utilisation de GitHub et d'outils graphiques (Figma) pour la mise en production, gestion de version. L'environnement d'apprentissage personnel est délimité et expliqué.
-            <br><br>
-            <strong>Développer son projet professionnel :</strong> Développement complet front (HTML, CSS, JS), organisation en composants modulaires. Travail en autonomie avec échanges réguliers avec les commanditaires. Les besoins de formation sont identifiés pour mettre à disposition le service.
-          </p>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Reports Section -->
-  <section class="reports-section">
-    <div class="reports-container">
-      <div class="section-header">
-        <h2 class="section-title">Livrables & <span class="text-red">Documentation</span></h2>
-        <p class="section-subtitle">Documents et ressources disponibles</p>
+    <!-- Compétences -->
+    <section class="content-section scroll-reveal">
+      <h2 class="section-title">Compétences <span>BTS SIO</span></h2>
+      <div class="grid-container">
+        <div class="card">
+          <span class="competence-badge">Compétence 2</span>
+          <h3>Répondre aux incidents et évolutions</h3>
+          <p><strong>Traiter des demandes :</strong> Analyse et prise en compte des demandes client (ajouts de fonctionnalités, évolution du site). Communication écrite et orale adaptée avec les commanditaires. Compte-rendu des actions réalisées.</p>
+        </div>
+        <div class="card">
+          <span class="competence-badge">Compétence 3</span>
+          <h3>Développer la présence en ligne</h3>
+          <p><strong>Participer à la valorisation de l'image :</strong> Conception graphique (charte, DA) pour valoriser l'image des artisans. Les médias numériques sont visibles et conformes.<br><strong>Évolution d'un site Web :</strong> Développement complet HTML/CSS/JS, optimisation responsive/mobile exploitant les données de l'organisation.</p>
+        </div>
+        <div class="card">
+          <span class="competence-badge">Compétence 4</span>
+          <h3>Travailler en mode projet</h3>
+          <p><strong>Analyser et Planifier :</strong> Recueil et formalisation des besoins client, élaboration et validation des maquettes. Organisation de toutes les tâches, reporting hebdomadaire. Le projet est documenté et les livrables sont conformes.</p>
+        </div>
+        <div class="card">
+          <span class="competence-badge">Compétence 5 & 6</span>
+          <h3>Service et Développement Pro</h3>
+          <p><strong>Tests et Déploiement :</strong> Vérification du responsive, tests multi-appareils et corrections. Déploiement via GitHub Pages.<br><strong>Environnement d'apprentissage :</strong> Utilisation de GitHub et d'outils graphiques (Figma). Développement complet front-end organisé en modules.</p>
+        </div>
       </div>
-      <div class="reports-content">
-        <ul class="reports-list">
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Comptes rendu semaine 1</div>
-                <div class="report-description"></div>
-              </div>
-            </div>
-            <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine1.pdf" class="report-link"><span>Télécharger compte rendu</span><span>→</span></a>
-          </li>
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Comptes rendu semaine 2</div>
-                <div class="report-description"></div>
-              </div>
-            </div>
-            <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine2.pdf" class="report-link"><span>Télécharger compte rendu</span><span>→</span></a>
-          </li>
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Comptes rendu semaine 3</div>
-                <div class="report-description"></div>
-              </div>
-            </div>
-            <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine3.pdf" class="report-link"><span>Télécharger compte rendu</span><span>→</span></a>
-          </li>
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Rapport de stage</div>
-                <div class="report-description"></div>
-              </div>
-            </div>
-            <a href="comptes_rendus_stage1/Dejesusvizcaino_nikauly_1SLAM_2025_Stage_1_Rapport.pdf" class="report-link"><span>Télécharger rapport</span><span>→</span></a>
-          </li>
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Photos et informations produits</div>
-                <div class="report-description">Photos en haute qualité et données (prix, catégories, provenance) collectées durant le stage.</div>
-              </div>
-            </div>
-            <a href="2025 - Fichiers commandes et stock (3).pdf" class="report-link"><span>Télécharger</span><span>→</span></a>
-          </li>
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Code source GitHub</div>
-                <div class="report-description">Accès public au code et à l'ensemble des ressources : <a style="color:#DC143C;" href="https://github.com/Nikoletone/v_finale_2" target="_blank">Voir le repo</a></div>
-              </div>
-            </div>
-            <a href="https://github.com/Nikoletone/v_finale_2" class="report-link" target="_blank"><span>Voir GitHub</span><span>→</span></a>
-          </li>
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Démo publique</div>
-                <div class="report-description">Site en production : <a style="color:#DC143C;" href="https://nikoletone.github.io/stage/" target="_blank">Voir la démo</a></div>
-              </div>
-            </div>
-            <a href="https://nikoletone.github.io/v_finale_2/" class="report-link" target="_blank"><span>Démonstration</span><span>→</span></a>
-          </li>
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Documentations & README</div>
-                <div class="report-description">Notice utilisateur, consignes d'installation, organisation des dossiers, explications pour la maintenance du site.</div>
-              </div>
-            </div>
-            <a href="#" class="report-link"><span>Télécharger</span><span>→</span></a>
-          </li>
-        </ul>
+    </section>
+
+    <!-- Livrables -->
+    <section class="content-section scroll-reveal">
+      <h2 class="section-title">Livrables & <span>Documentation</span></h2>
+      <div class="livrables-list">
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Rapport de stage</h4>
+            <p>Détail complet du déroulement de mon stage et bilan.</p>
+          </div>
+          <a href="comptes_rendus_stage1/Dejesusvizcaino_nikauly_1SLAM_2025_Stage_1_Rapport.pdf" target="_blank" class="btn-download">PDF</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Comptes rendus hebdomadaires</h4>
+            <p>Suivi détaillé de mes activités (Semaine 1, 2, et 3).</p>
+          </div>
+          <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine1.pdf" target="_blank" class="btn-download">PDF 1</a>
+          <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine2.pdf" target="_blank" class="btn-download">PDF 2</a>
+          <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine3.pdf" target="_blank" class="btn-download">PDF 3</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Code source GitHub</h4>
+            <p>Accès public au code et à l'ensemble des ressources.</p>
+          </div>
+          <a href="https://github.com/Nikoletone/v_finale_2" target="_blank" class="btn-download">GitHub</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Démo publique</h4>
+            <p>Site en production hébergé sur GitHub Pages.</p>
+          </div>
+          <a href="https://nikoletone.github.io/v_finale_2/" target="_blank" class="btn-download">Voir la démo</a>
+        </div>
       </div>
-    </div>
-  </section>
-  <footer class="footer"><p>&copy; 2025 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p></footer>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
   <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlEl.setAttribute('data-theme', savedTheme);
+    toggleBtn.innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlEl.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlEl.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      toggleBtn.innerHTML = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+
     gsap.registerPlugin(ScrollTrigger);
-    gsap.utils.toArray('.report-item').forEach((item, index) => {
-      gsap.from(item, {
-        x: -30,
-        opacity: 0,
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: item,
-          start: "top 90%",
-          once: true
-        }
-      });
-    });
-    gsap.utils.toArray('.competence-card').forEach(card => {
-      gsap.from(card, {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: card,
-          start: "top 85%",
-          once: true
-        }
-      });
-    });
-    gsap.from('.context-content', {
-      y: 40,
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: '.context-content',
-        start: "top 80%",
-        once: true
-      }
+    gsap.from('.hero-title, .hero-subtitle, .hero-tag', { y: 40, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power3.out" });
+    gsap.from('.tech-item', { scale: 0.8, opacity: 0, duration: 0.6, stagger: 0.1, ease: "back.out(1.7)", delay: 0.5 });
+    gsap.utils.toArray('.scroll-reveal').forEach(section => {
+      gsap.from(section, { y: 60, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 80%", once: true } });
     });
   </script>
 </body>

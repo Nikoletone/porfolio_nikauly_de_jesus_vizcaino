@@ -1,1540 +1,665 @@
 <!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio Nikauly - BTS SIO SLAM</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap");
-
-      :root {
-        /* Palette Rouge & Noir */
-        --red-primary: #dc143c;
-        --red-dark: #8b0000;
-        --red-accent: #ff4500;
-        --black: #000000;
-        --gray-900: #141414;
-        --gray-800: #1a1a1a;
-        --gray-700: #2a2a2a;
-        --gray-500: #666666;
-        --gray-400: #999999;
-        --gray-100: #f5f5f5;
-        --white: #ffffff;
-        --border-radius--xlarge: 2rem;
-        --border-radius--medium: 1.25rem;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      html,
-      body {
-        width: 100%;
-        height: 100%;
-        font-family: "Poppins", sans-serif;
-        background-color: var(--black);
-      }
-
-      /* NAVIGATION FIXE */
-      .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: rgba(20, 20, 20, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 1rem 3.3%;
-        z-index: 1000;
-        border-bottom: 1px solid var(--gray-700);
-        transition: all 0.3s ease;
-      }
-
-      .navbar.scrolled {
-        padding: 0.7rem 3.3%;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-      }
-
-      .nav-container {
-        max-width: 120rem;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .nav-logo {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--white);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .nav-logo span {
-        color: var(--red-primary);
-      }
-
-      .nav-menu {
-        display: flex;
-        gap: 2.5rem;
-        align-items: center;
-        list-style: none;
-      }
-
-      .nav-menu a {
-        color: var(--gray-400);
-        text-decoration: none;
-        font-size: 0.95rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        position: relative;
-        padding: 0.5rem 0;
-      }
-
-      .nav-menu a::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, var(--red-dark), var(--red-accent));
-        transition: width 0.3s ease;
-      }
-
-      .nav-menu a:hover {
-        color: var(--white);
-      }
-
-      .nav-menu a:hover::after {
-        width: 100%;
-      }
-
-      .nav-menu a.active {
-        color: var(--red-primary);
-      }
-
-      /* Hamburger Menu Mobile */
-      .hamburger {
-        display: none;
-        flex-direction: column;
-        gap: 0.4rem;
-        cursor: pointer;
-        z-index: 1001;
-      }
-
-      .hamburger span {
-        width: 25px;
-        height: 3px;
-        background-color: var(--white);
-        transition: all 0.3s ease;
-        border-radius: 2px;
-      }
-
-      .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(8px, 8px);
-      }
-
-      .hamburger.active span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -7px);
-      }
-
-      .intro-wrapper {
-        position: relative;
-        height: 90vh;
-        background-color: var(--gray-900);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 70px;
-      }
-
-      .text-align-center {
-        max-width: 600px;
-        text-align: center;
-        padding: 20px;
-      }
-
-      .heading-style-h3 {
-        font-size: 2.8125rem;
-        font-weight: 500;
-        line-height: 1;
-        margin-bottom: 1rem;
-        color: var(--white);
-      }
-
-      .light-green-underline {
-        display: inline-block;
-        color: var(--red-primary);
-        border-bottom: 3px solid var(--red-accent);
-        padding-bottom: 4px;
-      }
-
-      p {
-        color: var(--gray-400);
-        font-size: 1.125rem;
-        margin-bottom: 2rem;
-      }
-
-      sup {
-        font-size: 0.75rem;
-      }
-
-      .section_tabs {
-        background-color: var(--gray-900);
-        border-radius: var(--border-radius--xlarge);
-        position: relative;
-      }
-
-      .padding-section-large {
-        padding: 7rem 0;
-      }
-
-      .tabs_height {
-        height: 250vh;
-      }
-
-      .tabs_sticky-wrapper {
-        height: 100vh;
-        position: sticky;
-        top: 5vh;
-      }
-
-      .tabs_container {
-        max-width: 120rem;
-        margin: 0 auto;
-      }
-
-      .tabs_component {
-        height: 90vh;
-        display: grid;
-        grid-template-columns: 1fr 0.5fr;
-        gap: 1.5rem;
-        padding: 0 3.3%;
-      }
-
-      .tabs_left {
-        background-color: var(--gray-800);
-        border-radius: var(--border-radius--medium);
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-      }
-
-      .tabs_left-top {
-        height: 100%;
-        position: relative;
-      }
-
-      .tabs_let-content {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        text-align: center;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-      }
-
-      .tabs_let-content.is-1 {
-        opacity: 1;
-      }
-
-      .heading-style-h4 {
-        font-size: 2.125rem;
-        font-weight: 500;
-        line-height: 1.05;
-        color: var(--gray-100);
-        margin-bottom: 1rem;
-      }
-
-      .text-color-red {
-        color: var(--red-primary);
-      }
-
-      .tabs_line {
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--red-dark),
-          transparent
-        );
-        margin: 1rem 0;
-      }
-
-      .text-size-small {
-        font-size: 1rem;
-        color: var(--gray-400);
-        line-height: 1.6;
-      }
-
-      .button a {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.3rem;
-        padding: 0.6rem 1.2rem;
-        background-color: transparent;
-        border: 2px solid var(--red-primary);
-        color: var(--white);
-        border-radius: 0.5rem;
-        font-size: 0.875rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.03em;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        margin-top: 1rem;
-        position: relative;
-        overflow: hidden;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .button::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 100%;
-        background-color: var(--red-primary);
-        transition: width 0.3s ease;
-        z-index: -1;
-      }
-
-      .button:hover::before {
-        width: 100%;
-      }
-
-      .button:hover {
-        color: var(--white);
-        border-color: var(--red-accent);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
-      }
-
-      .tabs_right {
-        position: relative;
-        border-radius: var(--border-radius--medium);
-        overflow: hidden;
-        background-color: var(--gray-700);
-      }
-
-      .tabs_video {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        border-radius: var(--border-radius--medium);
-        opacity: 0;
-        transition: opacity 0.6s ease;
-      }
-
-      .tabs_video.is-1 {
-        opacity: 1;
-      }
-
-      .tabs_video img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: var(--border-radius--medium);
-      }
-
-      .tabs_video-badge {
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-        width: 5rem;
-        z-index: 10;
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-      }
-
-      /* Section Compétences */
-      .section_skills {
-        background-color: var(--black);
-        padding: 7rem 3.3%;
-        position: relative;
-      }
-
-      .skills-container {
-        max-width: 120rem;
-        margin: 0 auto;
-      }
-
-      .skills-header {
-        text-align: center;
-        margin-bottom: 4rem;
-      }
-
-      .heading-style-h2 {
-        font-size: 3rem;
-        font-weight: 600;
-        color: var(--white);
-        margin-bottom: 1rem;
-      }
-
-      .skills-subtitle {
-        font-size: 1.25rem;
-        color: var(--gray-400);
-      }
-
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-      }
-
-      .skill-category {
-        background-color: var(--gray-800);
-        border-radius: var(--border-radius--medium);
-        padding: 2rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 1px solid var(--gray-700);
-        cursor: pointer;
-      }
-
-      .skill-category:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(220, 20, 60, 0.25);
-        border-color: var(--red-primary);
-      }
-
-      .category-icon {
-        display: none;
-      }
-
-      .category-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--white);
-        margin-bottom: 1.5rem;
-      }
-
-      .skills-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-      }
-
-      .skill-item {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .skill-name {
-        font-size: 0.95rem;
-        color: var(--gray-100);
-        font-weight: 500;
-        margin-bottom: 0.3rem;
-      }
-
-      .skill-bar-container {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .skill-indicator {
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: var(--gray-500);
-        min-width: 1rem;
-        text-align: center;
-      }
-
-      .skill-bar {
-        width: 100%;
-        height: 8px;
-        background-color: var(--gray-700);
-        border-radius: 10px;
-        overflow: hidden;
-        position: relative;
-      }
-
-      .skill-progress {
-        height: 100%;
-        background: linear-gradient(90deg, var(--red-dark), var(--red-primary));
-        border-radius: 10px;
-        transition: width 1s ease;
-        box-shadow: 0 0 10px rgba(220, 20, 60, 0.5);
-      }
-
-      /* Section Projets Personnels */
-      .section_projects {
-        background-color: var(--gray-900);
-        padding: 7rem 3.3%;
-        position: relative;
-      }
-
-      .projects-container {
-        max-width: 120rem;
-        margin: 0 auto;
-      }
-
-      .projects-header {
-        text-align: center;
-        margin-bottom: 4rem;
-      }
-
-      .projects-subtitle {
-        font-size: 1.25rem;
-        color: var(--gray-400);
-      }
-
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-        gap: 2.5rem;
-        max-width: 120rem;
-        margin: 0 auto;
-        padding: 0 3.3%;
-      }
-
-      .project-card {
-        background-color: var(--gray-800);
-        border-radius: var(--border-radius--medium);
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 1px solid var(--gray-700);
-        cursor: pointer;
-      }
-
-      .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(220, 20, 60, 0.25);
-        border-color: var(--red-primary);
-      }
-
-      .project-image {
-        position: relative;
-        width: 100%;
-        height: 250px;
-        overflow: hidden;
-      }
-
-      .project-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-      }
-
-      .project-card:hover .project-image img {
-        transform: scale(1.1);
-      }
-
-      .project-overlay {
-        position: absolute;
-        top: 1rem;
-        left: 1rem;
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-      }
-
-      .project-tag {
-        background-color: rgba(220, 20, 60, 0.9);
-        color: var(--white);
-        padding: 0.4rem 0.8rem;
-        border-radius: 0.5rem;
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-
-      .project-content {
-        padding: 2rem;
-      }
-
-      .project-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--white);
-        margin-bottom: 1rem;
-      }
-
-      .project-description {
-        font-size: 0.95rem;
-        color: var(--gray-400);
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-      }
-
-      .project-tech {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .project-tech span {
-        background-color: var(--gray-700);
-        color: var(--gray-100);
-        padding: 0.4rem 0.8rem;
-        border-radius: 0.4rem;
-        font-size: 0.8rem;
-        font-weight: 500;
-      }
-
-      .project-link {
-        display: inline-flex;
-        align-items: center;
-        color: var(--red-primary);
-        font-weight: 600;
-        font-size: 0.95rem;
-        text-decoration: none;
-        transition: all 0.3s ease;
-      }
-
-      .project-link:hover {
-        color: var(--red-accent);
-        transform: translateX(5px);
-      }
-
-      /* Section Veille Technologique */
-      .section_veille {
-        background-color: var(--gray-900);
-        padding: 7rem 3.3%;
-        position: relative;
-      }
-
-      .veille-container {
-        max-width: 120rem;
-        margin: 0 auto;
-      }
-
-      .veille-card {
-        background-color: var(--gray-800);
-        border-radius: var(--border-radius--medium);
-        overflow: hidden;
-        border: 1px solid var(--gray-700);
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .veille-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(220, 20, 60, 0.25);
-        border-color: var(--red-primary);
-      }
-
-      .veille-image {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        min-height: 400px;
-        overflow: hidden;
-      }
-
-      .veille-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-      }
-
-      .veille-card:hover .veille-image img {
-        transform: scale(1.05);
-      }
-
-      .veille-content {
-        padding: 3rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      .veille-badge {
-        display: inline-block;
-        background-color: rgba(220, 20, 60, 0.9);
-        color: var(--white);
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-bottom: 1.5rem;
-        width: fit-content;
-      }
-
-      .veille-title {
-        font-size: 2rem;
-        font-weight: 600;
-        color: var(--white);
-        margin-bottom: 1.5rem;
-        line-height: 1.2;
-      }
-
-      .veille-description {
-        font-size: 1rem;
-        color: var(--gray-400);
-        line-height: 1.7;
-        margin-bottom: 2rem;
-      }
-
-      .veille-stats {
-        display: flex;
-        gap: 2rem;
-        margin-bottom: 2rem;
-        flex-wrap: wrap;
-      }
-
-      .veille-stat {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .veille-stat-number {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: var(--red-primary);
-      }
-
-      .veille-stat-label {
-        font-size: 0.85rem;
-        color: var(--gray-500);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-
-      .veille-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.8rem 1.5rem;
-        background-color: transparent;
-        border: 2px solid var(--red-primary);
-        color: var(--white);
-        border-radius: 0.5rem;
-        font-size: 0.95rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        width: fit-content;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .veille-link::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 100%;
-        background-color: var(--red-primary);
-        transition: width 0.3s ease;
-        z-index: -1;
-      }
-
-      .veille-link:hover::before {
-        width: 100%;
-      }
-
-      .veille-link:hover {
-        border-color: var(--red-accent);
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(220, 20, 60, 0.3);
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        .nav-menu {
-          position: fixed;
-          top: 70px;
-          right: -100%;
-          width: 70%;
-          height: calc(100vh - 70px);
-          background-color: rgba(20, 20, 20, 0.98);
-          flex-direction: column;
-          justify-content: flex-start;
-          padding: 2rem;
-          gap: 1.5rem;
-          transition: right 0.3s ease;
-          border-left: 1px solid var(--gray-700);
-        }
-
-        .nav-menu.active {
-          right: 0;
-        }
-
-        .hamburger {
-          display: flex;
-        }
-
-        /* MODIFICATION STRUCTURE TABS SUR MOBILE */
-        .tabs_component {
-          grid-template-columns: 1fr;
-          gap: 0;
-          height: auto;
-        }
-
-        /* Photo en premier */
-        .tabs_right {
-          order: 1;
-          min-height: 400px;
-        }
-
-        /* Contenu texte après */
-        .tabs_left {
-          order: 2;
-          padding: 2rem 1.5rem;
-        }
-
-        /* Bouton CV responsive */
-        .button {
-          padding: 0.75rem 1.5rem;
-          font-size: 0.8rem;
-          width: 100%;
-          max-width: 280px;
-          text-align: center;
-          margin-top: 1.5rem;
-        }
-
-        .button span {
-          display: inline;
-        }
-
-        .heading-style-h3 {
-          font-size: 2rem;
-        }
-
-        .heading-style-h4 {
-          font-size: 1.5rem;
-        }
-
-        .tabs_height {
-          height: auto;
-        }
-
-        .tabs_sticky-wrapper {
-          position: relative;
-          height: auto;
-        }
-
-        .skills-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .heading-style-h2 {
-          font-size: 2rem;
-        }
-
-        .section_skills {
-          padding: 4rem 5%;
-        }
-
-        .projects-grid {
-          grid-template-columns: 1fr;
-          padding: 0 5%;
-        }
-
-        .section_projects {
-          padding: 4rem 5%;
-        }
-
-        .veille-card {
-          grid-template-columns: 1fr;
-        }
-
-        .veille-image {
-          min-height: 300px;
-        }
-
-        .veille-content {
-          padding: 2rem;
-        }
-
-        .veille-title {
-          font-size: 1.5rem;
-        }
-
-        .section_veille {
-          padding: 4rem 5%;
-        }
-      }
-
-      /* Pour très petits écrans */
-      @media (max-width: 480px) {
-        .button {
-          padding: 0.6rem 1rem;
-          font-size: 0.75rem;
-          max-width: 240px;
-        }
-
-        .heading-style-h3 {
-          font-size: 1.75rem;
-        }
-
-        .text-align-center {
-          padding: 15px;
-        }
-
-        .tabs_right {
-          min-height: 350px;
-        }
-
-        .tabs_left {
-          padding: 1.5rem 1rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- NAVIGATION FIXE -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="#about" class="nav-logo">
-          Portfolio <span>Nikauly</span>
-        </a>
-
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Nikauly - BTS SIO SLAM</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+    :root {
+      /* Mode Clair (Par défaut) */
+      --bg-main: #fcfcfc;
+      --bg-card: #ffffff;
+      --border-color: #eaeaea;
+      --text-main: #1a1a1a;
+      --text-muted: #555555;
+      --accent-color: #DC143C;
+      --accent-light: rgba(220, 20, 60, 0.08);
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+      --shadow-hover: 0 12px 35px rgba(0, 0, 0, 0.08);
+      --tech-bg: #f0f0f0;
+      --nav-bg: rgba(255, 255, 255, 0.9);
+      --radius: 1.25rem;
+      --radius-xl: 2rem;
+    }
+
+    [data-theme="dark"] {
+      /* Mode Sombre */
+      --bg-main: #080808;
+      --bg-card: #121212;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #ffffff;
+      --text-muted: #a0a0a0;
+      --accent-light: rgba(220, 20, 60, 0.15);
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.2);
+      --shadow-hover: 0 12px 35px rgba(220, 20, 60, 0.15);
+      --tech-bg: #1a1a1a;
+      --nav-bg: rgba(8, 8, 8, 0.95);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg-main); color: var(--text-main); font-family: 'Poppins', sans-serif; line-height: 1.7; font-weight: 300; overflow-x: hidden; transition: background-color 0.3s, color 0.3s; }
+
+    /* --- NAVIGATION --- */
+    .navbar { position: fixed; top: 0; left: 0; width: 100%; background: var(--nav-bg); backdrop-filter: blur(10px); padding: 1rem 3.3%; z-index: 1000; border-bottom: 1px solid var(--border-color); transition: all 0.3s ease; }
+    .navbar.scrolled { padding: 0.7rem 3.3%; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); }
+    .nav-container { max-width: 120rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { font-size: 1.5rem; font-weight: 600; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+    .nav-logo span { color: var(--accent-color); }
+    
+    .nav-menu { display: flex; gap: 2.5rem; align-items: center; list-style: none; margin-right: 2rem;}
+    .nav-menu a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; position: relative; padding: 0.5rem 0; }
+    .nav-menu a::after { content: ""; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent-color); transition: width 0.3s ease; }
+    .nav-menu a:hover, .nav-menu a.active { color: var(--accent-color); }
+    .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
+
+    .nav-actions { display: flex; align-items: center; gap: 1rem; }
+    .theme-toggle { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.2rem; transition: all 0.3s; }
+    .theme-toggle:hover { border-color: var(--accent-color); transform: scale(1.05); }
+
+    .hamburger { display: none; flex-direction: column; gap: 0.4rem; cursor: pointer; z-index: 1001; padding: 5px; }
+    .hamburger span { width: 25px; height: 3px; background-color: var(--text-main); transition: all 0.3s ease; border-radius: 2px; }
+
+    /* --- SECTION INTRO --- */
+    .intro-wrapper { position: relative; height: 90vh; display: flex; justify-content: center; align-items: center; margin-top: 70px; }
+    .text-align-center { max-width: 600px; text-align: center; padding: 20px; }
+    .heading-style-h3 { font-size: 3rem; font-weight: 600; line-height: 1.2; margin-bottom: 1rem; color: var(--text-main); letter-spacing: -1px; }
+    .light-green-underline { display: inline-block; color: var(--accent-color); }
+    .intro-wrapper p { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 2rem; font-weight: 400; }
+
+    /* --- SECTION A PROPOS (Design original adapté au thème) --- */
+    .section_tabs { background-color: var(--bg-main); position: relative; }
+    .padding-section-large { padding: 7rem 0; }
+    .tabs_height { height: 250vh; } /* Effet sticky original */
+    .tabs_sticky-wrapper { height: 100vh; position: sticky; top: 5vh; }
+    .tabs_container { max-width: 120rem; margin: 0 auto; }
+    .tabs_component { height: 90vh; display: grid; grid-template-columns: 1fr 0.5fr; gap: 1.5rem; padding: 0 3.3%; }
+    
+    .tabs_left { background-color: var(--bg-card); border-radius: var(--radius); padding: 2.5rem; display: flex; flex-direction: column; justify-content: flex-end; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); transition: all 0.3s ease;}
+    .tabs_left-top { height: 100%; position: relative; }
+    .tabs_let-content { width: 100%; height: 100%; position: absolute; top: 0; display: flex; flex-direction: column; justify-content: space-around; text-align: center; }
+    
+    .heading-style-h4 { font-size: 2.125rem; font-weight: 600; line-height: 1.2; color: var(--text-main); margin-bottom: 1rem; }
+    .text-color-red { color: var(--accent-color); }
+    .tabs_line { width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--accent-color), transparent); margin: 1rem 0; }
+    .text-size-small { font-size: 1.05rem; color: var(--text-muted); line-height: 1.8; }
+    
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem; padding: 0.6rem 1.2rem; background-color: transparent; border: 2px solid var(--accent-color); color: var(--text-main); border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.03em; cursor: pointer; transition: all 0.3s ease; margin-top: 1rem; position: relative; overflow: hidden; width: fit-content; margin-left: auto; margin-right: auto; text-decoration: none;}
+    .button::before { content: ""; position: absolute; top: 0; left: 0; width: 0; height: 100%; background-color: var(--accent-color); transition: width 0.3s ease; z-index: -1; }
+    .button:hover::before { width: 100%; }
+    .button:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 5px 15px var(--accent-light); border-color: var(--accent-color);}
+    .button a { text-decoration: none; color: inherit; }
+
+    .tabs_right { position: relative; border-radius: var(--radius); overflow: hidden; background-color: var(--tech-bg); box-shadow: var(--shadow-soft);}
+    .tabs_video { width: 100%; height: 100%; position: absolute; top: 0; left: 0; border-radius: var(--radius); }
+    .tabs_video img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+
+    /* --- SECTION PROJETS --- */
+    .section_projects { padding: 7rem 3.3%; background-color: var(--bg-main); }
+    .projects-header { text-align: center; margin-bottom: 4rem; }
+    .heading-style-h2 { font-size: 2.8rem; font-weight: 600; color: var(--text-main); margin-bottom: 1rem; letter-spacing: -1px; }
+    .heading-style-h2 span { color: var(--accent-color); }
+    .projects-subtitle { font-size: 1.15rem; color: var(--text-muted); }
+    
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 2.5rem; max-width: 120rem; margin: 0 auto; }
+    .project-card { background: var(--bg-card); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); transition: all 0.4s ease; display: flex; flex-direction: column; cursor: pointer;}
+    .project-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); border-color: var(--accent-color); }
+    .project-image { width: 100%; height: 250px; overflow: hidden; position: relative; }
+    .project-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .project-card:hover .project-image img { transform: scale(1.05); }
+    .project-overlay { position: absolute; top: 1rem; left: 1rem; display: flex; gap: 8px; flex-wrap: wrap;}
+    .project-tag { background: var(--accent-color); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .project-content { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
+    .project-title { font-size: 1.4rem; font-weight: 600; color: var(--text-main); margin-bottom: 1rem; }
+    .project-description { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; flex-grow: 1; }
+    .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+    .project-tech span { background: var(--tech-bg); border: 1px solid var(--border-color); color: var(--text-muted); padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 500;}
+    .project-link { color: var(--accent-color); font-weight: 600; text-decoration: none; font-size: 0.95rem; transition: transform 0.3s; display: inline-block; }
+    .project-link:hover { transform: translateX(5px); }
+
+    /* --- SECTION COMPETENCES (Design original adapté) --- */
+    .section_skills { background-color: var(--bg-main); padding: 7rem 3.3%; position: relative; }
+    .skills-container { max-width: 120rem; margin: 0 auto; }
+    .skills-header { text-align: center; margin-bottom: 4rem; }
+    .skills-subtitle { font-size: 1.15rem; color: var(--text-muted); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+    
+    .skill-category { background-color: var(--bg-card); border-radius: var(--radius); padding: 2rem; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); cursor: pointer; }
+    .skill-category:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); border-color: var(--accent-color); }
+    .category-title { font-size: 1.5rem; font-weight: 600; color: var(--text-main); margin-bottom: 1.5rem; }
+    
+    .skills-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .skill-item { display: flex; flex-direction: column; gap: 0.5rem; }
+    .skill-name { font-size: 0.95rem; color: var(--text-main); font-weight: 500; margin-bottom: 0.3rem; }
+    .skill-bar-container { display: flex; align-items: center; gap: 0.5rem; }
+    .skill-indicator { font-size: 0.875rem; font-weight: 600; color: var(--text-muted); min-width: 1rem; text-align: center; }
+    .skill-bar { width: 100%; height: 8px; background-color: var(--tech-bg); border-radius: 10px; overflow: hidden; position: relative; }
+    .skill-progress { height: 100%; background: linear-gradient(90deg, #8b0000, var(--accent-color)); border-radius: 10px; transition: width 1s ease; box-shadow: 0 0 10px var(--accent-light); }
+
+    /* --- SECTION VEILLE --- */
+    .section_veille { padding: 7rem 3.3%; background-color: var(--bg-main); }
+    .veille-card { background: var(--bg-card); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border-color); display: grid; grid-template-columns: 1fr 1fr; box-shadow: var(--shadow-soft); max-width: 120rem; margin: 0 auto; transition: all 0.3s; }
+    .veille-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); border-color: var(--accent-color); }
+    .veille-image { width: 100%; height: 100%; min-height: 400px; overflow: hidden; }
+    .veille-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .veille-card:hover .veille-image img { transform: scale(1.05); }
+    .veille-content { padding: 4rem; display: flex; flex-direction: column; justify-content: center; }
+    .veille-badge { display: inline-block; background: var(--accent-light); color: var(--accent-color); padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; margin-bottom: 1.5rem; width: fit-content; }
+    .veille-title { font-size: 2.2rem; font-weight: 600; color: var(--text-main); margin-bottom: 1.5rem; line-height: 1.2; letter-spacing: -0.5px; }
+    .veille-description { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2.5rem; }
+    .veille-stats { display: flex; gap: 3rem; margin-bottom: 2.5rem; flex-wrap: wrap;}
+    .veille-stat-number { font-size: 2rem; font-weight: 700; color: var(--accent-color); display: block; }
+    .veille-stat-label { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+    footer { text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid var(--border-color); background: var(--bg-card); }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .tabs_component { grid-template-columns: 1fr; height: auto; gap: 2rem;}
+      .tabs_right { min-height: 400px; order: -1; }
+      .tabs_height { height: auto; }
+      .tabs_sticky-wrapper { position: relative; height: auto; }
+      .veille-card { grid-template-columns: 1fr; }
+      .veille-image { min-height: 300px; }
+      .veille-content { padding: 2rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu { position: fixed; top: 70px; right: -100%; width: 100%; height: calc(100vh - 70px); background: var(--nav-bg); flex-direction: column; padding: 3rem; transition: right 0.3s ease; margin-right: 0; align-items: flex-start; border-left: 1px solid var(--border-color);}
+      .nav-menu.active { right: 0; }
+      .hamburger { display: flex; }
+      .heading-style-h3 { font-size: 2.2rem; }
+      .heading-style-h2 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#about" class="nav-logo">Portfolio <span>Nikauly</span></a>
+      <div class="nav-actions">
         <ul class="nav-menu">
           <li><a href="#about">À propos</a></li>
           <li><a href="#projects">Projets</a></li>
           <li><a href="#skills">Compétences</a></li>
           <li><a href="#veille">Veille</a></li>
         </ul>
-
+        <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème">🌙</button>
         <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Section Intro (SANS ID) -->
-    <div class="intro-wrapper">
-      <div class="text-align-center">
-        <div class="max-width-small align-center">
-          <h2 class="heading-style-h3">
-            <span class="light-green-underline">Portfolio</span> Nikauly De
-            Jesus Vizcaino
-          </h2>
-          <p>Étudiante en BTS SIO - option SLAM</p>
+          <span></span><span></span><span></span>
         </div>
       </div>
     </div>
+  </nav>
 
-    <!-- Section Projets avec Tabs (AVEC ID "about") -->
-    <section class="section_tabs" id="about">
-      <div class="padding-section-large">
-        <div class="tabs_height">
-          <div class="tabs_sticky-wrapper">
-            <div class="tabs_container">
-              <div class="tabs_component">
-                <!-- Left Content -->
-                <div class="tabs_left">
-                  <div class="tabs_left-top">
-                    <!-- Tab 1 -->
-                    <div class="tabs_let-content is-1">
-                      <h2 class="heading-style-h4">
-                        À propos de <span class="text-color-red">MOI</span>
-                      </h2>
-                      <div class="tabs_line"></div>
-                      <p class="text-size-small">
-                        Bonjour et bienvenue sur mon site ! Je m'appelle De
-                        Jesus Vizcaino Nikauly, née en République Dominicaine.
-                        Depuis mon plus jeune âge, je suis passionnée par
-                        l'informatique et les technologies qui transforment
-                        notre quotidien. Aujourd'hui, à 23 ans, je poursuis
-                        cette passion en 2ème année de BTS Services
-                        Informatiques aux Organisations (SIO), avec l'ambition
-                        de devenir développeuse de logiciels. J'aime explorer
-                        des horizons variés, tant sur le plan culturel que
-                        professionnel. Mon objectif est de combiner mes
-                        compétences techniques et linguistiques pour créer des
-                        solutions innovantes et accessibles. Merci de visiter
-                        mon site, et n'hésitez pas à me contacter pour discuter
-                        ou collaborer !
-                      </p>
-                    </div>
-                  </div>
+  <!-- Intro -->
+  <div class="intro-wrapper">
+    <div class="text-align-center scroll-reveal">
+      <h2 class="heading-style-h3">
+        <span class="light-green-underline">Portfolio</span> Nikauly De Jesus Vizcaino
+      </h2>
+      <p>Étudiante en BTS SIO - option SLAM</p>
+    </div>
+  </div>
 
-                  <div class="button">
-                    <span
-                      ><a href="Cv Nikauly de Jesus Vizcaino .pdf.pdf"
-                        >Télécharger mon CV</a
-                      ></span
-                    >
-                    <span>→</span>
+  <!-- À propos (Structure Originale avec effet Sticky) -->
+  <section class="section_tabs" id="about">
+    <div class="padding-section-large">
+      <div class="tabs_height">
+        <div class="tabs_sticky-wrapper">
+          <div class="tabs_container">
+            <div class="tabs_component">
+              <!-- Left Content -->
+              <div class="tabs_left">
+                <div class="tabs_left-top">
+                  <div class="tabs_let-content is-1">
+                    <h2 class="heading-style-h4">
+                      À propos de <span class="text-color-red">MOI</span>
+                    </h2>
+                    <div class="tabs_line"></div>
+                    <p class="text-size-small">
+                      Bonjour et bienvenue sur mon site ! Je m'appelle De
+                      Jesus Vizcaino Nikauly, née en République Dominicaine.
+                      Depuis mon plus jeune âge, je suis passionnée par
+                      l'informatique et les technologies qui transforment
+                      notre quotidien. Aujourd'hui, à 23 ans, je poursuis
+                      cette passion en 2ème année de BTS Services
+                      Informatiques aux Organisations (SIO), avec l'ambition
+                      de devenir développeuse de logiciels. J'aime explorer
+                      des horizons variés, tant sur le plan culturel que
+                      professionnel. Mon objectif est de combiner mes
+                      compétences techniques et linguistiques pour créer des
+                      solutions innovantes et accessibles. Merci de visiter
+                      mon site, et n'hésitez pas à me contacter pour discuter
+                      ou collaborer !
+                    </p>
                   </div>
                 </div>
+                <div class="button">
+                  <span><a href="Cv Nikauly de Jesus Vizcaino .pdf.pdf" target="_blank">Télécharger mon CV</a></span>
+                  <span>→</span>
+                </div>
+              </div>
 
-                <!-- Right Images -->
-                <div class="tabs_right">
-                  <!-- Image 1 -->
-                  <div class="tabs_video is-1">
-                    <img
-                      src="photo_portefolio.jpeg"
-                      alt="photo nikauly de jesus vizcaino"
-                    />
-                  </div>
+              <!-- Right Images -->
+              <div class="tabs_right">
+                <div class="tabs_video is-1">
+                  <img src="photo_portefolio.jpeg" alt="photo nikauly de jesus vizcaino" />
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Section Projets -->
-    <section class="section_projects" id="projects">
-      <div class="projects-container">
-        <div class="projects-header">
-          <h2 class="heading-style-h2">
-            Mes <span class="text-color-red">Projets</span>
-          </h2>
-          <p class="projects-subtitle">
-            Réalisations concrètes durant ma formation BTS SIO
+  <!-- Projets -->
+  <section class="section_projects" id="projects">
+    <div class="projects-header scroll-reveal">
+      <h2 class="heading-style-h2">Mes <span>Projets</span></h2>
+      <p class="projects-subtitle">Réalisations concrètes durant ma formation BTS SIO</p>
+    </div>
+
+    <div class="projects-grid">
+      
+      <!-- Projet PapyRus -->
+      <div class="project-card scroll-reveal" onclick="window.location.href='stage2.html'">
+        <div class="project-image">
+          <img src="photo_portefolio.jpeg" alt="App Android" />
+          <div class="project-overlay"><span class="project-tag">Symfony</span></div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">PapyRus</h3>
+          <p class="project-description">Développement de <strong>PapyRus</strong>, une application web sous Symfony intégrant une Intelligence Artificielle pour la transcription et la synthèse automatique de réunions.</p>
+          <div class="project-tech"><span>Symfony</span><span>Python</span><span>JavaScript</span><span>AI</span></div>
+          <a href="stage2.html" class="project-link">Voir le projet →</a>
+        </div>
+      </div>
+
+      <!-- Projet 1: THALI-MINI -->
+      <div class="project-card scroll-reveal" onclick="window.location.href='detail_projet.html'">
+        <div class="project-image">
+          <img src="photo_projet_thali_mini.png" alt="App Android" />
+          <div class="project-overlay"><span class="project-tag">Java</span></div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">THALI-MINI</h3>
+          <p class="project-description">Application Java desktop pour la gestion des mini-excursions d'un centre de thalassothérapie avec architecture DAO et base de données MariaDB.</p>
+          <div class="project-tech"><span>Java</span><span>Desktop</span><span>MariaDB</span><span>CRUD</span></div>
+          <a href="detail_projet.html" class="project-link">Voir le projet →</a>
+        </div>
+      </div>
+
+      <!-- Projet 2: Site Artisans Palestiniens -->
+      <div class="project-card scroll-reveal" onclick="window.location.href='stage1.html'">
+        <div class="project-image">
+          <img src="photo_site_stage_1.png" alt="Site Artisans" />
+          <div class="project-overlay">
+            <span class="project-tag">WEB</span>
+            <span class="project-tag">JavaScript</span>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Site Soutien aux artisans palestiniens</h3>
+          <p class="project-description">Site web de valorisation de produits artisanaux réalisé pour une association durant mon stage, de la DA à la mise en ligne, en passant par la collecte et la gestion des contenus réels.</p>
+          <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <a href="stage1.html" class="project-link">Voir le projet →</a>
+        </div>
+      </div>
+
+      <!-- Projet 3: Site Restaurant R3st0.fr -->
+      <div class="project-card scroll-reveal" onclick="window.location.href='resto.html'">
+        <div class="project-image">
+          <img src="site_resto.png" alt="Site Restaurant" />
+          <div class="project-overlay">
+            <span class="project-tag">Web</span>
+            <span class="project-tag">PHP</span>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">R3st0.fr - Site Web</h3>
+          <p class="project-description">Site web de critique et notation de restaurants développé en équipe selon la méthode Scrum avec itérations, tickets de maintenance et déploiement continu.</p>
+          <div class="project-tech"><span>PHP</span><span>Symfony</span><span>MariaDB</span><span>Scrum</span></div>
+          <a href="resto.html" class="project-link">Voir le projet →</a>
+        </div>
+      </div>
+
+      <!-- Projet 4: Application Android R3st0 -->
+      <div class="project-card scroll-reveal" onclick="window.location.href='projet_android.html'">
+        <div class="project-image">
+          <img src="photo_application_android.png" alt="Application Android R3st0" />
+          <div class="project-overlay">
+            <span class="project-tag">Android</span>
+            <span class="project-tag">API REST</span>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">R3st0 - Application Android</h3>
+          <p class="project-description">Application mobile Android de réservation et consultation de restaurants avec architecture MVC, API REST PHP et consommation JSON. Affichage liste, fiche détaillée, avis et notes moyennes.</p>
+          <div class="project-tech"><span>Java Android</span><span>API REST PHP</span><span>JSON</span><span>GitLab</span></div>
+          <a href="projet_android.html" class="project-link">Voir le projet →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Compétences (Structure Originale Conservée) -->
+  <section class="section_skills" id="skills">
+    <div class="skills-container">
+      <div class="skills-header scroll-reveal">
+        <h2 class="heading-style-h2">Mes <span class="text-color-red">Compétences</span></h2>
+        <p class="skills-subtitle">Technologies et langages que je maîtrise</p>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Frontend -->
+        <div class="skill-category scroll-reveal">
+          <h3 class="category-title">Frontend</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <span class="skill-name">HTML5</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">CSS3 / SCSS</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">JavaScript</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="skill-category scroll-reveal">
+          <h3 class="category-title">Backend</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <span class="skill-name">PHP</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Java</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Python</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile -->
+        <div class="skill-category scroll-reveal">
+          <h3 class="category-title">Mobile</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <span class="skill-name">Java Android</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">XML Layout</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Database -->
+        <div class="skill-category scroll-reveal">
+          <h3 class="category-title">Base de données</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <span class="skill-name">MySQL / MariaDB</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">SQL</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Outils -->
+        <div class="skill-category scroll-reveal">
+          <h3 class="category-title">Outils & IDE</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <span class="skill-name">Git / GitLab</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">VS Code</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Android Studio</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Architecture -->
+        <div class="skill-category scroll-reveal">
+          <h3 class="category-title">Architecture</h3>
+          <div class="skills-list">
+            <div class="skill-item">
+              <span class="skill-name">MVC</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">REST API</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">POO</span>
+              <div class="skill-bar-container">
+                <span class="skill-indicator">-</span>
+                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                <span class="skill-indicator">+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Veille Technologique -->
+  <section class="section_veille" id="veille">
+    <div class="veille-container">
+      <div class="projects-header scroll-reveal">
+        <h2 class="heading-style-h2">Ma <span class="text-color-red">Veille Technologique</span></h2>
+        <p class="projects-subtitle">Analyse approfondie d'une technologie émergente</p>
+      </div>
+
+      <div class="veille-card scroll-reveal">
+        <div class="veille-image">
+          <img src="web_framework.webp" alt="Reflex Python Framework" />
+        </div>
+        <div class="veille-content">
+          <span class="veille-badge">🐍 Framework Python</span>
+          <h3 class="veille-title">Reflex : Applications web full-stack en 100% Python</h3>
+          <p class="veille-description">
+            Framework open-source révolutionnaire permettant de développer des applications web modernes entièrement en Python, sans JavaScript. Avec génération IA intégrée, déploiement en une commande et architecture FastAPI + React compilée, Reflex transforme le développement web Python.
           </p>
+
+          <div class="veille-stats">
+            <div class="veille-stat">
+              <span class="veille-stat-number">27K+</span>
+              <span class="veille-stat-label">⭐ GitHub Stars</span>
+            </div>
+            <div class="veille-stat">
+              <span class="veille-stat-number">1M+</span>
+              <span class="veille-stat-label">Apps créées</span>
+            </div>
+            <div class="veille-stat">
+              <span class="veille-stat-number">100%</span>
+              <span class="veille-stat-label">Python pur</span>
+            </div>
+          </div>
+
+          <a href="veille_techonologique.html" class="button" style="margin:0; box-shadow: none; text-decoration: none;">
+            <span>Découvrir la veille complète</span>
+            <span>→</span>
+          </a>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="projects-grid">
-        <!-- Projet 1: THALI-MINI -->
-        <div class="project-card">
-          <div class="project-image">
-            <img src="photo_projet_thali_mini.png" alt="App Android" />
-            <div class="project-overlay">
-              <span class="project-tag">Java</span>
-            </div>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">THALI-MINI</h3>
-            <p class="project-description">
-              Application Java desktop pour la gestion des mini-excursions d'un
-              centre de thalassothérapie avec architecture DAO et base de
-              données MariaDB.
-            </p>
-            <div class="project-tech">
-              <span>Java</span>
-              <span>Desktop</span>
-              <span>MariaDB</span>
-              <span>CRUD</span>
-            </div>
-            <a href="detail_projet.html" class="project-link"
-              >Voir le projet →</a
-            >
-          </div>
-        </div>
+  <footer>
+    <p>&copy; 2026 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p>
+  </footer>
 
-        <!-- Projet 2: Site Artisans Palestiniens -->
-        <div class="project-card">
-          <div class="project-image">
-            <img src="photo_site_stage_1.png" alt="Site Artisans" />
-            <div class="project-overlay">
-              <span class="project-tag">WEB</span>
-              <span class="project-tag">JavaScript</span>
-            </div>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">
-              Site Soutien aux artisans palestiniens
-            </h3>
-            <p class="project-description">
-              Site web de valorisation de produits artisanaux réalisé pour une
-              association durant mon stage, de la DA à la mise en ligne, en
-              passant par la collecte et la gestion des contenus réels.
-            </p>
-            <div class="project-tech">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-            </div>
-            <a href="stage1.html" class="project-link">Voir le projet →</a>
-          </div>
-        </div>
+  <!-- Scripts: GSAP et Thème -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
 
-        <!-- Projet 3: Site Restaurant R3st0.fr -->
-        <div class="project-card">
-          <div class="project-image">
-            <img src="site_resto.png" alt="Site Restaurant" />
-            <div class="project-overlay">
-              <span class="project-tag">Web</span>
-              <span class="project-tag">PHP</span>
-            </div>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">R3st0.fr - Site Web</h3>
-            <p class="project-description">
-              Site web de critique et notation de restaurants développé en
-              équipe selon la méthode Scrum avec itérations, tickets de
-              maintenance et déploiement continu.
-            </p>
-            <div class="project-tech">
-              <span>PHP</span>
-              <span>Symfony</span>
-              <span>MariaDB</span>
-              <span>Scrum</span>
-            </div>
-            <a href="resto.html" class="project-link">Voir le projet →</a>
-          </div>
-        </div>
+  <script>
+    // --- GESTION DU THEME CLAIR/SOMBRE ---
+    const toggleBtn = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlEl.setAttribute('data-theme', savedTheme);
+    toggleBtn.innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
 
-        <!-- Projet 4: Application Android R3st0 -->
-        <div class="project-card">
-          <div class="project-image">
-            <img
-              src="photo_application_android.png"
-              alt="Application Android R3st0"
-            />
-            <div class="project-overlay">
-              <span class="project-tag">Android</span>
-              <span class="project-tag">API REST</span>
-            </div>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">R3st0 - Application Android</h3>
-            <p class="project-description">
-              Application mobile Android de réservation et consultation de
-              restaurants avec architecture MVC, API REST PHP et consommation
-              JSON. Affichage liste, fiche détaillée, avis et notes moyennes.
-            </p>
-            <div class="project-tech">
-              <span>Java Android</span>
-              <span>API REST PHP</span>
-              <span>JSON</span>
-              <span>GitLab</span>
-            </div>
-            <a href="projet_android.html" class="project-link"
-              >Voir le projet →</a
-            >
-          </div>
-        </div>
-      </div>
-    </section>
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlEl.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlEl.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      toggleBtn.innerHTML = newTheme === 'dark' ? '☀️' : '🌙';
+    });
 
-    <!-- Section Compétences -->
-    <section class="section_skills" id="skills">
-      <div class="skills-container">
-        <div class="skills-header">
-          <h2 class="heading-style-h2">
-            Mes <span class="text-color-red">Compétences</span>
-          </h2>
-          <p class="skills-subtitle">
-            Technologies et langages que je maîtrise
-          </p>
-        </div>
+    // --- NAVBAR ET MENU MOBILE ---
+    const navbar = document.querySelector('.navbar');
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-menu a');
 
-        <div class="skills-grid">
-          <!-- Frontend -->
-          <div class="skill-category">
-            <h3 class="category-title">Frontend</h3>
-            <div class="skills-list">
-              <div class="skill-item">
-                <span class="skill-name">HTML5</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 90%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">CSS3 / SCSS</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 85%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">JavaScript</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 80%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-            </div>
-          </div>
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
 
-          <!-- Backend -->
-          <div class="skill-category">
-            <h3 class="category-title">Backend</h3>
-            <div class="skills-list">
-              <div class="skill-item">
-                <span class="skill-name">PHP</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 85%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Java</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 75%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Python</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 70%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-            </div>
-          </div>
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
 
-          <!-- Mobile -->
-          <div class="skill-category">
-            <h3 class="category-title">Mobile</h3>
-            <div class="skills-list">
-              <div class="skill-item">
-                <span class="skill-name">Java Android</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 80%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">XML Layout</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 85%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Database -->
-          <div class="skill-category">
-            <h3 class="category-title">Base de données</h3>
-            <div class="skills-list">
-              <div class="skill-item">
-                <span class="skill-name">MySQL / MariaDB</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 85%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">SQL</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 80%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Outils -->
-          <div class="skill-category">
-            <h3 class="category-title">Outils & IDE</h3>
-            <div class="skills-list">
-              <div class="skill-item">
-                <span class="skill-name">Git / GitLab</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 75%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">VS Code</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 90%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Android Studio</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 80%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Architecture -->
-          <div class="skill-category">
-            <h3 class="category-title">Architecture</h3>
-            <div class="skills-list">
-              <div class="skill-item">
-                <span class="skill-name">MVC</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 85%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">REST API</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 80%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">POO</span>
-                <div class="skill-bar-container">
-                  <span class="skill-indicator">-</span>
-                  <div class="skill-bar">
-                    <div class="skill-progress" style="width: 85%"></div>
-                  </div>
-                  <span class="skill-indicator">+</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section Veille Technologique -->
-    <section class="section_veille" id="veille">
-      <div class="veille-container">
-        <div class="projects-header">
-          <h2 class="heading-style-h2">
-            Ma <span class="text-color-red">Veille Technologique</span>
-          </h2>
-          <p class="projects-subtitle">
-            Analyse approfondie d'une technologie émergente
-          </p>
-        </div>
-
-        <div class="veille-card">
-          <div class="veille-image">
-            <img src="web_framework.webp" alt="Reflex Python Framework" />
-          </div>
-          <div class="veille-content">
-            <span class="veille-badge">🐍 Framework Python</span>
-            <h3 class="veille-title">
-              Reflex : Applications web full-stack en 100% Python
-            </h3>
-            <p class="veille-description">
-              Framework open-source révolutionnaire permettant de développer
-              des applications web modernes entièrement en Python, sans
-              JavaScript. Avec génération IA intégrée, déploiement en une
-              commande et architecture FastAPI + React compilée, Reflex
-              transforme le développement web Python.
-            </p>
-
-            <div class="veille-stats">
-              <div class="veille-stat">
-                <span class="veille-stat-number">27K+</span>
-                <span class="veille-stat-label">⭐ GitHub Stars</span>
-              </div>
-              <div class="veille-stat">
-                <span class="veille-stat-number">1M+</span>
-                <span class="veille-stat-label">Apps créées</span>
-              </div>
-              <div class="veille-stat">
-                <span class="veille-stat-number">100%</span>
-                <span class="veille-stat-label">Python pur</span>
-              </div>
-            </div>
-
-            <a href="veille_techonologique.html" class="veille-link">
-              <span>Découvrir la veille complète</span>
-              <span>→</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div style="height: 50vh; background-color: var(--black)"></div>
-
-    <!-- GSAP et ScrollTrigger CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
-
-    <!-- JavaScript Animation -->
-    <script>
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Pin l'intro text
-      ScrollTrigger.create({
-        trigger: ".intro-wrapper",
-        start: "top top",
-        end: "bottom top",
-        pin: ".text-align-center",
-        pinSpacing: false,
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
       });
+    });
 
-      // Animation des barres de compétences au scroll
-      gsap.utils.toArray(".skill-progress").forEach((bar) => {
-        gsap.from(bar, {
-          width: 0,
-          duration: 1.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: bar,
-            start: "top 80%",
-            once: true,
-          },
-        });
-      });
+    // --- SCROLL SPY (Surbrillance du lien actif) ---
+    window.addEventListener("scroll", () => {
+      let current = "";
+      const allSections = document.querySelectorAll("section[id]");
 
-      // Animation des cartes projets au scroll
-      gsap.utils.toArray(".project-card").forEach((card) => {
-        gsap.from(card, {
-          y: 60,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            once: true,
-          },
-        });
-      });
-
-      // Animation des cartes compétences au scroll
-      gsap.utils.toArray(".skill-category").forEach((card) => {
-        gsap.from(card, {
-          y: 60,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            once: true,
-          },
-        });
-      });
-
-      // Animation de la carte veille
-      gsap.from(".veille-card", {
-        y: 80,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".veille-card",
-          start: "top 80%",
-          once: true,
-        },
-      });
-
-      // NAVIGATION - Gestion du scroll et du menu mobile
-      const navbar = document.querySelector(".navbar");
-      const hamburger = document.querySelector(".hamburger");
-      const navMenu = document.querySelector(".nav-menu");
-      const navLinks = document.querySelectorAll(".nav-menu a");
-
-      // Effet scroll sur navbar
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 100) {
-          navbar.classList.add("scrolled");
-        } else {
-          navbar.classList.remove("scrolled");
+      allSections.forEach((section) => {
+        const sectionTop = section.offsetTop - 150;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute("id");
         }
       });
 
-      // Menu hamburger mobile
-      hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        navMenu.classList.toggle("active");
-      });
-
-      // Fermer menu au clic sur un lien
       navLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-          hamburger.classList.remove("active");
-          navMenu.classList.remove("active");
-        });
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
       });
+    });
 
-      // Highlight du lien actif au scroll
-      window.addEventListener("scroll", () => {
-        let current = "";
-        const allSections = document.querySelectorAll("section, .section_tabs");
+    // --- ANIMATIONS GSAP ---
+    gsap.registerPlugin(ScrollTrigger);
 
-        allSections.forEach((section) => {
-          const sectionTop = section.offsetTop - 100;
-          if (window.scrollY >= sectionTop) {
-            current = section.getAttribute("id");
-          }
-        });
-
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${current}`) {
-            link.classList.add("active");
-          }
-        });
+    gsap.utils.toArray('.scroll-reveal').forEach(section => {
+      gsap.from(section, {
+        y: 50, opacity: 0, duration: 0.8, ease: "power3.out",
+        scrollTrigger: { trigger: section, start: "top 85%", once: true }
       });
-    </script>
-  </body>
+    });
+
+    gsap.utils.toArray('.skill-progress').forEach(bar => {
+      gsap.from(bar, {
+        width: 0, duration: 1.5, ease: "power2.out",
+        scrollTrigger: { trigger: bar, start: "top 85%", once: true }
+      });
+    });
+  </script>
+</body>
 </html>

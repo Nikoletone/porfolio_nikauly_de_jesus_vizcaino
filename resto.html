@@ -1,394 +1,235 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>R3st0.fr - Portfolio Nikauly</title>
+  <title>R3st0.fr Web | Portfolio Nikauly</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
     :root {
-      --red-primary: #DC143C;
-      --red-dark: #8B0000;
-      --red-accent: #FF4500;
-      --black: #000000;
-      --gray-900: #141414;
-      --gray-800: #1a1a1a;
-      --gray-700: #2a2a2a;
-      --gray-500: #666666;
-      --gray-400: #999999;
-      --gray-100: #f5f5f5;
-      --white: #ffffff;
-      --border-radius--xlarge: 2rem;
-      --border-radius--medium: 1.25rem;
+      --bg-main: #fcfcfc; --bg-card: #ffffff; --border-color: #eaeaea;
+      --text-main: #1a1a1a; --text-muted: #555555; --accent-color: #DC143C;
+      --accent-light: rgba(220, 20, 60, 0.08); --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+      --shadow-hover: 0 12px 35px rgba(0, 0, 0, 0.08); --tech-bg: #f0f0f0;
+      --nav-bg: rgba(255, 255, 255, 0.9); --radius: 16px;
     }
-    * {margin:0;padding:0;box-sizing:border-box;}
-    html {scroll-behavior:smooth;}
-    body {width:100%; min-height:100vh; font-family:"Poppins",sans-serif; background-color:var(--black); color:var(--white);}
-
-    /* Navigation */
-    .navbar{position:fixed;top:0;left:0;width:100%; background-color:rgba(20,20,20,0.95);backdrop-filter:blur(10px);padding:1.5rem 3.3%;z-index:1000;border-bottom:1px solid var(--gray-700);}
-    .nav-content{max-width:120rem;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
-    .nav-logo{font-size:1.5rem;font-weight:600;color:var(--white);text-decoration:none;}
-    .nav-back{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background-color:transparent;border:2px solid var(--red-primary);color:var(--white);border-radius:0.5rem;font-size:0.875rem;font-weight:500;text-transform:uppercase;letter-spacing:0.03em;cursor:pointer;transition:all 0.3s ease;text-decoration:none;position:relative;overflow:hidden;}
-    .nav-back::before {content:'';position:absolute;top:0;left:0;width:0;height:100%;background-color:var(--red-primary);transition:width 0.3s ease;z-index:-1;}
-    .nav-back:hover::before {width:100%;}
-    .nav-back:hover {border-color:var(--red-accent);transform:translateY(-2px);box-shadow:0 5px 15px rgba(220,20,60,0.3);}
-
-    /* Hero Section */
-    .hero-section{
-      margin-top:80px;
-      padding:4rem 3.3%;
-      position:relative;
-      overflow:hidden;
-      min-height:600px;
-      background-color:var(--gray-900);
+    [data-theme="dark"] {
+      --bg-main: #080808; --bg-card: #121212; --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #ffffff; --text-muted: #a0a0a0; --accent-light: rgba(220, 20, 60, 0.15);
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.2); --shadow-hover: 0 12px 35px rgba(220, 20, 60, 0.15);
+      --tech-bg: #1a1a1a; --nav-bg: rgba(8, 8, 8, 0.9);
     }
-
-    .hero-bg-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      opacity: 0.6;
-      z-index: 0;
-    }
-
-    .hero-section::before{
-      content:'';
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:linear-gradient(135deg, rgba(20, 20, 20, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
-      z-index:1;
-      pointer-events:none;
-    }
-
-    .hero-section::after{
-      content:'';
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:radial-gradient(circle at top right, rgba(220, 20, 60, 0.05), transparent 50%);
-      z-index:2;
-      pointer-events:none;
-    }
-
-    .hero-content{max-width:120rem;margin:0 auto;position:relative;z-index:3;}
-    .project-category{display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem;}
-    .category-tag{background-color:rgba(220,20,60,0.9);color:var(--white);padding:0.5rem 1rem;border-radius:0.5rem;font-size:0.875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;}
-    .hero-title{font-size:3.5rem;font-weight:600;line-height:1.1;margin-bottom:1.5rem;color:var(--white);}
-    .title-highlight{color:var(--red-primary);position:relative;display:inline-block;}
-    .title-highlight::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--red-dark),var(--red-accent));border-radius:10px;}
-    .hero-subtitle{font-size:1.25rem;color:var(--gray-400);line-height:1.6;max-width:800px;margin-bottom:2rem;}
-    .project-tech{display:flex;flex-wrap:wrap;gap:0.75rem;}
-    .tech-badge{background-color:var(--gray-800);color:var(--gray-100);padding:0.6rem 1rem;border-radius:0.5rem;font-size:0.9rem;font-weight:500;border:1px solid var(--gray-700);transition:all 0.3s ease;}
-    .tech-badge:hover{border-color:var(--red-primary);background-color:var(--gray-700);transform:translateY(-2px);}
-
-    /* Context / Competences */
-    .context-section,.competences-section{padding:5rem 3.3%;background-color:var(--gray-900);}
-    .context-container,.competences-container{max-width:120rem;margin:0 auto;}
-    .section-header{text-align:center;margin-bottom:4rem;}
-    .section-title{font-size:2.5rem;font-weight:600;color:var(--white);margin-bottom:1rem;}
-    .text-red{color:var(--red-primary);}
-    .section-subtitle{font-size:1.125rem;color:var(--gray-400);}
-    .context-content{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:3rem;border:1px solid var(--gray-700);line-height:1.8;}
-    .context-content h3{font-size:1.5rem;color:var(--white);margin-bottom:1rem;margin-top:2rem;}
-    .context-content h3:first-child{margin-top:0;}
-    .context-content p{font-size:1.05rem;color:var(--gray-400);margin-bottom:1.5rem;}
-    .context-content ul {list-style:none;padding-left:0;margin-bottom:1.5rem;}
-    .context-content li {position:relative;padding-left:2rem;margin-bottom:0.75rem;color:var(--gray-400);font-size:1.05rem;}
-    .context-content li::before {content:'→';position:absolute;left:0;color:var(--red-primary);font-weight:bold;font-size:1.2rem;}
-
-    .competences-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;}
-    .competence-card{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:2rem;border:1px solid var(--gray-700);transition:all 0.3s ease;}
-    .competence-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(220,20,60,0.2);border-color:var(--red-primary);}
-    .competence-code{display:inline-block;background-color:rgba(220,20,60,0.2);color:var(--red-primary);padding:0.4rem 0.8rem;border-radius:0.4rem;font-size:0.85rem;font-weight:600;margin-bottom:1rem;}
-    .competence-title{font-size:1.125rem;font-weight:600;color:var(--white);margin-bottom:0.75rem;}
-    .competence-description{font-size:0.95rem;color:var(--gray-400);line-height:1.6;}
-
-    /* Reports Section */
-    .reports-section{padding:5rem 3.3%;background-color:var(--black);}
-    .reports-container{max-width:120rem;margin:0 auto;}
-    .reports-content{background-color:var(--gray-800);border-radius:var(--border-radius--medium);padding:3rem;border:1px solid var(--gray-700);}
-    .reports-list{list-style:none;padding:0;margin:0;}
-    .report-item{display:flex;align-items:center;justify-content:space-between;padding:1.5rem;border-bottom:1px solid var(--gray-700);transition:all 0.3s ease;}
-    .report-item:last-child{border-bottom:none;}
-    .report-item:hover{background-color:var(--gray-700);padding-left:2rem;}
-    .report-info{display:flex;align-items:center;gap:1.5rem;flex:1;}
-    .report-icon{font-size:2rem;flex-shrink:0;}
-    .report-details{flex:1;}
-    .report-name{font-size:1.125rem;font-weight:600;color:var(--white);margin-bottom:0.25rem;}
-    .report-description{font-size:0.9rem;color:var(--gray-400);line-height:1.4;}
-    .report-link{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background-color:transparent;border:2px solid var(--red-primary);color:var(--red-primary);border-radius:0.5rem;font-size:0.875rem;font-weight:600;text-decoration:none;transition:all 0.3s ease;flex-shrink:0;}
-    .report-link:hover{background-color:var(--red-primary);color:var(--white);transform:translateX(5px);box-shadow:0 5px 15px rgba(220,20,60,0.3);}
-
-    .footer{padding:3rem 3.3%;background-color:var(--gray-900);border-top:1px solid var(--gray-700);text-align:center;}
-    .footer p{color:var(--gray-400);font-size:0.95rem;}
-    @media (max-width: 768px) {
-      .hero-title {font-size:2.5rem;}
-      .hero-section {min-height:500px;}
-      .section-title {font-size:2rem;}
-      .context-content,.reports-content{padding:2rem;}
-      .report-item{flex-direction:column;align-items:flex-start;gap:1rem;}
-      .report-info{flex-direction:column;align-items:flex-start;gap:1rem;}
-      .report-link{width:100%;justify-content:center;}
-      .competences-grid{grid-template-columns:1fr;}
-      .nav-logo{font-size:1.2rem;}
-      .navbar{padding:1rem 5%;}
-      .hero-section,.context-section,.competences-section,.reports-section{padding:3rem 5%;}
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--bg-main); color: var(--text-main); font-family: 'Poppins', sans-serif; line-height: 1.7; font-weight: 300; overflow-x: hidden; transition: background-color 0.3s, color 0.3s; }
+    .navbar { position: fixed; top: 0; width: 100%; background: var(--nav-bg); backdrop-filter: blur(12px); padding: 1rem 5%; z-index: 100; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; transition: background 0.3s, border-color 0.3s; }
+    .nav-logo { font-size: 1.2rem; font-weight: 500; color: var(--text-main); text-decoration: none; letter-spacing: 1px; }
+    .nav-logo span { color: var(--accent-color); font-weight: 600; }
+    .nav-actions { display: flex; align-items: center; gap: 20px; }
+    .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.3s; display: flex; align-items: center; gap: 8px; }
+    .nav-back:hover { color: var(--accent-color); }
+    .theme-toggle { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.2rem; transition: all 0.3s; }
+    .theme-toggle:hover { border-color: var(--accent-color); transform: scale(1.05); }
+    
+    .hero { min-height: 80vh; padding: 120px 5% 50px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .hero-tag { display: inline-block; padding: 6px 16px; background: var(--accent-light); border-radius: 30px; font-size: 0.85rem; font-weight: 500; color: var(--accent-color); text-transform: uppercase; margin-bottom: 2rem; }
+    .hero-title { font-size: 3.5rem; font-weight: 600; line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: -1px; color: var(--text-main); }
+    .hero-subtitle { font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 3rem; }
+    
+    .tech-stack { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .tech-item { padding: 8px 18px; background: var(--tech-bg); border-radius: 8px; font-size: 0.85rem; font-weight: 500; color: var(--text-muted); transition: all 0.3s; }
+    .tech-item:hover { background: var(--accent-color); color: white; }
+    
+    .content-section { max-width: 1200px; margin: 0 auto; padding: 4rem 5%; }
+    .section-title { font-size: 2.2rem; font-weight: 600; margin-bottom: 3rem; text-align: center; color: var(--text-main); }
+    .section-title span { color: var(--accent-color); }
+    
+    .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; }
+    .card:hover { border-color: var(--accent-color); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+    .card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-main); }
+    .card p { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; }
+    
+    .card ul { list-style: none; padding-left: 0; margin-top: 1rem; }
+    .card li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; color: var(--text-muted); font-size: 0.95rem; }
+    .card li::before { content: '→'; position: absolute; left: 0; color: var(--accent-color); font-weight: bold; }
+    .card strong { color: var(--text-main); font-weight: 500; }
+    .competence-badge { display: inline-block; padding: 4px 12px; background: var(--accent-light); color: var(--accent-color); border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+    
+    .livrables-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .livrable-item { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--shadow-soft); transition: all 0.3s; }
+    .livrable-item:hover { border-color: var(--accent-color); box-shadow: var(--shadow-hover); }
+    .livrable-info h4 { font-size: 1.15rem; font-weight: 600; color: var(--text-main); }
+    .livrable-info p { font-size: 0.95rem; color: var(--text-muted); margin-top: 5px; }
+    
+    .btn-download { padding: 10px 24px; background: var(--accent-color); color: white; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.3s; text-align: center; }
+    .btn-download:hover { background: #b01030; transform: translateY(-2px); }
+    
+    footer { text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid var(--border-color); margin-top: 4rem; background: var(--bg-main); }
+    @media (max-width: 768px) { .hero-title { font-size: 2.5rem; } .livrable-item { flex-direction: column; align-items: flex-start; gap: 1.5rem; } .btn-download { width: 100%; } }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
+
   <nav class="navbar">
-    <div class="nav-content">
-      <a href="index.html" class="nav-logo">Portfolio Nikauly</a>
-      <a href="index.html" class="nav-back"><span>←</span><span>Retour</span></a>
+    <a href="index.html" class="nav-logo">Nikauly <span>.</span></a>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème">🌙</button>
+      <a href="index.html" class="nav-back">← Retour</a>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <img src="site_resto.png" alt="R3st0.fr Application" class="hero-bg-image">
-    
-    <div class="hero-content">
-      <div class="project-category">
-        <span class="category-tag">Web</span>
-        <span class="category-tag">Agile</span>
-        <span class="category-tag">Scrum</span>
-      </div>
-      <h1 class="hero-title"><span class="title-highlight">R3st0.fr</span></h1>
+  <main>
+    <section class="hero">
+      <div class="hero-tag">Développement Web</div>
+      <h1 class="hero-title">R3st0.fr</h1>
       <p class="hero-subtitle">
         Site web de critique et notation de restaurants développé en équipe selon la méthode Scrum avec itérations, tickets de maintenance, déploiement continu et gestion GitLab.
       </p>
-      <div class="project-tech">
-        <span class="tech-badge">PHP</span>
-        <span class="tech-badge">Symfony</span>
-        <span class="tech-badge">MariaDB</span>
-        <span class="tech-badge">GitLab</span>
-        <span class="tech-badge">Kanban</span>
-        <span class="tech-badge">Scrum</span>
-        <span class="tech-badge">NetBeans</span>
+      <div class="tech-stack">
+        <span class="tech-item">PHP</span>
+        <span class="tech-item">Symfony</span>
+        <span class="tech-item">MariaDB</span>
+        <span class="tech-item">GitLab</span>
+        <span class="tech-item">Kanban</span>
+        <span class="tech-item">Scrum</span>
+        <span class="tech-item">NetBeans</span>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Context Section -->
-  <section class="context-section">
-    <div class="context-container">
-      <div class="section-header">
-        <h2 class="section-title">Description & <span class="text-red">Contexte</span></h2>
-        <p class="section-subtitle">Mise en situation et objectifs du projet</p>
-      </div>
-      <div class="context-content">
-        <h3>Contexte du projet</h3>
-        <p>
-          R3st0.fr est un site de critique de restaurants inspiré de TripAdvisor et La Fourchette. 
-          L'objectif est de permettre aux utilisateurs de rechercher des restaurants, consulter leurs caractéristiques, 
-          lire les avis et noter les établissements. Développé en 2ème année BTS SIO selon la méthode agile Scrum.
-        </p>
-
-        <h3>Objectifs pédagogiques</h3>
-        <ul>
-          <li>Travailler en équipe avec méthodologie Scrum (rôles : Product Owner, Scrum Master, équipe dev)</li>
-          <li>Gérer un projet par itérations courtes (sprints de 1 à 2 séances)</li>
-          <li>Utiliser GitLab pour la gestion de version, les branches, les tickets (Issues) et le Kanban</li>
-          <li>Traiter des tickets de maintenance et ajouter de nouvelles fonctionnalités</li>
-          <li>Déployer l'application en continu sur un serveur de production</li>
-        </ul>
-
-        <h3>Fonctionnalités développées</h3>
-        <ul>
-          <li><strong>Visiteur non authentifié</strong> : Recherche multi-critères de restaurants, consultation des fiches détaillées et des avis</li>
-          <li><strong>Utilisateur authentifié</strong> : Personnalisation du profil, ajout de restaurants favoris, publication d'avis et notation (1 à 5 étoiles)</li>
-          <li><strong>Administrateur</strong> : Gestion des contenus du site (restaurants, avis, utilisateurs)</li>
-          <li><strong>Affichage des types de cuisine</strong> : Ajout d'une nouvelle fonctionnalité pour filtrer par type de cuisine</li>
-        </ul>
-
-        <h3>Méthode de gestion de projet Scrum</h3>
-        <p>
-          Le projet suit une méthode agile inspirée de Scrum avec :
-        </p>
-        <ul>
-          <li><strong>Product Owner</strong> : Enseignants définissant les besoins et validant les livrables</li>
-          <li><strong>Scrum Master</strong> : Membre de l'équipe animant les daily scrums et garantissant le respect de la méthodologie</li>
-          <li><strong>Sprints/Itérations</strong> : Durée de 1 à 2 séances, chaque sprint livre une version fonctionnelle</li>
-          <li><strong>Daily Scrum</strong> : Réunion quotidienne de 15 minutes pour partager l'avancement et identifier les obstacles</li>
-          <li><strong>Backlog</strong> : Liste priorisée des tâches (fonctionnalités, bugs, améliorations techniques)</li>
-        </ul>
-
-        <h3>Outils techniques</h3>
-        <ul>
-          <li><strong>IDE</strong> : NetBeans v.21+</li>
-          <li><strong>Gestion de version</strong> : GitLab (branches, merge, issues)</li>
-          <li><strong>Tableau Kanban</strong> : GitLab Issues Board (colonnes : À faire, En cours, Terminé)</li>
-          <li><strong>Labels</strong> : Complexité (peu complexe, moyenne, complexe) et Priorité (peu prioritaire, normale, prioritaire)</li>
-          <li><strong>Déploiement</strong> : Serveur web BTS SIO avec compte FTP et base MariaDB</li>
-        </ul>
-
-        <h3>Itérations réalisées</h3>
-        <ul>
-          <li><strong>Itération 1</strong> : Installation et étude de l'existant (ré-ingénierie BDD, analyse du code)</li>
-          <li><strong>Itération 2</strong> : Résolution de tickets de maintenance (corrections de bugs, petites évolutions)</li>
-          <li><strong>Itération 3</strong> : Ajout de la fonctionnalité "types de cuisine" (User Story + déploiement)</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Competences Section - MODIFIÉ AVEC LES 6 COMPÉTENCES OFFICIELLES -->
-  <section class="competences-section">
-    <div class="competences-container">
-      <div class="section-header">
-        <h2 class="section-title">Compétences <span class="text-red">BTS SIO mobilisées</span></h2>
-        <p class="section-subtitle">Référentiel des compétences mises en œuvre</p>
-      </div>
-      <div class="competences-grid">
-        
-        <!-- Compétence 2 : Répondre aux incidents -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 2</span>
-          <h3 class="competence-title">Répondre aux incidents et aux demandes d'assistance et d'évolution</h3>
-          <p class="competence-description">
-            <strong>Traiter des demandes concernant les applications :</strong> Résolution de tickets de maintenance, traitement des demandes d'évolution fonctionnelle du Product Owner. Utilisation d'un outil de gestion de tickets (GitLab Issues). Application d'une méthode de diagnostic/résolution. Respect des procédures de gestion de tickets. Communication écrite et orale adaptée. Compte-rendu des actions réalisées.
-          </p>
+    <!-- Détails du projet -->
+    <section class="content-section scroll-reveal" style="padding-top: 0;">
+      <h2 class="section-title">Le <span>Projet</span></h2>
+      <div class="grid-container">
+        <div class="card">
+          <h3>Contexte</h3>
+          <p>R3st0.fr est un site de critique de restaurants inspiré de TripAdvisor et La Fourchette. L'objectif est de permettre aux utilisateurs de rechercher des restaurants, consulter leurs caractéristiques, lire les avis et noter les établissements. Développé en 2ème année BTS SIO selon la méthode agile Scrum.</p>
         </div>
-
-        <!-- Compétence 4 : Travailler en mode projet -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 4</span>
-          <h3 class="competence-title">Travailler en mode projet</h3>
-          <p class="competence-description">
-            <strong>Analyser les objectifs et modalités d'organisation :</strong> Compréhension de la méthode Scrum, définition des rôles (Product Owner, Scrum Master), analyse des User Stories. L'organisation projet est explicitée. Les objectifs du projet sont explicités. L'analyse du besoin et de l'existant est pertinente.
-            <br><br>
-            <strong>Planifier les activités :</strong> Organisation des sprints, daily scrums quotidiens, utilisation du Kanban GitLab, affectation et priorisation des tickets. Les activités personnelles sont planifiées de façon formelle, l'avancée est documentée. Le projet est documenté et les livrables sont conformes.
-            <br><br>
-            <strong>Évaluer les indicateurs de suivi :</strong> Suivi de l'avancement des tickets sur le tableau Kanban, analyse des écarts entre planifié et réalisé lors des daily scrums.
-          </p>
+        <div class="card">
+          <h3>Objectifs pédagogiques</h3>
+          <ul>
+            <li>Travailler en équipe avec méthodologie Scrum (Product Owner, Scrum Master, dev).</li>
+            <li>Gérer un projet par itérations courtes (sprints de 1 à 2 séances).</li>
+            <li>Utiliser GitLab pour la gestion de version, les branches, les tickets et le Kanban.</li>
+            <li>Traiter des tickets de maintenance et déployer l'application en continu.</li>
+          </ul>
         </div>
-
-        <!-- Compétence 5 : Mettre à disposition -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 5</span>
-          <h3 class="competence-title">Mettre à disposition des utilisateurs un service informatique</h3>
-          <p class="competence-description">
-            <strong>Réaliser les tests d'intégration et d'acceptation :</strong> Tests en local de chaque ticket avant merge, documentation des tests dans les rapports d'itération. Les tests d'intégration et d'acceptation sont rédigés. Leur exécution est documentée.
-            <br><br>
-            <strong>Déployer un service :</strong> Déploiement continu sur serveur de production (FTP, configuration MariaDB), livraison continue à chaque itération. Le service déployé est opérationnel et conforme aux attentes.
-          </p>
+        <div class="card">
+          <h3>Fonctionnalités développées</h3>
+          <ul>
+            <li><strong>Visiteur non authentifié :</strong> Recherche multi-critères, consultation des fiches et avis.</li>
+            <li><strong>Utilisateur authentifié :</strong> Profil, ajout de restaurants favoris, publication d'avis et notation.</li>
+            <li><strong>Administrateur :</strong> Gestion des contenus du site (restaurants, avis, utilisateurs).</li>
+            <li><strong>Types de cuisine :</strong> Ajout d'une nouvelle fonctionnalité pour filtrer par type de cuisine.</li>
+          </ul>
         </div>
-
-        <!-- Compétence 6 : Organiser son développement professionnel -->
-        <div class="competence-card">
-          <span class="competence-code">Compétence 6</span>
-          <h3 class="competence-title">Organiser son développement professionnel</h3>
-          <p class="competence-description">
-            <strong>Mettre en place son environnement d'apprentissage :</strong> Rédaction de rapports d'itération, documentation des tickets (diagnostic, localisation, modifications, tests), commentaires du code. Maîtrise de NetBeans, gestion des branches Git, utilisation de GitLab (merge, issues, labels, jalons). L'environnement d'apprentissage personnel est délimité et expliqué.
-            <br><br>
-            <strong>Développer son projet professionnel :</strong> Développement et adaptation de composants Symfony, modification de la base de données, création de nouvelles fonctionnalités. Utilisation de Doctrine ORM pour l'accès à la base MariaDB, requêtes SQL, gestion des relations entre entités. Les besoins de formation sont identifiés pour mettre à disposition le service.
-          </p>
+        <div class="card">
+          <h3>Méthode de gestion Scrum</h3>
+          <ul>
+            <li><strong>Product Owner & Scrum Master :</strong> Définition des besoins, animation des daily scrums.</li>
+            <li><strong>Sprints/Itérations :</strong> Durée de 1 à 2 séances, livraison d'une version fonctionnelle.</li>
+            <li><strong>Daily Scrum & Backlog :</strong> Réunion quotidienne et liste priorisée des tâches.</li>
+          </ul>
         </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Reports Section -->
-  <section class="reports-section">
-    <div class="reports-container">
-      <div class="section-header">
-        <h2 class="section-title">Livrables & <span class="text-red">Documentation</span></h2>
-        <p class="section-subtitle">Rapports d'itération et ressources du projet</p>
+    <!-- Compétences -->
+    <section class="content-section scroll-reveal">
+      <h2 class="section-title">Compétences <span>BTS SIO</span></h2>
+      <div class="grid-container">
+        <div class="card">
+          <span class="competence-badge">Compétence 2</span>
+          <h3>Répondre aux incidents et évolutions</h3>
+          <p><strong>Traiter des demandes :</strong> Résolution de tickets de maintenance, traitement des demandes d'évolution du Product Owner. Utilisation d'un outil de gestion de tickets (GitLab Issues). Application d'une méthode de diagnostic. Respect des procédures de gestion de tickets.</p>
+        </div>
+        <div class="card">
+          <span class="competence-badge">Compétence 4</span>
+          <h3>Travailler en mode projet</h3>
+          <p><strong>Analyser et Planifier :</strong> Compréhension de la méthode Scrum, analyse des User Stories. Organisation des sprints, daily scrums, utilisation du Kanban GitLab, affectation et priorisation des tickets.<br><strong>Évaluer les indicateurs :</strong> Suivi de l'avancement sur le Kanban.</p>
+        </div>
+        <div class="card">
+          <span class="competence-badge">Compétence 5</span>
+          <h3>Mettre à disposition un service</h3>
+          <p><strong>Tests et Déploiement :</strong> Tests en local de chaque ticket avant merge, documentation des tests dans les rapports d'itération. Déploiement continu sur serveur de production (FTP, configuration MariaDB), livraison continue à chaque itération.</p>
+        </div>
+        <div class="card">
+          <span class="competence-badge">Compétence 6</span>
+          <h3>Organiser son développement</h3>
+          <p><strong>Environnement & Développement :</strong> Rédaction de rapports d'itération, documentation des tickets. Gestion des branches Git, utilisation de GitLab. Développement de composants Symfony, utilisation de Doctrine ORM pour l'accès MariaDB, requêtes SQL.</p>
+        </div>
       </div>
-      <div class="reports-content">
-        <ul class="reports-list">
-          
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Rapport Itération 1 - Installation et étude</div>
-                <div class="report-description">Ré-ingénierie de la base de données, analyse de l'architecture du code, daily scrums</div>
-              </div>
-            </div>
-            <a href="comptes-rendus-site_resto/P1_G5_SiteResto2025_Iteration1_Ticket2.pdf" class="report-link"><span>Télécharger PDF</span><span>→</span></a>
-          </li>
+    </section>
 
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Rapport Itération 2 - Résolution de tickets</div>
-                <div class="report-description">Documentation des tickets résolus (diagnostic, localisation, modifications, tests)</div>
-              </div>
-            </div>
-            <a href="comptes-rendus-site_resto/Groupe5_2SLAM_AP_Projet_Resto_Itération2.pdf" class="report-link"><span>Télécharger PDF</span><span>→</span></a>
-          </li>
-
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Rapport Itération 3 - Types de cuisine</div>
-                <div class="report-description">User Story, modification BDD, développement de la fonctionnalité, déploiement</div>
-              </div>
-            </div>
-            <a href="comptes-rendus-site_resto/Huou_Valentin_2SLAM_AP_Projet_Resto_Itération3.pdf" class="report-link"><span>Télécharger PDF</span><span>→</span></a>
-          </li>
-
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Repository GitLab</div>
-                <div class="report-description">Code source complet avec branches par ticket, historique des commits et merges</div>
-              </div>
-            </div>
-            <a href="https://gitlab.com/Titts/p1_g5_siteresto2025" class="report-link"><span>Voir GitLab</span><span>→</span></a>
-          </li>
-
-          <li class="report-item">
-            <div class="report-info">
-              <span class="report-icon"></span>
-              <div class="report-details">
-                <div class="report-name">Site déployé en production</div>
-                <div class="report-description">Application web fonctionnelle sur serveur BTS SIO (FTP + MariaDB)</div>
-              </div>
-            </div>
-            <a href="https://jolsio.fr:4456/2slamprj1eq5/public/p1_g5_siteresto2025/" class="report-link" target="_blank"><span>Voir le site</span><span>→</span></a>
-          </li>
-    
-        </ul>
+    <!-- Livrables -->
+    <section class="content-section scroll-reveal">
+      <h2 class="section-title">Livrables & <span>Documentation</span></h2>
+      <div class="livrables-list">
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Rapport Itération 1 - Installation et étude</h4>
+            <p>Ré-ingénierie de la base de données, analyse de l'architecture du code, daily scrums.</p>
+          </div>
+          <a href="comptes-rendus-site_resto/P1_G5_SiteResto2025_Iteration1_Ticket2.pdf" target="_blank" class="btn-download">PDF</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Rapport Itération 2 - Résolution de tickets</h4>
+            <p>Documentation des tickets résolus (diagnostic, localisation, modifications, tests).</p>
+          </div>
+          <a href="comptes-rendus-site_resto/Groupe5_2SLAM_AP_Projet_Resto_Itération2.pdf" target="_blank" class="btn-download">PDF</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Rapport Itération 3 - Types de cuisine</h4>
+            <p>User Story, modification BDD, développement de la fonctionnalité, déploiement.</p>
+          </div>
+          <a href="comptes-rendus-site_resto/Huou_Valentin_2SLAM_AP_Projet_Resto_Itération3.pdf" target="_blank" class="btn-download">PDF</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Repository GitLab</h4>
+            <p>Code source complet avec branches par ticket, historique des commits et merges.</p>
+          </div>
+          <a href="https://gitlab.com/Titts/p1_g5_siteresto2025" target="_blank" class="btn-download">GitLab</a>
+        </div>
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Site déployé en production</h4>
+            <p>Application web fonctionnelle sur serveur BTS SIO (FTP + MariaDB).</p>
+          </div>
+          <a href="https://jolsio.fr:4456/2slamprj1eq5/public/p1_g5_siteresto2025/" target="_blank" class="btn-download">Voir le site</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <footer class="footer"><p>&copy; 2025 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p></footer>
+  <footer>
+    <p>&copy; 2026 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
   <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlEl.setAttribute('data-theme', savedTheme);
+    toggleBtn.innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlEl.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlEl.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      toggleBtn.innerHTML = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+
     gsap.registerPlugin(ScrollTrigger);
-    gsap.utils.toArray('.report-item').forEach((item, index) => {
-      gsap.from(item, {x: -30, opacity: 0, duration: 0.6, delay: index * 0.1, ease: "power2.out",
-        scrollTrigger: {trigger: item, start: "top 90%", once: true}
-      });
-    });
-    gsap.utils.toArray('.competence-card').forEach(card => {
-      gsap.from(card, {y: 40, opacity: 0, duration: 0.8, ease: "power2.out",
-        scrollTrigger: {trigger: card, start: "top 85%", once: true}
-      });
-    });
-    gsap.from('.context-content', {y: 40, opacity: 0, duration: 1, ease: "power2.out",
-      scrollTrigger: {trigger: '.context-content', start: "top 80%", once: true}
+    gsap.from('.hero-title, .hero-subtitle, .hero-tag', { y: 40, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power3.out" });
+    gsap.from('.tech-item', { scale: 0.8, opacity: 0, duration: 0.6, stagger: 0.1, ease: "back.out(1.7)", delay: 0.5 });
+    gsap.utils.toArray('.scroll-reveal').forEach(section => {
+      gsap.from(section, { y: 60, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 80%", once: true } });
     });
   </script>
 </body>
