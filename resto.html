@@ -45,16 +45,23 @@
     .section-title span { color: var(--accent-color); }
     
     .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; }
+    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; display: flex; flex-direction: column; }
     .card:hover { border-color: var(--accent-color); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
     .card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-main); }
     .card p { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; }
     
-    .card ul { list-style: none; padding-left: 0; margin-top: 1rem; }
+    .card ul { list-style: none; padding-left: 0; margin-top: 1rem; flex-grow: 1; }
     .card li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; color: var(--text-muted); font-size: 0.95rem; }
     .card li::before { content: '→'; position: absolute; left: 0; color: var(--accent-color); font-weight: bold; }
     .card strong { color: var(--text-main); font-weight: 500; }
-    .competence-badge { display: inline-block; padding: 4px 12px; background: var(--accent-light); color: var(--accent-color); border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+    .competence-badge { display: inline-block; padding: 4px 12px; background: var(--accent-light); color: var(--accent-color); border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; width: fit-content;}
+
+    /* Styles pour les justificatifs */
+    .justificatifs-box { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed var(--border-color); }
+    .justificatifs-box strong { font-size: 0.9rem; color: var(--text-main); display: block; margin-bottom: 0.5rem; }
+    .justificatif-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .justificatif-tag { padding: 4px 12px; background: var(--tech-bg); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.8rem; font-weight: 500; text-decoration: none; transition: all 0.3s; }
+    .justificatif-tag:hover { background: var(--accent-color); color: white; border-color: var(--accent-color); transform: translateY(-2px); }
     
     .livrables-list { display: flex; flex-direction: column; gap: 1.5rem; }
     .livrable-item { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--shadow-soft); transition: all 0.3s; }
@@ -97,7 +104,6 @@
       </div>
     </section>
 
-    <!-- Détails du projet -->
     <section class="content-section scroll-reveal" style="padding-top: 0;">
       <h2 class="section-title">Le <span>Projet</span></h2>
       <div class="grid-container">
@@ -141,22 +147,64 @@
         <div class="card">
           <span class="competence-badge">Compétence 2</span>
           <h3>Répondre aux incidents et évolutions</h3>
-          <p><strong>Traiter des demandes :</strong> Résolution de tickets de maintenance, traitement des demandes d'évolution du Product Owner. Utilisation d'un outil de gestion de tickets (GitLab Issues). Application d'une méthode de diagnostic. Respect des procédures de gestion de tickets.</p>
+          <ul>
+            <li><strong>Traiter des demandes :</strong> Résolution de tickets de maintenance, traitement des demandes d'évolution du Product Owner. Utilisation d'un outil de gestion de tickets (GitLab Issues). Application d'une méthode de diagnostic.</li>
+          </ul>
+          <!-- JUSTIFICATIFS -->
+          <div class="justificatifs-box">
+            <strong>📄 Justificatifs :</strong>
+            <div class="justificatif-tags">
+              <a href="comptes-rendus-site_resto/Groupe5_2SLAM_AP_Projet_Resto_Itération2.pdf" target="_blank" class="justificatif-tag">Rapport Itération 2</a>
+              <a href="comptes-rendus-site_resto/Huou_Valentin_2SLAM_AP_Projet_Resto_Itération3.pdf" target="_blank" class="justificatif-tag">Rapport Itération 3</a>
+            </div>
+          </div>
         </div>
+
         <div class="card">
           <span class="competence-badge">Compétence 4</span>
           <h3>Travailler en mode projet</h3>
-          <p><strong>Analyser et Planifier :</strong> Compréhension de la méthode Scrum, analyse des User Stories. Organisation des sprints, daily scrums, utilisation du Kanban GitLab, affectation et priorisation des tickets.<br><strong>Évaluer les indicateurs :</strong> Suivi de l'avancement sur le Kanban.</p>
+          <ul>
+            <li><strong>Analyser et Planifier :</strong> Compréhension de la méthode Scrum, analyse des User Stories. Organisation des sprints, daily scrums, utilisation du Kanban GitLab, affectation et priorisation des tickets.</li>
+          </ul>
+          <!-- JUSTIFICATIFS -->
+          <div class="justificatifs-box">
+            <strong>📄 Justificatifs :</strong>
+            <div class="justificatif-tags">
+              <a href="comptes-rendus-site_resto/P1_G5_SiteResto2025_Iteration1_Ticket2.pdf" target="_blank" class="justificatif-tag">Rapport Itération 1</a>
+            </div>
+          </div>
         </div>
+
         <div class="card">
           <span class="competence-badge">Compétence 5</span>
           <h3>Mettre à disposition un service</h3>
-          <p><strong>Tests et Déploiement :</strong> Tests en local de chaque ticket avant merge, documentation des tests dans les rapports d'itération. Déploiement continu sur serveur de production (FTP, configuration MariaDB), livraison continue à chaque itération.</p>
+          <ul>
+            <li><strong>Tests et Déploiement :</strong> Tests en local de chaque ticket avant merge. Déploiement continu sur serveur de production (FTP, configuration MariaDB), livraison continue à chaque itération.</li>
+          </ul>
+          <!-- JUSTIFICATIFS -->
+          <div class="justificatifs-box">
+            <strong>📄 Justificatifs :</strong>
+            <div class="justificatif-tags">
+              <a href="comptes-rendus-site_resto/Huou_Valentin_2SLAM_AP_Projet_Resto_Itération3.pdf" target="_blank" class="justificatif-tag">Rapport Itération 3</a>
+              <a href="https://jolsio.fr:4456/2slamprj1eq5/public/p1_g5_siteresto2025/" target="_blank" class="justificatif-tag">Site en production</a>
+            </div>
+          </div>
         </div>
+
         <div class="card">
           <span class="competence-badge">Compétence 6</span>
           <h3>Organiser son développement</h3>
-          <p><strong>Environnement & Développement :</strong> Rédaction de rapports d'itération, documentation des tickets. Gestion des branches Git, utilisation de GitLab. Développement de composants Symfony, utilisation de Doctrine ORM pour l'accès MariaDB, requêtes SQL.</p>
+          <ul>
+            <li><strong>Environnement & Développement :</strong> Gestion des branches Git, utilisation de GitLab. Développement de composants Symfony, utilisation de Doctrine ORM pour l'accès MariaDB.</li>
+          </ul>
+          <!-- JUSTIFICATIFS -->
+          <div class="justificatifs-box">
+            <strong>📄 Justificatifs :</strong>
+            <div class="justificatif-tags">
+              <a href="https://gitlab.com/Titts/p1_g5_siteresto2025" target="_blank" class="justificatif-tag">Dépôt GitLab</a>
+              <a href="comptes-rendus-site_resto/P1_G5_SiteResto2025_Iteration1_Ticket2.pdf" target="_blank" class="justificatif-tag">Rapport Itération 1</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

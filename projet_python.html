@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PapyRus - Stage 2ème Année | Portfolio Nikauly</title>
+  <title>Analyse Logs Web & BDD | Portfolio Nikauly</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
     
@@ -89,8 +89,13 @@
     .section-title { font-size: 2.2rem; font-weight: 600; margin-bottom: 3rem; text-align: center; color: var(--text-main); }
     .section-title span { color: var(--accent-color); }
 
+    /* Grille multi-colonnes (pour "Le Projet") */
     .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; display: flex; flex-direction: column; }
+    
+    /* Grille une seule colonne (pour "Compétences") */
+    .grid-single-column { display: flex; flex-direction: column; gap: 2rem; }
+
+    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; display: flex; flex-direction: column;}
     .card:hover { border-color: var(--accent-color); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
     .card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-main); }
     .card p { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; }
@@ -117,11 +122,14 @@
     .btn-download { padding: 10px 24px; background: var(--accent-color); color: white; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.3s; text-align: center; white-space: nowrap; }
     .btn-download:hover { background: #b01030; transform: translateY(-2px); }
 
+    .btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+
     footer { text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid var(--border-color); margin-top: 4rem; background-color: var(--bg-card); }
 
     @media (max-width: 768px) {
       .hero-title { font-size: 2.5rem; }
       .livrable-item { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .btn-group { width: 100%; flex-direction: column; }
       .btn-download { width: 100%; text-align: center; }
     }
   </style>
@@ -140,142 +148,137 @@
   <!-- Contenu Principal -->
   <main>
     <section class="hero">
-      <div class="hero-tag">Stage 2ème Année</div>
-      <h1 class="hero-title">PapyRus</h1>
+      <div class="hero-tag">Développement & Infra</div>
+      <h1 class="hero-title">Analyse Logs Web & BDD</h1>
       <p class="hero-subtitle">
-        Plateforme sécurisée de transcription audio et de synthèse automatisée de réunions, propulsée par l'Intelligence Artificielle. Conçue pour la DSI de Pornic Agglo.
+        Conception et mise en place d'une solution complète pour le traitement, l'intégration et l'analyse de journaux d'accès web (logs). Ce projet allie le développement de scripts d'automatisation en Python et l'administration système/réseaux sous environnement Linux.
       </p>
       <div class="tech-stack">
-        <span class="tech-item">Symfony</span>
-        <span class="tech-item">Python 3.11</span>
-        <span class="tech-item">WhisperX</span>
-        <span class="tech-item">Mistral Nemo</span>
-        <span class="tech-item">FFmpeg</span>
-        <span class="tech-item">Debian 12</span>
+        <span class="tech-item">Python</span>
+        <span class="tech-item">SQL</span>
+        <span class="tech-item">MariaDB</span>
+        <span class="tech-item">Rocky Linux 9</span>
+        <span class="tech-item">Apache</span>
+        <span class="tech-item">phpMyAdmin</span>
       </div>
     </section>
 
+    <!-- Détails du projet -->
     <section class="content-section scroll-reveal" style="padding-top: 0;">
       <h2 class="section-title">Le <span>Projet</span></h2>
       <div class="grid-container">
         <div class="card">
           <h3>Contexte</h3>
-          <p>La collectivité Pornic Agglo génère de nombreuses réunions nécessitant des comptes-rendus. La rédaction manuelle prenait jusqu'à cinq heures pour une heure d'audio.</p>
+          <p>Les serveurs web (comme Apache) génèrent quotidiennement d'énormes fichiers textes appelés "logs", contenant toutes les requêtes des utilisateurs. L'objectif de ce projet était de créer des outils pour parser ces fichiers complexes et les transformer en données statistiques intégrables dans une base de données sécurisée.</p>
         </div>
         <div class="card">
           <h3>Objectifs techniques</h3>
           <ul>
-            <li>Développer une interface Full Stack sécurisée sous Symfony.</li>
-            <li>Intégrer une authentification LDAP liée à l'Active Directory.</li>
-            <li>Gérer et fusionner des fichiers audio multiples via FFmpeg.</li>
-            <li>Garantir le respect du RGPD avec une solution 100% locale (sans API Cloud).</li>
+            <li>Configurer une Machine Virtuelle (VM) Linux et l'intégrer au réseau.</li>
+            <li>Déployer un serveur de base de données MariaDB.</li>
+            <li>Développer des scripts Python capables de lire, découper et analyser de lourds fichiers textes.</li>
+            <li>Générer dynamiquement des fichiers `.sql` d'insertion de données.</li>
           </ul>
         </div>
         <div class="card">
-          <h3>Moteur IA & Deep Learning</h3>
+          <h3>Sécurisation & Administration</h3>
           <ul>
-            <li>Intégration de <strong>WhisperX</strong> pour la transcription et la diarisation (séparation des locuteurs).</li>
-            <li>Utilisation de <strong>Mistral Nemo</strong> pour générer des synthèses et comptes-rendus structurés.</li>
+            <li>Application du principe du "moindre privilège" en créant des utilisateurs SQL distincts (un accès en lecture seule `utilog`, un accès complet `gestionlog`).</li>
+            <li>Configuration du serveur Apache et de phpMyAdmin pour n'autoriser les connexions distantes que depuis une adresse IP spécifique.</li>
           </ul>
         </div>
         <div class="card">
-          <h3>Architecture & Déploiement</h3>
+          <h3>Traitement de données (Python)</h3>
           <ul>
-            <li>Déploiement sur serveur Debian 12 avec socle LAMP (Linux, Apache, MariaDB, PHP).</li>
-            <li>Création d'un système de file d'attente asynchrone (QueueService) pour éviter la saturation du serveur GPU.</li>
+            <li><strong>Générateur de pseudos :</strong> Script lisant un fichier texte pour générer automatiquement des pseudonymes basés sur le nom, prénom et âge.</li>
+            <li><strong>Analyseur de requêtes :</strong> Script avec menu interactif identifiant les URLs les plus visitées pour chaque adresse IP.</li>
+            <li><strong>Convertisseur :</strong> Transformation des lignes de logs bruts en requêtes `INSERT INTO` SQL.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- Compétences PapyRus -->
+    <!-- Compétences avec Justificatifs (Grille une seule colonne, 100% SÉPARÉES) -->
     <section class="content-section scroll-reveal">
       <h2 class="section-title">Compétences <span>BTS SIO</span></h2>
       <div class="grid-single-column">
         
+        <!-- Compétence 1 -->
         <div class="card">
           <span class="competence-badge">Compétence 1</span>
           <h3>Gérer le patrimoine informatique</h3>
           <ul>
-            <li><strong>Exploiter des référentiels :</strong> Configuration de l'infrastructure cible sous Debian 12, paramétrage strict du serveur web Apache et implémentation du HTTPS (certificats SSL/TLS).</li>
-            <li><strong>Mettre en place les habilitations :</strong> Sécurisation de la base de données (MariaDB) et restriction des accès IP sur phpMyAdmin via le pare-feu UFW.</li>
+            <li><strong>Recenser et identifier les ressources :</strong> Configuration d'une machine virtuelle (Rocky Linux) avec un nom d'hôte spécifique (<code>rocky-ZOZIN.btssio182.lan</code>).</li>
+            <li><strong>Mettre en place et vérifier les niveaux d'habilitation :</strong> Configuration réseau (IP, Masque, Passerelle, VLAN) et test de connectivité avec la commande Ping.</li>
           </ul>
           <div class="justificatifs-box">
             <strong>📄 Justificatifs :</strong>
             <div class="justificatif-tags">
-              <a href="Documentation Technique - Installation et Mise en Service.pdf" target="_blank" class="justificatif-tag">Documentation Technique</a>
+              <a href="comptes-rendus-projet-logs/Compte rendu - étape 2.pdf" target="_blank" class="justificatif-tag">Étape 2 (Réseau & VM)</a>
             </div>
           </div>
         </div>
 
+        <!-- Compétence 2 -->
         <div class="card">
           <span class="competence-badge">Compétence 2</span>
-          <h3>Répondre aux incidents et demandes</h3>
+          <h3>Répondre aux incidents et demandes d'assistance</h3>
           <ul>
-            <li><strong>Traiter des demandes réseau/applicatif :</strong> Diagnostic et correction des erreurs de "Timeout" et limites d'upload de fichiers volumineux (modification PHP fpm/cli).</li>
-            <li><strong>Traiter des demandes applications :</strong> Création d'une file d'attente asynchrone (QueueService) pour lisser la charge des traitements d'IA sur le GPU.</li>
+            <li><strong>Traiter des demandes concernant les services réseau :</strong> Modification des fichiers de configuration (<code>mariadb-server.cnf</code>, <code>phpMyAdmin.conf</code>) pour autoriser et sécuriser l'accès distant à la base de données depuis une machine personnelle.</li>
           </ul>
           <div class="justificatifs-box">
             <strong>📄 Justificatifs :</strong>
             <div class="justificatif-tags">
-              <a href="DEJESUSVIZCAINO_Nikauly_2slam_rapport_de_stage (1).pdf" target="_blank" class="justificatif-tag">Rapport de Stage</a>
+              <a href="comptes-rendus-projet-logs/Compte rendu - étape 2.pdf" target="_blank" class="justificatif-tag">Étape 2 (Fichiers de conf)</a>
             </div>
           </div>
         </div>
 
+        <!-- Compétence 3 -->
         <div class="card">
           <span class="competence-badge">Compétence 3</span>
-          <h3>Développer la présence en ligne de l'organisation</h3>
+          <h3>Développer la présence en ligne de l’organisation</h3>
           <ul>
-            <li><strong>Évolution d’un site Web :</strong> Développement d'un Dashboard d'administration complet sous Symfony et d'un module d'enregistrement audio interactif directement intégré dans le navigateur.</li>
+            <li><strong>Analyse du fonctionnement du Web :</strong> Compréhension et analyse approfondie de la structure des requêtes HTTP (méthodes GET, POST, PUT, DELETE) et interprétation des codes de réponses (200, 404, 500) directement depuis les fichiers de logs générés par le serveur Apache.</li>
           </ul>
           <div class="justificatifs-box">
             <strong>📄 Justificatifs :</strong>
             <div class="justificatif-tags">
-              <a href="DEJESUSVIZCAINO_Nikauly_2slam_rapport_de_stage (1).pdf" target="_blank" class="justificatif-tag">Rapport de Stage</a>
+              <a href="comptes-rendus-projet-logs/Compte rendu - étape 9.pdf" target="_blank" class="justificatif-tag">Étape 9 (Analyse HTTP)</a>
             </div>
           </div>
         </div>
-
-        <div class="card">
-          <span class="competence-badge">Compétence 4</span>
-          <h3>Travailler en mode projet</h3>
-          <ul>
-            <li><strong>Analyser les objectifs et contraintes :</strong> Prise en compte du besoin strict de la collectivité d'avoir un traitement 100% local pour des raisons de confidentialité (RGPD). Conception de la base de données (MCD) adaptée aux transcriptions.</li>
-          </ul>
-          <div class="justificatifs-box">
-            <strong>📄 Justificatifs :</strong>
-            <div class="justificatif-tags">
-              <a href="DEJESUSVIZCAINO_Nikauly_2slam_rapport_de_stage (1).pdf" target="_blank" class="justificatif-tag">Rapport de Stage</a>
-            </div>
-          </div>
-        </div>
-
+        
+        <!-- Compétence 5 -->
         <div class="card">
           <span class="competence-badge">Compétence 5</span>
-          <h3>Mettre à disposition un service informatique</h3>
+          <h3>Mettre à disposition des utilisateurs un service informatique</h3>
           <ul>
-            <li><strong>Déployer et Accompagner :</strong> Mise en production de l'outil sur les serveurs de la DSI. Rédaction d'une documentation technique pour le service informatique et d'un guide d'utilisation visuel pour les agents administratifs.</li>
+            <li><strong>Déployer un service :</strong> Installation et déploiement d'un serveur MariaDB fonctionnel.</li>
+            <li><strong>Gérer les accès :</strong> Création de comptes utilisateurs avec une gestion fine des privilèges (création d'un compte <code>utilog</code> en lecture seule et d'un compte <code>gestionlog</code> avec droits d'écriture complets).</li>
           </ul>
           <div class="justificatifs-box">
             <strong>📄 Justificatifs :</strong>
             <div class="justificatif-tags">
-              <a href="Documentation Technique - Installation et Mise en Service.pdf" target="_blank" class="justificatif-tag">Documentation Technique</a>
-              <a href="Guide_d'utilisation_papyrus.pdf" target="_blank" class="justificatif-tag">Guide d'Utilisation</a>
+              <a href="comptes-rendus-projet-logs/Compte rendu - étape 2.pdf" target="_blank" class="justificatif-tag">Étape 2 (MariaDB/Users)</a>
+              <a href="comptes-rendus-projet-logs/Compte rendu - étape 8.pdf" target="_blank" class="justificatif-tag">Étape 8 (Import BDD)</a>
             </div>
           </div>
         </div>
 
+        <!-- Compétence 6 -->
         <div class="card">
           <span class="competence-badge">Compétence 6</span>
           <h3>Organiser son développement professionnel</h3>
           <ul>
-            <li><strong>Développer son projet :</strong> Apprentissage en totale autonomie des technologies d'Intelligence Artificielle en Python (PyTorch, WhisperX, Mistral Nemo) et mise en place de l'orchestration de commandes entre le framework PHP et les scripts Python.</li>
+            <li><strong>Exploiter des données :</strong> Écriture de requêtes SQL complexes utilisant des fonctions d'agrégation (<code>GROUP BY</code>, <code>COUNT</code>) pour extraire dynamiquement les URL les plus visitées de la base.</li>
           </ul>
           <div class="justificatifs-box">
             <strong>📄 Justificatifs :</strong>
             <div class="justificatif-tags">
-              <a href="DEJESUSVIZCAINO_Nikauly_2slam_rapport_de_stage (1).pdf" target="_blank" class="justificatif-tag">Rapport de Stage</a>
+              <a href="comptes-rendus-projet-logs/Compte rendu - étape 4.pdf" target="_blank" class="justificatif-tag">Étape 4 (Requêtes SQL)</a>
+              <a href="comptes-rendus-projet-logs/Compte rendu - étape 5.pdf" target="_blank" class="justificatif-tag">Étape 5 (Python Stats)</a>
+              <a href="comptes-rendus-projet-logs/Compte rendu - étape 7.pdf" target="_blank" class="justificatif-tag">Étape 7 (Générateur SQL)</a>
             </div>
           </div>
         </div>
@@ -285,29 +288,66 @@
 
     <!-- Livrables -->
     <section class="content-section scroll-reveal">
-      <h2 class="section-title">Documentation & <span>Livrables</span></h2>
+      <h2 class="section-title">Comptes-Rendus & <span>Livrables</span></h2>
       <div class="livrables-list">
+        
+        <!-- Étape 1 -->
         <div class="livrable-item">
           <div class="livrable-info">
-            <h4>Rapport de Stage</h4>
-            <p>Analyse complète du besoin, choix d'architecture et bilan du projet PapyRus.</p>
+            <h4>Étape 1 - Manipulation de fichiers avec Python</h4>
+            <p>Développement du script <code>pseudo.py</code> générant des pseudonymes à partir d'un fichier texte.</p>
           </div>
-          <a href="DEJESUSVIZCAINO_Nikauly_2slam_rapport_de_stage (1).pdf" target="_blank" class="btn-download">Télécharger PDF</a>
+          <a href="comptes-rendus-python/Compte rendu -  tape 1.pdf" target="_blank" class="btn-download">PDF Étape 1</a>
         </div>
+
+        <!-- Étape 2 & 3 -->
         <div class="livrable-item">
           <div class="livrable-info">
-            <h4>Documentation Technique</h4>
-            <p>Guide d'installation sur serveur Debian 12 (Apache, MariaDB, Python, Cuda).</p>
+            <h4>Étape 2 & 3 - Déploiement Serveur et Sécurisation</h4>
+            <p>Configuration de MariaDB sous Rocky Linux, création de la BDD et restriction d'accès réseau Apache/phpMyAdmin.</p>
           </div>
-          <a href="Documentation Technique - Installation et Mise en Service.pdf" target="_blank" class="btn-download">Télécharger PDF</a>
+          <div class="btn-group">
+            <a href="comptes-rendus-python/Compte rendu -  tape 2.pdf" target="_blank" class="btn-download">PDF Étape 2</a>
+            <a href="comptes-rendus-python/Compte rendu -  tape 3.pdf" target="_blank" class="btn-download">PDF Étape 3</a>
+          </div>
         </div>
+
+        <!-- Étape 4 & 5 -->
         <div class="livrable-item">
           <div class="livrable-info">
-            <h4>Guide d'Utilisation</h4>
-            <p>Tutoriel pas-à-pas illustré, destiné aux agents administratifs de la collectivité.</p>
+            <h4>Étape 4 & 5 - Analyse Logs et Statistiques SQL</h4>
+            <p>Analyse des méthodes HTTP/codes d'erreur, et script interactif Python pour afficher l'URL la plus consultée.</p>
           </div>
-          <a href="Guide_d'utilisation_papyrus.pdf" target="_blank" class="btn-download">Télécharger PDF</a>
+          <div class="btn-group">
+            <a href="comptes-rendus-python/Compte rendu -  tape 4.pdf" target="_blank" class="btn-download">PDF Étape 4</a>
+            <a href="comptes-rendus-projet-logs/Compte rendu - étape 5.pdf" target="_blank" class="btn-download">PDF Étape 5</a>
+          </div>
         </div>
+
+        <!-- Étape 7 & 8 -->
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Étape 7 & 8 - Automatisation de l'intégration</h4>
+            <p>Script Python <code>generate_sql_insert.py</code> convertissant des fichiers logs de serveurs en fichiers SQL complets.</p>
+          </div>
+          <div class="btn-group">
+            <a href="comptes-rendus-projet-logs/Compte rendu - étape 7.pdf" target="_blank" class="btn-download">PDF Étape 7</a>
+            <a href ="comptes-rendus-projet-logs/Compte rendu - étape 8.pdf" target="_blank" class="btn-download">PDF Étape 8</a>
+          </div>
+        </div>
+
+        <!-- Étape 9 & Code source -->
+        <div class="livrable-item">
+          <div class="livrable-info">
+            <h4>Étape 9 & Code Source Python</h4>
+            <p>Documentation finale sur la structure des logs et archive ZIP contenant tous les scripts Python réalisés.</p>
+          </div>
+          <div class="btn-group">
+            <a href="comptes-rendus-projet-logs/Compte rendu - étape 9.pdf" target="_blank" class="btn-download">PDF Étape 9</a>
+            <a href="comptes-rendus-python/pyt25_a05_e09_ZOZIO_VIZCAINO.zip" class="btn-download">Télécharger ZIP Python</a>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>

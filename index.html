@@ -8,7 +8,6 @@
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
     :root {
-      /* Mode Clair (Par défaut) */
       --bg-main: #fcfcfc;
       --bg-card: #ffffff;
       --border-color: #eaeaea;
@@ -25,7 +24,6 @@
     }
 
     [data-theme="dark"] {
-      /* Mode Sombre */
       --bg-main: #080808;
       --bg-card: #121212;
       --border-color: rgba(255, 255, 255, 0.08);
@@ -69,10 +67,10 @@
     .light-green-underline { display: inline-block; color: var(--accent-color); }
     .intro-wrapper p { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 2rem; font-weight: 400; }
 
-    /* --- SECTION A PROPOS (Design original adapté au thème) --- */
+    /* --- SECTION A PROPOS --- */
     .section_tabs { background-color: var(--bg-main); position: relative; }
     .padding-section-large { padding: 7rem 0; }
-    .tabs_height { height: 250vh; } /* Effet sticky original */
+    .tabs_height { height: 250vh; } 
     .tabs_sticky-wrapper { height: 100vh; position: sticky; top: 5vh; }
     .tabs_container { max-width: 120rem; margin: 0 auto; }
     .tabs_component { height: 90vh; display: grid; grid-template-columns: 1fr 0.5fr; gap: 1.5rem; padding: 0 3.3%; }
@@ -119,24 +117,24 @@
     .project-link { color: var(--accent-color); font-weight: 600; text-decoration: none; font-size: 0.95rem; transition: transform 0.3s; display: inline-block; }
     .project-link:hover { transform: translateX(5px); }
 
-    /* --- SECTION COMPETENCES (Design original adapté) --- */
+    /* --- SECTION COMPETENCES --- */
     .section_skills { background-color: var(--bg-main); padding: 7rem 3.3%; position: relative; }
     .skills-container { max-width: 120rem; margin: 0 auto; }
     .skills-header { text-align: center; margin-bottom: 4rem; }
     .skills-subtitle { font-size: 1.15rem; color: var(--text-muted); }
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
     
-    .skill-category { background-color: var(--bg-card); border-radius: var(--radius); padding: 2rem; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); cursor: pointer; }
+    .skill-category { background-color: var(--bg-card); border-radius: var(--radius); padding: 2.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); cursor: default; }
     .skill-category:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); border-color: var(--accent-color); }
-    .category-title { font-size: 1.5rem; font-weight: 600; color: var(--text-main); margin-bottom: 1.5rem; }
+    .category-title { font-size: 1.5rem; font-weight: 600; color: var(--text-main); margin-bottom: 2rem; border-bottom: 2px solid var(--tech-bg); padding-bottom: 1rem;}
     
-    .skills-list { display: flex; flex-direction: column; gap: 1.25rem; }
-    .skill-item { display: flex; flex-direction: column; gap: 0.5rem; }
-    .skill-name { font-size: 0.95rem; color: var(--text-main); font-weight: 500; margin-bottom: 0.3rem; }
-    .skill-bar-container { display: flex; align-items: center; gap: 0.5rem; }
-    .skill-indicator { font-size: 0.875rem; font-weight: 600; color: var(--text-muted); min-width: 1rem; text-align: center; }
-    .skill-bar { width: 100%; height: 8px; background-color: var(--tech-bg); border-radius: 10px; overflow: hidden; position: relative; }
-    .skill-progress { height: 100%; background: linear-gradient(90deg, #8b0000, var(--accent-color)); border-radius: 10px; transition: width 1s ease; box-shadow: 0 0 10px var(--accent-light); }
+    .skills-list { display: flex; flex-direction: column; }
+    .skill-item { border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
+    .skill-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+    .skill-name { font-size: 1.1rem; color: var(--text-main); font-weight: 600; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px;}
+    .skill-context { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-tags span { background: var(--accent-light); color: var(--accent-color); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
 
     /* --- SECTION VEILLE --- */
     .section_veille { padding: 7rem 3.3%; background-color: var(--bg-main); }
@@ -206,7 +204,7 @@
     </div>
   </div>
 
-  <!-- À propos (Structure Originale avec effet Sticky) -->
+  <!-- À propos -->
   <section class="section_tabs" id="about">
     <div class="padding-section-large">
       <div class="tabs_height">
@@ -270,7 +268,7 @@
       <!-- Projet PapyRus -->
       <div class="project-card scroll-reveal" onclick="window.location.href='stage2.html'">
         <div class="project-image">
-          <img src="photo_portefolio.jpeg" alt="App Android" />
+          <img src="photo_portefolio.jpeg" alt="PapyRus - Projet IA" />
           <div class="project-overlay"><span class="project-tag">Symfony</span></div>
         </div>
         <div class="project-content">
@@ -284,7 +282,7 @@
       <!-- Projet 1: THALI-MINI -->
       <div class="project-card scroll-reveal" onclick="window.location.href='detail_projet.html'">
         <div class="project-image">
-          <img src="photo_projet_thali_mini.png" alt="App Android" />
+          <img src="photo_projet_thali_mini.png" alt="THALI-MINI" />
           <div class="project-overlay"><span class="project-tag">Java</span></div>
         </div>
         <div class="project-content">
@@ -340,193 +338,132 @@
         </div>
         <div class="project-content">
           <h3 class="project-title">R3st0 - Application Android</h3>
-          <p class="project-description">Application mobile Android de réservation et consultation de restaurants avec architecture MVC, API REST PHP et consommation JSON. Affichage liste, fiche détaillée, avis et notes moyennes.</p>
+          <p class="project-description">Application mobile Android de réservation et consultation de restaurants avec architecture MVC, API REST PHP et consommation JSON. Affichage liste, fiche détaillée et avis.</p>
           <div class="project-tech"><span>Java Android</span><span>API REST PHP</span><span>JSON</span><span>GitLab</span></div>
           <a href="projet_android.html" class="project-link">Voir le projet →</a>
+        </div>
+      </div>
+
+      <!-- Projet 5: Analyse de Logs Web (Python & SQL) -->
+      <div class="project-card scroll-reveal" onclick="window.location.href='projet_python.html'">
+        <div class="project-image">
+          <img src="photo_projet_python.png" alt="Analyse de logs Python et SQL" onerror="this.src='photo_portefolio.jpeg'"/>
+          <div class="project-overlay">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">SQL</span>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Analyse Logs Web & BDD</h3>
+          <p class="project-description">Développement de scripts <strong>Python</strong> pour l'analyse de journaux d'accès web et l'automatisation d'insertions SQL. Déploiement et sécurisation d'un serveur MariaDB sous Rocky Linux 9.</p>
+          <div class="project-tech">
+            <span>Python</span>
+            <span>SQL</span>
+            <span>MariaDB</span>
+            <span>Linux</span>
+            <span>Bash</span>
+          </div>
+          <a href="projet_python.html" class="project-link">Voir le projet →</a>
+        </div>
+      </div>
+
+      <!-- Projet 6: Application Modération R3st0 -->
+      <div class="project-card scroll-reveal" onclick="window.location.href='projet_moderation.html'">
+        <div class="project-image">
+          <img src="photo_app_moderation.png" alt="Application de modération R3st0" onerror="this.src='photo_portefolio.jpeg'"/>
+          <div class="project-overlay">
+            <span class="project-tag">Java</span>
+            <span class="project-tag">MVC</span>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Modération R3st0.fr</h3>
+          <p class="project-description">Application <strong>Java Desktop</strong> (Swing) destinée aux modérateurs du site R3st0.fr. Structurée selon le pattern <strong>MVC</strong> avec connexion à une base de données distante, développée en méthode Agile (Scrum).</p>
+          <div class="project-tech">
+            <span>Java</span>
+            <span>Swing</span>
+            <span>MariaDB</span>
+            <span>GitLab</span>
+            <span>Scrum</span>
+          </div>
+          <a href="projet_moderation.html" class="project-link">Voir le projet →</a>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Compétences (Structure Originale Conservée) -->
+  <!-- Compétences Repensées -->
   <section class="section_skills" id="skills">
     <div class="skills-container">
       <div class="skills-header scroll-reveal">
-        <h2 class="heading-style-h2">Mes <span class="text-color-red">Compétences</span></h2>
-        <p class="skills-subtitle">Technologies et langages que je maîtrise</p>
+        <h2 class="heading-style-h2">Mon <span class="text-color-red">Expertise Technique</span></h2>
+        <p class="skills-subtitle">Ce que je sais faire, concrètement, avec mes outils</p>
       </div>
 
       <div class="skills-grid">
-        <!-- Frontend -->
+        
+        <!-- Dev Backend & IA -->
         <div class="skill-category scroll-reveal">
-          <h3 class="category-title">Frontend</h3>
+          <h3 class="category-title">⚙️ Backend & IA</h3>
           <div class="skills-list">
             <div class="skill-item">
-              <span class="skill-name">HTML5</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
+              <span class="skill-name">Python</span>
+              <p class="skill-context">Développement de scripts d'automatisation, parsing de logs et intégration de modèles d'Intelligence Artificielle.</p>
+              <div class="skill-tags"><span>WhisperX</span><span>Mistral Nemo</span><span>IA Locale</span></div>
             </div>
             <div class="skill-item">
-              <span class="skill-name">CSS3 / SCSS</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">JavaScript</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Backend -->
-        <div class="skill-category scroll-reveal">
-          <h3 class="category-title">Backend</h3>
-          <div class="skills-list">
-            <div class="skill-item">
-              <span class="skill-name">PHP</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
+              <span class="skill-name">PHP & Symfony</span>
+              <p class="skill-context">Création de plateformes web sécurisées et d'API REST pour des applications mobiles.</p>
+              <div class="skill-tags"><span>MVC</span><span>API REST</span><span>Doctrine</span></div>
             </div>
             <div class="skill-item">
               <span class="skill-name">Java</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">Python</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
+              <p class="skill-context">Développement d'applications de bureau (CRUD) avec architecture DAO et interfaces graphiques.</p>
+              <div class="skill-tags"><span>Swing</span><span>JDBC</span><span>Pattern DAO</span></div>
             </div>
           </div>
         </div>
 
-        <!-- Mobile -->
+        <!-- Dev Frontend & Mobile -->
         <div class="skill-category scroll-reveal">
-          <h3 class="category-title">Mobile</h3>
+          <h3 class="category-title">📱 Frontend & Mobile</h3>
           <div class="skills-list">
             <div class="skill-item">
-              <span class="skill-name">Java Android</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
+              <span class="skill-name">Android (Java)</span>
+              <p class="skill-context">Conception d'applications mobiles natives consommant des API JSON avec affichage dynamique.</p>
+              <div class="skill-tags"><span>Android Studio</span><span>XML Layouts</span><span>JSON</span></div>
             </div>
             <div class="skill-item">
-              <span class="skill-name">XML Layout</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
+              <span class="skill-name">HTML5, CSS3, JS</span>
+              <p class="skill-context">Maquettage et développement d'interfaces web responsives et dynamiques.</p>
+              <div class="skill-tags"><span>Responsive Design</span><span>Figma/Canva</span><span>DOM</span></div>
             </div>
           </div>
         </div>
 
-        <!-- Database -->
+        <!-- Infra, BDD & DevOps -->
         <div class="skill-category scroll-reveal">
-          <h3 class="category-title">Base de données</h3>
+          <h3 class="category-title">🗄️ Infra, BDD & DevOps</h3>
           <div class="skills-list">
             <div class="skill-item">
-              <span class="skill-name">MySQL / MariaDB</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
+              <span class="skill-name">Bases de données (SQL)</span>
+              <p class="skill-context">Modélisation, requêtage complexe et gestion des droits utilisateurs sur serveurs relationnels.</p>
+              <div class="skill-tags"><span>MariaDB</span><span>MySQL</span><span>phpMyAdmin</span></div>
             </div>
             <div class="skill-item">
-              <span class="skill-name">SQL</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
+              <span class="skill-name">Administration Linux</span>
+              <p class="skill-context">Déploiement de serveurs web, gestion de pare-feu et paramétrage d'environnements (LAMP).</p>
+              <div class="skill-tags"><span>Debian 12</span><span>Rocky Linux</span><span>Apache</span><span>FFmpeg</span></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Versionning & Agile</span>
+              <p class="skill-context">Travail en équipe avec méthodes agiles, gestion de tickets et déploiement continu.</p>
+              <div class="skill-tags"><span>Git</span><span>GitLab</span><span>Scrum/Kanban</span></div>
             </div>
           </div>
         </div>
 
-        <!-- Outils -->
-        <div class="skill-category scroll-reveal">
-          <h3 class="category-title">Outils & IDE</h3>
-          <div class="skills-list">
-            <div class="skill-item">
-              <span class="skill-name">Git / GitLab</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">VS Code</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">Android Studio</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Architecture -->
-        <div class="skill-category scroll-reveal">
-          <h3 class="category-title">Architecture</h3>
-          <div class="skills-list">
-            <div class="skill-item">
-              <span class="skill-name">MVC</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">REST API</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
-            </div>
-            <div class="skill-item">
-              <span class="skill-name">POO</span>
-              <div class="skill-bar-container">
-                <span class="skill-indicator">-</span>
-                <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
-                <span class="skill-indicator">+</span>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -651,13 +588,6 @@
       gsap.from(section, {
         y: 50, opacity: 0, duration: 0.8, ease: "power3.out",
         scrollTrigger: { trigger: section, start: "top 85%", once: true }
-      });
-    });
-
-    gsap.utils.toArray('.skill-progress').forEach(bar => {
-      gsap.from(bar, {
-        width: 0, duration: 1.5, ease: "power2.out",
-        scrollTrigger: { trigger: bar, start: "top 85%", once: true }
       });
     });
   </script>

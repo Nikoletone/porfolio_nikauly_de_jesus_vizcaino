@@ -45,17 +45,24 @@
     .section-title span { color: var(--accent-color); }
     
     .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; }
+    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; display: flex; flex-direction: column; }
     .card:hover { border-color: var(--accent-color); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
     .card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-main); }
     .card p { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; }
     
-    .card ul { list-style: none; padding-left: 0; margin-top: 1rem; }
+    .card ul { list-style: none; padding-left: 0; margin-top: 1rem; flex-grow: 1; }
     .card li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; color: var(--text-muted); font-size: 0.95rem; }
     .card li::before { content: '→'; position: absolute; left: 0; color: var(--accent-color); font-weight: bold; }
     .card strong { color: var(--text-main); font-weight: 500; }
-    .competence-badge { display: inline-block; padding: 4px 12px; background: var(--accent-light); color: var(--accent-color); border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+    .competence-badge { display: inline-block; padding: 4px 12px; background: var(--accent-light); color: var(--accent-color); border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; width: fit-content;}
     
+    /* Styles pour les justificatifs */
+    .justificatifs-box { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed var(--border-color); }
+    .justificatifs-box strong { font-size: 0.9rem; color: var(--text-main); display: block; margin-bottom: 0.5rem; }
+    .justificatif-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .justificatif-tag { padding: 4px 12px; background: var(--tech-bg); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.8rem; font-weight: 500; text-decoration: none; transition: all 0.3s; }
+    .justificatif-tag:hover { background: var(--accent-color); color: white; border-color: var(--accent-color); transform: translateY(-2px); }
+
     .livrables-list { display: flex; flex-direction: column; gap: 1.5rem; }
     .livrable-item { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--shadow-soft); transition: all 0.3s; }
     .livrable-item:hover { border-color: var(--accent-color); box-shadow: var(--shadow-hover); }
@@ -142,22 +149,32 @@
         <div class="card">
           <span class="competence-badge">Compétence 2</span>
           <h3>Répondre aux incidents et évolutions</h3>
-          <p><strong>Traiter des demandes concernant les applications :</strong> Traitement des tickets de développement, ajout de fonctionnalités selon les besoins exprimés (fiche détail, affichage critiques). Utilisation d'un outil de gestion de tickets (GitLab Issues). Communication écrite et orale adaptée.</p>
+          <ul>
+            <li><strong>Traiter des demandes concernant les applications :</strong> Traitement des tickets de développement, ajout de fonctionnalités selon les besoins exprimés (fiche détail, affichage critiques). Utilisation d'un outil de gestion de tickets (GitLab Issues).</li>
+          </ul>
+          <!-- JUSTIFICATIFS -->
+          <div class="justificatifs-box">
+            <strong>📄 Justificatifs :</strong>
+            <div class="justificatif-tags">
+              <a href="Iteration2_Nikauly_Garance_Heymad_G5.pdf" target="_blank" class="justificatif-tag">Rapport Itération 2</a>
+            </div>
+          </div>
         </div>
+        
         <div class="card">
           <span class="competence-badge">Compétence 4</span>
           <h3>Travailler en mode projet</h3>
-          <p><strong>Analyser les objectifs et modalités :</strong> Analyse du cahier des charges, définition de l'architecture MVC, conception du diagramme UML, planification des itérations.<br><strong>Planifier les activités :</strong> Organisation en sprints, daily scrums, répartition des tâches en tickets GitLab, gestion du backlog.</p>
-        </div>
-        <div class="card">
-          <span class="competence-badge">Compétence 5</span>
-          <h3>Mettre à disposition un service</h3>
-          <p><strong>Réaliser les tests d'intégration et d'acceptation :</strong> Tests unitaires de l'API (Postman), tests fonctionnels de l'application mobile, gestion des cas d'erreur réseau. Les tests d'intégration et d'acceptation sont rédigés et documentés.</p>
-        </div>
-        <div class="card">
-          <span class="competence-badge">Compétence 6</span>
-          <h3>Organiser son développement</h3>
-          <p><strong>Mettre en place son environnement :</strong> Comptes-rendus d'itération, documentation des endpoints API. Maîtrise d'Android Studio, utilisation de GitLab (branches, merge, issues), Canva.<br><strong>Développer son projet :</strong> Développement de composants Android (Activities, XML), création de l'API REST. Consommation d'API avec HttpURLConnection, parsing JSON, gestion asynchrone (AsyncTask).</p>
+          <ul>
+            <li><strong>Analyser les objectifs et modalités :</strong> Analyse du cahier des charges, définition de l'architecture MVC, conception du diagramme UML, planification des itérations.</li>
+            <li><strong>Planifier les activités :</strong> Organisation en sprints, répartition des tâches en tickets GitLab.</li>
+          </ul>
+          <!-- JUSTIFICATIFS -->
+          <div class="justificatifs-box">
+            <strong>📄 Justificatifs :</strong>
+            <div class="justificatif-tags">
+              <a href="Projet-dapplication-Android-de-reservation-pour-R3st0.pdf" target="_blank" class="justificatif-tag">Rapport Itération 1</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

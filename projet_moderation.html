@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PapyRus - Stage 2ème Année | Portfolio Nikauly</title>
+  <title>R3st0 Modération | Portfolio Nikauly</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
     
@@ -60,19 +60,24 @@
       display: flex; justify-content: space-between; align-items: center;
       transition: background 0.3s, border-color 0.3s;
     }
+    .nav-container { max-width: 120rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; width: 100%; }
     .nav-logo { font-size: 1.2rem; font-weight: 500; color: var(--text-main); text-decoration: none; letter-spacing: 1px; }
     .nav-logo span { color: var(--accent-color); font-weight: 600; }
     
     .nav-actions { display: flex; align-items: center; gap: 20px; }
-    .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.3s; display: flex; align-items: center; gap: 8px; }
-    .nav-back:hover { color: var(--accent-color); }
     
-    .theme-toggle {
-      background: transparent; border: 1px solid var(--border-color);
-      color: var(--text-main); border-radius: 50%; width: 40px; height: 40px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; font-size: 1.2rem; transition: all 0.3s;
-    }
+    .nav-menu { display: flex; gap: 2.5rem; align-items: center; list-style: none; margin-right: 1rem;}
+    .nav-menu a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; position: relative; padding: 0.5rem 0; }
+    .nav-menu a::after { content: ""; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent-color); transition: width 0.3s ease; }
+    .nav-menu a:hover, .nav-menu a.active { color: var(--accent-color); }
+    .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
+    
+    .hamburger { display: none; flex-direction: column; gap: 0.4rem; cursor: pointer; z-index: 1001; padding: 5px; }
+    .hamburger span { width: 25px; height: 3px; background-color: var(--text-main); transition: all 0.3s ease; border-radius: 2px; }
+    
+    .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.3s; display: flex; align-items: center; gap: 8px; margin-left: 10px; border: 1px solid var(--border-color); padding: 5px 15px; border-radius: 20px; }
+    .nav-back:hover { color: var(--text-main); border-color: var(--text-main); }
+    .theme-toggle { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.2rem; transition: all 0.3s; }
     .theme-toggle:hover { border-color: var(--accent-color); transform: scale(1.05); }
 
     /* --- Sections communes --- */
@@ -90,7 +95,9 @@
     .section-title span { color: var(--accent-color); }
 
     .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; display: flex; flex-direction: column; }
+    .grid-single-column { display: flex; flex-direction: column; gap: 2rem; }
+
+    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; display: flex; flex-direction: column;}
     .card:hover { border-color: var(--accent-color); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
     .card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-main); }
     .card p { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; }
@@ -101,7 +108,6 @@
     .card strong { color: var(--text-main); font-weight: 500; }
     .competence-badge { display: inline-block; padding: 4px 12px; background: var(--accent-light); color: var(--accent-color); border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; width: fit-content; }
 
-    /* Styles pour les justificatifs */
     .justificatifs-box { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed var(--border-color); }
     .justificatifs-box strong { font-size: 0.9rem; color: var(--text-main); display: block; margin-bottom: 0.5rem; }
     .justificatif-tags { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -117,12 +123,18 @@
     .btn-download { padding: 10px 24px; background: var(--accent-color); color: white; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: all 0.3s; text-align: center; white-space: nowrap; }
     .btn-download:hover { background: #b01030; transform: translateY(-2px); }
 
+    .btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+
     footer { text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid var(--border-color); margin-top: 4rem; background-color: var(--bg-card); }
 
     @media (max-width: 768px) {
       .hero-title { font-size: 2.5rem; }
       .livrable-item { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .btn-group { width: 100%; flex-direction: column; }
       .btn-download { width: 100%; text-align: center; }
+      .nav-menu { position: fixed; top: 70px; right: -100%; width: 100%; height: calc(100vh - 70px); background: var(--nav-bg); flex-direction: column; padding: 3rem; transition: right 0.3s ease; margin-right: 0; align-items: flex-start; border-left: 1px solid var(--border-color);}
+      .nav-menu.active { right: 0; }
+      .hamburger { display: flex; }
     }
   </style>
 </head>
@@ -130,66 +142,79 @@
 
   <!-- Navigation -->
   <nav class="navbar">
-    <a href="index.html" class="nav-logo">Nikauly <span>.</span></a>
-    <div class="nav-actions">
-      <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème">🌙</button>
-      <a href="index.html" class="nav-back">← Retour</a>
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Nikauly <span>.</span></a>
+      <div class="nav-actions">
+        <!-- SOMMAIRE INTERNE DU PROJET -->
+        <ul class="nav-menu">
+          <li><a href="#contexte" class="active">Le Projet</a></li>
+          <li><a href="#competences">Compétences</a></li>
+          <li><a href="#livrables">Livrables</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème">🌙</button>
+        <div class="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+        <a href="index.html" class="nav-back">← Accueil</a>
+      </div>
     </div>
   </nav>
 
   <!-- Contenu Principal -->
   <main>
     <section class="hero">
-      <div class="hero-tag">Stage 2ème Année</div>
-      <h1 class="hero-title">PapyRus</h1>
+      <div class="hero-tag">Application Desktop Java</div>
+      <h1 class="hero-title">R3st0 Modération</h1>
       <p class="hero-subtitle">
-        Plateforme sécurisée de transcription audio et de synthèse automatisée de réunions, propulsée par l'Intelligence Artificielle. Conçue pour la DSI de Pornic Agglo.
+        Application de bureau Java MVC destinée aux modérateurs et responsables du site R3st0.fr, développée en équipe selon la méthode Agile avec gestion de base de données distante.
       </p>
       <div class="tech-stack">
-        <span class="tech-item">Symfony</span>
-        <span class="tech-item">Python 3.11</span>
-        <span class="tech-item">WhisperX</span>
-        <span class="tech-item">Mistral Nemo</span>
-        <span class="tech-item">FFmpeg</span>
-        <span class="tech-item">Debian 12</span>
+        <span class="tech-item">Java</span>
+        <span class="tech-item">Swing UI</span>
+        <span class="tech-item">MariaDB</span>
+        <span class="tech-item">Pattern MVC</span>
+        <span class="tech-item">Méthode Agile</span>
+        <span class="tech-item">GitLab</span>
       </div>
     </section>
 
-    <section class="content-section scroll-reveal" style="padding-top: 0;">
+    <!-- SECTION LE PROJET -->
+    <section id="contexte" class="content-section scroll-reveal" style="padding-top: 0;">
       <h2 class="section-title">Le <span>Projet</span></h2>
       <div class="grid-container">
         <div class="card">
           <h3>Contexte</h3>
-          <p>La collectivité Pornic Agglo génère de nombreuses réunions nécessitant des comptes-rendus. La rédaction manuelle prenait jusqu'à cinq heures pour une heure d'audio.</p>
+          <p>Les propriétaires du site r3st0.fr souhaitaient se doter d'une application Java installée sur les postes de travail des modérateurs pour contrôler les avis déposés. L'outil permet de supprimer ou de bloquer la publication des avis ne respectant pas la charte.</p>
         </div>
         <div class="card">
-          <h3>Objectifs techniques</h3>
+          <h3>Objectifs et Architecture</h3>
           <ul>
-            <li>Développer une interface Full Stack sécurisée sous Symfony.</li>
-            <li>Intégrer une authentification LDAP liée à l'Active Directory.</li>
-            <li>Gérer et fusionner des fichiers audio multiples via FFmpeg.</li>
-            <li>Garantir le respect du RGPD avec une solution 100% locale (sans API Cloud).</li>
+            <li>Développement en langage Java en respectant le patron de conception MVC (Modèle-Vue-Contrôleur).</li>
+            <li>Conception d'une interface graphique avec authentification sécurisée et chiffrement.</li>
+            <li>Connexion JDBC à une base de données distante MariaDB mutualisée.</li>
           </ul>
         </div>
         <div class="card">
-          <h3>Moteur IA & Deep Learning</h3>
+          <h3>Fonctionnalités développées</h3>
           <ul>
-            <li>Intégration de <strong>WhisperX</strong> pour la transcription et la diarisation (séparation des locuteurs).</li>
-            <li>Utilisation de <strong>Mistral Nemo</strong> pour générer des synthèses et comptes-rendus structurés.</li>
+            <li><strong>Authentification :</strong> Gestion de différents rôles (modérateur, administrateur, client) stockés en BDD.</li>
+            <li><strong>Listing des avis :</strong> Affichage des avis par date décroissante ou par semaine.</li>
+            <li><strong>Modération :</strong> Possibilité de masquer un avis avec motif, de le démasquer ou de le supprimer définitivement de la base.</li>
           </ul>
         </div>
         <div class="card">
-          <h3>Architecture & Déploiement</h3>
+          <h3>Gestion de Projet Agile</h3>
           <ul>
-            <li>Déploiement sur serveur Debian 12 avec socle LAMP (Linux, Apache, MariaDB, PHP).</li>
-            <li>Création d'un système de file d'attente asynchrone (QueueService) pour éviter la saturation du serveur GPU.</li>
+            <li>Projet découpé en 3 itérations (sprints) avec animation de "Daily Scrums" à chaque séance.</li>
+            <li>Priorisation du Backlog avec la méthode MoSCoW (Must, Should, Could, Won't) et estimation de complexité.</li>
+            <li>Utilisation de GitLab pour la gestion de version et le travail collaboratif.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- Compétences PapyRus -->
-    <section class="content-section scroll-reveal">
+    <!-- SECTION COMPÉTENCES -->
+    <section id="competences" class="content-section scroll-reveal">
       <h2 class="section-title">Compétences <span>BTS SIO</span></h2>
       <div class="grid-single-column">
         
@@ -197,42 +222,27 @@
           <span class="competence-badge">Compétence 1</span>
           <h3>Gérer le patrimoine informatique</h3>
           <ul>
-            <li><strong>Exploiter des référentiels :</strong> Configuration de l'infrastructure cible sous Debian 12, paramétrage strict du serveur web Apache et implémentation du HTTPS (certificats SSL/TLS).</li>
-            <li><strong>Mettre en place les habilitations :</strong> Sécurisation de la base de données (MariaDB) et restriction des accès IP sur phpMyAdmin via le pare-feu UFW.</li>
+            <li><strong>Mettre en place les habilitations :</strong> Séparation stricte des accès via l'implémentation de rôles en base de données (admin, modérateur, client) pour limiter l'accès à certaines vues.</li>
           </ul>
           <div class="justificatifs-box">
             <strong>📄 Justificatifs :</strong>
             <div class="justificatif-tags">
-              <a href="Documentation Technique - Installation et Mise en Service.pdf" target="_blank" class="justificatif-tag">Documentation Technique</a>
+              <a href="https://gitlab.com/de.jesus.vizcaino/gestion_avis" target="_blank" class="justificatif-tag">Code Source (Connexion_db.java)</a>
+              <a href="#" class="justificatif-tag">Compte Rendu Itération 3</a>
             </div>
           </div>
         </div>
 
         <div class="card">
           <span class="competence-badge">Compétence 2</span>
-          <h3>Répondre aux incidents et demandes</h3>
+          <h3>Répondre aux incidents et demandes d'assistance</h3>
           <ul>
-            <li><strong>Traiter des demandes réseau/applicatif :</strong> Diagnostic et correction des erreurs de "Timeout" et limites d'upload de fichiers volumineux (modification PHP fpm/cli).</li>
-            <li><strong>Traiter des demandes applications :</strong> Création d'une file d'attente asynchrone (QueueService) pour lisser la charge des traitements d'IA sur le GPU.</li>
+            <li><strong>Traiter des demandes concernant les applications :</strong> Modification et évolution de la structure de la base de données existante (utilisation de requêtes <code>ALTER TABLE</code> pour ajouter les colonnes <code>role</code>, <code>date_avis</code> et <code>masquer</code>) afin de répondre aux nouveaux besoins de l'entreprise.</li>
           </ul>
           <div class="justificatifs-box">
             <strong>📄 Justificatifs :</strong>
             <div class="justificatif-tags">
-              <a href="DEJESUSVIZCAINO_Nikauly_2slam_rapport_de_stage (1).pdf" target="_blank" class="justificatif-tag">Rapport de Stage</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <span class="competence-badge">Compétence 3</span>
-          <h3>Développer la présence en ligne de l'organisation</h3>
-          <ul>
-            <li><strong>Évolution d’un site Web :</strong> Développement d'un Dashboard d'administration complet sous Symfony et d'un module d'enregistrement audio interactif directement intégré dans le navigateur.</li>
-          </ul>
-          <div class="justificatifs-box">
-            <strong>📄 Justificatifs :</strong>
-            <div class="justificatif-tags">
-              <a href="DEJESUSVIZCAINO_Nikauly_2slam_rapport_de_stage (1).pdf" target="_blank" class="justificatif-tag">Rapport de Stage</a>
+              <a href="#" class="justificatif-tag">Compte Rendu Itération 3 (Modif BDD)</a>
             </div>
           </div>
         </div>
@@ -241,73 +251,56 @@
           <span class="competence-badge">Compétence 4</span>
           <h3>Travailler en mode projet</h3>
           <ul>
-            <li><strong>Analyser les objectifs et contraintes :</strong> Prise en compte du besoin strict de la collectivité d'avoir un traitement 100% local pour des raisons de confidentialité (RGPD). Conception de la base de données (MCD) adaptée aux transcriptions.</li>
+            <li><strong>Analyser les objectifs et planifier :</strong> Découpage du projet en 3 itérations agiles (sprints) via GitLab. Utilisation quotidienne des "Daily Scrums" pour définir les tâches, faire des brainstormings et assurer le suivi en équipe.</li>
           </ul>
           <div class="justificatifs-box">
             <strong>📄 Justificatifs :</strong>
             <div class="justificatif-tags">
-              <a href="DEJESUSVIZCAINO_Nikauly_2slam_rapport_de_stage (1).pdf" target="_blank" class="justificatif-tag">Rapport de Stage</a>
+              <a href="2SLAM-AP- Projet 3.pdf" target="_blank" class="justificatif-tag">Cahier des charges</a>
+              <a href="#" class="justificatif-tag">Compte Rendu Itération 1 (Daily Scrum)</a>
+              <a href="#" class="justificatif-tag">Compte Rendu Itération 2 (Tickets)</a>
             </div>
           </div>
         </div>
 
-        <div class="card">
-          <span class="competence-badge">Compétence 5</span>
-          <h3>Mettre à disposition un service informatique</h3>
-          <ul>
-            <li><strong>Déployer et Accompagner :</strong> Mise en production de l'outil sur les serveurs de la DSI. Rédaction d'une documentation technique pour le service informatique et d'un guide d'utilisation visuel pour les agents administratifs.</li>
-          </ul>
-          <div class="justificatifs-box">
-            <strong>📄 Justificatifs :</strong>
-            <div class="justificatif-tags">
-              <a href="Documentation Technique - Installation et Mise en Service.pdf" target="_blank" class="justificatif-tag">Documentation Technique</a>
-              <a href="Guide_d'utilisation_papyrus.pdf" target="_blank" class="justificatif-tag">Guide d'Utilisation</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <span class="competence-badge">Compétence 6</span>
-          <h3>Organiser son développement professionnel</h3>
-          <ul>
-            <li><strong>Développer son projet :</strong> Apprentissage en totale autonomie des technologies d'Intelligence Artificielle en Python (PyTorch, WhisperX, Mistral Nemo) et mise en place de l'orchestration de commandes entre le framework PHP et les scripts Python.</li>
-          </ul>
-          <div class="justificatifs-box">
-            <strong>📄 Justificatifs :</strong>
-            <div class="justificatif-tags">
-              <a href="DEJESUSVIZCAINO_Nikauly_2slam_rapport_de_stage (1).pdf" target="_blank" class="justificatif-tag">Rapport de Stage</a>
-            </div>
-          </div>
-        </div>
+        
 
       </div>
     </section>
 
-    <!-- Livrables -->
-    <section class="content-section scroll-reveal">
-      <h2 class="section-title">Documentation & <span>Livrables</span></h2>
+    <!-- SECTION LIVRABLES -->
+    <section id="livrables" class="content-section scroll-reveal">
+      <h2 class="section-title">Comptes-Rendus & <span>Livrables</span></h2>
       <div class="livrables-list">
+        
         <div class="livrable-item">
           <div class="livrable-info">
-            <h4>Rapport de Stage</h4>
-            <p>Analyse complète du besoin, choix d'architecture et bilan du projet PapyRus.</p>
+            <h4>Cahier des charges & Backlog</h4>
+            <p>Directives du projet, diagrammes des cas d'utilisation et priorisation MoSCoW.</p>
           </div>
-          <a href="DEJESUSVIZCAINO_Nikauly_2slam_rapport_de_stage (1).pdf" target="_blank" class="btn-download">Télécharger PDF</a>
+          <a href="2SLAM-AP- Projet 3.pdf" target="_blank" class="btn-download">PDF Cahier des charges</a>
         </div>
+
         <div class="livrable-item">
           <div class="livrable-info">
-            <h4>Documentation Technique</h4>
-            <p>Guide d'installation sur serveur Debian 12 (Apache, MariaDB, Python, Cuda).</p>
+            <h4>Comptes rendus d'itérations (1, 2, 3)</h4>
+            <p>Résumé des Daily scrums, traitement des tickets GitLab, maquettage et évolution du code (MVC, requêtes SQL).</p>
           </div>
-          <a href="Documentation Technique - Installation et Mise en Service.pdf" target="_blank" class="btn-download">Télécharger PDF</a>
+          <div class="btn-group">
+            <a href="#" target="_blank" class="btn-download">PDF Itération 1</a>
+            <a href="#" target="_blank" class="btn-download">PDF Itération 2</a>
+            <a href="#" target="_blank" class="btn-download">PDF Itération 3</a>
+          </div>
         </div>
+
         <div class="livrable-item">
           <div class="livrable-info">
-            <h4>Guide d'Utilisation</h4>
-            <p>Tutoriel pas-à-pas illustré, destiné aux agents administratifs de la collectivité.</p>
+            <h4>Dépôt de code GitLab</h4>
+            <p>Code source complet du projet Java, architecture MVC, classes DAO et documentation.</p>
           </div>
-          <a href="Guide_d'utilisation_papyrus.pdf" target="_blank" class="btn-download">Télécharger PDF</a>
+          <a href="https://gitlab.com/de.jesus.vizcaino/gestion_avis" target="_blank" class="btn-download">Voir sur GitLab</a>
         </div>
+
       </div>
     </section>
   </main>
@@ -334,7 +327,46 @@
       toggleBtn.innerHTML = newTheme === 'dark' ? '☀️' : '🌙';
     });
 
-    // Animations
+    // --- MENU MOBILE ---
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+
+    if(hamburger) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // --- SCROLL SPY (Surbrillance au défilement) ---
+    window.addEventListener("scroll", () => {
+      let current = "";
+      const allSections = document.querySelectorAll("section[id]");
+
+      allSections.forEach((section) => {
+        const sectionTop = section.offsetTop - 150;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // Animations GSAP
     gsap.registerPlugin(ScrollTrigger);
     gsap.from('.hero-title, .hero-subtitle, .hero-tag', { y: 40, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power3.out" });
     gsap.from('.tech-item', { scale: 0.8, opacity: 0, duration: 0.6, stagger: 0.1, ease: "back.out(1.7)", delay: 0.5 });

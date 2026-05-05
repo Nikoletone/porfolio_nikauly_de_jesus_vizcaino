@@ -45,18 +45,24 @@
     .section-title span { color: var(--accent-color); }
     
     .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; }
+    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; display: flex; flex-direction: column; }
     .card:hover { border-color: var(--accent-color); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
     .card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-main); }
     .card p { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; }
     
-    /* Styles pour les listes dans les cartes */
-    .card ul { list-style: none; padding-left: 0; margin-top: 1rem; }
+    .card ul { list-style: none; padding-left: 0; margin-top: 1rem; flex-grow: 1; }
     .card li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; color: var(--text-muted); font-size: 0.95rem; }
     .card li::before { content: '→'; position: absolute; left: 0; color: var(--accent-color); font-weight: bold; }
     .card strong { color: var(--text-main); font-weight: 500; }
-    .competence-badge { display: inline-block; padding: 4px 12px; background: var(--accent-light); color: var(--accent-color); border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+    .competence-badge { display: inline-block; padding: 4px 12px; background: var(--accent-light); color: var(--accent-color); border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; width: fit-content;}
     
+    /* Styles pour les justificatifs */
+    .justificatifs-box { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed var(--border-color); }
+    .justificatifs-box strong { font-size: 0.9rem; color: var(--text-main); display: block; margin-bottom: 0.5rem; }
+    .justificatif-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .justificatif-tag { padding: 4px 12px; background: var(--tech-bg); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.8rem; font-weight: 500; text-decoration: none; transition: all 0.3s; }
+    .justificatif-tag:hover { background: var(--accent-color); color: white; border-color: var(--accent-color); transform: translateY(-2px); }
+
     .livrables-list { display: flex; flex-direction: column; gap: 1.5rem; }
     .livrable-item { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--shadow-soft); transition: all 0.3s; }
     .livrable-item:hover { border-color: var(--accent-color); box-shadow: var(--shadow-hover); }
@@ -144,22 +150,70 @@
         <div class="card">
           <span class="competence-badge">Compétence 2</span>
           <h3>Répondre aux incidents et évolutions</h3>
-          <p><strong>Traiter des demandes concernant les applications :</strong> Collecte et traitement des demandes de fonctionnalités du client THALI. Implémentation des différentes étapes du CRUD selon les besoins exprimés. Compte-rendu des actions réalisées pour chaque étape.</p>
+          <ul>
+            <li><strong>Traiter des demandes concernant les applications :</strong> Collecte et traitement des demandes de fonctionnalités du client THALI. Implémentation des différentes étapes du CRUD.</li>
+          </ul>
+          <!-- JUSTIFICATIFS -->
+          <div class="justificatifs-box">
+            <strong>📄 Justificatifs :</strong>
+            <div class="justificatif-tags">
+              <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_03.pdf" target="_blank" class="justificatif-tag">Étape 3 (Modif UI)</a>
+              <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_05.pdf" target="_blank" class="justificatif-tag">Étape 5 (Ajout excursion)</a>
+              <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_07.pdf" target="_blank" class="justificatif-tag">Étape 7 (Nouvelle étape)</a>
+            </div>
+          </div>
         </div>
+        
         <div class="card">
           <span class="competence-badge">Compétence 4</span>
           <h3>Travailler en mode projet</h3>
-          <p><strong>Analyser les objectifs et modalités :</strong> Analyse du cahier des charges fourni, identification des parties prenantes, compréhension du contexte métier.<br><strong>Planifier les activités :</strong> Organisation du travail en binôme, planification des 11 étapes du projet avec remise de livrables à chaque étape.</p>
+          <ul>
+            <li><strong>Analyser les objectifs et modalités :</strong> Analyse du cahier des charges fourni, identification des parties prenantes.</li>
+            <li><strong>Planifier les activités :</strong> Organisation du travail en binôme, planification des 11 étapes du projet avec remise de livrables.</li>
+          </ul>
+          <!-- JUSTIFICATIFS -->
+          <div class="justificatifs-box">
+            <strong>📄 Justificatifs :</strong>
+            <div class="justificatif-tags">
+              <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_01.pdf" target="_blank" class="justificatif-tag">Étape 1 (Prise en main)</a>
+              <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_06.pdf" target="_blank" class="justificatif-tag">Étape 6 (Gestion Étapes)</a>
+            </div>
+          </div>
         </div>
+
         <div class="card">
           <span class="competence-badge">Compétence 5</span>
           <h3>Mettre à disposition un service</h3>
-          <p><strong>Réaliser les tests d'intégration et d'acceptation :</strong> Conception et exécution de tests unitaires (JUnit), tests fonctionnels de l'interface utilisateur, validation des données saisies, vérification en base de données.<br><strong>Déployer un service :</strong> Livraison d'une application opérationnelle et conforme aux attentes.</p>
+          <ul>
+            <li><strong>Réaliser les tests :</strong> Conception et exécution de tests unitaires (JUnit), tests fonctionnels de l'interface utilisateur, validation des données saisies.</li>
+            <li><strong>Déployer un service :</strong> Livraison d'une application opérationnelle et conforme aux attentes.</li>
+          </ul>
+          <!-- JUSTIFICATIFS -->
+          <div class="justificatifs-box">
+            <strong>📄 Justificatifs :</strong>
+            <div class="justificatif-tags">
+              <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_04.pdf" target="_blank" class="justificatif-tag">Étape 4 (Visualisation)</a>
+              <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_05.pdf" target="_blank" class="justificatif-tag">Étape 5 (Validation/Erreurs)</a>
+              <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_07.pdf" target="_blank" class="justificatif-tag">Étape 7 (Tests)</a>
+            </div>
+          </div>
         </div>
+
         <div class="card">
           <span class="competence-badge">Compétence 6</span>
           <h3>Organiser son développement</h3>
-          <p><strong>Mettre en place son environnement :</strong> Apprentissage du pattern DAO, maîtrise de NetBeans, découverte de Swing et JDBC. Rédaction de comptes-rendus, rapports de tests.<br><strong>Développer son projet :</strong> Utilisation de composants Swing, adaptation des classes DAO existantes, création de nouveaux composants métier.</p>
+          <ul>
+            <li><strong>Mettre en place son environnement :</strong> Apprentissage du pattern DAO, maîtrise de NetBeans, découverte de Swing et JDBC.</li>
+            <li><strong>Développer son projet :</strong> Utilisation de composants Swing, adaptation des classes DAO existantes.</li>
+          </ul>
+          <!-- JUSTIFICATIFS -->
+          <div class="justificatifs-box">
+            <strong>📄 Justificatifs :</strong>
+            <div class="justificatif-tags">
+              <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO_E_02.pdf" target="_blank" class="justificatif-tag">Étape 2 (Pattern DAO)</a>
+              <a href="comptes_rendus_java/G_07_DELAUNAY-GUITTON_DEJESUSVIZCAINO.zip" class="justificatif-tag">Code Source complet</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

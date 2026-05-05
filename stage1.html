@@ -45,16 +45,23 @@
     .section-title span { color: var(--accent-color); }
     
     .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; }
+    .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-soft); transition: all 0.4s ease; display: flex; flex-direction: column; }
     .card:hover { border-color: var(--accent-color); transform: translateY(-5px); box-shadow: var(--shadow-hover); }
     .card h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-main); }
     .card p { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; }
     
-    .card ul { list-style: none; padding-left: 0; margin-top: 1rem; }
+    .card ul { list-style: none; padding-left: 0; margin-top: 1rem; flex-grow: 1; }
     .card li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; color: var(--text-muted); font-size: 0.95rem; }
     .card li::before { content: '→'; position: absolute; left: 0; color: var(--accent-color); font-weight: bold; }
     .card strong { color: var(--text-main); font-weight: 500; }
-    .competence-badge { display: inline-block; padding: 4px 12px; background: var(--accent-light); color: var(--accent-color); border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+    .competence-badge { display: inline-block; padding: 4px 12px; background: var(--accent-light); color: var(--accent-color); border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; width: fit-content;}
+
+    /* Styles pour les justificatifs */
+    .justificatifs-box { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed var(--border-color); }
+    .justificatifs-box strong { font-size: 0.9rem; color: var(--text-main); display: block; margin-bottom: 0.5rem; }
+    .justificatif-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .justificatif-tag { padding: 4px 12px; background: var(--tech-bg); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.8rem; font-weight: 500; text-decoration: none; transition: all 0.3s; }
+    .justificatif-tag:hover { background: var(--accent-color); color: white; border-color: var(--accent-color); transform: translateY(-2px); }
     
     .livrables-list { display: flex; flex-direction: column; gap: 1.5rem; }
     .livrable-item { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--shadow-soft); transition: all 0.3s; }
@@ -94,7 +101,6 @@
       </div>
     </section>
 
-    <!-- Détails du projet -->
     <section class="content-section scroll-reveal" style="padding-top: 0;">
       <h2 class="section-title">Le <span>Projet</span></h2>
       <div class="grid-container">
@@ -118,30 +124,71 @@
       </div>
     </section>
 
-    <!-- Compétences -->
+    <!-- Compétences Artisans -->
     <section class="content-section scroll-reveal">
       <h2 class="section-title">Compétences <span>BTS SIO</span></h2>
-      <div class="grid-container">
+      <div class="grid-single-column">
+        
         <div class="card">
           <span class="competence-badge">Compétence 2</span>
           <h3>Répondre aux incidents et évolutions</h3>
-          <p><strong>Traiter des demandes :</strong> Analyse et prise en compte des demandes client (ajouts de fonctionnalités, évolution du site). Communication écrite et orale adaptée avec les commanditaires. Compte-rendu des actions réalisées.</p>
+          <ul>
+            <li><strong>Traiter des demandes :</strong> Analyse et prise en compte des demandes client (ajouts de fonctionnalités, évolution du site). Communication écrite et orale adaptée avec les commanditaires.</li>
+          </ul>
+          <div class="justificatifs-box">
+            <strong>📄 Justificatifs :</strong>
+            <div class="justificatif-tags">
+              <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine2.pdf" target="_blank" class="justificatif-tag">CR Semaine 2</a>
+              <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine3.pdf" target="_blank" class="justificatif-tag">CR Semaine 3</a>
+            </div>
+          </div>
         </div>
+
         <div class="card">
           <span class="competence-badge">Compétence 3</span>
           <h3>Développer la présence en ligne</h3>
-          <p><strong>Participer à la valorisation de l'image :</strong> Conception graphique (charte, DA) pour valoriser l'image des artisans. Les médias numériques sont visibles et conformes.<br><strong>Évolution d'un site Web :</strong> Développement complet HTML/CSS/JS, optimisation responsive/mobile exploitant les données de l'organisation.</p>
+          <ul>
+            <li><strong>Valorisation de l'image :</strong> Conception graphique (charte, DA) pour valoriser l'image des artisans.</li>
+            <li><strong>Évolution d'un site Web :</strong> Développement complet de A à Z en HTML/CSS/JS avec optimisation responsive.</li>
+          </ul>
+          <div class="justificatifs-box">
+            <strong>📄 Justificatifs :</strong>
+            <div class="justificatif-tags">
+              <a href="comptes_rendus_stage1/Dejesusvizcaino_nikauly_1SLAM_2025_Stage_1_Rapport.pdf" target="_blank" class="justificatif-tag">Rapport de stage</a>
+              <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine1.pdf" target="_blank" class="justificatif-tag">CR Semaine 1 (Maquettes)</a>
+            </div>
+          </div>
         </div>
+
         <div class="card">
           <span class="competence-badge">Compétence 4</span>
           <h3>Travailler en mode projet</h3>
-          <p><strong>Analyser et Planifier :</strong> Recueil et formalisation des besoins client, élaboration et validation des maquettes. Organisation de toutes les tâches, reporting hebdomadaire. Le projet est documenté et les livrables sont conformes.</p>
+          <ul>
+            <li><strong>Analyser et Planifier :</strong> Recueil et formalisation des besoins client, élaboration et validation des maquettes. Organisation et reporting hebdomadaire des tâches réalisées.</li>
+          </ul>
+          <div class="justificatifs-box">
+            <strong>📄 Justificatifs :</strong>
+            <div class="justificatif-tags">
+              <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine1.pdf" target="_blank" class="justificatif-tag">CR Semaine 1</a>
+              <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine2.pdf" target="_blank" class="justificatif-tag">CR Semaine 2</a>
+            </div>
+          </div>
         </div>
+
         <div class="card">
-          <span class="competence-badge">Compétence 5 & 6</span>
-          <h3>Service et Développement Pro</h3>
-          <p><strong>Tests et Déploiement :</strong> Vérification du responsive, tests multi-appareils et corrections. Déploiement via GitHub Pages.<br><strong>Environnement d'apprentissage :</strong> Utilisation de GitHub et d'outils graphiques (Figma). Développement complet front-end organisé en modules.</p>
+          <span class="competence-badge">Compétence 5</span>
+          <h3>Mettre à disposition un service informatique</h3>
+          <ul>
+            <li><strong>Tests et Déploiement :</strong> Vérification du comportement responsive, tests multi-appareils pour s'assurer de l'affichage. Déploiement en production via l'hébergement gratuit GitHub Pages.</li>
+          </ul>
+          <div class="justificatifs-box">
+            <strong>📄 Justificatifs :</strong>
+            <div class="justificatif-tags">
+              <a href="https://nikoletone.github.io/v_finale_2/" target="_blank" class="justificatif-tag">Démo en ligne</a>
+            </div>
+          </div>
         </div>
+
       </div>
     </section>
 
@@ -161,9 +208,11 @@
             <h4>Comptes rendus hebdomadaires</h4>
             <p>Suivi détaillé de mes activités (Semaine 1, 2, et 3).</p>
           </div>
-          <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine1.pdf" target="_blank" class="btn-download">PDF 1</a>
-          <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine2.pdf" target="_blank" class="btn-download">PDF 2</a>
-          <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine3.pdf" target="_blank" class="btn-download">PDF 3</a>
+          <div class="btn-group">
+            <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine1.pdf" target="_blank" class="btn-download">PDF 1</a>
+            <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine2.pdf" target="_blank" class="btn-download">PDF 2</a>
+            <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine3.pdf" target="_blank" class="btn-download">PDF 3</a>
+          </div>
         </div>
         <div class="livrable-item">
           <div class="livrable-info">
