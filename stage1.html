@@ -73,17 +73,63 @@
     .btn-download:hover { background: #b01030; transform: translateY(-2px); }
     
     footer { text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid var(--border-color); margin-top: 4rem; background: var(--bg-main); }
+
+    /* --- Navigation --- */
+    .navbar {
+      position: fixed; top: 0; width: 100%;
+      background: var(--nav-bg); backdrop-filter: blur(12px);
+      padding: 1rem 5%; z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+      display: flex; justify-content: space-between; align-items: center;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    .nav-logo { font-size: 1.2rem; font-weight: 500; color: var(--text-main); text-decoration: none; letter-spacing: 1px; }
+    .nav-logo span { color: var(--accent-color); font-weight: 600; }
+    
+    .nav-actions { display: flex; align-items: center; gap: 20px; }
+    
+    .nav-menu { display: flex; gap: 2.5rem; align-items: center; list-style: none; margin-right: 1rem;}
+    .nav-menu a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; position: relative; padding: 0.5rem 0; }
+    .nav-menu a::after { content: ""; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent-color); transition: width 0.3s ease; }
+    .nav-menu a:hover, .nav-menu a.active { color: var(--accent-color); }
+    .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
+    
+    .hamburger { display: none; flex-direction: column; gap: 0.4rem; cursor: pointer; z-index: 1001; padding: 5px; }
+    .hamburger span { width: 25px; height: 3px; background-color: var(--text-main); transition: all 0.3s ease; border-radius: 2px; }
+    
+    .nav-back { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.3s; display: flex; align-items: center; gap: 8px; margin-left: 10px; border: 1px solid var(--border-color); padding: 5px 15px; border-radius: 20px; }
+    .nav-back:hover { color: var(--text-main); border-color: var(--text-main); }
+    .theme-toggle { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.2rem; transition: all 0.3s; }
+    .theme-toggle:hover { border-color: var(--accent-color); transform: scale(1.05); }
+
     @media (max-width: 768px) { .hero-title { font-size: 2.5rem; } .livrable-item { flex-direction: column; align-items: flex-start; gap: 1.5rem; } .btn-download { width: 100%; } }
+    @media (max-width: 768px) { 
+      .nav-menu { position: fixed; top: 70px; right: -100%; width: 100%; height: calc(100vh - 70px); background: var(--nav-bg); flex-direction: column; padding: 3rem; transition: right 0.3s ease; margin-right: 0; align-items: flex-start; border-left: 1px solid var(--border-color);}
+      .nav-menu.active { right: 0; }
+      .hamburger { display: flex; }
+    }
   </style>
 </head>
 <body>
 
   <nav class="navbar">
-    <a href="index.html" class="nav-logo">Nikauly <span>.</span></a>
-    <div class="nav-actions">
-      <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème">🌙</button>
-      <a href="index.html" class="nav-back">← Retour</a>
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Nikauly <span>.</span></a>
+      <div class="nav-actions">
+        <ul class="nav-menu">
+          <li><a href="#contexte" class="active">Le Projet</a></li>
+          <li><a href="#competences">Compétences</a></li>
+          <li><a href="#livrables">Livrables</a></li>
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème">🌙</button>
+        <div class="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+        <a href="index.html" class="nav-back">← Accueil</a>
+      </div>
     </div>
+  </nav>
   </nav>
 
   <main>
@@ -101,7 +147,7 @@
       </div>
     </section>
 
-    <section class="content-section scroll-reveal" style="padding-top: 0;">
+    <section id="contexte" class="content-section scroll-reveal" style="padding-top: 0;">
       <h2 class="section-title">Le <span>Projet</span></h2>
       <div class="grid-container">
         <div class="card">
@@ -124,32 +170,15 @@
       </div>
     </section>
 
-    <!-- Compétences Artisans -->
-    <section class="content-section scroll-reveal">
+        <!-- Compétences Artisans -->
+    <section id="competences" class="content-section scroll-reveal">
       <h2 class="section-title">Compétences <span>BTS SIO</span></h2>
       <div class="grid-single-column">
-        
-        <div class="card">
-          <span class="competence-badge">Compétence 2</span>
-          <h3>Répondre aux incidents et évolutions</h3>
-          <ul>
-            <li><strong>Traiter des demandes :</strong> Analyse et prise en compte des demandes client (ajouts de fonctionnalités, évolution du site). Communication écrite et orale adaptée avec les commanditaires.</li>
-          </ul>
-          <div class="justificatifs-box">
-            <strong>📄 Justificatifs :</strong>
-            <div class="justificatif-tags">
-              <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine2.pdf" target="_blank" class="justificatif-tag">CR Semaine 2</a>
-              <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine3.pdf" target="_blank" class="justificatif-tag">CR Semaine 3</a>
-            </div>
-          </div>
-        </div>
-
         <div class="card">
           <span class="competence-badge">Compétence 3</span>
-          <h3>Développer la présence en ligne</h3>
+          <h3>Développer la présence en ligne de l'organisation</h3>
           <ul>
-            <li><strong>Valorisation de l'image :</strong> Conception graphique (charte, DA) pour valoriser l'image des artisans.</li>
-            <li><strong>Évolution d'un site Web :</strong> Développement complet de A à Z en HTML/CSS/JS avec optimisation responsive.</li>
+            <li><strong>Participer à l'évolution d'un site Web :</strong> Développement complet HTML/CSS/JavaScript, optimisation responsive/mobile exploitant les données de l'organisation (produits, artisans).</li>
           </ul>
           <div class="justificatifs-box">
             <strong>📄 Justificatifs :</strong>
@@ -159,41 +188,13 @@
             </div>
           </div>
         </div>
-
-        <div class="card">
-          <span class="competence-badge">Compétence 4</span>
-          <h3>Travailler en mode projet</h3>
-          <ul>
-            <li><strong>Analyser et Planifier :</strong> Recueil et formalisation des besoins client, élaboration et validation des maquettes. Organisation et reporting hebdomadaire des tâches réalisées.</li>
-          </ul>
-          <div class="justificatifs-box">
-            <strong>📄 Justificatifs :</strong>
-            <div class="justificatif-tags">
-              <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine1.pdf" target="_blank" class="justificatif-tag">CR Semaine 1</a>
-              <a href="comptes_rendus_stage1/nikauly_de_jesus_vizcaino_1slam_compte_rendu_semaine2.pdf" target="_blank" class="justificatif-tag">CR Semaine 2</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <span class="competence-badge">Compétence 5</span>
-          <h3>Mettre à disposition un service informatique</h3>
-          <ul>
-            <li><strong>Tests et Déploiement :</strong> Vérification du comportement responsive, tests multi-appareils pour s'assurer de l'affichage. Déploiement en production via l'hébergement gratuit GitHub Pages.</li>
-          </ul>
-          <div class="justificatifs-box">
-            <strong>📄 Justificatifs :</strong>
-            <div class="justificatif-tags">
-              <a href="https://nikoletone.github.io/v_finale_2/" target="_blank" class="justificatif-tag">Démo en ligne</a>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
+    
+
     <!-- Livrables -->
-    <section class="content-section scroll-reveal">
+    <section id="livrables" class="content-section scroll-reveal">
       <h2 class="section-title">Livrables & <span>Documentation</span></h2>
       <div class="livrables-list">
         <div class="livrable-item">
@@ -258,6 +259,45 @@
     gsap.from('.tech-item', { scale: 0.8, opacity: 0, duration: 0.6, stagger: 0.1, ease: "back.out(1.7)", delay: 0.5 });
     gsap.utils.toArray('.scroll-reveal').forEach(section => {
       gsap.from(section, { y: 60, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: section, start: "top 80%", once: true } });
+    });
+
+    // --- MENU MOBILE ---
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+
+    if(hamburger) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if(hamburger) hamburger.classList.remove('active');
+        if(navMenu) navMenu.classList.remove('active');
+      });
+    });
+
+    // --- SCROLL SPY (Surbrillance au défilement) ---
+    window.addEventListener("scroll", () => {
+      let current = "";
+      const allSections = document.querySelectorAll("section[id]");
+
+      allSections.forEach((section) => {
+        const sectionTop = section.offsetTop - 150;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
     });
   </script>
 </body>
