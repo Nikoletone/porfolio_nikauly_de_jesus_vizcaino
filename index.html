@@ -47,7 +47,7 @@
     .nav-logo { font-size: 1.5rem; font-weight: 600; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
     .nav-logo span { color: var(--accent-color); }
     
-    .nav-menu { display: flex; gap: 2.5rem; align-items: center; list-style: none; margin-right: 2rem;}
+    .nav-menu { display: flex; gap: 2rem; align-items: center; list-style: none; margin-right: 2rem;}
     .nav-menu a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; position: relative; padding: 0.5rem 0; }
     .nav-menu a::after { content: ""; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent-color); transition: width 0.3s ease; }
     .nav-menu a:hover, .nav-menu a.active { color: var(--accent-color); }
@@ -70,14 +70,14 @@
     /* --- SECTION A PROPOS --- */
     .section_tabs { background-color: var(--bg-main); position: relative; }
     .padding-section-large { padding: 7rem 0; }
-    .tabs_height { height: 250vh; } 
-    .tabs_sticky-wrapper { height: 100vh; position: sticky; top: 5vh; }
+    .tabs_height { height: auto; }
+    .tabs_sticky-wrapper { height: auto; position: relative; top: auto; }
     .tabs_container { max-width: 120rem; margin: 0 auto; }
     .tabs_component { height: 90vh; display: grid; grid-template-columns: 1fr 0.5fr; gap: 1.5rem; padding: 0 3.3%; }
     
     .tabs_left { background-color: var(--bg-card); border-radius: var(--radius); padding: 2.5rem; display: flex; flex-direction: column; justify-content: flex-end; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); transition: all 0.3s ease;}
     .tabs_left-top { height: 100%; position: relative; }
-    .tabs_let-content { width: 100%; height: 100%; position: absolute; top: 0; display: flex; flex-direction: column; justify-content: space-around; text-align: center; }
+    .tabs_left-content { width: 100%; height: 100%; position: absolute; top: 0; display: flex; flex-direction: column; justify-content: space-around; text-align: center; }
     
     .heading-style-h4 { font-size: 2.125rem; font-weight: 600; line-height: 1.2; color: var(--text-main); margin-bottom: 1rem; }
     .text-color-red { color: var(--accent-color); }
@@ -151,6 +151,22 @@
     .veille-stat-number { font-size: 2rem; font-weight: 700; color: var(--accent-color); display: block; }
     .veille-stat-label { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 
+    /* --- GROUPES DE PROJETS --- */
+    .projects-group { max-width: 120rem; margin: 0 auto 4rem; }
+    .group-title { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 2rem; padding-left: 1rem; border-left: 3px solid var(--accent-color); letter-spacing: 0.1em; text-transform: uppercase; }
+    .stage-card { border-color: rgba(220, 20, 60, 0.25); }
+
+    /* --- SECTION CONTACT --- */
+    .section_contact { padding: 7rem 3.3%; background-color: var(--bg-main); }
+    .contact-container { max-width: 120rem; margin: 0 auto; }
+    .contact-card { background: var(--bg-card); border-radius: var(--radius); border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); padding: 3rem 4rem; display: flex; gap: 4rem; flex-wrap: wrap; justify-content: center; max-width: 750px; margin: 0 auto; transition: all 0.3s; }
+    .contact-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--accent-color); }
+    .contact-item { display: flex; align-items: center; gap: 1.5rem; }
+    .contact-icon { font-size: 1.4rem; width: 50px; height: 50px; background: var(--accent-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .contact-label { display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 0.3rem; }
+    .contact-value { font-size: 1.05rem; font-weight: 500; color: var(--text-main); text-decoration: none; transition: color 0.3s; }
+    .contact-value:hover { color: var(--accent-color); }
+
     footer { text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid var(--border-color); background: var(--bg-card); }
 
     /* RESPONSIVE */
@@ -183,8 +199,10 @@
         <ul class="nav-menu">
           <li><a href="#about">À propos</a></li>
           <li><a href="#projects">Projets</a></li>
+          <li><a href="#stages">Stages</a></li>
           <li><a href="#skills">Compétences</a></li>
           <li><a href="#veille">Veille</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
         <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème">🌙</button>
         <div class="hamburger">
@@ -214,7 +232,7 @@
               <!-- Left Content -->
               <div class="tabs_left">
                 <div class="tabs_left-top">
-                  <div class="tabs_let-content is-1">
+                  <div class="tabs_left-content is-1">
                     <h2 class="heading-style-h4">
                       À propos de <span class="text-color-red">MOI</span>
                     </h2>
@@ -238,7 +256,7 @@
                   </div>
                 </div>
                 <div class="button">
-                  <span><a href="Cv Nikauly de Jesus Vizcaino .pdf.pdf" target="_blank">Télécharger mon CV</a></span>
+                  <span><a href="CV_Nikauly_De_Jesus_Vizcaino.pdf" target="_blank">Télécharger mon CV</a></span>
                   <span>→</span>
                 </div>
               </div>
@@ -263,134 +281,135 @@
       <p class="projects-subtitle">Réalisations concrètes durant ma formation BTS SIO</p>
     </div>
 
-    <div class="projects-grid">
-      
-      <!-- Projet PapyRus -->
-      <div class="project-card scroll-reveal" onclick="window.location.href='stage2.html'">
-        <div class="project-image">
-          <img src="photo_papyrus.png" alt="PapyRus - Projet IA" />
-          <div class="project-overlay"><span class="project-tag">Symfony</span></div>
-        </div>
-        <div class="project-content">
-          <h3 class="project-title">PapyRus</h3>
-          <p class="project-description">Développement de <strong>PapyRus</strong>, une application web sous Symfony intégrant une Intelligence Artificielle pour la transcription et la synthèse automatique de réunions.</p>
-          <div class="project-tech"><span>Symfony</span><span>Python</span><span>JavaScript</span><span>AI</span></div>
-          <a href="stage2.html" class="project-link">Voir le projet →</a>
-        </div>
-      </div>
+    <!-- STAGES EN ENTREPRISE -->
+    <div class="projects-group" id="stages">
+      <p class="group-title">Stages en entreprise</p>
+      <div class="projects-grid">
 
-      <!-- Projet 1: THALI-MINI -->
-      <div class="project-card scroll-reveal" onclick="window.location.href='detail_projet.html'">
-        <div class="project-image">
-          <img src="photo_projet_thali_mini.png" alt="THALI-MINI" />
-          <div class="project-overlay"><span class="project-tag">Java</span></div>
-        </div>
-        <div class="project-content">
-          <h3 class="project-title">THALI-MINI</h3>
-          <p class="project-description">Application Java desktop pour la gestion des mini-excursions d'un centre de thalassothérapie avec architecture DAO et base de données MariaDB.</p>
-          <div class="project-tech"><span>Java</span><span>Desktop</span><span>MariaDB</span><span>CRUD</span></div>
-          <a href="detail_projet.html" class="project-link">Voir le projet →</a>
-        </div>
-      </div>
-
-      <!-- Projet 2: Site Artisans Palestiniens -->
-      <div class="project-card scroll-reveal" onclick="window.location.href='stage1.html'">
-        <div class="project-image">
-          <img src="photo_site_stage_1.png" alt="Site Artisans" />
-          <div class="project-overlay">
-            <span class="project-tag">WEB</span>
-            <span class="project-tag">JavaScript</span>
+        <!-- Stage 2 : PapyRus -->
+        <div class="project-card stage-card scroll-reveal" onclick="window.location.href='stage2.html'">
+          <div class="project-image">
+            <img src="photo_papyrus.png" alt="PapyRus - Projet IA" />
+            <div class="project-overlay"><span class="project-tag">Stage 2</span><span class="project-tag">Symfony</span></div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">PapyRus</h3>
+            <p class="project-description">Développement de <strong>PapyRus</strong>, une application web sous Symfony intégrant une Intelligence Artificielle pour la transcription et la synthèse automatique de réunions.</p>
+            <div class="project-tech"><span>Symfony</span><span>Python</span><span>JavaScript</span><span>AI</span></div>
+            <a href="stage2.html" class="project-link">Voir le projet →</a>
           </div>
         </div>
-        <div class="project-content">
-          <h3 class="project-title">Site Soutien aux artisans palestiniens</h3>
-          <p class="project-description">Site web de valorisation de produits artisanaux réalisé pour une association durant mon stage, de la DA à la mise en ligne, en passant par la collecte et la gestion des contenus réels.</p>
-          <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-          <a href="stage1.html" class="project-link">Voir le projet →</a>
-        </div>
-      </div>
 
-      <!-- Projet 3: Site Restaurant R3st0.fr -->
-      <div class="project-card scroll-reveal" onclick="window.location.href='resto.html'">
-        <div class="project-image">
-          <img src="site_resto.png" alt="Site Restaurant" />
-          <div class="project-overlay">
-            <span class="project-tag">Web</span>
-            <span class="project-tag">PHP</span>
+        <!-- Stage 1 : Site Artisans Palestiniens -->
+        <div class="project-card stage-card scroll-reveal" onclick="window.location.href='stage1.html'">
+          <div class="project-image">
+            <img src="photo_site_stage_1.png" alt="Site Artisans" />
+            <div class="project-overlay">
+              <span class="project-tag">Stage 1</span>
+              <span class="project-tag">WEB</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Site Soutien aux artisans palestiniens</h3>
+            <p class="project-description">Site web de valorisation de produits artisanaux réalisé pour une association durant mon stage, de la DA à la mise en ligne, en passant par la collecte et la gestion des contenus réels.</p>
+            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            <a href="stage1.html" class="project-link">Voir le projet →</a>
           </div>
         </div>
-        <div class="project-content">
-          <h3 class="project-title">R3st0.fr - Site Web</h3>
-          <p class="project-description">Site web de critique et notation de restaurants développé en équipe selon la méthode Scrum avec itérations, tickets de maintenance et déploiement continu.</p>
-          <div class="project-tech"><span>PHP</span><span>Symfony</span><span>MariaDB</span><span>Scrum</span></div>
-          <a href="resto.html" class="project-link">Voir le projet →</a>
-        </div>
-      </div>
 
-      <!-- Projet 4: Application Android R3st0 -->
-      <div class="project-card scroll-reveal" onclick="window.location.href='projet_android.html'">
-        <div class="project-image">
-          <img src="photo_application_android.png" alt="Application Android R3st0" />
-          <div class="project-overlay">
-            <span class="project-tag">Android</span>
-            <span class="project-tag">API REST</span>
-          </div>
-        </div>
-        <div class="project-content">
-          <h3 class="project-title">R3st0 - Application Android</h3>
-          <p class="project-description">Application mobile Android de réservation et consultation de restaurants avec architecture MVC, API REST PHP et consommation JSON. Affichage liste, fiche détaillée et avis.</p>
-          <div class="project-tech"><span>Java Android</span><span>API REST PHP</span><span>JSON</span><span>GitLab</span></div>
-          <a href="projet_android.html" class="project-link">Voir le projet →</a>
-        </div>
       </div>
-
-      <!-- Projet 5: Analyse de Logs Web (Python & SQL) -->
-      <div class="project-card scroll-reveal" onclick="window.location.href='projet_python.html'">
-        <div class="project-image">
-          <img src="photo_projet_log.png" alt="Analyse de logs Python et SQL" onerror="this.src='photo_portefolio.jpeg'"/>
-          <div class="project-overlay">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">SQL</span>
-          </div>
-        </div>
-        <div class="project-content">
-          <h3 class="project-title">Analyse Logs Web & BDD</h3>
-          <p class="project-description">Développement de scripts <strong>Python</strong> pour l'analyse de journaux d'accès web et l'automatisation d'insertions SQL. Déploiement et sécurisation d'un serveur MariaDB sous Rocky Linux 9.</p>
-          <div class="project-tech">
-            <span>Python</span>
-            <span>SQL</span>
-            <span>MariaDB</span>
-            <span>Linux</span>
-            <span>Bash</span>
-          </div>
-          <a href="projet_python.html" class="project-link">Voir le projet →</a>
-        </div>
-      </div>
-
-      <!-- Projet 6: Application Modération R3st0 -->
-      <div class="project-card scroll-reveal" onclick="window.location.href='projet_moderation.html'">
-        <div class="project-image">
-          <img src="photo_application_moderation.png" alt="Application de modération R3st0" onerror="this.src='photo_portefolio.jpeg'"/>
-          <div class="project-overlay">
-            <span class="project-tag">Java</span>
-            <span class="project-tag">MVC</span>
-          </div>
-        </div>
-        <div class="project-content">
-          <h3 class="project-title">Modération R3st0.fr</h3>
-          <p class="project-description">Application <strong>Java Desktop</strong> (Swing) destinée aux modérateurs du site R3st0.fr. Structurée selon le pattern <strong>MVC</strong> avec connexion à une base de données distante, développée en méthode Agile (Scrum).</p>
-          <div class="project-tech">
-            <span>Java</span>
-            <span>Swing</span>
-            <span>MariaDB</span>
-            <span>GitLab</span>
-            <span>Scrum</span>
-          </div>
-          <a href="projet_moderation.html" class="project-link">Voir le projet →</a>
-        </div>
-      </div>
-
     </div>
+
+    <!-- PROJETS EN FORMATION -->
+    <div class="projects-group">
+      <p class="group-title">Projets en formation</p>
+      <div class="projects-grid">
+
+        <!-- THALI-MINI -->
+        <div class="project-card scroll-reveal" onclick="window.location.href='detail_projet.html'">
+          <div class="project-image">
+            <img src="photo_projet_thali_mini.png" alt="THALI-MINI" />
+            <div class="project-overlay"><span class="project-tag">Java</span></div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">THALI-MINI</h3>
+            <p class="project-description">Application Java desktop pour la gestion des mini-excursions d'un centre de thalassothérapie avec architecture DAO et base de données MariaDB.</p>
+            <div class="project-tech"><span>Java</span><span>Desktop</span><span>MariaDB</span><span>CRUD</span></div>
+            <a href="detail_projet.html" class="project-link">Voir le projet →</a>
+          </div>
+        </div>
+
+        <!-- R3st0.fr Site Web -->
+        <div class="project-card scroll-reveal" onclick="window.location.href='resto.html'">
+          <div class="project-image">
+            <img src="site_resto.png" alt="Site Restaurant" />
+            <div class="project-overlay">
+              <span class="project-tag">Web</span>
+              <span class="project-tag">PHP</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">R3st0.fr - Site Web</h3>
+            <p class="project-description">Site web de critique et notation de restaurants développé en équipe selon la méthode Scrum avec itérations, tickets de maintenance et déploiement continu.</p>
+            <div class="project-tech"><span>PHP</span><span>Symfony</span><span>MariaDB</span><span>Scrum</span></div>
+            <a href="resto.html" class="project-link">Voir le projet →</a>
+          </div>
+        </div>
+
+        <!-- Application Android R3st0 -->
+        <div class="project-card scroll-reveal" onclick="window.location.href='projet_android.html'">
+          <div class="project-image">
+            <img src="photo_application_android.png" alt="Application Android R3st0" />
+            <div class="project-overlay">
+              <span class="project-tag">Android</span>
+              <span class="project-tag">API REST</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">R3st0 - Application Android</h3>
+            <p class="project-description">Application mobile Android de réservation et consultation de restaurants avec architecture MVC, API REST PHP et consommation JSON. Affichage liste, fiche détaillée et avis.</p>
+            <div class="project-tech"><span>Java Android</span><span>API REST PHP</span><span>JSON</span><span>GitLab</span></div>
+            <a href="projet_android.html" class="project-link">Voir le projet →</a>
+          </div>
+        </div>
+
+        <!-- Analyse Logs Web -->
+        <div class="project-card scroll-reveal" onclick="window.location.href='projet_python.html'">
+          <div class="project-image">
+            <img src="photo_projet_log.png" alt="Analyse de logs Python et SQL" onerror="this.src='photo_portefolio.jpeg'"/>
+            <div class="project-overlay">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">SQL</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Analyse Logs Web & BDD</h3>
+            <p class="project-description">Développement de scripts <strong>Python</strong> pour l'analyse de journaux d'accès web et l'automatisation d'insertions SQL. Déploiement et sécurisation d'un serveur MariaDB sous Rocky Linux 9.</p>
+            <div class="project-tech"><span>Python</span><span>SQL</span><span>MariaDB</span><span>Linux</span><span>Bash</span></div>
+            <a href="projet_python.html" class="project-link">Voir le projet →</a>
+          </div>
+        </div>
+
+        <!-- Modération R3st0 -->
+        <div class="project-card scroll-reveal" onclick="window.location.href='projet_moderation.html'">
+          <div class="project-image">
+            <img src="photo_application_moderation.png" alt="Application de modération R3st0" onerror="this.src='photo_portefolio.jpeg'"/>
+            <div class="project-overlay">
+              <span class="project-tag">Java</span>
+              <span class="project-tag">MVC</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Modération R3st0.fr</h3>
+            <p class="project-description">Application <strong>Java Desktop</strong> (Swing) destinée aux modérateurs du site R3st0.fr. Structurée selon le pattern <strong>MVC</strong> avec connexion à une base de données distante, développée en méthode Agile (Scrum).</p>
+            <div class="project-tech"><span>Java</span><span>Swing</span><span>MariaDB</span><span>GitLab</span><span>Scrum</span></div>
+            <a href="projet_moderation.html" class="project-link">Voir le projet →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </section>
 
   <!-- Compétences Repensées -->
@@ -511,6 +530,32 @@
     </div>
   </section>
 
+  <!-- Contact -->
+  <section class="section_contact" id="contact">
+    <div class="contact-container">
+      <div class="projects-header scroll-reveal">
+        <h2 class="heading-style-h2">Me <span class="text-color-red">Contacter</span></h2>
+        <p class="projects-subtitle">Disponible pour discuter ou collaborer</p>
+      </div>
+      <div class="contact-card scroll-reveal">
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <span class="contact-label">Email</span>
+            <a href="mailto:votre.email@exemple.com" class="contact-value">votre.email@exemple.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div>
+            <span class="contact-label">LinkedIn</span>
+            <a href="#" class="contact-value" target="_blank">Nikauly De Jesus Vizcaino</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <p>&copy; 2026 Nikauly De Jesus Vizcaino - BTS SIO SLAM</p>
   </footer>
@@ -564,7 +609,7 @@
     // --- SCROLL SPY (Surbrillance du lien actif) ---
     window.addEventListener("scroll", () => {
       let current = "";
-      const allSections = document.querySelectorAll("section[id]");
+      const allSections = document.querySelectorAll("section[id], .projects-group[id]");
 
       allSections.forEach((section) => {
         const sectionTop = section.offsetTop - 150;
