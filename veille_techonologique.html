@@ -109,7 +109,24 @@
     .btn-download:hover { background: #b01030; transform: translateY(-2px); }
 
     footer { text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid var(--border-color); margin-top: 4rem; background: var(--bg-main); }
-    @media (max-width: 768px) { .hero-title { font-size: 2.5rem; } .grid-container { grid-template-columns: 1fr; } .rss-item { flex-direction: column; align-items: flex-start; gap: 1rem; } .btn-download { width: 100%; } }
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+      .grid-container { grid-template-columns: 1fr; gap: 1.5rem; }
+      .rss-item { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .btn-download { width: 100%; }
+      .content-section { padding: 3rem 1.2rem; }
+      .card { padding: 1.5rem; }
+      .hero { min-height: auto; padding: 100px 1.2rem 40px; }
+      .section-title { font-size: 1.8rem; margin-bottom: 2rem; }
+      .nav-back { padding: 4px 10px; font-size: 0.85rem; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2rem; }
+      .hero-subtitle { font-size: 0.95rem; }
+      .section-title { font-size: 1.5rem; }
+      .card { padding: 1.2rem; }
+      .nav-logo { font-size: 1rem; }
+    }
   </style>
 </head>
 <body>
@@ -323,72 +340,6 @@ app.add_page(index)</code></pre>
             <li><span class="inline-code">on_click</span> : Déclenche une fonction au clic</li>
           </ul>
           <p><strong>Résultat :</strong> Une app web full-stack complète en Python pur, sans HTML/CSS/JavaScript !</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Stats -->
-    <section class="content-section scroll-reveal" style="padding-top: 0;">
-      <h2 class="section-title">Reflex en <span class="text-red">Chiffres</span></h2>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <span class="stat-number">27K+</span>
-          <span class="stat-label">⭐ GitHub Stars</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number">1M+</span>
-          <span class="stat-label">Apps créées</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number">200+</span>
-          <span class="stat-label">Contributeurs</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number">7.5K+</span>
-          <span class="stat-label">Membres Discord</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number">60+</span>
-          <span class="stat-label">Composants UI</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-number">100+</span>
-          <span class="stat-label">Intégrations</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Avantages / Limites -->
-    <section class="content-section scroll-reveal" style="padding-top: 0;">
-      <h2 class="section-title">Avantages & <span class="text-red">Limites</span></h2>
-      <div class="grid-container">
-        <div class="card">
-          <h3>Points forts</h3>
-          <ul>
-            <li><strong>Productivité maximale</strong> : Pas de JavaScript, pas de gestion de 2 codebases séparés.</li>
-            <li><strong>Architecture solide</strong> : FastAPI backend + Next.js frontend compilé = performances optimales.</li>
-            <li><strong>Communauté active</strong> : 27K stars GitHub, 200+ contributeurs, support Discord réactif.</li>
-            <li><strong>Déploiement simplifié</strong> : Une commande pour publier, infra gérée automatiquement.</li>
-            <li><strong>Temps réel natif</strong> : WebSocket intégré pour mises à jour live.</li>
-            <li><strong>Extensible</strong> : Possibilité de wrapper n'importe quel composant React existant.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Points d'attention</h3>
-          <ul>
-            <li><strong>Courbe d'apprentissage</strong> : Concepts (state classes, event handlers) plus complexes que Streamlit.</li>
-            <li><strong>Écosystème jeune</strong> : Moins de bibliothèques tierces que React/Flask établis depuis des années.</li>
-            <li><strong>État serveur</strong> : Mémoire utilisée côté serveur (vs stateless REST traditionnel).</li>
-            <li><strong>Framework récent</strong> : API peut évoluer entre versions.</li>
-          </ul>
-          <h3 style="margin-top: 2rem;">Quand utiliser Reflex ?</h3>
-          <ul>
-            <li>Vous êtes développeur Python et voulez créer des apps web sans JavaScript.</li>
-            <li>Besoin de dashboards interactifs avec mises à jour temps réel.</li>
-            <li>Prototype IA / ML avec interface utilisateur moderne.</li>
-            <li>Outils internes / backoffice pour votre entreprise.</li>
-            <li>Projet BTS ou stage cherchant rapidité de développement.</li>
-          </ul>
         </div>
       </div>
     </section>

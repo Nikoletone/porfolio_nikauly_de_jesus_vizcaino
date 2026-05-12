@@ -104,10 +104,24 @@
     .theme-toggle { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.2rem; transition: all 0.3s; }
     .theme-toggle:hover { border-color: var(--accent-color); transform: scale(1.05); }
 
-    @media (max-width: 768px) { 
+    @media (max-width: 768px) {
       .nav-menu { position: fixed; top: 70px; right: -100%; width: 100%; height: calc(100vh - 70px); background: var(--nav-bg); flex-direction: column; padding: 3rem; transition: right 0.3s ease; margin-right: 0; align-items: flex-start; border-left: 1px solid var(--border-color);}
       .nav-menu.active { right: 0; }
       .hamburger { display: flex; }
+      .content-section { padding: 3rem 1.2rem; }
+      .grid-container { grid-template-columns: 1fr; gap: 1.5rem; }
+      .card { padding: 1.5rem; }
+      .hero { min-height: auto; padding: 100px 1.2rem 40px; }
+      .section-title { font-size: 1.8rem; margin-bottom: 2rem; }
+      .tech-stack { gap: 8px; }
+      .nav-back { padding: 4px 10px; font-size: 0.85rem; margin-left: 5px; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2rem; }
+      .hero-subtitle { font-size: 0.95rem; }
+      .section-title { font-size: 1.5rem; }
+      .card { padding: 1.2rem; }
+      .nav-logo { font-size: 1rem; }
     }
   </style>
 </head>
@@ -194,12 +208,12 @@
           <span class="competence-badge">Compétence 2</span>
           <h3>Répondre aux incidents et demandes d'assistance</h3>
           <ul>
-            <li><strong>Traiter des demandes concernant les applications :</strong> Traitement des tickets de développement, ajout de fonctionnalités selon les besoins exprimés. Utilisation d'un outil de gestion de tickets (GitLab Issues).</li>
+            <li><strong>Traiter des demandes concernant les applications :</strong> Traitement des tickets de développement, ajout de fonctionnalités selon les besoins exprimés.</li>
           </ul>
           <div class="justificatifs-box">
             <strong>📄 Justificatifs :</strong>
             <div class="justificatif-tags">
-              <a href="Iteration2_Nikauly_Garance_Heymad_G5.pdf" target="_blank" class="justificatif-tag">Rapport Itération 2</a>
+              <a href="compte-rendus-application-mobile/Iteration2_Nikauly_Garance_Heymad_G5 (2).pdf" target="_blank" class="justificatif-tag">Rapport Itération 2</a>
             </div>
           </div>
         </div>
@@ -212,7 +226,7 @@
           <div class="justificatifs-box">
             <strong>📄 Justificatifs :</strong>
             <div class="justificatif-tags">
-              <a href="Projet-dapplication-Android-de-reservation-pour-R3st0.pdf" target="_blank" class="justificatif-tag">Rapport Itération 1</a>
+              <a href="compte-rendus-application-mobile/Projet d’application Android de réservation pour R3st0 (2).pdf" target="_blank" class="justificatif-tag">Rapport Itération 1</a>
             </div>
           </div>
         </div>
@@ -227,14 +241,14 @@
             <h4>Rapport Itération 1 - Architecture et API</h4>
             <p>Diagramme UML MVC, création de l'API REST PHP, maquettes Canva de l'application.</p>
           </div>
-          <a href="Projet-dapplication-Android-de-reservation-pour-R3st0.pdf" target="_blank" class="btn-download">PDF</a>
+          <a href="compte-rendus-application-mobile/Projet d’application Android de réservation pour R3st0 (2).pdf" target="_blank" class="btn-download">PDF</a>
         </div>
         <div class="livrable-item">
           <div class="livrable-info">
             <h4>Rapport Itération 2 - Affichage détail restaurant</h4>
             <p>Développement de la vue détaillée, connexion API, affichage des critiques et notes moyennes.</p>
           </div>
-          <a href="Iteration2_Nikauly_Garance_Heymad_G5.pdf" target="_blank" class="btn-download">PDF</a>
+          <a href="compte-rendus-application-mobile/Iteration2_Nikauly_Garance_Heymad_G5 (2).pdf" target="_blank" class="btn-download">PDF</a>
         </div>
         <div class="livrable-item">
           <div class="livrable-info">

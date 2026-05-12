@@ -104,10 +104,24 @@
     .nav-back:hover { color: var(--text-main); border-color: var(--text-main); }
     .theme-toggle { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.2rem; transition: all 0.3s; }
     .theme-toggle:hover { border-color: var(--accent-color); transform: scale(1.05); }
-    @media (max-width: 768px) { 
+    @media (max-width: 768px) {
       .nav-menu { position: fixed; top: 70px; right: -100%; width: 100%; height: calc(100vh - 70px); background: var(--nav-bg); flex-direction: column; padding: 3rem; transition: right 0.3s ease; margin-right: 0; align-items: flex-start; border-left: 1px solid var(--border-color);}
       .nav-menu.active { right: 0; }
       .hamburger { display: flex; }
+      .content-section { padding: 3rem 1.2rem; }
+      .grid-container { grid-template-columns: 1fr; gap: 1.5rem; }
+      .card { padding: 1.5rem; }
+      .hero { min-height: auto; padding: 100px 1.2rem 40px; }
+      .section-title { font-size: 1.8rem; margin-bottom: 2rem; }
+      .tech-stack { gap: 8px; }
+      .nav-back { padding: 4px 10px; font-size: 0.85rem; margin-left: 5px; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2rem; }
+      .hero-subtitle { font-size: 0.95rem; }
+      .section-title { font-size: 1.5rem; }
+      .card { padding: 1.2rem; }
+      .nav-logo { font-size: 1rem; }
     }
   </style>
 </head>
@@ -194,7 +208,7 @@
           <span class="competence-badge">Compétence 4</span>
           <h3>Travailler en mode projet</h3>
           <ul>
-            <li><strong>Analyser les objectifs et modalités d'organisation :</strong> Analyse du cahier des charges fourni, identification des contraintes et des parties prenantes.</li>
+            <li><strong>Analyser les objectifs et modalités d'organisation :</strong> Analyse du cahier des charges fourni.</li>
             <li><strong>Planifier les activités :</strong> Organisation du travail en binôme&nbsp;; planification des étapes du projet avec remise de livrables à chaque étape, gestion du temps et des priorités.</li>
           </ul>
           <div class="justificatifs-box">

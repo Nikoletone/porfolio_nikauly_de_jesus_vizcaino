@@ -117,6 +117,24 @@
     .project-link { color: var(--accent-color); font-weight: 600; text-decoration: none; font-size: 0.95rem; transition: transform 0.3s; display: inline-block; }
     .project-link:hover { transform: translateX(5px); }
 
+    /* --- COMPETENCES BTS SIO (dans les cartes projet) --- */
+    .project-bts { margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 0.4rem; }
+    .bts-entry { font-size: 0.78rem; color: var(--text-muted); }
+    .bts-entry strong { color: var(--accent-color); font-weight: 600; }
+
+    /* --- SECTION STAGES --- */
+    .section_stages { padding: 7rem 3.3%; background-color: var(--bg-main); }
+    .stages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 2.5rem; max-width: 120rem; margin: 0 auto; }
+
+    /* --- SECTION CONTACT --- */
+    .section_contact { padding: 7rem 3.3%; background-color: var(--bg-main); }
+    .contact-container { max-width: 120rem; margin: 0 auto; }
+    .contact-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 120rem; margin: 0 auto; margin-top: 3rem; }
+    .contact-card { background: var(--bg-card); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); text-decoration: none; display: flex; align-items: center; gap: 1.5rem; transition: all 0.3s ease; }
+    .contact-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); border-color: var(--accent-color); }
+    .contact-icon { font-size: 2.5rem; }
+    .contact-label { color: var(--text-main); font-weight: 500; font-size: 1rem; }
+
     /* --- SECTION COMPETENCES --- */
     .section_skills { background-color: var(--bg-main); padding: 7rem 3.3%; position: relative; }
     .skills-container { max-width: 120rem; margin: 0 auto; }
@@ -153,6 +171,17 @@
 
     footer { text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid var(--border-color); background: var(--bg-card); }
 
+    /* --- SECTION SYNTHESIS --- */
+    .section_synthesis { background-color: var(--bg-main); padding: 7rem 3.3%; position: relative; }
+    .synthesis-container { max-width: 120rem; margin: 0 auto; }
+    .synthesis-content { background: var(--bg-card); border-radius: var(--radius); padding: 3rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); overflow-x: auto; }
+    .synthesis-table { width: 100%; border-collapse: collapse; }
+    .synthesis-table thead { background-color: var(--accent-light); }
+    .synthesis-table th { padding: 1.2rem; text-align: left; font-weight: 600; color: var(--accent-color); border-bottom: 2px solid var(--border-color); }
+    .synthesis-table td { padding: 1.2rem; border-bottom: 1px solid var(--border-color); color: var(--text-main); }
+    .synthesis-table tbody tr:hover { background-color: var(--tech-bg); }
+    .synthesis-table tbody tr:last-child td { border-bottom: none; }
+
     /* RESPONSIVE */
     @media (max-width: 992px) {
       .tabs_component { grid-template-columns: 1fr; height: auto; gap: 2rem;}
@@ -182,9 +211,12 @@
       <div class="nav-actions">
         <ul class="nav-menu">
           <li><a href="#about">À propos</a></li>
+          <li><a href="#stages">Stages</a></li>
           <li><a href="#projects">Projets</a></li>
           <li><a href="#skills">Compétences</a></li>
+          <li><a href="#synthesis">Synthèse</a></li>
           <li><a href="#veille">Veille</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
         <button id="theme-toggle" class="theme-toggle" aria-label="Changer de thème">🌙</button>
         <div class="hamburger">
@@ -241,6 +273,10 @@
                   <span><a href="Cv Nikauly de Jesus Vizcaino .pdf.pdf" target="_blank">Télécharger mon CV</a></span>
                   <span>→</span>
                 </div>
+                <div class="button">
+                  <span><a href="Tableau de synthèse_Dejesusvizcaino_Nikauly_2slam.pdf" target="_blank">Tableau de Synthèse</a></span>
+                  <span>→</span>
+                </div>
               </div>
 
               <!-- Right Images -->
@@ -256,6 +292,60 @@
     </div>
   </section>
 
+  <!-- Stages -->
+  <section class="section_stages" id="stages">
+    <div class="stages-container">
+      <div class="projects-header scroll-reveal">
+        <h2 class="heading-style-h2">Mes <span class="text-color-red">Stages</span></h2>
+        <p class="projects-subtitle">Expériences professionnelles et apprentissages en entreprise</p>
+      </div>
+
+      <div class="stages-grid">
+        <!-- Stage: PapyRus -->
+        <div class="project-card scroll-reveal" onclick="window.location.href='stage2.html'">
+          <div class="project-image">
+            <img src="photo_papyrus.png" alt="Projet PapyRus" onerror="this.src='photo_portefolio.jpeg'"/>
+            <div class="project-overlay">
+              <span class="project-tag">Symfony</span>
+              <span class="project-tag">AI</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">PapyRus</h3>
+            <p class="project-description">Développement de <strong>PapyRus</strong>, une application web sous Symfony intégrant une Intelligence Artificielle pour la transcription et la synthèse automatique de réunions.</p>
+            <div class="project-tech"><span>Symfony</span><span>Python</span><span>JavaScript</span><span>AI</span></div>
+            <div class="project-bts">
+              <p class="bts-entry"><strong>C1</strong> Gérer le patrimoine informatique — Exploiter des référentiels, normes et standards</p>
+              <p class="bts-entry"><strong>C5</strong> Mettre à disposition un service informatique — Déployer et accompagner</p>
+              <p class="bts-entry"><strong>C6</strong> Organiser son développement professionnel — Développer son projet professionnel</p>
+            </div>
+            <a href="stage2.html" class="project-link">Voir le projet →</a>
+          </div>
+        </div>
+
+        <!-- Stage: Site Soutien aux artisans palestiniens -->
+        <div class="project-card scroll-reveal" onclick="window.location.href='stage1.html'">
+          <div class="project-image">
+            <img src="photo_site_stage_1.png" alt="Site Artisans" />
+            <div class="project-overlay">
+              <span class="project-tag">WEB</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Site Soutien aux artisans palestiniens</h3>
+            <p class="project-description">Site web de valorisation de produits artisanaux réalisé pour une association durant mon stage, de la DA à la mise en ligne, en passant par la collecte et la gestion des contenus réels.</p>
+            <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            <div class="project-bts">
+              <p class="bts-entry"><strong>C3</strong> Développer la présence en ligne — Participer à l'évolution d'un site Web</p>
+            </div>
+            <a href="stage1.html" class="project-link">Voir le projet →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Projets -->
   <section class="section_projects" id="projects">
     <div class="projects-header scroll-reveal">
@@ -264,20 +354,6 @@
     </div>
 
     <div class="projects-grid">
-      
-      <!-- Projet PapyRus -->
-      <div class="project-card scroll-reveal" onclick="window.location.href='stage2.html'">
-        <div class="project-image">
-          <img src="photo_papyrus.png" alt="PapyRus - Projet IA" />
-          <div class="project-overlay"><span class="project-tag">Symfony</span></div>
-        </div>
-        <div class="project-content">
-          <h3 class="project-title">PapyRus</h3>
-          <p class="project-description">Développement de <strong>PapyRus</strong>, une application web sous Symfony intégrant une Intelligence Artificielle pour la transcription et la synthèse automatique de réunions.</p>
-          <div class="project-tech"><span>Symfony</span><span>Python</span><span>JavaScript</span><span>AI</span></div>
-          <a href="stage2.html" class="project-link">Voir le projet →</a>
-        </div>
-      </div>
 
       <!-- Projet 1: THALI-MINI -->
       <div class="project-card scroll-reveal" onclick="window.location.href='detail_projet.html'">
@@ -289,28 +365,15 @@
           <h3 class="project-title">THALI-MINI</h3>
           <p class="project-description">Application Java desktop pour la gestion des mini-excursions d'un centre de thalassothérapie avec architecture DAO et base de données MariaDB.</p>
           <div class="project-tech"><span>Java</span><span>Desktop</span><span>MariaDB</span><span>CRUD</span></div>
+          <div class="project-bts">
+            <p class="bts-entry"><strong>C4</strong> Travailler en mode projet — Analyser les objectifs et modalités d'organisation</p>
+            <p class="bts-entry"><strong>C4</strong> Travailler en mode projet — Planifier les activités</p>
+          </div>
           <a href="detail_projet.html" class="project-link">Voir le projet →</a>
         </div>
       </div>
 
-      <!-- Projet 2: Site Artisans Palestiniens -->
-      <div class="project-card scroll-reveal" onclick="window.location.href='stage1.html'">
-        <div class="project-image">
-          <img src="photo_site_stage_1.png" alt="Site Artisans" />
-          <div class="project-overlay">
-            <span class="project-tag">WEB</span>
-            <span class="project-tag">JavaScript</span>
-          </div>
-        </div>
-        <div class="project-content">
-          <h3 class="project-title">Site Soutien aux artisans palestiniens</h3>
-          <p class="project-description">Site web de valorisation de produits artisanaux réalisé pour une association durant mon stage, de la DA à la mise en ligne, en passant par la collecte et la gestion des contenus réels.</p>
-          <div class="project-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-          <a href="stage1.html" class="project-link">Voir le projet →</a>
-        </div>
-      </div>
-
-      <!-- Projet 3: Site Restaurant R3st0.fr -->
+      <!-- Projet 2: Site Restaurant R3st0.fr -->
       <div class="project-card scroll-reveal" onclick="window.location.href='resto.html'">
         <div class="project-image">
           <img src="site_resto.png" alt="Site Restaurant" />
@@ -323,11 +386,17 @@
           <h3 class="project-title">R3st0.fr - Site Web</h3>
           <p class="project-description">Site web de critique et notation de restaurants développé en équipe selon la méthode Scrum avec itérations, tickets de maintenance et déploiement continu.</p>
           <div class="project-tech"><span>PHP</span><span>Symfony</span><span>MariaDB</span><span>Scrum</span></div>
+          <div class="project-bts">
+            <p class="bts-entry"><strong>C2</strong> Répondre aux incidents et demandes — Traiter des demandes concernant les applications</p>
+            <p class="bts-entry"><strong>C4</strong> Travailler en mode projet — Planifier les activités</p>
+            <p class="bts-entry"><strong>C5</strong> Mettre à disposition un service informatique — Réaliser les tests d'intégration et d'acceptation</p>
+            <p class="bts-entry"><strong>C5</strong> Mettre à disposition un service informatique — Déployer un service</p>
+          </div>
           <a href="resto.html" class="project-link">Voir le projet →</a>
         </div>
       </div>
 
-      <!-- Projet 4: Application Android R3st0 -->
+      <!-- Projet 3: Application Android R3st0 -->
       <div class="project-card scroll-reveal" onclick="window.location.href='projet_android.html'">
         <div class="project-image">
           <img src="photo_application_android.png" alt="Application Android R3st0" />
@@ -340,11 +409,15 @@
           <h3 class="project-title">R3st0 - Application Android</h3>
           <p class="project-description">Application mobile Android de réservation et consultation de restaurants avec architecture MVC, API REST PHP et consommation JSON. Affichage liste, fiche détaillée et avis.</p>
           <div class="project-tech"><span>Java Android</span><span>API REST PHP</span><span>JSON</span><span>GitLab</span></div>
+          <div class="project-bts">
+            <p class="bts-entry"><strong>C2</strong> Répondre aux incidents et demandes — Traiter des demandes concernant les applications</p>
+            <p class="bts-entry"><strong>C4</strong> Travailler en mode projet — Planifier les activités</p>
+          </div>
           <a href="projet_android.html" class="project-link">Voir le projet →</a>
         </div>
       </div>
 
-      <!-- Projet 5: Analyse de Logs Web (Python & SQL) -->
+      <!-- Projet 4: Analyse de Logs Web (Python & SQL) -->
       <div class="project-card scroll-reveal" onclick="window.location.href='projet_python.html'">
         <div class="project-image">
           <img src="photo_projet_log.png" alt="Analyse de logs Python et SQL" onerror="this.src='photo_portefolio.jpeg'"/>
@@ -363,11 +436,16 @@
             <span>Linux</span>
             <span>Bash</span>
           </div>
+          <div class="project-bts">
+            <p class="bts-entry"><strong>C1</strong> Gérer le patrimoine informatique — Recenser et identifier les ressources numériques</p>
+            <p class="bts-entry"><strong>C3</strong> Développer la présence en ligne — Analyse du fonctionnement du Web</p>
+            <p class="bts-entry"><strong>C5</strong> Mettre à disposition un service informatique — Gérer les accès</p>
+          </div>
           <a href="projet_python.html" class="project-link">Voir le projet →</a>
         </div>
       </div>
 
-      <!-- Projet 6: Application Modération R3st0 -->
+      <!-- Projet 5: Application Modération R3st0 -->
       <div class="project-card scroll-reveal" onclick="window.location.href='projet_moderation.html'">
         <div class="project-image">
           <img src="photo_application_moderation.png" alt="Application de modération R3st0" onerror="this.src='photo_portefolio.jpeg'"/>
@@ -385,6 +463,10 @@
             <span>MariaDB</span>
             <span>GitLab</span>
             <span>Scrum</span>
+          </div>
+          <div class="project-bts">
+            <p class="bts-entry"><strong>C2</strong> Répondre aux incidents et demandes — Traiter des demandes concernant les applications</p>
+            <p class="bts-entry"><strong>C4</strong> Travailler en mode projet — Analyser les objectifs et planifier</p>
           </div>
           <a href="projet_moderation.html" class="project-link">Voir le projet →</a>
         </div>
@@ -405,21 +487,18 @@
         
         <!-- Dev Backend & IA -->
         <div class="skill-category scroll-reveal">
-          <h3 class="category-title">⚙️ Backend & IA</h3>
+          <h3 class="category-title">Backend & IA</h3>
           <div class="skills-list">
             <div class="skill-item">
               <span class="skill-name">Python</span>
-              <p class="skill-context">Développement de scripts d'automatisation, parsing de logs et intégration de modèles d'Intelligence Artificielle.</p>
               <div class="skill-tags"><span>WhisperX</span><span>Mistral Nemo</span><span>IA Locale</span></div>
             </div>
             <div class="skill-item">
               <span class="skill-name">PHP & Symfony</span>
-              <p class="skill-context">Création de plateformes web sécurisées et d'API REST pour des applications mobiles.</p>
               <div class="skill-tags"><span>MVC</span><span>API REST</span><span>Doctrine</span></div>
             </div>
             <div class="skill-item">
               <span class="skill-name">Java</span>
-              <p class="skill-context">Développement d'applications de bureau (CRUD) avec architecture DAO et interfaces graphiques.</p>
               <div class="skill-tags"><span>Swing</span><span>JDBC</span><span>Pattern DAO</span></div>
             </div>
           </div>
@@ -427,16 +506,14 @@
 
         <!-- Dev Frontend & Mobile -->
         <div class="skill-category scroll-reveal">
-          <h3 class="category-title">📱 Frontend & Mobile</h3>
+          <h3 class="category-title">Frontend & Mobile</h3>
           <div class="skills-list">
             <div class="skill-item">
               <span class="skill-name">Android (Java)</span>
-              <p class="skill-context">Conception d'applications mobiles natives consommant des API JSON avec affichage dynamique.</p>
               <div class="skill-tags"><span>Android Studio</span><span>XML Layouts</span><span>JSON</span></div>
             </div>
             <div class="skill-item">
               <span class="skill-name">HTML5, CSS3, JS</span>
-              <p class="skill-context">Maquettage et développement d'interfaces web responsives et dynamiques.</p>
               <div class="skill-tags"><span>Responsive Design</span><span>Figma/Canva</span><span>DOM</span></div>
             </div>
           </div>
@@ -444,21 +521,18 @@
 
         <!-- Infra, BDD & DevOps -->
         <div class="skill-category scroll-reveal">
-          <h3 class="category-title">🗄️ Infra, BDD & DevOps</h3>
+          <h3 class="category-title">Infra, BDD & DevOps</h3>
           <div class="skills-list">
             <div class="skill-item">
               <span class="skill-name">Bases de données (SQL)</span>
-              <p class="skill-context">Modélisation, requêtage complexe et gestion des droits utilisateurs sur serveurs relationnels.</p>
               <div class="skill-tags"><span>MariaDB</span><span>MySQL</span><span>phpMyAdmin</span></div>
             </div>
             <div class="skill-item">
               <span class="skill-name">Administration Linux</span>
-              <p class="skill-context">Déploiement de serveurs web, gestion de pare-feu et paramétrage d'environnements (LAMP).</p>
               <div class="skill-tags"><span>Debian 12</span><span>Rocky Linux</span><span>Apache</span><span>FFmpeg</span></div>
             </div>
             <div class="skill-item">
               <span class="skill-name">Versionning & Agile</span>
-              <p class="skill-context">Travail en équipe avec méthodes agiles, gestion de tickets et déploiement continu.</p>
               <div class="skill-tags"><span>Git</span><span>GitLab</span><span>Scrum/Kanban</span></div>
             </div>
           </div>
@@ -467,7 +541,6 @@
       </div>
     </div>
   </section>
-
   <!-- Veille Technologique -->
   <section class="section_veille" id="veille">
     <div class="veille-container">
@@ -484,29 +557,42 @@
           <span class="veille-badge">🐍 Framework Python</span>
           <h3 class="veille-title">Reflex : Applications web full-stack en 100% Python</h3>
           <p class="veille-description">
-            Framework open-source révolutionnaire permettant de développer des applications web modernes entièrement en Python, sans JavaScript. Avec génération IA intégrée, déploiement en une commande et architecture FastAPI + React compilée, Reflex transforme le développement web Python.
+            Framework open-source révolutionnaire permettant de développer des applications web modernes entièrement en Python, sans JavaScript. Avec génération IA intégrée et architecture FastAPI + React compilée.
           </p>
 
-          <div class="veille-stats">
-            <div class="veille-stat">
-              <span class="veille-stat-number">27K+</span>
-              <span class="veille-stat-label">⭐ GitHub Stars</span>
-            </div>
-            <div class="veille-stat">
-              <span class="veille-stat-number">1M+</span>
-              <span class="veille-stat-label">Apps créées</span>
-            </div>
-            <div class="veille-stat">
-              <span class="veille-stat-number">100%</span>
-              <span class="veille-stat-label">Python pur</span>
-            </div>
-          </div>
+          <p class="veille-conclusion" style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-top: 1.5rem;">
+            Reflex représente une opportunité intéressante pour les développeurs Python souhaitant créer des applications web sans maîtriser JavaScript, tout en bénéficiant d'une communauté active et d'outils de déploiement modernes.
+          </p>
 
           <a href="veille_techonologique.html" class="button" style="margin:0; box-shadow: none; text-decoration: none;">
             <span>Découvrir la veille complète</span>
             <span>→</span>
           </a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section_contact" id="contact">
+    <div class="contact-container">
+      <div class="projects-header scroll-reveal">
+        <h2 class="heading-style-h2">Me <span class="text-color-red">Contacter</span></h2>
+        <p class="projects-subtitle">N'hésitez pas à me contacter pour toute question ou collaboration</p>
+      </div>
+      <div class="contact-links scroll-reveal">
+        <a href="mailto:de.jesus.vizcaino@gmail.com" class="contact-card">
+          <span class="contact-icon">📧</span>
+          <span class="contact-label">de.jesus.vizcaino@gmail.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/nikauly-de-jesus-vizcaino-240052207" target="_blank" class="contact-card">
+          <span class="contact-icon">💼</span>
+          <span class="contact-label">LinkedIn</span>
+        </a>
+        <a href="https://github.com/Nikoletone" target="_blank" class="contact-card">
+          <span class="contact-icon">🐙</span>
+          <span class="contact-label">GitHub</span>
+        </a>
       </div>
     </div>
   </section>

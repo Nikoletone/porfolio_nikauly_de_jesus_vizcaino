@@ -135,6 +135,20 @@
       .nav-menu { position: fixed; top: 70px; right: -100%; width: 100%; height: calc(100vh - 70px); background: var(--nav-bg); flex-direction: column; padding: 3rem; transition: right 0.3s ease; margin-right: 0; align-items: flex-start; border-left: 1px solid var(--border-color);}
       .nav-menu.active { right: 0; }
       .hamburger { display: flex; }
+      .content-section { padding: 3rem 1.2rem; }
+      .grid-container { grid-template-columns: 1fr; gap: 1.5rem; }
+      .card { padding: 1.5rem; }
+      .hero { min-height: auto; padding: 100px 1.2rem 40px; }
+      .section-title { font-size: 1.8rem; margin-bottom: 2rem; }
+      .tech-stack { gap: 8px; }
+      .nav-back { padding: 4px 10px; font-size: 0.85rem; margin-left: 5px; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2rem; }
+      .hero-subtitle { font-size: 0.95rem; }
+      .section-title { font-size: 1.5rem; }
+      .card { padding: 1.2rem; }
+      .nav-logo { font-size: 1rem; }
     }
   </style>
 </head>
@@ -214,19 +228,19 @@
     </section>
 
         <!-- SECTION COMPÉTENCES -->
-    <section class="content-section scroll-reveal">
+    <section id="competences" class="content-section scroll-reveal">
       <h2 class="section-title">Compétences <span>BTS SIO</span></h2>
       <div class="grid-single-column">
         <div class="card">
           <span class="competence-badge">Compétence 2</span>
           <h3>Répondre aux incidents et demandes d'assistance</h3>
           <ul>
-            <li><strong>Traiter des demandes concernant les applications :</strong> Modification et évolution de la structure de la base de données existante (utilisation de requêtes <code>ALTER TABLE</code> pour ajouter les colonnes <code>role</code>, <code>date_avis</code> et <code>masquer</code>) afin de répondre aux nouveaux besoins de l'entreprise.</li>
+            <li><strong>Traiter des demandes concernant les applications :</strong> Modification et évolution de la structure de la base de données existante afin de répondre aux nouveaux besoins de l'entreprise.</li>
           </ul>
           <div class="justificatifs-box">
             <strong>📄 Justificatifs :</strong>
             <div class="justificatif-tags">
-              <a href="#" class="justificatif-tag">Compte Rendu Itération 3 (Modif BDD)</a>
+              <a href="comptes-rendus-moderation/Moderation_Iteration_3.pdf" target="_blank" class="justificatif-tag">Compte Rendu Itération 3 (Modif BDD)</a>
             </div>
           </div>
         </div>
@@ -239,9 +253,8 @@
           <div class="justificatifs-box">
             <strong>📄 Justificatifs :</strong>
             <div class="justificatif-tags">
-              <a href="2SLAM-AP- Projet 3.pdf" target="_blank" class="justificatif-tag">Cahier des charges</a>
-              <a href="#" class="justificatif-tag">Compte Rendu Itération 1 (Daily Scrum)</a>
-              <a href="#" class="justificatif-tag">Compte Rendu Itération 2 (Tickets)</a>
+              <a href="comptes-rendus-moderation/Moderation_Iteration_1.pdf" target="_blank" class="justificatif-tag">Compte Rendu Itération 1 (Daily Scrum)</a>
+              <a href="comptes-rendus-moderation/Moderation_Iteration_2.pdf" target="_blank" class="justificatif-tag">Compte Rendu Itération 2 (Tickets)</a>
             </div>
           </div>
         </div>
@@ -255,13 +268,7 @@
       <h2 class="section-title">Comptes-Rendus & <span>Livrables</span></h2>
       <div class="livrables-list">
         
-        <div class="livrable-item">
-          <div class="livrable-info">
-            <h4>Cahier des charges & Backlog</h4>
-            <p>Directives du projet, diagrammes des cas d'utilisation et priorisation MoSCoW.</p>
-          </div>
-          <a href="2SLAM-AP- Projet 3.pdf" target="_blank" class="btn-download">PDF Cahier des charges</a>
-        </div>
+      
 
         <div class="livrable-item">
           <div class="livrable-info">
@@ -269,9 +276,9 @@
             <p>Résumé des Daily scrums, traitement des tickets GitLab, maquettage et évolution du code (MVC, requêtes SQL).</p>
           </div>
           <div class="btn-group">
-            <a href="#" target="_blank" class="btn-download">PDF Itération 1</a>
-            <a href="#" target="_blank" class="btn-download">PDF Itération 2</a>
-            <a href="#" target="_blank" class="btn-download">PDF Itération 3</a>
+            <a href="comptes-rendus-moderation/Moderation_Iteration_1.pdf" target="_blank" class="btn-download">PDF Itération 1</a>
+            <a href="comptes-rendus-moderation/Moderation_Iteration_2.pdf" target="_blank" class="btn-download">PDF Itération 2</a>
+            <a href="comptes-rendus-moderation/Moderation_Iteration_3.pdf" target="_blank" class="btn-download">PDF Itération 3</a>
           </div>
         </div>
 
