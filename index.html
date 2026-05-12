@@ -47,7 +47,7 @@
     .nav-logo { font-size: 1.5rem; font-weight: 600; color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
     .nav-logo span { color: var(--accent-color); }
     
-    .nav-menu { display: flex; gap: 2.5rem; align-items: center; list-style: none; margin-right: 2rem;}
+    .nav-menu { display: flex; gap: 2rem; align-items: center; list-style: none; margin-right: 2rem;}
     .nav-menu a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; position: relative; padding: 0.5rem 0; }
     .nav-menu a::after { content: ""; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent-color); transition: width 0.3s ease; }
     .nav-menu a:hover, .nav-menu a.active { color: var(--accent-color); }
@@ -70,14 +70,14 @@
     /* --- SECTION A PROPOS --- */
     .section_tabs { background-color: var(--bg-main); position: relative; }
     .padding-section-large { padding: 7rem 0; }
-    .tabs_height { height: 250vh; } 
-    .tabs_sticky-wrapper { height: 100vh; position: sticky; top: 5vh; }
+    .tabs_height { height: auto; }
+    .tabs_sticky-wrapper { height: auto; position: relative; top: auto; }
     .tabs_container { max-width: 120rem; margin: 0 auto; }
     .tabs_component { height: 90vh; display: grid; grid-template-columns: 1fr 0.5fr; gap: 1.5rem; padding: 0 3.3%; }
     
     .tabs_left { background-color: var(--bg-card); border-radius: var(--radius); padding: 2.5rem; display: flex; flex-direction: column; justify-content: flex-end; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); transition: all 0.3s ease;}
     .tabs_left-top { height: 100%; position: relative; }
-    .tabs_let-content { width: 100%; height: 100%; position: absolute; top: 0; display: flex; flex-direction: column; justify-content: space-around; text-align: center; }
+    .tabs_left-content { width: 100%; height: 100%; position: absolute; top: 0; display: flex; flex-direction: column; justify-content: space-around; text-align: center; }
     
     .heading-style-h4 { font-size: 2.125rem; font-weight: 600; line-height: 1.2; color: var(--text-main); margin-bottom: 1rem; }
     .text-color-red { color: var(--accent-color); }
@@ -169,6 +169,11 @@
     .veille-stat-number { font-size: 2rem; font-weight: 700; color: var(--accent-color); display: block; }
     .veille-stat-label { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 
+    /* --- GROUPES DE PROJETS --- */
+    .projects-group { max-width: 120rem; margin: 0 auto 4rem; }
+    .group-title { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 2rem; padding-left: 1rem; border-left: 3px solid var(--accent-color); letter-spacing: 0.1em; text-transform: uppercase; }
+    .stage-card { border-color: rgba(220, 20, 60, 0.25); }
+
     footer { text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.95rem; border-top: 1px solid var(--border-color); background: var(--bg-card); }
 
     /* --- SECTION SYNTHESIS --- */
@@ -246,7 +251,7 @@
               <!-- Left Content -->
               <div class="tabs_left">
                 <div class="tabs_left-top">
-                  <div class="tabs_let-content is-1">
+                  <div class="tabs_left-content is-1">
                     <h2 class="heading-style-h4">
                       À propos de <span class="text-color-red">MOI</span>
                     </h2>
@@ -270,7 +275,7 @@
                   </div>
                 </div>
                 <div class="button">
-                  <span><a href="Cv Nikauly de Jesus Vizcaino .pdf.pdf" target="_blank">Télécharger mon CV</a></span>
+                  <span><a href="CV_Nikauly_De_Jesus_Vizcaino.pdf" target="_blank">Télécharger mon CV</a></span>
                   <span>→</span>
                 </div>
                 <div class="button">
@@ -541,6 +546,7 @@
       </div>
     </div>
   </section>
+
   <!-- Veille Technologique -->
   <section class="section_veille" id="veille">
     <div class="veille-container">
@@ -650,7 +656,7 @@
     // --- SCROLL SPY (Surbrillance du lien actif) ---
     window.addEventListener("scroll", () => {
       let current = "";
-      const allSections = document.querySelectorAll("section[id]");
+      const allSections = document.querySelectorAll("section[id], .projects-group[id]");
 
       allSections.forEach((section) => {
         const sectionTop = section.offsetTop - 150;
